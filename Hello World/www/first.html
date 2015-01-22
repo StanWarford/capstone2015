@@ -78,6 +78,15 @@ else document.observe('dom:loaded', initFlyouts);
                     </div>
                   </div>
 
+	              <div data-role="page" id="page2">
+	                  <div data-role="fieldcontain">Push Notifications
+	                    <select name="flipswitch2" id="flipswitch2" data-role="slider">
+	                      <option value="off">Off</option>
+	                      <option value="on">On</option>
+	                    </select>
+	                  </div>
+	              </div>
+
                 </ul>
               </div>
 
@@ -90,16 +99,11 @@ else document.observe('dom:loaded', initFlyouts);
                 <input type="hidden" name="wsite-approved" id="wsite-approved2" value="approved" />
                 <input type="hidden" name="ucfid2" value="810602047528771099" />
                 <input type='submit' style='position:absolute;top:0;left:-9999px;width:1px;height:1px' />
-              <a class='wsite-button' onclick="document.getElementById('form-810602047528771099').submit()"><span id="submitButton" class='wsite-button-inner1'>Submit</span></a>&nbsp;              </div>
-              <div data-role="page" id="page2">
-                  <div data-role="fieldcontain">Push Notifications
-                    <select name="flipswitch2" id="flipswitch2" data-role="slider">
-                      <option value="off">Off</option>
-                      <option value="on">On</option>
-                    </select>
-                  </div>
-              </div>
-              </p>
+                <button onclick="document.getElementById('form-810602047528771099').submit()">Submit</button>
+<!--               	<a class='wsite-button' "><span id="submitButton" class='wsite-button-inner1'>Submit</span></a>&nbsp; -->
+          	</div>
+
+             
             </form>
             <br>
             <br>
