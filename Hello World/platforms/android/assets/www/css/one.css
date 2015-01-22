@@ -296,9 +296,15 @@ button.wsite-button: : -moz-focus-inner {
 	float: left;
 	width: 110px
 }
-.blog-body .blog-comments-bottom,#weebly_page_content_container .blog-comments-bottom,#wsite-content .blog-comments-bottom {
+.blog-body .blog-comments-bottom,#weebly_page_content_container .blog-comments-bottom, .blog-comments-bottom {
 	margin: -5px 0 40px
 }
+
+#wsite-content {
+	padding-top: 1%;
+	margin: auto;
+}
+
 .blog-sidebar {
 	width: 215px
 }

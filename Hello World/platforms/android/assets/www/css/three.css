@@ -48,7 +48,7 @@
 }
 
  .tall-header-page, .short-header-page, .no-header-page, .landing-page, .title-page  {
-	 background:  #f9fafb;
+	 background:  #e3deda;
 	 
 }
 
@@ -58,15 +58,20 @@
 	 
 }
 
+
+#listCalTable {
+	margin: auto;
+	background: #d3d3d3;
+}
+
  #header-wrap, #banner-wrap, #main-wrap, #footer-wrap  {
 	 width: 100%;
 	 
 }
 
  a  {
-	 color:  #546270;
+	 color:  #415161;
 	 text-decoration: none;
-	 border-bottom:  1px dashed #546270;
 	 
 }
 
@@ -174,8 +179,6 @@
  #header-wrap  {
 	 text-align: center;
 	 overflow: hidden;
-	 background: #fff;
-	 box-shadow:  inset 0 0 0 1px rgba(0,0,0,.1);
 	 z-index:  20 !important;
 	 
 }
@@ -189,7 +192,7 @@
 	 text-transform: uppercase;
 	 text-decoration: none;
 	 letter-spacing: -1px;
-	 margin: 52px 0px 47px;
+	margin-top: 1%;
 	 border: none;
 	 
 }
@@ -370,8 +373,6 @@
 }
 
  .landing-page #banner-wrap  {
-	 background: #f9fafb;
-	 border-bottom: 1px solid #e6e9eb;
 	 text-align: center;
 	 height: 20%;
 	 display: table;
@@ -508,7 +509,7 @@
 }
 
  #main-wrap  {
-	 background:  #fff;
+	 /*background:  #fff;*/
 	 
 }
 
@@ -921,14 +922,14 @@
 }
 
  .wsite-button-inner  {
-	 color:  #8496b3;
+	 color: #415161;
 	 font-family:  'Montserrat', sans-serif;
 	 display:  block;
 	 font-size:  18px;
 	 font-weight:  400;
 	 padding:  4px 27px;
-	 background: #fff;
-	 border: 1px solid #c4c9d2;
+	 background: #d3d3d3;
+	 border: 1px solid #415161;
 	 transition:  all 0.5s ease;
 	 
 }
