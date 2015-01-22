@@ -7,9 +7,14 @@
  ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fieldset, input  {
 	 margin:  0;
 	 padding:  0;
-	 
 }
 
+
+form {
+	width: 75%;
+	margin: auto;
+	text-align: left;
+}
  a img  {
 	 border:  0;
 	 
@@ -380,9 +385,10 @@
 }
 
  .landing-page #banner-wrap .container  {
-	 width: 100%;
-	 
+	 width: 100%; 
 }
+
+
 
  .landing-page #banner-wrap .banner  {
 	 display:  table-cell;
