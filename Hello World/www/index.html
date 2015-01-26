@@ -62,11 +62,13 @@
 		<div class="container">
 			<table id="listCalTable" width="90%" border="1" cellspacing="0" cellpadding="0">
 			  <tr>
-			    <td width="50%" align="center"><a href="index.html" onclick='showList()'>LIST</a></td>
-			    <td width="50%" align="center"><a href="calendar.html" onclick='showCalendar()'>CALENDAR</a></td>
+			    <td width="50%" align="center"><h3 onclick='showList()'>LIST</h3></td>
+			    <td width="50%" align="center"><h3 onclick='showCalendar()'>CALENDAR</h3></td>
 		      </tr>
 			  <tr>
-			    <td colspan="2" align="center"><p>This will be the list of classes.</p></td>
+			    <td colspan="2" align="center">
+			    	<p id="listCalView">Default View</p>
+			    </td>
 		      </tr>
 		  </table>
 			<div class="button-wrap"></div>
@@ -384,6 +386,16 @@ labels:"l0,u45907865.u45907865s955282614645677448"
 		catch(ex) {}
 	})(window._W && _W.jQuery);
 
+</script>
+
+<script type=text/javascript>
+	function showList() {
+		$("#listCalView").html("This will be the List!");
+	}
+
+	function showCalendar() {
+		$("#listCalView").html("This will be the Calendar!");
+	}
 </script>
 
 </body>
