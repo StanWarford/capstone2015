@@ -4,8 +4,10 @@
 		<title>Page Title</title>
 		<meta name = "viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="css/one.css" />
+		<link rel="stylesheet" href="css/index.css" />
 		<script src="js/a.js"></script>
 		<script src="js/b.js"></script>
+		<script src="jquery-1.11.2.min.js"></script>
 		<link rel="stylesheet" href="css/peptheme.css">
 	</head>
 	<body>
@@ -39,23 +41,12 @@
 				<div data-role="tabs" id="tabs">
   					<div data-role="navbar">
     					<ul>
-      						<li><a href="#one" data-ajax="false">list</a></li>
-      						<li><a href="#two" data-ajax="false">calendar</a></li>
+      						<li><a data-ajax="false" onclick="showList()">list</a></li>
+      						<li><a data-ajax="false" onclick="showCal()">calendar</a></li>
     					</ul>
  					</div>
-  					<div id="one">
-  						<p>
-    						<ul data-role="listview">
-    							<li>Class 1</li>
-    							<li>Class 2</li>
-    							<li>Class 3</li>
-    							<li>Class 4</li>
-    							<li>Class 5</li>
-							</ul>
-						</p>
-  					</div>
-  					<div id="two">
-    					<h3>Calendar</h3>
+ 					<div id="listCalView" class="ui-body-a ui-content">
+ 						Default view
  					</div>
 				</div>
 			</div> <!-- /content -->
@@ -65,3 +56,15 @@
 		</div> <!-- /page -->
 	</body>
 </html>
+<script>
+	function showList() {
+		var list = "";
+		// everytime user follows a class, append a list item
+
+		$("#listCalView").html(
+			"<p><ul><li>Class 1</li><li>Class 2</li></ul></p>");
+	}
+	function showCal() {
+		$("#listCalView").html("<div>Calendar</div>");
+	}
+</script>
