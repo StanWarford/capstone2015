@@ -13,3 +13,8 @@
 .flipperFirst {
 	position:absolute; right:6px; top:16px;
 }
+
+.menu {
+	position: absolute;
+	top:18px;
+}
