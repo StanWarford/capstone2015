@@ -1,0 +1,18 @@
+// Collection
+{
+	//Class
+	{
+		"ID" : "Big number",
+		"section" : "COSC105.01",
+		"info" : {
+			"room" : "RAC170",
+			"status" : "open",
+			"professor" : "Brad Cupp"	
+		},
+		"users" : {
+			"1" : "Token1",
+			"2" : "Token2"
+		}
+	}
+	// Repeat 
+}
