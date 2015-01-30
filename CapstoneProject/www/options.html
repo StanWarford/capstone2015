@@ -30,19 +30,23 @@
 				</div>
 			</div> <!-- /header -->
 			<div data-role="content">
-				<p>Push Notifications:</p>
-				<span class="flippers">
-    				<input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="a">
-				</span>
+				<div class="ui-field-contain" style="border-bottom-width:0px">
+					<h3>Push Notifications:</h3>
+					<span class="flipper">
+						<input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="a">
+					</span>
+				</div>
 				<h3>Refresh frequency:</h3>
+				<form>
 				<fieldset data-role="controlgroup" data-iconpos="right">
-    			    <input type="checkbox" name="checkbox-0" id="checkbox-0">
-        			<label for="checkbox-0">Manual</label>
-			        <input type="checkbox" name="checkbox-1" id="checkbox-1">
-    			    <label for="checkbox-1">5 seconds</label>
-        			<input type="checkbox" name="checkbox-2" id="checkbox-2">
-        			<label for="checkbox-2">5 minutes</label>
+					<input type="radio" name="radio-1" id="radio-choice-1" value="choice-1">
+					<label for="radio-choice-1">Manual</label>
+					<input type="radio" name="radio-1" id="radio-choice-2" value="choice-2">
+					<label for="radio-choice-2">5 seconds</label>
+					<input type="radio" name="radio-1" id="radio-choice-3" value="choice-3">
+					<label for="radio-choice-3">5 minutes</label>
 				</fieldset>
+			</form>
 				<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-right ui-btn-a">Replay Tutorial</a>
 			</div> <!-- /content -->
 			<div data-role="footer" data-theme="a" data-position="fixed">
