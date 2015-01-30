@@ -1,3 +1,5 @@
 #listCalView ul {
 	list-style: none;
 }
+
+.flipper {position:absolute; right:6px; top:9px;}

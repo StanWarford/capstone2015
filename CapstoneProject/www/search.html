@@ -30,22 +30,10 @@
 				</div>
 			</div> <!-- /header -->
 			<div data-role="content">
-				<h3>Provide Information</h3>
-				<form>
-    				<label for="email-1">Email</label>
-    				<input type="email" data-clear-btn="true" name="email-1" id="email-1" value="">
+				<form class="ui-filterable">
+					<input id="autocomplete-input" data-type="search" placeholder="format: SUBJECT CLASS.SECTION ex: 'HUM 111.01'">
 				</form>
-				<form>
-     				<label for="tel-1">Phone Number</label>
-     				<input type="tel" data-clear-btn="true" name="tel-1" id="tel-1" value="">
-				</form>
-				<form class="ui-field-contain" style="border-bottom-width:0px">
-					<p>Push Notifications:</p>
-					<span class="flipper">
-						<input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="a">
-					</span>
-				</form>
-				<button class="ui-btn ui-corner-all ui-shadow ui-btn-a">Submit</button>
+				<ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input="#autocomplete-input"></ul>
 			</div> <!-- /content -->
 			<div data-role="footer" data-theme="a" data-position="fixed">
 				<h4>footer</h4>
