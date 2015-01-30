@@ -14,6 +14,7 @@
 		788806F51A64B74E0048E2D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 788806F41A64B74E0048E2D2 /* Images.xcassets */; };
 		788806F81A64B74E0048E2D2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788806F61A64B74E0048E2D2 /* LaunchScreen.xib */; };
 		788807041A64B74E0048E2D2 /* capstone2015Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788807031A64B74E0048E2D2 /* capstone2015Tests.swift */; };
+		87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D93B791A7B172300054FCD /* ClassListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		788806FD1A64B74E0048E2D2 /* capstone2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = capstone2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		788807021A64B74E0048E2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		788807031A64B74E0048E2D2 /* capstone2015Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capstone2015Tests.swift; sourceTree = "<group>"; };
+		87D93B791A7B172300054FCD /* ClassListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				788806EA1A64B74E0048E2D2 /* AppDelegate.swift */,
+				87D93B791A7B172300054FCD /* ClassListViewController.swift */,
 				788806EF1A64B74E0048E2D2 /* ViewController.swift */,
 				788806F11A64B74E0048E2D2 /* Main.storyboard */,
 				788806F41A64B74E0048E2D2 /* Images.xcassets */,
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				788806F01A64B74E0048E2D2 /* ViewController.swift in Sources */,
+				87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */,
 				788806EE1A64B74E0048E2D2 /* capstone2015.xcdatamodeld in Sources */,
 				788806EB1A64B74E0048E2D2 /* AppDelegate.swift in Sources */,
 			);
@@ -411,6 +415,7 @@
 				788807091A64B74E0048E2D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7888070A1A64B74E0048E2D2 /* Build configuration list for PBXNativeTarget "capstone2015Tests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +424,7 @@
 				7888070C1A64B74E0048E2D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
