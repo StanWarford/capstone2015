@@ -2,4 +2,14 @@
 	list-style: none;
 }
 
-.flipper {position:absolute; right:6px; top:9px;}
+.flipperBrowse {
+	position:absolute; right:6px; top:9px;
+}
+
+.flipperOptions {
+	position:absolute; right:6px; top:20px;
+}
+
+.flipperFirst {
+	position:absolute; right:6px; top:16px;
+}
