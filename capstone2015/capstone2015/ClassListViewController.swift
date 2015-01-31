@@ -13,11 +13,11 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var classList: UITableView!
     
     @IBAction func addNewClass(sender: UIButton) {
-        tableData.append("Biostatistics 315")
+        tableData.append(["Biostatistics 315","Open"])
         classList?.reloadData()
     }
     
-    var tableData = [String]()
+    var tableData = [[String]]()
     var newClass : String = ""
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,15 +27,15 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "MyTestCell")
         
-        cell.textLabel?.text = "\(tableData[indexPath.row)"
-        cell.detailTextLabel?.text = "\(tableData[indexPath.row])"
+        cell.textLabel?.text = "\(tableData[indexPath.row][0])"
+        cell.detailTextLabel?.text = "\(tableData[indexPath.row][1])"
         
         return cell
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableData = ["Humanities 111", "Computer Science 105"]
+        tableData = [["Humanities 111","Closed"], ["Computer Science 105","Open"]]
         // Do any additional setup after loading the view.
     }
 

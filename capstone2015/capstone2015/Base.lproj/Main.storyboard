@@ -134,7 +134,7 @@
                                     <action selector="addNewClass:" destination="shy-IY-5kD" eventType="touchUpInside" id="hpZ-jL-gV8"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yVn-qv-TQa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PrototypeView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yVn-qv-TQa">
                                 <rect key="frame" x="16" y="112" width="568" height="431"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -143,14 +143,7 @@
                                     <constraint firstAttribute="width" constant="568" id="Gs1-2d-QB7"/>
                                     <constraint firstAttribute="width" constant="568" id="Nbe-Id-o5j"/>
                                 </constraints>
-                                <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="W1G-3A-9hO">
-                                    <rect key="frame" x="0.0" y="0.0" width="568" height="431"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="568" id="cqg-B9-HEz"/>
-                                    </constraints>
-                                </tableView>
+                                <sections/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="3a1-sA-mT3"/>
@@ -178,6 +171,7 @@
                             <constraint firstItem="3Sj-Dn-6nq" firstAttribute="top" secondItem="2su-Ek-FgB" secondAttribute="bottom" constant="8" id="C8M-O5-hn1"/>
                             <constraint firstItem="yVn-qv-TQa" firstAttribute="leading" secondItem="DyO-ec-78J" secondAttribute="leadingMargin" id="CMX-jm-7Bn"/>
                             <constraint firstItem="jBK-2r-yrn" firstAttribute="top" secondItem="yVn-qv-TQa" secondAttribute="bottom" constant="8" symbolic="YES" id="Eek-4k-Vte"/>
+                            <constraint firstAttribute="centerX" secondItem="yVn-qv-TQa" secondAttribute="centerX" id="ITr-9p-pHl"/>
                             <constraint firstAttribute="centerY" secondItem="3Sj-Dn-6nq" secondAttribute="centerY" constant="215" id="J8G-Nt-ThB"/>
                             <constraint firstItem="yVn-qv-TQa" firstAttribute="leading" secondItem="DyO-ec-78J" secondAttribute="leadingMargin" id="KVn-0a-QmR"/>
                             <constraint firstItem="yVn-qv-TQa" firstAttribute="trailing" secondItem="DyO-ec-78J" secondAttribute="trailingMargin" id="L3C-BZ-9sR"/>
@@ -189,6 +183,7 @@
                             <constraint firstAttribute="centerX" secondItem="yVn-qv-TQa" secondAttribute="centerX" id="YNE-Uj-4gd"/>
                             <constraint firstItem="jBK-2r-yrn" firstAttribute="top" secondItem="yVn-qv-TQa" secondAttribute="bottom" constant="8" id="aMc-CZ-czf"/>
                             <constraint firstItem="jBK-2r-yrn" firstAttribute="top" secondItem="yVn-qv-TQa" secondAttribute="bottom" constant="8" id="cCN-Yc-4hw"/>
+                            <constraint firstItem="jBK-2r-yrn" firstAttribute="top" secondItem="yVn-qv-TQa" secondAttribute="bottom" constant="8" id="cXl-rq-q6B"/>
                             <constraint firstItem="yVn-qv-TQa" firstAttribute="trailing" secondItem="DyO-ec-78J" secondAttribute="trailingMargin" id="crT-BC-nti"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2su-Ek-FgB" secondAttribute="trailing" constant="-16" id="d14-4E-pCn"/>
                             <constraint firstItem="yVn-qv-TQa" firstAttribute="trailing" secondItem="DyO-ec-78J" secondAttribute="trailingMargin" id="fdf-Ph-hwF"/>
@@ -220,6 +215,8 @@
                                 <exclude reference="Xav-n4-O05"/>
                                 <exclude reference="YNE-Uj-4gd"/>
                                 <exclude reference="crT-BC-nti"/>
+                                <exclude reference="fdf-Ph-hwF"/>
+                                <exclude reference="hF1-9y-oWb"/>
                                 <exclude reference="ixY-IB-2iD"/>
                                 <exclude reference="mXg-AL-mc4"/>
                                 <exclude reference="n3i-er-rQf"/>
@@ -233,6 +230,7 @@
                                 <exclude reference="vvd-xs-wDE"/>
                                 <exclude reference="13D-ul-0lw"/>
                                 <exclude reference="Eek-4k-Vte"/>
+                                <exclude reference="aMc-CZ-czf"/>
                                 <exclude reference="cCN-Yc-4hw"/>
                                 <exclude reference="qHs-fe-nK3"/>
                             </mask>
@@ -246,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLK-Yz-XLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2687" y="219"/>
+            <point key="canvasLocation" x="2884" y="0.0"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="LAL-Tz-0ua">
