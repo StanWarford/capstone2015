@@ -12,12 +12,18 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var classList: UITableView!
     
+    struct Class {
+        var className : String
+        var status: String
+        // add additional properties
+    }
+    
     @IBAction func addNewClass(sender: UIButton) {
-        tableData.append(["Biostatistics 315","Open"])
+        tableData.append(Class(className: "Biostatistics 315", status: "Open") )
         classList?.reloadData()
     }
     
-    var tableData = [[String]]()
+    var tableData = [Class]()
     var newClass : String = ""
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,15 +33,15 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "MyTestCell")
         
-        cell.textLabel?.text = "\(tableData[indexPath.row][0])"
-        cell.detailTextLabel?.text = "\(tableData[indexPath.row][1])"
+        cell.textLabel?.text = "\(tableData[indexPath.row].className)"
+        cell.detailTextLabel?.text = "\(tableData[indexPath.row].status)"
         
         return cell
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableData = [["Humanities 111","Closed"], ["Computer Science 105","Open"]]
+        tableData = [Class(className: "Humanities 111",status: "Closed"), Class(className: "Computer Science 105",status: "Open")]
         // Do any additional setup after loading the view.
     }
 
