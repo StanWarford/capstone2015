@@ -10,41 +10,13 @@
 		<script src="jquery-1.11.2.min.js"></script>
 		<link rel="stylesheet" href="css/peptheme.css">
 	</head>
-	<body onload="add_header()">
-
-
-
-
-
-
-
-
-
+	<body>
 		<div data-role="page" data-theme="a">
-
-			<div id="header">
-				
-			</div>
-<!-- 			<div data-role="panel" id="mypanel">
-    			<ul data-role="listview" data-inset="true" style="min-width:210px;">
-            		<li><a href="search.html" class="ui-icon-search">Search</a></li>
-            		<li><a href="browse.html" class="ui-icon-grid">Browse</a></li>
-            		<li><a href="options.html" class="ui-icon-gear">Options</a></li>
-            		<li><a href="splash.html">Temp: Splash</a></li>
-            		<li><a href="first.html">Temp: First</a></li>
-        		</ul>
-        		<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
-			</div>
-			<div data-role="header" id="my-header" data-theme="a">
-				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a">menu</a>
-				<h1>Page Title</h1>
-				<div id="custom-border-radius">
-    				<a href="index.html" class="ui-btn-right ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-right ui-btn-a">No text</a>
-				</div>
-			</div>  -->
 			<!-- page -->
-
-<!-- 			<div data-role="panel" id="mypanel">
+			<div id="header">
+				<!-- header -->
+			
+			<div data-role="panel" id="mypanel">
     			<ul data-role="listview" data-inset="true" style="min-width:210px;">
             		<li><a href="search.html" class="ui-icon-search">Search</a></li>
             		<li><a href="browse.html" class="ui-icon-grid">Browse</a></li>
@@ -53,15 +25,13 @@
             		<li><a href="first.html">Temp: First</a></li>
         		</ul>
         		<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
-			</div>
+			</div><!-- /panel -->
 			<div data-role="header" id="my-header" data-theme="a">
-				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a">menu</a>
+				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
 				<h1>Page Title</h1>
-				<div id="custom-border-radius">
-    				<a href="index.html" class="ui-btn-right ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-right ui-btn-a">No text</a>
-				</div>
-			</div>  -->
-
+				<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu">home</a>
+			</div> <!-- /header -->
+			</div>
 			<div data-role="content">
 				<!-- content -->
 				<div data-role="tabs" id="tabs">
@@ -76,65 +46,21 @@
  					</div>
 				</div>
 			</div> <!-- /content -->
-<!-- 			<div data-role="footer" data-theme="a" data-position="fixed">
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<!-- footer -->
 				<h4>footer</h4>
-			</div>  -->
-			<div id="footer">
-			</div>
+			</div> <!-- /footer -->
 		</div> <!-- /page -->
-
-<script type="text/javascript" 
-      defer="defer" 
-      src="Scripts/place_in_outerHTML.js"></script>
-<script type="text/javascript" 
-      defer="defer" 
-      src="Scripts/IO.js"></script>
-<script type="text/javascript" 
-      defer="defer" 
-      src="Scripts/add_footer.js"></script>
-<script type="text/javascript" 
-      defer="defer" 
-      src="Scripts/add_header.js"></script>
-
-
-
 	</body>
 </html>
 <script>
 	function showList() {
 		var list = "";
 		// everytime user follows a class, append a list item
-		$("#listCalView").html(
-			"<p><ul><li>Class 1</li><li>Class 2</li></ul></p>");
+
+		$("#listCalView").html("<p><ul><li>Class 1</li><li>Class 2</li></ul></p>");
 	}
 	function showCal() {
 		$("#listCalView").html("<div>Calendar</div>");
 	}
-
-
-function read_contents (fileName) {
-	if (window.File && window.FileReader && window.FileList && window.Blob) {
-	  // Great success! All the File APIs are supported.
-		var r = new FileReader();
-        r.onload = (function(f) {
-        return function(e) {
-        var contents = e.target.result;
-	    };
-	});
-        r.readAsText(fileName);
-        $("#header").html("WOO");
-	} else {
-	  alert('The File APIs are not fully supported in this browser.');
-	}
-}
-
-
-function add_header () {
-	console.log("loaded");
-	var header_contents = read_contents ("header.txt" );
-	console.log("header: " + header_contents);
-	$("#header").html(header_contents);
-	alert("done");
-}
-
 </script>
