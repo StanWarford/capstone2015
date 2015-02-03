@@ -9,10 +9,8 @@ var CollectionDriver = require('./collectionDriver').CollectionDriver;
 var bodyParser = require('body-parser');
  
 var app = express();
-app.set("port", process.env.PORT || 3000);
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
-var mongoHost = 'localHost'; 
+app.set("port", process.env.OPENSHIFT_NODEJS_PORT || 3000);
+var mongoHost = '137.159.47.170'; 
 var mongoPort = 27017; 
 var collectionDriver;
 
