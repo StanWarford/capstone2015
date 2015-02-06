@@ -10,12 +10,12 @@
 		<script src="js/b.js"></script>
 		<script src="jquery-1.11.2.min.js"></script>
 	</head>
-	<body onload='showHead();'>
+	<body onload='showHead();showFooter();'>
 		<div data-role="page" data-theme="a">
 			<!-- page -->
 			<div id="header">
 				
-				<div data-role="panel" id="mypanel">
+<!-- 				<div data-role="panel" id="mypanel">
 					<ul data-role="listview" data-inset="true" style="min-width:210px;">
 						<li><a href="search.html" class="ui-icon-search">Search</a></li>
 						<li><a href="browse.html" class="ui-icon-grid">Browse</a></li>
@@ -29,12 +29,8 @@
 					<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
 					<h1>Page Title</h1>
 					<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu">home</a>
-				</div>
+				</div> -->
 
-				<div data-role="panel" id="mypanel">
-				</div> 
-				<div data-role="header" id="my-header" data-theme="a">
-				</div>
 			</div>
 
 			<div data-role="content">
@@ -53,17 +49,18 @@
 			</div> <!-- /content -->
 
 			<div data-role="footer" data-theme="a" data-position="fixed">
-				<!-- footer -->
-				<h4>footer</h4>
+				<div id='footer'></div>
 			</div> <!-- /footer -->
 		</div> <!-- /page -->
 	</body>
 </html>
 <script>
 	function showHead() {
-		// $( "#my-header" ).load( "testingHead.html" );
-		// $( "#mypanel" ).load( "testingHead2.html" );
-		$('#header').load('testing.html');
+		$('#header').load('header.html');
+	}
+
+	function showFooter() {
+		$('#footer').load('footer.html');
 	}
 
 	function showList() {
@@ -75,7 +72,5 @@
 	function showCal() {
 		$("#listCalView").html("<div>Calendar</div>");
 	}
-
-    var reader; //GLOBAL File Reader object for demo purpose only
 
 </script>
