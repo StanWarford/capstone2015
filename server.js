@@ -5,16 +5,15 @@ var path = require("path");
 var MongoClient = require('mongodb').MongoClient;
 var Server = require('mongodb').Server;
 var CollectionDriver = require('./collectionDriver').CollectionDriver;
-
-var bodyParser = require('body-parser');
  
 var app = express();
-app.set("port", process.env.OPENSHIFT_NODEJS_PORT || 8080);
+app.set("port",  8080);
+app.set("ipAddress", process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1")
+//app.set("ipAddress", "137.159.47.170")
 var mongoHost = '137.159.47.170'; 
 var mongoPort = 27017; 
 var collectionDriver;
 
-app.use(bodyParser.json());
  
 var mongoClient = new MongoClient(new Server(mongoHost, mongoPort)); //B
 
@@ -27,7 +26,7 @@ mongoClient.open(function(err, mongoClient) {
   collectionDriver = new CollectionDriver(db); 
 });
 
-app.use(express.static(path.join(__dirname, "public")));
+//app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/get/:collection', function(req, res) { 
    var params = req.params; 
@@ -69,6 +68,7 @@ app.get('/get/:collection/:entity', function(req, res) { //I
 });
 */
  
-http.createServer(app).listen(app.get("port"), function(){
+http.createServer(app).listen(app.get("port"), app.get("ipAddress"), function(){
 	console.log("express server listening on port " + app.get("port"));
+  console.log("IP: " + app.get("ipAddress"));
 })
