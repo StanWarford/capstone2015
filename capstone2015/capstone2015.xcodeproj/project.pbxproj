@@ -17,6 +17,7 @@
 		8737A1291A80583700DE38B1 /* ClassDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737A1281A80583700DE38B1 /* ClassDataStructure.swift */; };
 		8737A12B1A805BB000DE38B1 /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737A12A1A805BB000DE38B1 /* Class.swift */; };
 		87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D93B791A7B172300054FCD /* ClassListViewController.swift */; };
+		87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3C5E51A89AF72001DC31F /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		8737A1281A80583700DE38B1 /* ClassDataStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDataStructure.swift; sourceTree = "<group>"; };
 		8737A12A1A805BB000DE38B1 /* Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
 		87D93B791A7B172300054FCD /* ClassListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassListViewController.swift; sourceTree = "<group>"; };
+		87F3C5E51A89AF72001DC31F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				87D93B791A7B172300054FCD /* ClassListViewController.swift */,
 				788806EF1A64B74E0048E2D2 /* ViewController.swift */,
 				788806F11A64B74E0048E2D2 /* Main.storyboard */,
+				87F3C5E51A89AF72001DC31F /* SearchViewController.swift */,
 				788806F41A64B74E0048E2D2 /* Images.xcassets */,
 				788806F61A64B74E0048E2D2 /* LaunchScreen.xib */,
 				788806EC1A64B74E0048E2D2 /* capstone2015.xcdatamodeld */,
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8737A12B1A805BB000DE38B1 /* Class.swift in Sources */,
+				87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */,
 				788806F01A64B74E0048E2D2 /* ViewController.swift in Sources */,
 				87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */,
 				788806EE1A64B74E0048E2D2 /* capstone2015.xcdatamodeld in Sources */,
