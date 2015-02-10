@@ -74,11 +74,15 @@ CollectionDriver.prototype.update = function(collectionName, JSONData, callback)
 			flag = true;
 			collection.remove({}, function(error, results){
 				if (error) callback(error);
-			})
-			collection.insert(JSONData, function(error, results){
-				if (error) callback(error);
-				else callback(null, results);
 			});
+
+            for (var section in JSONData){
+                collection.insert(JSONData[section], function(error, results){
+                if (error) callback(error);
+                else callback(null, results);
+            });    
+            }
+			
 			flag = false;
 		}
 	});
