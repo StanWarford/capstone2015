@@ -280,6 +280,9 @@
                                 <state key="normal" title="+ Add New Class">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="O2n-vU-rde" kind="show" id="f3y-jO-UT6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -304,10 +307,10 @@
             </objects>
             <point key="canvasLocation" x="1995" y="942"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="xwc-zF-xT2">
             <objects>
-                <viewController id="h88-2u-2oQ" sceneMemberID="viewController">
+                <viewController id="h88-2u-2oQ" customClass="SettingsViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qyz-yG-5B1"/>
                         <viewControllerLayoutGuide type="bottom" id="odV-0I-6QA"/>
@@ -328,7 +331,7 @@
                                     <navigationItem title="Settings" id="Wjy-gQ-Tg7">
                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="QMg-Z0-rFe">
                                             <connections>
-                                                <segue destination="Exy-Tz-FhQ" kind="show" id="o5a-dW-Hny"/>
+                                                <action selector="close:" destination="h88-2u-2oQ" id="fUG-rV-exW"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -353,7 +356,7 @@
         <!--Departments-->
         <scene sceneID="A3Z-pa-l0P">
             <objects>
-                <viewController id="wLG-8T-jm8" sceneMemberID="viewController">
+                <viewController id="wLG-8T-jm8" customClass="DepartmentViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CFB-DG-4T8"/>
                         <viewControllerLayoutGuide type="bottom" id="lc8-WU-IzD"/>
@@ -376,6 +379,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Departments" id="k7B-2e-Dvu">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="KTZ-jj-PdN">
+                            <connections>
+                                <action selector="close:" destination="wLG-8T-jm8" id="oyp-oD-bGI"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="XNU-lz-iIp">
                             <connections>
                                 <segue destination="W1i-gO-gXm" kind="show" id="dAk-nG-ZBs"/>
@@ -665,7 +673,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDs-6Q-f3F">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDs-6Q-f3F">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="80F-u9-xfD"/>
@@ -727,7 +735,7 @@
         <image name="appLogo" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="66M-Y9-em9"/>
         <segue reference="wNl-No-xpW"/>
+        <segue reference="f3y-jO-UT6"/>
     </inferredMetricsTieBreakers>
 </document>

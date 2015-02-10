@@ -14,10 +14,11 @@
 		788806F51A64B74E0048E2D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 788806F41A64B74E0048E2D2 /* Images.xcassets */; };
 		788806F81A64B74E0048E2D2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788806F61A64B74E0048E2D2 /* LaunchScreen.xib */; };
 		788807041A64B74E0048E2D2 /* capstone2015Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788807031A64B74E0048E2D2 /* capstone2015Tests.swift */; };
-		8737A1291A80583700DE38B1 /* ClassDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737A1281A80583700DE38B1 /* ClassDataStructure.swift */; };
 		8737A12B1A805BB000DE38B1 /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8737A12A1A805BB000DE38B1 /* Class.swift */; };
 		87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D93B791A7B172300054FCD /* ClassListViewController.swift */; };
 		87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3C5E51A89AF72001DC31F /* SearchViewController.swift */; };
+		87F3C5E81A8AB252001DC31F /* DepartmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3C5E71A8AB252001DC31F /* DepartmentViewController.swift */; };
+		87F3C5EA1A8AB465001DC31F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3C5E91A8AB465001DC31F /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +43,11 @@
 		788806FD1A64B74E0048E2D2 /* capstone2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = capstone2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		788807021A64B74E0048E2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		788807031A64B74E0048E2D2 /* capstone2015Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capstone2015Tests.swift; sourceTree = "<group>"; };
-		8737A1281A80583700DE38B1 /* ClassDataStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDataStructure.swift; sourceTree = "<group>"; };
 		8737A12A1A805BB000DE38B1 /* Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
 		87D93B791A7B172300054FCD /* ClassListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassListViewController.swift; sourceTree = "<group>"; };
 		87F3C5E51A89AF72001DC31F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		87F3C5E71A8AB252001DC31F /* DepartmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentViewController.swift; sourceTree = "<group>"; };
+		87F3C5E91A8AB465001DC31F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +71,6 @@
 		788806DC1A64B74E0048E2D2 = {
 			isa = PBXGroup;
 			children = (
-				8737A1281A80583700DE38B1 /* ClassDataStructure.swift */,
 				788806E71A64B74E0048E2D2 /* capstone2015 */,
 				788807001A64B74E0048E2D2 /* capstone2015Tests */,
 				788806E61A64B74E0048E2D2 /* Products */,
@@ -91,12 +92,11 @@
 				788806EA1A64B74E0048E2D2 /* AppDelegate.swift */,
 				87D93B791A7B172300054FCD /* ClassListViewController.swift */,
 				788806EF1A64B74E0048E2D2 /* ViewController.swift */,
-				788806F11A64B74E0048E2D2 /* Main.storyboard */,
+				87F3C5E71A8AB252001DC31F /* DepartmentViewController.swift */,
 				87F3C5E51A89AF72001DC31F /* SearchViewController.swift */,
-				788806F41A64B74E0048E2D2 /* Images.xcassets */,
-				788806F61A64B74E0048E2D2 /* LaunchScreen.xib */,
-				788806EC1A64B74E0048E2D2 /* capstone2015.xcdatamodeld */,
+				87F3C5E91A8AB465001DC31F /* SettingsViewController.swift */,
 				8737A12A1A805BB000DE38B1 /* Class.swift */,
+				788806F11A64B74E0048E2D2 /* Main.storyboard */,
 				788806E81A64B74E0048E2D2 /* Supporting Files */,
 			);
 			path = capstone2015;
@@ -106,6 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				788806E91A64B74E0048E2D2 /* Info.plist */,
+				788806F41A64B74E0048E2D2 /* Images.xcassets */,
+				788806F61A64B74E0048E2D2 /* LaunchScreen.xib */,
+				788806EC1A64B74E0048E2D2 /* capstone2015.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -231,9 +234,10 @@
 				87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */,
 				788806F01A64B74E0048E2D2 /* ViewController.swift in Sources */,
 				87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */,
+				87F3C5E81A8AB252001DC31F /* DepartmentViewController.swift in Sources */,
 				788806EE1A64B74E0048E2D2 /* capstone2015.xcdatamodeld in Sources */,
 				788806EB1A64B74E0048E2D2 /* AppDelegate.swift in Sources */,
-				8737A1291A80583700DE38B1 /* ClassDataStructure.swift in Sources */,
+				87F3C5EA1A8AB465001DC31F /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
