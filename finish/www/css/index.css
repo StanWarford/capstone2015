@@ -1,0 +1,20 @@
+#listCalView ul {
+	list-style: none;
+}
+
+.flipperBrowse {
+	position:absolute; right:6px; top:9px;
+}
+
+.flipperOptions {
+	position:absolute; right:6px; top:20px;
+}
+
+.flipperFirst {
+	position:absolute; right:6px; top:16px;
+}
+
+.menu {
+	position: absolute;
+	top:20px;
+}
