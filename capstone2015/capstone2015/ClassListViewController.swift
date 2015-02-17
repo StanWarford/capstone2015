@@ -20,68 +20,55 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }()
     
-    lazy var classesFollowing : [Class]? = {
-        let fetchRequest = NSFetchRequest(entityName: "Class")
-        if let fetchResults = self.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Class] {
-            return fetchResults
-        } else {
-            return nil
-        }
-    }()
-    
     @IBOutlet weak var classList: UITableView!
     
-    @IBAction func addNewClass(sender: UIButton) {
-        //tableData.append(Class(className: "Biostatistics 315", status: "Open"))
-        
-        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Class", inManagedObjectContext: self.managedObjectContext!) as Class
-        newItem.name = "English 101"
-        newItem.availability = "Closed"
-        
-        classesFollowing?.append(newItem)
-        
-        classList?.reloadData()
-    }
-    
-    //var tableData = [Class]()
-    var newClass : String = ""
+    var classes: [ClassModel]!
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-  //      return tableData.count
-        return classesFollowing!.count
+        // return classes.count
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "MyTestCell")
-        
-       // cell.textLabel?.text = "\(tableData[indexPath.row].className)"
-       // cell.detailTextLabel?.text = "\(tableData[indexPath.row].status)"
-
-        cell.textLabel?.text = "\(classesFollowing![indexPath.row].name)"
-        cell.detailTextLabel?.text = "\(classesFollowing![indexPath.row].availability)"
+        let cell: ClassListTableViewCell = tableView.dequeueReusableCellWithIdentifier("ClassListCell") as ClassListTableViewCell
+        // create cell
+        let classFollowing = classes[indexPath.row]
+        cell.setCell(classFollowing.name, course: classFollowing.course, status: classFollowing.status)
+        if (classFollowing.status == "Open"){
+            cell.backgroundColor = UIColor.greenColor()
+        } else {
+            cell.backgroundColor = UIColor.redColor()
+        }
         return cell
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete){
+            classes.removeAtIndex(indexPath.row) // To-do: Delete from core data instead
+            classList.reloadData()
+        }
+    }
+    
+    func populateClassList(){
+        let fetchRequest = NSFetchRequest(entityName: "ClassCoreData")
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ClassCoreData]{
+            for (var i = 0; i < fetchResults.count; i++){
+                var classFollowing = ClassModel(name: fetchResults[i].name, course: fetchResults[i].course, status: fetchResults[i].status, professor: fetchResults[i].professor, room: fetchResults[i].room)
+                classes.append(classFollowing)
+            }
+        }
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Class", inManagedObjectContext: self.managedObjectContext!) as Class
-        newItem.name = "Humanities 111"
-        newItem.availability = "Closed"
-        
-        let newItem2 = NSEntityDescription.insertNewObjectForEntityForName("Class", inManagedObjectContext: self.managedObjectContext!) as Class
-        newItem2.name = "Computer Science 105"
-        newItem2.availability = "Open"
-        
-       //tableData = [Class(className: "Humanities 111",status: "Closed"), Class(className: "Computer Science 105",status: "Open")]
-        // Do any additional setup after loading the view.
+        self.populateClassList()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
 
 }
