@@ -6,10 +6,19 @@ var MongoClient = require('mongodb').MongoClient;
 var Server = require('mongodb').Server;
 var CollectionDriver = require('./collectionDriver').CollectionDriver;
 var bodyParser = require("body-parser");
+var multer = require("multer");
 var app = express();
 app.set("port",  8080);
 app.set("ipAddress", process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
 app.use(express.bodyParser());
+app.use(multer({
+  onFileUploadStart: function(file){
+    console.log(file.originalname + " starting");
+  },
+  onFileUploadComplete: function(file){
+    console.log(file.originalname + " complete");
+  }
+}));
 //app.set("ipAddress", "137.159.47.170")
 var mongoHost = process.env.OPENSHIFT_MONGODB_DB_HOST; 
 var mongoPort = process.env.OPENSHIFT_MONGODB_DB_PORT; 
@@ -34,8 +43,6 @@ mongoClient.open(function(err, mongoClient) {
   });
 });
 
-//app.use(express.static(path.join(__dirname, "public")));
-
 app.get('/get/:collection', function(req, res) { 
    var params = req.params; 
    collectionDriver.findAll(req.params.collection, function(error, objs) { //C
@@ -56,8 +63,12 @@ app.post('/update/:collection', function(req, res){
 	collectionDriver.update(collection, data, function(error, objs){
 		res.send(200, "Success");
 	});
+});
 
-})
+//receive file with class data
+app.post('/file', function(req, res){
+  res.send(200, "File uploaded");
+});
 
  /*
  // Access specific element or list of elements
