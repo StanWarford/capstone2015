@@ -1,4 +1,5 @@
 var ObjectID = require("mongodb").ObjectID
+// Flag for spinlock while database is updating
 var flag = false;
 
 CollectionDriver = function(db){
@@ -26,7 +27,7 @@ CollectionDriver.prototype.findAll = function(collectionName, callback) {
 
 CollectionDriver.prototype.get = function(collectionName, id, callback) { //A
     while (flag){
-
+        // Spinlock while database is updating
     }
     this.getCollection(collectionName, function(error, collection) {
         if (error) callback(error);
@@ -41,20 +42,7 @@ CollectionDriver.prototype.get = function(collectionName, id, callback) { //A
     });
 };
 
-/*
-CollectionDriver.prototype.insert = function(collectionName, JSONData, callback){
-	this.getCollection(collectionName, function(error, collection){
-		if (error) callback(error);
-		else {
-			collection.insert(JSONData, function(error, results){
-				if (error) callback(error);
-				else callback(null, results);
-			});
-		}
-	});
-}
-*/
-
+// Clear all entries in collection
 CollectionDriver.prototype.delete = function(collectionName, callback) {
     this.getCollection(collectionName, function(error, collection) { //A
         if (error) callback(error);
@@ -71,18 +59,20 @@ CollectionDriver.prototype.update = function(collectionName, JSONData, callback)
 	this.getCollection(collectionName, function(error, collection){
 		if (error) callback(error);
 		else {
+            // Set flag while updating
 			flag = true;
+            // Clear database
 			collection.remove({}, function(error, results){
 				if (error) callback(error);
 			});
-
+            // Iterate through new data, insert each object in database
             for (var section in JSONData){
                 collection.insert(JSONData[section], function(error, results){
                 if (error) callback(error);
                 else callback(null, results);
             });    
             }
-			
+			// Allow database to be read
 			flag = false;
 		}
 	});
