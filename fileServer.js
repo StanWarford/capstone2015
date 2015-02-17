@@ -17,8 +17,15 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.use(cookieSession({secret: 'app_1'}));
 app.use(multer({
-	dest: "./files"
+  onFileUploadStart: function(file){
+    console.log(file.originalname + " starting");
+  },
+  onFileUploadComplete: function(file){
+    console.log(file.originalname + " complete");
+  },
+  dest: "./files"
 }));
+
 
 app.set("port",  8080);
 app.set("ipAddress", "137.159.47.86")

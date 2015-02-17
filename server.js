@@ -5,19 +5,25 @@ var path = require("path");
 var MongoClient = require('mongodb').MongoClient;
 var Server = require('mongodb').Server;
 var CollectionDriver = require('./collectionDriver').CollectionDriver;
-var bodyParser = require("body-parser");
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var cookieSession = require('cookie-session');
 var multer = require("multer");
 var app = express();
 app.set("port",  8080);
 app.set("ipAddress", process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
-app.use(express.bodyParser());
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.json());
+app.use(cookieSession({secret: 'app_1'}));
 app.use(multer({
   onFileUploadStart: function(file){
     console.log(file.originalname + " starting");
   },
   onFileUploadComplete: function(file){
     console.log(file.originalname + " complete");
-  }
+  },
+  dest: "./files"
 }));
 //app.set("ipAddress", "137.159.47.170")
 var mongoHost = process.env.OPENSHIFT_MONGODB_DB_HOST; 
