@@ -41,7 +41,7 @@ class SectionsTableViewCell: UITableViewCell {
     }
 
     @IBAction func addClass(sender: UIButton) {
-        let newClass = NSEntityDescription.insertNewObjectForEntityForName("ClassCoreData", inManagedObjectContext: self.managedObjectContext!) as ClassCoreData
+        let newClass = NSEntityDescription.insertNewObjectForEntityForName("Class", inManagedObjectContext: self.managedObjectContext!) as Class
         newClass.name = self.className.text!
         newClass.course = self.courseNumber.text!
         newClass.status = self.status.text!

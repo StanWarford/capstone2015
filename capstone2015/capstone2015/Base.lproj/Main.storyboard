@@ -494,7 +494,7 @@
         <!--Sections-->
         <scene sceneID="X9u-HX-GIe">
             <objects>
-                <viewController id="R5W-Uz-f3c" sceneMemberID="viewController">
+                <viewController id="R5W-Uz-f3c" customClass="SectionsViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dCS-eZ-5Tl"/>
                         <viewControllerLayoutGuide type="bottom" id="Xzv-J3-5Wo"/>
@@ -853,7 +853,7 @@
         <image name="appLogo" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OYJ-ma-GtT"/>
         <segue reference="kbK-eQ-VkF"/>
+        <segue reference="OYJ-ma-GtT"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,9 +13,10 @@
 		788806F51A64B74E0048E2D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 788806F41A64B74E0048E2D2 /* Images.xcassets */; };
 		788806F81A64B74E0048E2D2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788806F61A64B74E0048E2D2 /* LaunchScreen.xib */; };
 		788807041A64B74E0048E2D2 /* capstone2015Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788807031A64B74E0048E2D2 /* capstone2015Tests.swift */; };
+		873E55E31A9492F20011F9E3 /* SectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873E55E21A9492F20011F9E3 /* SectionsViewController.swift */; };
 		877B78C21A92D4A0005A09EB /* ClassListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */; };
 		877B78C41A92D688005A09EB /* ClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C31A92D688005A09EB /* ClassModel.swift */; };
-		877B78C61A92DCDD005A09EB /* ClassCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C51A92DCDD005A09EB /* ClassCoreData.swift */; };
+		877B78C61A92DCDD005A09EB /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C51A92DCDD005A09EB /* Class.swift */; };
 		877B78C81A92E15C005A09EB /* SectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C71A92E15C005A09EB /* SectionsTableViewCell.swift */; };
 		87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D93B791A7B172300054FCD /* ClassListViewController.swift */; };
 		87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3C5E51A89AF72001DC31F /* SearchViewController.swift */; };
@@ -44,9 +45,10 @@
 		788806FD1A64B74E0048E2D2 /* capstone2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = capstone2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		788807021A64B74E0048E2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		788807031A64B74E0048E2D2 /* capstone2015Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capstone2015Tests.swift; sourceTree = "<group>"; };
+		873E55E21A9492F20011F9E3 /* SectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsViewController.swift; sourceTree = "<group>"; };
 		877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassListTableViewCell.swift; path = ../ClassListTableViewCell.swift; sourceTree = "<group>"; };
 		877B78C31A92D688005A09EB /* ClassModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassModel.swift; sourceTree = "<group>"; };
-		877B78C51A92DCDD005A09EB /* ClassCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassCoreData.swift; sourceTree = "<group>"; };
+		877B78C51A92DCDD005A09EB /* Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
 		877B78C71A92E15C005A09EB /* SectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsTableViewCell.swift; sourceTree = "<group>"; };
 		87D93B791A7B172300054FCD /* ClassListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassListViewController.swift; sourceTree = "<group>"; };
 		87F3C5E51A89AF72001DC31F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		788806E71A64B74E0048E2D2 /* capstone2015 */ = {
 			isa = PBXGroup;
 			children = (
+				877B78C51A92DCDD005A09EB /* Class.swift */,
 				788806EA1A64B74E0048E2D2 /* AppDelegate.swift */,
 				877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */,
 				87D93B791A7B172300054FCD /* ClassListViewController.swift */,
@@ -101,6 +104,7 @@
 				87F3C5E91A8AB465001DC31F /* SettingsViewController.swift */,
 				877B78C31A92D688005A09EB /* ClassModel.swift */,
 				877B78C71A92E15C005A09EB /* SectionsTableViewCell.swift */,
+				873E55E21A9492F20011F9E3 /* SectionsViewController.swift */,
 				788806F11A64B74E0048E2D2 /* Main.storyboard */,
 				788806E81A64B74E0048E2D2 /* Supporting Files */,
 			);
@@ -114,7 +118,6 @@
 				788806F41A64B74E0048E2D2 /* Images.xcassets */,
 				788806F61A64B74E0048E2D2 /* LaunchScreen.xib */,
 				788806EC1A64B74E0048E2D2 /* capstone2015.xcdatamodeld */,
-				877B78C51A92DCDD005A09EB /* ClassCoreData.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -236,11 +239,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				877B78C61A92DCDD005A09EB /* ClassCoreData.swift in Sources */,
+				877B78C61A92DCDD005A09EB /* Class.swift in Sources */,
 				87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */,
 				87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */,
 				877B78C81A92E15C005A09EB /* SectionsTableViewCell.swift in Sources */,
 				87F3C5E81A8AB252001DC31F /* DepartmentViewController.swift in Sources */,
+				873E55E31A9492F20011F9E3 /* SectionsViewController.swift in Sources */,
 				877B78C21A92D4A0005A09EB /* ClassListTableViewCell.swift in Sources */,
 				788806EE1A64B74E0048E2D2 /* capstone2015.xcdatamodeld in Sources */,
 				877B78C41A92D688005A09EB /* ClassModel.swift in Sources */,
