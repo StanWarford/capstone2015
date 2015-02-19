@@ -24,7 +24,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -100,7 +100,7 @@
         <!--Title-->
         <scene sceneID="lK9-Sr-ufP">
             <objects>
-                <viewController id="shy-IY-5kD" customClass="ClassListViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="shy-IY-5kD" customClass="ClassListViewController" customModule="capstone2015" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kQ9-EQ-TXp"/>
                         <viewControllerLayoutGuide type="bottom" id="jBK-2r-yrn"/>
@@ -415,7 +415,7 @@
         <!--Departments-->
         <scene sceneID="A3Z-pa-l0P">
             <objects>
-                <viewController id="wLG-8T-jm8" customClass="DepartmentViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wLG-8T-jm8" customClass="DepartmentViewController" customModule="capstone2015" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CFB-DG-4T8"/>
                         <viewControllerLayoutGuide type="bottom" id="lc8-WU-IzD"/>
@@ -494,7 +494,7 @@
         <!--Sections-->
         <scene sceneID="X9u-HX-GIe">
             <objects>
-                <viewController id="R5W-Uz-f3c" customClass="SectionsViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="R5W-Uz-f3c" customClass="SectionsViewController" customModule="capstone2015" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dCS-eZ-5Tl"/>
                         <viewControllerLayoutGuide type="bottom" id="Xzv-J3-5Wo"/>
@@ -503,11 +503,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="138" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jdO-aT-Bnf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="129" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jdO-aT-Bnf">
                                 <rect key="frame" x="16" y="72" width="568" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionsCell" rowHeight="138" id="MpH-pP-z1F" customClass="SectionsTableViewCell" customModule="capstone2015" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SectionsCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionsCell" rowHeight="129" id="MpH-pP-z1F" customClass="SectionsTableViewCell" customModule="capstone2015" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MpH-pP-z1F" id="jwI-CI-XCn">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -558,6 +558,7 @@
                                                 <constraint firstItem="Ik4-1B-dvl" firstAttribute="top" secondItem="jwI-CI-XCn" secondAttribute="topMargin" id="spZ-cj-cdf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="className" destination="Ik4-1B-dvl" id="JwB-1f-0sK"/>
                                             <outlet property="courseNumber" destination="Eun-FX-pKn" id="RrD-x8-1Wt"/>
@@ -565,6 +566,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="R5W-Uz-f3c" id="AAo-6q-Tls"/>
+                                    <outlet property="delegate" destination="R5W-Uz-f3c" id="ure-iF-HVn"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -584,10 +589,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sectionsList" destination="jdO-aT-Bnf" id="ohk-Kg-xD8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNT-yY-pN3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4998" y="770"/>
+            <point key="canvasLocation" x="4998" y="864"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jhJ-cr-RGD">
@@ -782,7 +790,7 @@
         <!--Search View Controller-->
         <scene sceneID="JFj-m6-Ip2">
             <objects>
-                <viewController id="9tp-uP-wSp" customClass="SearchViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9tp-uP-wSp" customClass="SearchViewController" customModule="capstone2015" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="68k-dB-ulh"/>
                         <viewControllerLayoutGuide type="bottom" id="rlf-w7-70R"/>
@@ -853,7 +861,7 @@
         <image name="appLogo" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kbK-eQ-VkF"/>
         <segue reference="OYJ-ma-GtT"/>
+        <segue reference="kbK-eQ-VkF"/>
     </inferredMetricsTieBreakers>
 </document>

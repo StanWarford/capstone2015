@@ -47,11 +47,12 @@ class SectionsTableViewCell: UITableViewCell {
         newClass.status = self.status.text!
         newClass.professor = self.professor
         newClass.room = self.room
+        managedObjectContext!.save(nil)
+        print("Add Button Clicked")
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 

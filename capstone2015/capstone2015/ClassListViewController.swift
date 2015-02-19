@@ -11,6 +11,9 @@ import CoreData
 
 class ClassListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var alizarinRed = UIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0)
+    var emeraldGreen = UIColor(red: 231/255.0, green: 76/255.0, blue: 60/255.0, alpha: 1.0)
+    
     lazy var managedObjectContext : NSManagedObjectContext? = {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         if let managedObjectContext = appDelegate.managedObjectContext {
@@ -22,7 +25,7 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var classList: UITableView!
     
-    var classes: [ClassModel] = [ClassModel]()
+    var classes = [ClassModel]()
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return classes.count
@@ -34,9 +37,9 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         let classFollowing = classes[indexPath.row]
         cell.setCell(classFollowing.name, course: classFollowing.course, status: classFollowing.status)
         if (classFollowing.status == "Open"){
-            cell.backgroundColor = UIColor.greenColor()
+            cell.backgroundColor = alizarinRed
         } else {
-            cell.backgroundColor = UIColor.redColor()
+            cell.backgroundColor = emeraldGreen
         }
         return cell
     }
@@ -44,6 +47,14 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete){
             classes.removeAtIndex(indexPath.row) // To-do: Delete from core data instead
+            // remove the deleted item from the model
+            let fetchRequest = NSFetchRequest(entityName: "Class")
+            if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Class]{
+                self.managedObjectContext!.deleteObject(fetchResults[indexPath.row] as NSManagedObject)
+            }
+            self.managedObjectContext!.save(nil)
+            // remove the deleted item from the `UITableView`
+            self.classList.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             classList.reloadData()
         }
     }
@@ -51,6 +62,7 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     func populateClassList(){
         let fetchRequest = NSFetchRequest(entityName: "Class")
         if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Class]{
+            classes = []
             for (var i = 0; i < fetchResults.count; i++){
                 var classFollowing = ClassModel(name: fetchResults[i].name, course: fetchResults[i].course, status: fetchResults[i].status, professor: fetchResults[i].professor, room: fetchResults[i].room)
                 classes.append(classFollowing)
@@ -61,18 +73,10 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let newClass = NSEntityDescription.insertNewObjectForEntityForName("Class", inManagedObjectContext: self.managedObjectContext!) as Class
-//        newClass.name = "COSC 101"
-//        newClass.course = "Intro to Computer Science"
-//        newClass.status = "Open"
-//        newClass.professor = "Stan Warford"
-//        newClass.room = "RAC 350"
-//        let newClass2 = NSEntityDescription.insertNewObjectForEntityForName("Class", inManagedObjectContext: self.managedObjectContext!) as Class
-//        newClass2.name = "HUM 305"
-//        newClass2.course = "Western Culture"
-//        newClass2.status = "Closed"
-//        newClass2.professor = "Sonya Sorrell"
-//        newClass2.room = "PLC 10"
+        self.populateClassList()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         self.populateClassList()
     }
 
