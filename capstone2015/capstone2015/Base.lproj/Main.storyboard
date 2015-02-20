@@ -558,7 +558,6 @@
                                                 <constraint firstItem="Ik4-1B-dvl" firstAttribute="top" secondItem="jwI-CI-XCn" secondAttribute="topMargin" id="spZ-cj-cdf"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="className" destination="Ik4-1B-dvl" id="JwB-1f-0sK"/>
                                             <outlet property="courseNumber" destination="Eun-FX-pKn" id="RrD-x8-1Wt"/>
@@ -799,7 +798,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDs-6Q-f3F">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDs-6Q-f3F">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="80F-u9-xfD"/>

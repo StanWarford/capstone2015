@@ -55,7 +55,6 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
             self.managedObjectContext!.save(nil)
             // remove the deleted item from the `UITableView`
             self.classList.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            classList.reloadData()
         }
     }
     
@@ -73,6 +72,9 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         self.populateClassList()
     }
     
