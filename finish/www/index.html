@@ -4,13 +4,14 @@
 		<title>Page Title</title>
 		<meta name = "viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="css/one.css" />
-		<link rel="stylesheet" href="css/index.css" />
 		<link rel="stylesheet" href="css/peptheme.css">
+		<link rel="stylesheet" href="css/index.css" />
 		<script src="js/a.js"></script>
 		<script src="js/b.js"></script>
 		<script src="jquery-1.11.2.min.js"></script>
+		<script src="js/index.js"></script>
 	</head>
-	<body>
+	<body onload="start()">
 		<div data-role="page" data-theme="a" id="index">
 			<!-- page -->
 			<div data-role="panel" id="mypanel">
@@ -32,7 +33,198 @@
 			<!-- content -->
 			<div data-role="content">
 				<div data-role="tabs" id="tabs">
-  					<div data-role="navbar">
+					<div data-role="navbar">
+    					<ul>
+      						<li><a href="#list" data-ajax="false">list</a></li>
+      						<li><a href="#calView" data-ajax="false">calendar</a></li>
+    					</ul>
+ 					</div>
+ 					<div id="list">
+ 						<ul data-role="listview" data-inset="true">
+ 							<li>Class1</li>
+ 							<li>Class2</li>
+ 						</ul>
+ 					</div>
+ 					<div id="calView" style="width=100%;overflow:auto">
+ 						<!-- <table data-role="table" id="cal-table" data-mode="columntoggle" class="table-stroke ui-body-a ui-shadow table-stripe" data-column-btn-text="columns to display"> -->
+ 						<table data-role="table" data-mode="columntoggle" id="cal-table" class="ui-responsive" data-column-btn-text="columns visible">
+ 							<thead>
+ 								<tr>
+ 									<th>Time</th>
+ 									<th data-priority="2">Sunday</th>
+ 									<th data-priority="1">Monday</th>
+ 									<th data-priority="1">Tuesday</th>
+ 									<th data-priority="1">Wednesday</th>
+ 									<th data-priority="1">Thursday</th>
+ 									<th data-priority="1">Friday</th>
+ 									<th data-priority="2">Saturday</th>
+ 								</tr>
+ 							</thead>
+ 							<tbody>
+ 								<tr>
+ 									<th>7:00AM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>8:00AM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>9:00AM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>10:00AM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>11:00AM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>12:00PM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>1:00PM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>2:00PM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>3:00PM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>4:00PM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>5:00PM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>6:00PM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>7:00PM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>8:00PM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>9:00PM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 								<tr>
+ 									<th>10:00PM</th>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 									<td></td>
+ 								</tr>
+ 							</tbody>
+ 						</table>
+ 					</div>
+  					<!-- <div data-role="navbar">
     					<ul>
       						<li><a data-ajax="false" onclick="showList()">list</a></li>
       						<li><a data-ajax="false" onclick="showCal()">calendar</a></li>
@@ -40,24 +232,107 @@
  					</div>
  					<div id="listCalView" class="ui-body-a ui-content">
  						Default view
- 					</div>
+ 					</div> -->
 				</div>
+				<table id="classes" style="visibility:hidden">
+					<thead>
+						<tr>
+							<th>Class</th>
+							<th>Time Start</th>
+							<th>Time End</th>
+							<th>Day 1</th>
+							<th>Day 2</th>
+							<th>Day 3</th>
+							<th>Day 4</th>
+							<th>Day 5</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Capstone</td>
+							<td>17</td>
+							<td>19</td>
+							<td>monday</td>
+							<th>thursday</th>
+						</tr>
+						<tr>
+							<td>Multimedia Production and Authoring</td>
+							<td>8</td>
+							<td>10</td>
+							<td>tuesday</td>
+							<th>friday</th>
+						</tr>
+						<tr>
+							<td>Political Science</td>
+							<td>12</td>
+							<td>14</td>
+							<td>tuesday</td>
+							<th>friday</th>
+						</tr>
+						<tr>
+							<td>History</td>
+							<td>14</td>
+							<td>16</td>
+							<th>tuesday</th>
+							<th>friday</th>
+						</tr>
+					</tbody>
+				</table>
 			</div> <!-- /content -->
 			<div data-role="footer" data-theme="a" data-position="fixed" id="myfooter"></div>
 		</div> <!-- /page -->
 	</body>
+	<script>
+		function start() {
+			var num = document.getElementById("classes").rows.length;
+			for (i = 1; i < num; i++) {
+				var hi = document.getElementById("classes").rows[i].cells;
+				var r = hi[1].innerHTML - 6;
+				var what = document.getElementById("cal-table").rows[r].cells;
+				var sp = hi[2].innerHTML - hi[1].innerHTML;
+				var name = hi[0].innerHTML;
+				var numcells = document.getElementById("classes").rows[i].cells.length;
+				for (j = 1; j <= (numcells - 3); j++) {
+					var c = hi[j + 2].innerHTML;
+					c = (c == "sunday") ? 1 : ((c =="monday") ? 2 : ((c =="tuesday") ? 3 : ((c =="wednesday") ? 4 : ((c =="thursday") ? 5 : ((c =="friday") ? 6 : 7)))));
+					var y = document.getElementById("cal-table").rows[r].cells;
+					y[c].innerHTML = name;
+					y[c].id = (y[c].id == "calclass") ? "conflict" : "calclass";
+					y[c].rowSpan = sp;
+					for (k = 1; k < sp; k++) {
+						var next = document.getElementById("cal-table").rows[r+k];
+						var conf = next.cells;
+						y[c].id = (conf[c].id == "calclass") ? "conflict" : "calclass";
+						next.deleteCell(c);
+					}
+				}
+			}
+
+			/* var r = 8;
+			var c = 5;
+			var sp = 4;
+			var y = document.getElementById("cal-table").rows[r].cells;
+			y[c].innerHTML = "Span Cells";
+			y[c].id = (y[c].id == "calclass") ? "conflict" : "calclass";
+			y[c].rowSpan = sp;
+			for (k = 1; k < sp; k++) {
+				var next = document.getElementById("cal-table").rows[r+k];
+				next.deleteCell(c);
+			} */
+		}
+	</script>
 </html>
 
-<script>
+<!-- <script>
 
 	function showList() {
 		var list = "";
 		// everytime user follows a class, append a list item
 
-		$("#listCalView").html("<p><ul><li>Class 1</li><li>Class 2</li></ul></p>");
+		$("#listCalView").html("<p><ul data-role='listview'><li>Class 1</li><li>Class 2</li></ul></p>");
 	}
 	function showCal() {
 		$("#listCalView").html("<div>Calendar</div>");
 	}
 
-</script>
+</script> -->

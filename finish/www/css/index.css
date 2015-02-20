@@ -1,3 +1,7 @@
+#my-header {
+	padding-top: 18px;
+}
+
 #listCalView ul {
 	list-style: none;
 }
@@ -17,4 +21,29 @@
 .menu {
 	position: absolute;
 	top:20px;
+}
+
+.ui-table-columntoggle-btn{
+	font-size: 12px;
+}
+
+#cal-table, th, td, #classes, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#cal-table th {
+	background-color: #92b1cd;
+}
+
+#calclass {
+	background-color: red;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#conflict {
+	background-color: green;
+	text-align: center;
+	vertical-align: middle;
 }
