@@ -9,7 +9,11 @@
 			"status" : "open",
 			"professor" : "Brad Cupp"	
 		},
-		"users" : {
+		"ios" : {
+			"1" : "Token1",
+			"2" : "Token2"
+		},
+		"android" : {
 			"1" : "Token1",
 			"2" : "Token2"
 		}
@@ -17,7 +21,7 @@
 	// Repeat
  	{
  		"ID_2" : "Random number",
-		"section" : "COSC105.02",
+		"section" : "COSC490.02",
 		"info" : {
 			"room" : "RAC170",
 			"status" : "open",
@@ -28,4 +32,15 @@
 			"2" : "Token2"
 		}
 	} 
+}
+
+
+{
+	"COSC105.01" : {
+		user1,
+		user2
+	}
+
+
+
 }

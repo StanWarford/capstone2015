@@ -6,7 +6,8 @@ var MongoClient = require('mongodb').MongoClient;
 var Server = require('mongodb').Server;
 // Functions for interacting with MongoDB
 var CollectionDriver = require('./collectionDriver').CollectionDriver;
-
+//enable cross origin requests
+var cors = require("cors");
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cookieSession = require('cookie-session');
@@ -16,7 +17,7 @@ var app = express();
 
 app.set("port",  8080);
 app.set("ipAddress", process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
-
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());

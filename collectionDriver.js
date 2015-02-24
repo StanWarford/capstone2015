@@ -13,6 +13,7 @@ CollectionDriver.prototype.getCollection = function(collectionName, callback) {
   });
 };
 
+/*
 CollectionDriver.prototype.findAll = function(collectionName, callback) {
     this.getCollection(collectionName, function(error, collection) { //A
       if( error ) callback(error);
@@ -20,6 +21,28 @@ CollectionDriver.prototype.findAll = function(collectionName, callback) {
         collection.find().toArray(function(error, results) { //B
           if( error ) callback(error);
           else callback(null, results);
+        });
+      }
+    });
+};
+*/
+
+CollectionDriver.prototype.findAll = function(collectionName, callback) {
+    this.getCollection(collectionName, function(error, collection) { //A
+      if( error ) callback(error);
+      else {
+        var js = {};
+        collection.find().each(function(error, item) { //B
+          if( error ) callback(error);
+          else{
+            if (item == null){
+                //cursor is empty
+                callback(null, js);
+            } else {
+                // add item to json with section name as key
+                js[item["section"]] = item;
+            }
+          }
         });
       }
     });
@@ -55,6 +78,7 @@ CollectionDriver.prototype.delete = function(collectionName, callback) {
     });
 };
 
+
 CollectionDriver.prototype.update = function(collectionName, JSONData, callback){
 	this.getCollection(collectionName, function(error, collection){
 		if (error) callback(error);
@@ -78,6 +102,30 @@ CollectionDriver.prototype.update = function(collectionName, JSONData, callback)
 	});
 };
 
+/*
+CollectionDriver.prototype.update = function(collectionName, newData, callback){
+    this.getCollection(collectionName, function(error, collection){
+        if (error) callback(error);
+        else {
+            // Set flag while updating
+            flag = true;
+            // Clear database
+            collection.remove({}, function(error, results){
+                if (error) callback(error);
+            });
+            // Iterate through new data, insert each object in database
+            for (var section in newData){
+                collection.insert(newData[section], function(error, results){
+                if (error) callback(error);
+                else callback(null, results);
+            });    
+            }
+            // Allow database to be read
+            flag = false;
+        }
+    });
+};
+*/
 
 
 
