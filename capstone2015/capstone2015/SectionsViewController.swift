@@ -25,6 +25,12 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var sectionsList: UITableView!
     
+    @IBAction func swipeBack(sender: UISwipeGestureRecognizer) {
+        if (sender.direction == .Right) {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+    }
+    
     var sections = [ClassModel]()
     
     override func viewDidLoad() {

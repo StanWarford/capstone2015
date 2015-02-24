@@ -21,7 +21,7 @@ class ServerConnection {
         // asynchronous alamofire get request
         request(.GET, self.url, parameters: nil)
             .responseJSON { (req, res, json, error) in
-                if(error != nil) {
+                if (error != nil) {
                     NSLog("Error: \(error)")
                     println(req)
                     println(res)
@@ -30,12 +30,12 @@ class ServerConnection {
                     NSLog("Success: \(self.url)")
                     self.classes = JSON(json!)
                     //NSNumber
-                    if let id = self.classes[0]["ID"].string {
+                    if let room = self.classes["COSC105.01"]["info"]["room"].string {
                         //Do something you want
-                        println(id)
+                        println(room)
                     } else {
                         //Print the error
-                        println(self.classes[0]["ID"].error)
+                        println(self.classes["COSC105.01"]["info"]["room"].error)
                     }
                 }
         }

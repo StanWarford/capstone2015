@@ -134,7 +134,7 @@
                                     <segue destination="O2n-vU-rde" kind="show" id="OYJ-ma-GtT"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PrototypeView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="99" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yVn-qv-TQa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PrototypeView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="99" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yVn-qv-TQa">
                                 <rect key="frame" x="16" y="112" width="568" height="431"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -158,13 +158,13 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKC-vX-Ect">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKC-vX-Ect">
                                                     <rect key="frame" x="8" y="40" width="552" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAA-BR-a2m">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAA-BR-a2m">
                                                     <rect key="frame" x="8" y="69" width="552" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -457,7 +457,7 @@
         <!--Courses-->
         <scene sceneID="Rx8-wv-anx">
             <objects>
-                <viewController id="W1i-gO-gXm" sceneMemberID="viewController">
+                <viewController id="W1i-gO-gXm" customClass="CoursesViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KMR-Tw-xkU"/>
                         <viewControllerLayoutGuide type="bottom" id="bPE-dx-nqG"/>
@@ -472,12 +472,16 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="bPE-dx-nqG" firstAttribute="top" secondItem="EEZ-KO-oXS" secondAttribute="bottom" constant="8" id="CSc-Wh-rAa"/>
                             <constraint firstItem="EEZ-KO-oXS" firstAttribute="top" secondItem="KMR-Tw-xkU" secondAttribute="bottom" constant="8" id="GoO-bc-mbB"/>
                             <constraint firstItem="EEZ-KO-oXS" firstAttribute="leading" secondItem="MoB-qr-doc" secondAttribute="leadingMargin" id="Kbv-a8-xcJ"/>
                             <constraint firstItem="EEZ-KO-oXS" firstAttribute="trailing" secondItem="MoB-qr-doc" secondAttribute="trailingMargin" id="r0t-uT-t98"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="MvX-QB-nsT" appends="YES" id="ykh-l9-3i1"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Courses" id="d9r-vH-Rka">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="ohV-tf-mDF">
@@ -488,6 +492,11 @@
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C81-6w-Kd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="MvX-QB-nsT">
+                    <connections>
+                        <action selector="swipeBack:" destination="W1i-gO-gXm" id="01n-Se-wtC"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4299" y="776"/>
         </scene>
@@ -503,7 +512,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="129" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jdO-aT-Bnf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="129" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jdO-aT-Bnf">
                                 <rect key="frame" x="16" y="72" width="568" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -572,12 +581,16 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="jdO-aT-Bnf" firstAttribute="top" secondItem="dCS-eZ-5Tl" secondAttribute="bottom" constant="8" id="FuW-2n-S1a"/>
                             <constraint firstItem="jdO-aT-Bnf" firstAttribute="trailing" secondItem="GpS-eC-DFB" secondAttribute="trailingMargin" id="bMK-cB-BxS"/>
                             <constraint firstItem="Xzv-J3-5Wo" firstAttribute="top" secondItem="jdO-aT-Bnf" secondAttribute="bottom" constant="8" id="nVF-AL-jzb"/>
                             <constraint firstItem="jdO-aT-Bnf" firstAttribute="leading" secondItem="GpS-eC-DFB" secondAttribute="leadingMargin" id="r8l-S9-ocd"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="YzQ-hS-2sT" appends="YES" id="hLe-V5-V9n"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Sections" id="dTJ-mr-xWi">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="oUN-xD-Ucm">
@@ -593,8 +606,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNT-yY-pN3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="YzQ-hS-2sT">
+                    <connections>
+                        <action selector="swipeBack:" destination="R5W-Uz-f3c" id="mo3-8Z-S1O"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4998" y="864"/>
+            <point key="canvasLocation" x="5016" y="776"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jhJ-cr-RGD">
@@ -853,7 +871,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jx0-l5-7eX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4998" y="85"/>
+            <point key="canvasLocation" x="5016" y="-3"/>
         </scene>
     </scenes>
     <resources>
