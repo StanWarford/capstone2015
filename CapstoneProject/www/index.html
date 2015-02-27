@@ -4,31 +4,28 @@
 		<title>Page Title</title>
 		<meta name = "viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="css/one.css" />
-		<link rel="stylesheet" href="css/peptheme.css">
 		<link rel="stylesheet" href="css/index.css" />
+		<script src="jquery-1.11.2.min.js"></script>
 		<script src="js/a.js"></script>
 		<script src="js/b.js"></script>
-		<script src="jquery-1.11.2.min.js"></script>
-		<script src="js/index.js"></script>
+		<link rel="stylesheet" href="css/peptheme.css">
 	</head>
 	<body onload="start()">
 		<div data-role="page" data-theme="a" id="index">
-			<!-- page -->
 			<div data-role="panel" id="mypanel">
-    			<ul data-role="listview" data-inset="true" style="min-width:210px;">
-            		<li><a href="search.html" class="ui-icon-search">Search</a></li>
-            		<li><a href="browse.html" class="ui-icon-grid">Browse</a></li>
-            		<li><a href="options.html" class="ui-icon-gear">Options</a></li>
-            		<li><a href="splash.html">Temp: Splash</a></li>
-            		<li><a href="first.html">Temp: First</a></li>
-        		</ul>
-        		<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
-
+				<ul data-role="listview" data-inset="true" style="min-width:210px;">
+					<li><a href="search.html" class="ui-icon-search">Search</a></li>
+					<li><a href="browse.html" class="ui-icon-grid">Browse</a></li>
+					<li><a href="options.html" class="ui-icon-gear">Options</a></li>
+					<li><a href="splash.html">Temp: Splash</a></li>
+					<li><a href="first.html">Temp: First</a></li>
+				</ul>
+				<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
 			</div><!-- /panel -->
 			<div data-role="header" id="my-header" data-theme="a">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
 				<h1>Page Title</h1>
-				<!--<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu">home</a> -->
+				<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu">home</a>
 			</div> <!-- /header -->
 			<!-- content -->
 			<div data-role="content">
@@ -284,25 +281,27 @@
 	</body>
 	<script>
 		function start() {
-			var num = document.getElementById("classes").rows.length;
+			var num = document.getElementById("classes").rows.length; // number of classes
 			for (i = 1; i < num; i++) {
-				var hi = document.getElementById("classes").rows[i].cells;
-				var r = hi[1].innerHTML - 6;
-				var what = document.getElementById("cal-table").rows[r].cells;
-				var sp = hi[2].innerHTML - hi[1].innerHTML;
-				var name = hi[0].innerHTML;
-				var numcells = document.getElementById("classes").rows[i].cells.length;
+				var hi = document.getElementById("classes").rows[i].cells; // row of the hidden table (one class info)
+				var r = hi[1].innerHTML - 6; //number of row in cal-table that class will be
+				var y = document.getElementById("cal-table").rows[r].cells; // row in cal-table that class will be (class time)
+				var sp = hi[2].innerHTML - hi[1].innerHTML; // how many hours class is (how many rows it will span)
+				var name = hi[0].innerHTML; // name of class
+				var numcells = document.getElementById("classes").rows[i].cells.length; // how many days the class is each week
 				for (j = 1; j <= (numcells - 3); j++) {
-					var c = hi[j + 2].innerHTML;
-					c = (c == "sunday") ? 1 : ((c =="monday") ? 2 : ((c =="tuesday") ? 3 : ((c =="wednesday") ? 4 : ((c =="thursday") ? 5 : ((c =="friday") ? 6 : 7)))));
-					var y = document.getElementById("cal-table").rows[r].cells;
-					y[c].innerHTML = name;
+					var c = hi[j + 2].innerHTML; // day the class is
+					c = (c == "sunday") ? 1 : ((c =="monday") ? 2 : ((c =="tuesday") ? 3 : ((c =="wednesday") ? 4 : ((c =="thursday") ? 5 : ((c =="friday") ? 6 : 7))))); // converting day to column number in cal-table
+					y[c].innerHTML = name; // label cal-table cell name of class
 					y[c].id = (y[c].id == "calclass") ? "conflict" : "calclass";
 					y[c].rowSpan = sp;
 					for (k = 1; k < sp; k++) {
-						var next = document.getElementById("cal-table").rows[r+k];
-						var conf = next.cells;
-						y[c].id = (conf[c].id == "calclass") ? "conflict" : "calclass";
+						var next = document.getElementById("cal-table").rows[r+k]; // row beneath class in cal-table
+						var conf = next.cells; // cells of row beneath class in cal-table
+						if (conf[c].id == "calclass") {
+							y[c].id = "conflict";
+							k = k - conf[c].rowSpan;
+						}
 						next.deleteCell(c);
 					}
 				}
