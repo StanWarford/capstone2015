@@ -37,13 +37,26 @@
 }
 
 #calclass {
-	background-color: red;
+	background-color: green;
 	text-align: center;
 	vertical-align: middle;
 }
 
 #conflict {
-	background-color: green;
+	background-color: red;
 	text-align: center;
 	vertical-align: middle;
+}
+
+.topcell {
+	border-bottom: 0px;
+}
+
+.innercell {
+	border-top: 0px;
+	border-bottom: 0px;
+}
+
+.bottomcell {
+	border-top: 0px;
 }

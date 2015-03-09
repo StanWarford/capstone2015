@@ -260,17 +260,19 @@
 							<th>friday</th>
 						</tr>
 						<tr>
-							<td>Political Science</td>
-							<td>12</td>
-							<td>14</td>
-							<td>tuesday</td>
-							<th>friday</th>
-						</tr>
-						<tr>
 							<td>History</td>
 							<td>14</td>
 							<td>16</td>
 							<th>tuesday</th>
+							<th>friday</th>
+							<td>monday</td>
+							<th>thursday</th>
+						</tr>
+						<tr>
+							<td>Political Science</td>
+							<td>12</td>
+							<td>15</td>
+							<td>tuesday</td>
 							<th>friday</th>
 						</tr>
 					</tbody>
@@ -294,16 +296,23 @@
 					c = (c == "sunday") ? 1 : ((c =="monday") ? 2 : ((c =="tuesday") ? 3 : ((c =="wednesday") ? 4 : ((c =="thursday") ? 5 : ((c =="friday") ? 6 : 7))))); // converting day to column number in cal-table
 					y[c].innerHTML = name; // label cal-table cell name of class
 					y[c].id = (y[c].id == "calclass") ? "conflict" : "calclass";
-					y[c].rowSpan = sp;
+					y[c].className = "topcell";
 					for (k = 1; k < sp; k++) {
 						var next = document.getElementById("cal-table").rows[r+k]; // row beneath class in cal-table
 						var conf = next.cells; // cells of row beneath class in cal-table
-						if (conf[c].id == "calclass") {
-							y[c].id = "conflict";
-							k = k - conf[c].rowSpan;
-						}
-						next.deleteCell(c);
+						conf[c].id = (conf[c].id == "calclass") ? "conflict" : "calclass";
+						conf[c].className = "innercell";
 					}
+					// y[c].rowSpan = sp;
+					// for (k = 1; k < sp; k++) {
+					// 	var next = document.getElementById("cal-table").rows[r+k]; // row beneath class in cal-table
+					// 	var conf = next.cells; // cells of row beneath class in cal-table
+					// 	if (conf[c].id == "calclass") {
+					// 		y[c].id = "conflict";
+					// 		k = k - conf[c].rowSpan;
+					// 	}
+					// 	next.deleteCell(c);
+					// }
 				}
 			}
 
