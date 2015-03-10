@@ -40,9 +40,9 @@ CollectionDriver.prototype.findAll = function(collectionName, callback) {
                 callback(null, js);
             } else {
                 // add item to json with section name as key
-                var section = item["_id"];
+                var section = "classes";
                 delete item._id;
-                json[section] = item;
+                js[section] = item;
             }
           }
         });
