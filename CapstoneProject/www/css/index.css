@@ -36,13 +36,13 @@
 	background-color: #92b1cd;
 }
 
-#calclass {
+.calclass {
 	background-color: green;
 	text-align: center;
 	vertical-align: middle;
 }
 
-#conflict {
+.conflict {
 	background-color: red;
 	text-align: center;
 	vertical-align: middle;

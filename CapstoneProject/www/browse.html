@@ -9,6 +9,7 @@
 		<script src="js/a.js"></script>
 		<script src="js/b.js"></script>
 		<link rel="stylesheet" href="css/peptheme.css">
+		<!--<script src="js/head.js"></script>-->
 	</head>
 	<body>
 		<div data-role="page" data-theme="a" id="index">
@@ -29,42 +30,6 @@
 			</div> <!-- /header -->
 			<div data-role="content">
 				<ul data-role="listview" id="list-classes">
-					<li class="ui-field-contain">
-						Class
-						<!-- <span class="flipperBrowse">
-							<select name="flip2" id="flip2" data-role="slider" data-mini="true">
-								<option value="off">Off</option>
-								<option value="on">On</option>
-							</select>
-						</span> -->
-					</li>
-					<li class="ui-field-contain">
-						Class
-						<span class="flipperBrowse">
-							<select name="flip2" id="flip2" data-role="slider" data-mini="true">
-								<option value="off">Off</option>
-								<option value="on">On</option>
-							</select>
-						</span>
-					</li>
-					<li class="ui-field-contain">
-						Class
-						<span class="flipperBrowse">
-							<select name="flip2" id="flip2" data-role="slider" data-mini="true">
-								<option value="off">Off</option>
-								<option value="on">On</option>
-							</select>
-						</span>
-					</li>
-					<li class="ui-field-contain">
-						Class
-						<span class="flipperBrowse">
-							<select id="flip2" data-role="slider" data-mini="true">
-								<option value="off">Off</option>
-								<option value="on">On</option>
-							</select>
-						</span>
-					</li>
 				</ul>
 			</div> <!-- /content -->
 			<div data-role="footer" data-theme="a" data-position="fixed">
@@ -73,22 +38,63 @@
 		</div> <!-- /page -->
 	</body>
 	<script>
-		$(document).ready(function(){
+		$(document).on('pagebeforeshow', '#index', function(){
 			$.ajax({
-				url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
+				url: "http://dbserver-capstone2015.rhcloud.com/get/adam",
 				type: "GET",
 				dataType: "text"
 			}).done(function(result){
 				var json = JSON.parse(result);
-    			for(var i in json)
-				{
-     				console.log(json[i].section);
-     				$('#list-classes').append('<li class="ui-field-contain"></li>');
-     				$('[class=ui-field-contain]').append(json[i].section);
-     				$("#list-classes").listview("refresh"); 
+				for(var undef in json){
+					for(var department in json[undef]){
+						if (department != "_id"){
+							for(var clas in json[undef][department]){
+								for(var section in json[undef][department][clas]){
+									console.log(json[undef][department][clas][section]["section"]);
+									var i = 1;
+									var nameid = "listitem" + i;
+									$('#list-classes').append('<li class="ui-field-contain" id="listitem"></li>');
+									$('[class=ui-field-contain]').css('background-color','#b9cf96')
+									if(json[undef][department][clas][section]["status"] == "closed") {
+										$('[class=ui-field-contain]').css('background-color','#f06d6d')
+									}
+									$('[class=ui-field-contain]').append(json[undef][department][clas][section]["section"]);
+									$('[class=ui-field-contain]').append(nameid);
+									$('[class=ui-field-contain]').append('<span class="flipperBrowse"><select id="flip2" data-role="slider" data-mini="true"><option value="off">Off</option><option value="on">On</option></select></span>');
+									$('#index').trigger('create');
+									$("#list-classes").listview("refresh"); 
+									i++;
+								}
+							}
+						}
+					}
 				}
 			});
-		});
+		// 	$.ajax({
+		// 		url: "http://dbserver-capstone2015.rhcloud.com/get/adam",
+		// 		type: "GET",
+		// 		dataType: "text"
+		// 	}).done(function(result){
+		// 		var json = JSON.parse(result);
+		// 		for(var undef in json){
+		// 			for(var department in json[undef]){
+		// 				if (department != "_id"){
+		// 					for(var clas in json[undef][department]){
+		// 						for(var section in json[undef][department][clas]){
+		// 							$('#list-classes').append('<li class="ui-field-contain" id="listitem"><a href="#"></a></li>');
+		// 							$('[class=ui-field-contain]').css('background-color','#b9cf96')
+		// 							if(json[undef][department][clas][section]["status"] == "closed") {
+		// 								$('[class=ui-field-contain]').css('background-color','#f06d6d')
+		// 							}
+		// 							$('[class=ui-field-contain]').append(json[undef][department][clas][section]["section"]);
+		// 							$("#list-classes").listview("refresh"); 
+		// 						}
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		// 	});
+		// });
 		$("#mypanel").load("panel.txt");
 	</script>
 </html>

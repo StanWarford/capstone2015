@@ -295,13 +295,13 @@
 					var c = hi[j + 2].innerHTML; // day the class is
 					c = (c == "sunday") ? 1 : ((c =="monday") ? 2 : ((c =="tuesday") ? 3 : ((c =="wednesday") ? 4 : ((c =="thursday") ? 5 : ((c =="friday") ? 6 : 7))))); // converting day to column number in cal-table
 					y[c].innerHTML = name; // label cal-table cell name of class
-					y[c].id = (y[c].id == "calclass") ? "conflict" : "calclass";
-					y[c].className = "topcell";
+					y[c].className = (y[c].className == "calclass") ? "conflict" : "calclass";
+					y[c].className += " topcell";
 					for (k = 1; k < sp; k++) {
 						var next = document.getElementById("cal-table").rows[r+k]; // row beneath class in cal-table
 						var conf = next.cells; // cells of row beneath class in cal-table
-						conf[c].id = (conf[c].id == "calclass") ? "conflict" : "calclass";
-						conf[c].className = "innercell";
+						conf[c].className = ((conf[c].className == "calclass") || (conf[c].className == "calclass topcell") || (conf[c].className == "calclass innercell")) ? "conflict" : "calclass";
+						conf[c].className += " innercell";
 					}
 					// y[c].rowSpan = sp;
 					// for (k = 1; k < sp; k++) {

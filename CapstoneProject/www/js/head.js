@@ -1,7 +1,6 @@
-document.write{'<p>Hello!</p>'};
-	
-	/*'\
-<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>\
-<h1>Page Title</h1>\
-<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu">home</a>\
-'};*/
+$(document).on('pagebeforeshow', '#index', function(){
+	// Add a new input element
+	$('[data-role=footer]').append('<input type="range" name="slider-2" id="slider-2" value="25" min="0" max="100"  />');
+	$('[class=ui-field-contain]').append('<span class="flipperBrowse"><select id="flip2" data-role="slider" data-mini="true"><option value="off">Off</option><option value="on">On</option></select></span>');
+	$('#index').trigger('create');
+});
