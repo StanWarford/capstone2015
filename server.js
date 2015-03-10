@@ -82,6 +82,7 @@ app.post('/update/:collection', function(req, res){
 
 //receive file from Warford with class data
 app.post('/file', function(req, res){
+  
   res.send(200, "File uploaded");
 });
 

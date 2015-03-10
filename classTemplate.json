@@ -1,46 +1,28 @@
-// Collection
 {
-	//Class
-	 {
-	 	"ID" : "Big number",
-		"section" : "COSC105.01",
-		"info" : {
-			"room" : "RAC170",
-			"status" : "open",
-			"professor" : "Brad Cupp"	
-		},
-		"ios" : {
-			"1" : "Token1",
-			"2" : "Token2"
-		},
-		"android" : {
-			"1" : "Token1",
-			"2" : "Token2"
+	//Department (one entry)
+	"COSC" : {
+		"subject" : "COSC",
+		//Class 
+		"COSC105" : {
+			//Section
+			"COSC105.01" : {
+				"subject" : "COSC",
+				"section" : "COSC105.01",
+				"room" : "RAC170",
+				"status" : "open",
+				"professor" : "Brad Cupp",
+				"time" : "2:00PM-2:50PM",
+				"day" : "MoTh"
+				},
+			"COSC105.02" : {
+				"subject" : "COSC",
+				"section" : "COSC105.02",
+				"room" : "RAC170",
+				"status" : "open",
+				"professor" : "Brad Cupp",
+				"time" : "3:00PM-3:50PM",
+				"day" : "MoTh"
+			}
 		}
-	},
-	// Repeat
- 	{
- 		"ID_2" : "Random number",
-		"section" : "COSC490.02",
-		"info" : {
-			"room" : "RAC170",
-			"status" : "open",
-			"professor" : "Brad Cupp"	
-		},
-		"users" : {
-			"1" : "Token1",
-			"2" : "Token2"
-		}
-	} 
-}
-
-
-{
-	"COSC105.01" : {
-		user1,
-		user2
 	}
-
-
-
 }

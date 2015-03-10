@@ -40,7 +40,9 @@ CollectionDriver.prototype.findAll = function(collectionName, callback) {
                 callback(null, js);
             } else {
                 // add item to json with section name as key
-                js[item["section"]] = item;
+                var section = item["_id"];
+                delete item._id;
+                json[section] = item;
             }
           }
         });
@@ -90,8 +92,8 @@ CollectionDriver.prototype.update = function(collectionName, JSONData, callback)
 				if (error) callback(error);
 			});
             // Iterate through new data, insert each object in database
-            for (var section in JSONData){
-                collection.insert(JSONData[section], function(error, results){
+            for (var subject in JSONData){
+                collection.insert(JSONData[subject], function(error, results){
                 if (error) callback(error);
                 else callback(null, results);
             });    
@@ -103,6 +105,7 @@ CollectionDriver.prototype.update = function(collectionName, JSONData, callback)
 };
 
 /*
+//TODO Change functionality to update only changes 
 CollectionDriver.prototype.update = function(collectionName, newData, callback){
     this.getCollection(collectionName, function(error, collection){
         if (error) callback(error);
