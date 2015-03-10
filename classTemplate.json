@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	//Department (one entry)
 	"COSC" : {
 		"subject" : "COSC",
@@ -24,5 +25,48 @@
 				"day" : "MoTh"
 			}
 		}
+=======
+	//Class
+	 {
+	 	"ID" : "Big number",
+		"section" : "COSC105.01",
+		"info" : {
+			"room" : "RAC170",
+			"status" : "open",
+			"professor" : "Brad Cupp",
+			"time" : "MoTh 2:00PM-2:50PM"	
+		},
+		"ios" : {
+			"1" : "Token1",
+			"2" : "Token2"
+		},
+		"android" : {
+			"1" : "Token1",
+			"2" : "Token2"
+		}
+	},
+	// Repeat
+ 	{
+ 		"ID_2" : "Random number",
+		"section" : "COSC490.02",
+		"info" : {
+			"room" : "RAC170",
+			"status" : "open",
+			"professor" : "Brad Cupp",
+			"time" : "TuWeFr 1:00PM-2:50PM"
+		},
+		"users" : {
+			"1" : "Token1",
+			"2" : "Token2"
+		}
+	} 
+}
+
+
+{
+	"COSC105.01" : {
+		user1,
+		user2
+>>>>>>> FETCH_HEAD
 	}
 }
