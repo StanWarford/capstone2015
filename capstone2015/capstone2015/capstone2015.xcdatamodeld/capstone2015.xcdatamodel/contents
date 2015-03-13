@@ -7,7 +7,13 @@
         <attribute name="room" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Settings" representedClassName="Settings" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationsOn" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Class" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Settings" positionX="-54" positionY="27" width="128" height="30"/>
     </elements>
 </model>

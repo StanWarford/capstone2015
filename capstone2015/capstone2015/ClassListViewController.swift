@@ -37,9 +37,9 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         let classFollowing = classes[indexPath.row]
         cell.setCell(classFollowing.name, course: classFollowing.course, status: classFollowing.status)
         if (classFollowing.status == "Open"){
-            cell.backgroundColor = alizarinRed
+            cell.status.textColor = alizarinRed
         } else {
-            cell.backgroundColor = emeraldGreen
+            cell.status.textColor = emeraldGreen
         }
         return cell
     }

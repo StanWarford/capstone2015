@@ -22,6 +22,7 @@
 		877B78D21A9C0CBD005A09EB /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78D11A9C0CBD005A09EB /* CoursesViewController.swift */; };
 		877B78D41A9C1811005A09EB /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78D31A9C1811005A09EB /* SwiftyJSON.swift */; };
 		877B78D61A9C1817005A09EB /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78D51A9C1817005A09EB /* Alamofire.swift */; };
+		877B78D81AA010E4005A09EB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78D71AA010E4005A09EB /* Settings.swift */; };
 		87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D93B791A7B172300054FCD /* ClassListViewController.swift */; };
 		87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3C5E51A89AF72001DC31F /* SearchViewController.swift */; };
 		87F3C5E81A8AB252001DC31F /* DepartmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3C5E71A8AB252001DC31F /* DepartmentViewController.swift */; };
@@ -58,6 +59,7 @@
 		877B78D11A9C0CBD005A09EB /* CoursesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		877B78D31A9C1811005A09EB /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		877B78D51A9C1817005A09EB /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
+		877B78D71AA010E4005A09EB /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Settings.swift; sourceTree = "<group>"; };
 		87D93B791A7B172300054FCD /* ClassListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassListViewController.swift; sourceTree = "<group>"; };
 		87F3C5E51A89AF72001DC31F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		87F3C5E71A8AB252001DC31F /* DepartmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				877B78D51A9C1817005A09EB /* Alamofire.swift */,
+				877B78D71AA010E4005A09EB /* Settings.swift */,
 				877B78C51A92DCDD005A09EB /* Class.swift */,
 				877B78C91A96C9DB005A09EB /* ServerConnection.swift */,
 				788806EA1A64B74E0048E2D2 /* AppDelegate.swift */,
@@ -261,6 +264,7 @@
 				87F3C5E81A8AB252001DC31F /* DepartmentViewController.swift in Sources */,
 				873E55E31A9492F20011F9E3 /* SectionsViewController.swift in Sources */,
 				877B78C21A92D4A0005A09EB /* ClassListTableViewCell.swift in Sources */,
+				877B78D81AA010E4005A09EB /* Settings.swift in Sources */,
 				788806EE1A64B74E0048E2D2 /* capstone2015.xcdatamodeld in Sources */,
 				877B78C41A92D688005A09EB /* ClassModel.swift in Sources */,
 				788806EB1A64B74E0048E2D2 /* AppDelegate.swift in Sources */,

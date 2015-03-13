@@ -55,9 +55,9 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
         let classFollowing = sections[indexPath.row]
         cell.setCell(classFollowing.name, courseNumber: classFollowing.course, status: classFollowing.status, professor: classFollowing.professor, room: classFollowing.room)
         if (classFollowing.status == "Open"){
-            cell.backgroundColor = alizarinRed
+            cell.status.textColor = alizarinRed
         } else {
-            cell.backgroundColor = emeraldGreen
+            cell.status.textColor = emeraldGreen
         }
         return cell
     }
