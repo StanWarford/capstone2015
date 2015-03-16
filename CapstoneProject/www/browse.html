@@ -29,8 +29,34 @@
 				<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu">home</a>
 			</div> <!-- /header -->
 			<div data-role="content">
-				<ul data-role="listview" id="list-classes">
-				</ul>
+				<div id="departs" style="display:block">
+					<div>
+						<ul data-role="listview" style="padding-bottom:17px">
+							<li class="ui-field-contain" id="listitem"><a class="ui-btn" style="text-align:center">Departments</a></li>
+						</ul>
+					</div>
+					<ul data-role="listview" id="list-departments">
+					<!-- <ul data-role="listview" id="list-departments" data-autodividers="true"> -->
+					</ul>
+				</div>
+				<div id="clases" style="display:none">
+					<div>
+						<ul data-role="listview" style="padding-bottom:17px">
+							<li class="ui-field-contain" id="listitem"><a class="ui-btn ui-btn-icon-left ui-icon-carat-l" style="text-align:center" id="retDept">Back to Departments</a></li>
+						</ul>
+					</div>
+					<ul data-role="listview" id="list-classes">
+					</ul>
+				</div>
+				<div id="sects" style="display:none">
+					<div>
+						<ul data-role="listview" style="padding-bottom:17px">
+							<li class="ui-field-contain" id="listitem"><a class="ui-btn ui-btn-icon-left ui-icon-carat-l" style="text-align:center"  id="retClas">Back to Classes</a></li>
+						</ul>
+					</div>
+					<ul data-role="listview" id="list-sections">
+					</ul>
+				</div>
 			</div> <!-- /content -->
 			<div data-role="footer" data-theme="a" data-position="fixed">
 				<h4>footer</h4>
@@ -39,62 +65,99 @@
 	</body>
 	<script>
 		$(document).on('pagebeforeshow', '#index', function(){
+			var i = 1;
 			$.ajax({
-				url: "http://dbserver-capstone2015.rhcloud.com/get/adam",
+				url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
+				type: "GET",
+				dataType: "text"
+			}).done(function(result){
+				// var json = JSON.parse(result);
+				// for(var department in json){
+				// 	for(var clas in json[department]){
+				// 		for(var section in json[department][clas]){
+				// 			console.log(json[department][clas][section]["section"]);
+				// 			$('#list-classes').append('<li class="ui-field-contain" id="listitem'+i+'"></li>');
+				// 			$('[class=ui-field-contain]').css('background-color','#b9cf96')
+				// 			if(json[department][clas][section]["status"] == "closed") {
+				// 				$('[class=ui-field-contain]').css('background-color','#f06d6d')
+				// 			}
+				// 			$('[class=ui-field-contain]').append(json[department][clas][section]["section"]);
+				// 			$('[class=ui-field-contain]').append('<span class="flipperBrowse"><select id="flip2" data-role="slider" data-mini="true"><option value="off">Off</option><option value="on">On</option></select></span>');
+				// 			$('#index').trigger('create');
+				// 			$("#list-classes").listview("refresh"); 
+				// 			i++;
+				// 		}
+				// 	}
+				// }
+
+				var json = JSON.parse(result);
+				// var json = {"COSC":{"COSC105":{"01":{"subject":"COSC","section":"COSC105.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"COSC","section":"COSC105.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}},"COSC330":{"01":{"subject":"COSC","section":"COSC330.01","room":"RAC170","status":"open","professor":"Stan Warford","day":"MoTh","time":"2:00PM-2:50PM"}}},"MATH":{"MATH151":{"01":{"subject":"MATH","section":"MATH151.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"MATH","section":"MATH151.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}}}};
+				for(var department in json){
+					deptQuote = '"' + department + '"';
+					$('#list-departments').append("<li class='ui-field-contain'><a class='deptlink' onclick='showClasses("+deptQuote+")' rel='external'></a></li>");
+					$('[class=deptlink]').append(department);
+					$('#list-departments').listview("refresh");
+				}
+			});
+		});
+		function showClasses(depts) {
+			document.getElementById("departs").style.display = "none";
+			document.getElementById("clases").style.display = "block";
+			$.ajax({
+				url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
 				type: "GET",
 				dataType: "text"
 			}).done(function(result){
 				var json = JSON.parse(result);
-				for(var undef in json){
-					for(var department in json[undef]){
-						if (department != "_id"){
-							for(var clas in json[undef][department]){
-								for(var section in json[undef][department][clas]){
-									console.log(json[undef][department][clas][section]["section"]);
-									var i = 1;
-									var nameid = "listitem" + i;
-									$('#list-classes').append('<li class="ui-field-contain" id="listitem"></li>');
-									$('[class=ui-field-contain]').css('background-color','#b9cf96')
-									if(json[undef][department][clas][section]["status"] == "closed") {
-										$('[class=ui-field-contain]').css('background-color','#f06d6d')
-									}
-									$('[class=ui-field-contain]').append(json[undef][department][clas][section]["section"]);
-									$('[class=ui-field-contain]').append(nameid);
-									$('[class=ui-field-contain]').append('<span class="flipperBrowse"><select id="flip2" data-role="slider" data-mini="true"><option value="off">Off</option><option value="on">On</option></select></span>');
-									$('#index').trigger('create');
-									$("#list-classes").listview("refresh"); 
-									i++;
-								}
-							}
-						}
-					}
+				// var json = {"COSC":{"COSC105":{"01":{"subject":"COSC","section":"COSC105.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"COSC","section":"COSC105.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}},"COSC330":{"01":{"subject":"COSC","section":"COSC330.01","room":"RAC170","status":"open","professor":"Stan Warford","day":"MoTh","time":"2:00PM-2:50PM"}}},"MATH":{"MATH151":{"01":{"subject":"MATH","section":"MATH151.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"MATH","section":"MATH151.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}}}};
+				for(var clas in json[depts]){
+					clasQuote = '"' + clas + '"';
+					deptsQuote = '"' + depts + '"';
+					$('#list-classes').append("<li class='ui-field-contain'><a class='classlink' id='classitem' onclick='showSections("+clasQuote+","+deptsQuote+")' rel='external'></a></li>");
+					$('[class=classlink]').append(clas);
+					$('#list-classes').listview("refresh");
 				}
 			});
-		// 	$.ajax({
-		// 		url: "http://dbserver-capstone2015.rhcloud.com/get/adam",
-		// 		type: "GET",
-		// 		dataType: "text"
-		// 	}).done(function(result){
-		// 		var json = JSON.parse(result);
-		// 		for(var undef in json){
-		// 			for(var department in json[undef]){
-		// 				if (department != "_id"){
-		// 					for(var clas in json[undef][department]){
-		// 						for(var section in json[undef][department][clas]){
-		// 							$('#list-classes').append('<li class="ui-field-contain" id="listitem"><a href="#"></a></li>');
-		// 							$('[class=ui-field-contain]').css('background-color','#b9cf96')
-		// 							if(json[undef][department][clas][section]["status"] == "closed") {
-		// 								$('[class=ui-field-contain]').css('background-color','#f06d6d')
-		// 							}
-		// 							$('[class=ui-field-contain]').append(json[undef][department][clas][section]["section"]);
-		// 							$("#list-classes").listview("refresh"); 
-		// 						}
-		// 					}
-		// 				}
-		// 			}
-		// 		}
-		// 	});
-		// });
-		$("#mypanel").load("panel.txt");
+		}
+		function showSections(cls,dept) {
+			document.getElementById("clases").style.display = "none";
+			document.getElementById("sects").style.display = "block";
+			$.ajax({
+				url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
+				type: "GET",
+				dataType: "text"
+			}).done(function(result){
+				var json = JSON.parse(result);
+				// var json = {"COSC":{"COSC105":{"01":{"subject":"COSC","section":"COSC105.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"COSC","section":"COSC105.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}},"COSC330":{"01":{"subject":"COSC","section":"COSC330.01","room":"RAC170","status":"open","professor":"Stan Warford","day":"MoTh","time":"2:00PM-2:50PM"}}},"MATH":{"MATH151":{"01":{"subject":"MATH","section":"MATH151.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"MATH","section":"MATH151.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}}}};
+
+				var i = 1;
+				for(var section in json[dept][cls]){
+					$('#list-sections').append('<li class="ui-field-contain" id="listitem'+i+'"></li>');
+					$('#listitem'+i).css('background-color','#b9cf96')
+					if(json[dept][cls][section]["status"] == "closed") {
+						$('#listitem'+i).css('background-color','#f06d6d')
+					}
+					$('#listitem'+i).append(json[dept][cls][section]["section"]);
+					$('#listitem'+i).append('<span class="flipperBrowse"><select id="flip2" data-role="slider" data-mini="true"><option value="off">Off</option><option value="on">On</option></select></span>');
+					$('#index').trigger('create');
+					$("#list-sections").listview("refresh"); 
+					i++;
+				}
+			});
+		}
+		document.getElementById("retDept").onclick = function returnDept() {
+			document.getElementById("clases").style.display = "none";
+			document.getElementById("departs").style.display = "block";
+			// var selectedList = document.getElementById("list-classes");
+			$("#list-classes").empty();
+			// for (var i = selectedList.length - 1; i > 0; i--) {
+			// 	selectedList.remove(i);
+			// }
+		}
+		document.getElementById("retClas").onclick = function returnDept() {
+			document.getElementById("sects").style.display = "none";
+			document.getElementById("clases").style.display = "block";
+			$("#list-sections").empty();
+		}
 	</script>
 </html>
