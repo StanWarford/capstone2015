@@ -30,12 +30,12 @@ class ServerConnection {
                     NSLog("Success: \(self.url)")
                     self.classes = JSON(json!)
                     //NSNumber
-                    if let room = self.classes["COSC105.01"]["info"]["room"].string {
+                    if let room = self.classes["GSCL"]["GSCL 199"]["01"]["professor"].string {
                         //Do something you want
                         println(room)
                     } else {
                         //Print the error
-                        println(self.classes["COSC105.01"]["info"]["room"].error)
+                        println(self.classes["GSCL"]["GSCL 199"]["01"]["professor"].error)
                     }
                 }
         }
