@@ -12,30 +12,82 @@
 	</head>
 	<body>
 		<div data-role="page" data-theme="a" id="index">
+
+
 			<div data-role="panel" id="mypanel">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
-					<li><a href="search.html" class="ui-icon-search">Search</a></li>
-					<li><a href="browse.html" class="ui-icon-grid">Browse</a></li>
-					<li><a href="options.html" class="ui-icon-gear">Options</a></li>
-					<li><a href="splash.html">Temp: Splash</a></li>
-					<li><a href="first.html">Temp: First</a></li>
+					<li><a href="search.html" class="ui-icon-search" data-ajax="false">Search</a></li>
+					<li><a href="browse.html" class="ui-icon-grid" data-ajax="false">Browse</a></li>
+					<li><a href="options.html" class="ui-icon-gear" data-ajax="false">Options</a></li>
+					<li><a href="splash.html" data-ajax="false">Temp: Splash</a></li>
+					<li><a href="first.html" data-ajax="false">Temp: First</a></li>
 				</ul>
 				<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
 			</div><!-- /panel -->
-			<div data-role="header" id="my-header" data-theme="a">
+			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
 				<h1>Page Title</h1>
-				<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu">home</a>
+				<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
 			</div> <!-- /header -->
+
+			
 			<div data-role="content" data-theme="b" style="border-width:0px">
 				<form class="ui-filterable">
-					<input id="autocomplete-input" data-type="search" placeholder="format: SUBJECT CLASS.SECTION ex: 'HUM 111.01'">
+					<input id="autocomplete-input" data-type="search" placeholder="Enter class...">
 				</form>
-				<ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input="#autocomplete-input"></ul>
+				<ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input="#autocomplete-input" data-theme="a"></ul>
 			</div> <!-- /content -->
 			<div data-role="footer" data-theme="a" data-position="fixed">
 				<h4>footer</h4>
 			</div> <!-- /footer -->
 		</div> <!-- /page -->
+		<script>
+		$( document ).on( "pagebeforeshow", "#index", function() {
+			console.log("pagecreate function");
+			$("#autocomplete").on("filterablebeforefilter", function(e, data ) {
+				console.log("filterable function");
+				var $ul = $(this),
+					$input = $(data.input),
+					value = $input.val(),
+					html = "";
+				$ul.html("");
+				if(value && value.length > 2) {
+					$ul.html("<li><div class='ui-loader'><span class='ui-icon ui-icon-loading'></span></div></li>");
+					$ul.listview("refresh");
+					$ul.trigger("updatelayout");
+					$.ajax({
+						url:"http://dbserver-capstone2015.rhcloud.com/get/classes",
+						type:"GET",
+						dataType:"text"
+					}).done(function(result){
+						var json = JSON.parse(result);
+						var i = 1;
+						for(var department in json){
+							for(var clas in json[department]){
+								for(var section in json[department][clas]){
+									var classname = json[department][clas][section]["section"];
+									var classstring = String(classname).toUpperCase();
+									var valueupper = value.toUpperCase();
+									if(classstring.indexOf(valueupper) >= 0) {
+										if(json[department][clas][section]["status"] == "closed") {
+											html += "<li id ='listitem"+i+"' style='background-color:#f06d6d'>" + classname + "</li><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
+											i++;
+										} else {
+											html += "<li id ='listitem"+i+"' style='background-color:#b9cf96'>" + classname + "<span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
+											i++;
+										}
+									}
+								}
+							}
+						}
+						$ul.html(html);
+						$ul.listview("refresh");
+						$ul.trigger("updatelayout");
+						$ul.trigger('create');
+					});
+				}
+			});
+		});
+		</script>
 	</body>
 </html>
