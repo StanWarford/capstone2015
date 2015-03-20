@@ -8,37 +8,7 @@
 
 import Foundation
 
-class ServerConnection {
-
+struct ServerConnection {
     let url = "http://dbserver-capstone2015.rhcloud.com/get/classes"
-    var classes: JSON!
-    
-    init(){
-        populateClasses()
-    }
-    
-    private func populateClasses() {
-        // asynchronous alamofire get request
-        request(.GET, self.url, parameters: nil)
-            .responseJSON { (req, res, json, error) in
-                if (error != nil) {
-                    NSLog("Error: \(error)")
-                    println(req)
-                    println(res)
-                }
-                else {
-                    NSLog("Success: \(self.url)")
-                    self.classes = JSON(json!)
-                    //NSNumber
-                    if let room = self.classes["GSCL"]["GSCL 199"]["01"]["professor"].string {
-                        //Do something you want
-                        println(room)
-                    } else {
-                        //Print the error
-                        println(self.classes["GSCL"]["GSCL 199"]["01"]["professor"].error)
-                    }
-                }
-        }
-    }
-    
+    var classDict: JSON?
 }
