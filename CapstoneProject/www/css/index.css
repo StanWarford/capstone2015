@@ -10,6 +10,10 @@
 	position:absolute; right:6px; top:6px;
 }
 
+.flipperSearch {
+	position:absolute; right:6px; top:1px;
+}
+
 .flipperOptions {
 	position:absolute; right:6px; top:20px;
 }
