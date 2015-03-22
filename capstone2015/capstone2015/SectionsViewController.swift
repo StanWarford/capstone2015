@@ -35,16 +35,27 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var section = ClassModel(name: "COSC 101", course: "Intro to Computer Science", status: "Closed", professor: "Dr. Warford", room: "RAC 120")
-        var section2 = ClassModel(name: "HUM 111", course: "Western Culture", status: "Open", professor: "Dr. Sorrell", room: "PLC 125")
-        var section3 = ClassModel(name: "MATH 220", course: "Automata Theory", status: "Open", professor: "Dr. Iga", room: "RAC 305")
-        sections.append(section)
-        sections.append(section2)
-        sections.append(section3)
         sectionsList.reloadData()
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        populateSections()
+    }
+    
+    func populateSections() {
+        var sectionDict = classDict[deptOfInterest!][courseOfInterest!]
+        var sectionKeys = sectionDict.dictionary!.keys
+        for sectionKey in sectionKeys {
+            var name = courseOfInterest! + "." + sectionKey
+            var course = sectionDict[sectionKey]["name"].string
+            var status = sectionDict[sectionKey]["status"].string
+            var professor = sectionDict[sectionKey]["professor"].string
+            var room = sectionDict[sectionKey]["room"].string
+            self.sections.append(ClassModel(name: name, course: course!, status: status!, professor: professor!, room: room!))
+        }
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections.count
     }

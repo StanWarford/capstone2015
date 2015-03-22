@@ -9,8 +9,6 @@
 import UIKit
 
 class DepartmentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var classDict: JSON!
-    let url = "http://dbserver-capstone2015.rhcloud.com/get/classes"
 
     @IBOutlet weak var deptList: UITableView!
     
@@ -25,25 +23,7 @@ class DepartmentViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     override func viewWillAppear(animated: Bool) {
-        // asynchronous alamofire get request
-        request(.GET, url, parameters: nil)
-            .responseJSON { (req, res, json, error) in
-                if (error != nil) {
-                    NSLog("Error: \(error)")
-                    println(req)
-                    println(res)
-                }
-                else {
-                    NSLog("Success: \(self.url)")
-                    self.classDict = JSON(json!)
-                }
-                self.populateDeptList()
-                for dept in self.depts {
-                    println(dept)
-                }
-                self.deptList.reloadData()
-        }
-
+        populateDeptList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,7 +36,7 @@ class DepartmentViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func populateDeptList() {
-        self.depts = self.classDict.dictionary!.keys.array
+        self.depts = classDict.dictionary!.keys.array
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

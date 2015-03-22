@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 
+var classDict: JSON!
+var deptOfInterest: String?
+var courseOfInterest: String?
+let url = "http://dbserver-capstone2015.rhcloud.com/get/classes"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -31,6 +36,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = intialViewController
         }
         self.window?.makeKeyAndVisible()
+       
+        // asynchronous alamofire get request
+        request(.GET, url, parameters: nil)
+            .responseJSON { (req, res, json, error) in
+                if (error != nil) {
+                    NSLog("Error: \(error)")
+                    println(req)
+                    println(res)
+                }
+                else {
+                    NSLog("Success: \(url)")
+                    classDict = JSON(json!)
+                }
+        }
+        
         return true
     }
 

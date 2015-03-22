@@ -1,33 +1,34 @@
 //
-//  DeptListTableViewCell.swift
+//  CoursesTableViewCell.swift
 //  capstone2015
 //
-//  Created by Jeremiah Montoya on 3/18/15.
+//  Created by Jeremiah Montoya on 3/21/15.
 //  Copyright (c) 2015 Pepperdine Computer Science. All rights reserved.
 //
 
 import UIKit
 
-class DeptListTableViewCell: UITableViewCell {
+class CoursesTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var deptName: UILabel!
+    @IBOutlet weak var courseName: UILabel!
     
-    @IBAction func showCourses(sender: UIButton) {
-        deptOfInterest = deptName.text
+    @IBAction func showSections(sender: UIButton) {
+        courseOfInterest = courseName.text
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    func setCell(deptName: String) {
-        self.deptName.text = deptName
+    func setCell(courseName: String) {
+        self.courseName.text = courseName
     }
+
 }

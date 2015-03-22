@@ -15,11 +15,11 @@
 		788807041A64B74E0048E2D2 /* capstone2015Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788807031A64B74E0048E2D2 /* capstone2015Tests.swift */; };
 		873AE1631ABA4D080038838F /* DeptListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873AE1621ABA4D080038838F /* DeptListTableViewCell.swift */; };
 		873E55E31A9492F20011F9E3 /* SectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873E55E21A9492F20011F9E3 /* SectionsViewController.swift */; };
+		8777CDA01ABE30090049030F /* CoursesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8777CD9F1ABE30090049030F /* CoursesTableViewCell.swift */; };
 		877B78C21A92D4A0005A09EB /* ClassListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */; };
 		877B78C41A92D688005A09EB /* ClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C31A92D688005A09EB /* ClassModel.swift */; };
 		877B78C61A92DCDD005A09EB /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C51A92DCDD005A09EB /* Class.swift */; };
 		877B78C81A92E15C005A09EB /* SectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C71A92E15C005A09EB /* SectionsTableViewCell.swift */; };
-		877B78CA1A96C9DB005A09EB /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C91A96C9DB005A09EB /* ServerConnection.swift */; };
 		877B78D21A9C0CBD005A09EB /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78D11A9C0CBD005A09EB /* CoursesViewController.swift */; };
 		877B78D41A9C1811005A09EB /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78D31A9C1811005A09EB /* SwiftyJSON.swift */; };
 		877B78D61A9C1817005A09EB /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78D51A9C1817005A09EB /* Alamofire.swift */; };
@@ -53,11 +53,11 @@
 		788807031A64B74E0048E2D2 /* capstone2015Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capstone2015Tests.swift; sourceTree = "<group>"; };
 		873AE1621ABA4D080038838F /* DeptListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeptListTableViewCell.swift; sourceTree = "<group>"; };
 		873E55E21A9492F20011F9E3 /* SectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsViewController.swift; sourceTree = "<group>"; };
+		8777CD9F1ABE30090049030F /* CoursesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesTableViewCell.swift; sourceTree = "<group>"; };
 		877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassListTableViewCell.swift; path = ../ClassListTableViewCell.swift; sourceTree = "<group>"; };
 		877B78C31A92D688005A09EB /* ClassModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassModel.swift; sourceTree = "<group>"; };
 		877B78C51A92DCDD005A09EB /* Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
 		877B78C71A92E15C005A09EB /* SectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsTableViewCell.swift; sourceTree = "<group>"; };
-		877B78C91A96C9DB005A09EB /* ServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
 		877B78D11A9C0CBD005A09EB /* CoursesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		877B78D31A9C1811005A09EB /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		877B78D51A9C1817005A09EB /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
@@ -110,7 +110,6 @@
 				877B78D51A9C1817005A09EB /* Alamofire.swift */,
 				877B78D71AA010E4005A09EB /* Settings.swift */,
 				877B78C51A92DCDD005A09EB /* Class.swift */,
-				877B78C91A96C9DB005A09EB /* ServerConnection.swift */,
 				788806EA1A64B74E0048E2D2 /* AppDelegate.swift */,
 				877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */,
 				873AE1621ABA4D080038838F /* DeptListTableViewCell.swift */,
@@ -123,6 +122,7 @@
 				873E55E21A9492F20011F9E3 /* SectionsViewController.swift */,
 				877B78D11A9C0CBD005A09EB /* CoursesViewController.swift */,
 				788806F11A64B74E0048E2D2 /* Main.storyboard */,
+				8777CD9F1ABE30090049030F /* CoursesTableViewCell.swift */,
 				877B78D31A9C1811005A09EB /* SwiftyJSON.swift */,
 				788806E81A64B74E0048E2D2 /* Supporting Files */,
 			);
@@ -261,7 +261,6 @@
 				87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */,
 				87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */,
 				877B78C81A92E15C005A09EB /* SectionsTableViewCell.swift in Sources */,
-				877B78CA1A96C9DB005A09EB /* ServerConnection.swift in Sources */,
 				877B78D41A9C1811005A09EB /* SwiftyJSON.swift in Sources */,
 				877B78D61A9C1817005A09EB /* Alamofire.swift in Sources */,
 				87F3C5E81A8AB252001DC31F /* DepartmentViewController.swift in Sources */,
@@ -269,6 +268,7 @@
 				877B78C21A92D4A0005A09EB /* ClassListTableViewCell.swift in Sources */,
 				877B78D81AA010E4005A09EB /* Settings.swift in Sources */,
 				873AE1631ABA4D080038838F /* DeptListTableViewCell.swift in Sources */,
+				8777CDA01ABE30090049030F /* CoursesTableViewCell.swift in Sources */,
 				788806EE1A64B74E0048E2D2 /* capstone2015.xcdatamodeld in Sources */,
 				877B78C41A92D688005A09EB /* ClassModel.swift in Sources */,
 				788806EB1A64B74E0048E2D2 /* AppDelegate.swift in Sources */,
