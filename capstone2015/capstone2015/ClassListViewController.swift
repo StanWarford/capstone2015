@@ -11,9 +11,6 @@ import CoreData
 
 class ClassListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var alizarinRed = UIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0)
-    var emeraldGreen = UIColor(red: 231/255.0, green: 76/255.0, blue: 60/255.0, alpha: 1.0)
-    
     lazy var managedObjectContext : NSManagedObjectContext? = {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         if let managedObjectContext = appDelegate.managedObjectContext {
@@ -72,9 +69,6 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         self.populateClassList()
     }
     

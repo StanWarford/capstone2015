@@ -11,6 +11,7 @@ import UIKit
 class CoursesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var courses = [String]()
+    var indexShift = 0
     
     @IBAction func swipeBack(sender: UISwipeGestureRecognizer) {
         if (sender.direction == .Right) {
@@ -37,14 +38,20 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.courses.count
+        return self.courses.count - 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: CoursesTableViewCell = tableView.dequeueReusableCellWithIdentifier("CourseCell") as CoursesTableViewCell
         // create cell
-        let courseName = courses[indexPath.row]
+        if (courses[indexPath.row] == "subject") {
+            indexShift = 1
+        }
+        let courseName = courses[indexPath.row + indexShift]
         cell.setCell(courseName)
+        if (indexPath.row == self.courses.count - 1){
+            indexShift = 0
+        }
         return cell
     }
 

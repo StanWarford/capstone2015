@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -320,7 +320,7 @@
         <!--Calendar-->
         <scene sceneID="LAL-Tz-0ua">
             <objects>
-                <viewController id="N5T-jW-uq8" sceneMemberID="viewController">
+                <viewController id="N5T-jW-uq8" customClass="CalendarViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tDh-DZ-DKR"/>
                         <viewControllerLayoutGuide type="bottom" id="rhA-qC-mee"/>
@@ -358,19 +358,71 @@
                                     <segue destination="O2n-vU-rde" kind="show" id="f3y-jO-UT6"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tf5-tm-uSk">
+                                <rect key="frame" x="16" y="112" width="568" height="419"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="33X-V7-svD">
+                                    <size key="itemSize" width="66" height="25"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalendarCell" id="5p2-oz-TP6" customClass="CalendarCollectionViewCell" customModule="capstone2015" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="66" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVv-d9-KrC">
+                                                    <rect key="frame" x="8" y="0.0" width="50" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="oVv-d9-KrC" firstAttribute="trailing" secondItem="5p2-oz-TP6" secondAttribute="trailingMargin" id="3nO-G3-Vth"/>
+                                            <constraint firstItem="oVv-d9-KrC" firstAttribute="top" secondItem="5p2-oz-TP6" secondAttribute="topMargin" constant="-8" id="IeL-gM-5bu"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="oVv-d9-KrC" secondAttribute="bottom" constant="-8" id="KMh-Jp-hs9"/>
+                                            <constraint firstItem="oVv-d9-KrC" firstAttribute="leading" secondItem="5p2-oz-TP6" secondAttribute="leadingMargin" id="ieK-Ry-H4L"/>
+                                        </constraints>
+                                        <size key="customSize" width="66" height="25"/>
+                                        <connections>
+                                            <outlet property="cellText" destination="oVv-d9-KrC" id="nAn-Ge-gc2"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="N5T-jW-uq8" id="Ocu-O1-IrU"/>
+                                    <outlet property="delegate" destination="N5T-jW-uq8" id="GxT-Qt-IVD"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Tf5-tm-uSk" firstAttribute="leading" secondItem="DJB-Ky-Z8q" secondAttribute="leadingMargin" id="0gn-JA-Gd2"/>
                             <constraint firstItem="KH3-6d-bLM" firstAttribute="top" secondItem="D8a-Qa-fzv" secondAttribute="bottom" constant="8" id="2pr-Dx-dyj"/>
                             <constraint firstItem="D8a-Qa-fzv" firstAttribute="top" secondItem="tDh-DZ-DKR" secondAttribute="bottom" id="A3r-XW-WW0"/>
                             <constraint firstItem="KH3-6d-bLM" firstAttribute="top" secondItem="D8a-Qa-fzv" secondAttribute="bottom" constant="8" id="BlT-yS-bDG"/>
+                            <constraint firstItem="Tf5-tm-uSk" firstAttribute="top" secondItem="KH3-6d-bLM" secondAttribute="bottom" constant="8" id="Prs-Pn-kpm"/>
+                            <constraint firstItem="Tf5-tm-uSk" firstAttribute="trailing" secondItem="DJB-Ky-Z8q" secondAttribute="trailingMargin" id="hDZ-36-NgL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="D8a-Qa-fzv" secondAttribute="trailing" constant="-16" id="ti9-Mi-Fgc"/>
                             <constraint firstAttribute="centerX" secondItem="KH3-6d-bLM" secondAttribute="centerX" id="u4h-kZ-NNn"/>
                             <constraint firstItem="D8a-Qa-fzv" firstAttribute="leading" secondItem="DJB-Ky-Z8q" secondAttribute="leadingMargin" constant="-16" id="wK6-qz-5Gl"/>
+                            <constraint firstItem="rhA-qC-mee" firstAttribute="top" secondItem="Tf5-tm-uSk" secondAttribute="bottom" constant="20" id="yiP-Dy-F6I"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendar" image="calendarTabIcon" id="mA0-wx-YF2"/>
                     <navigationItem key="navigationItem" id="kYa-sE-oIe"/>
+                    <connections>
+                        <outlet property="calendarView" destination="Tf5-tm-uSk" id="dN3-C3-p4F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lmo-Ni-Ma0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -391,7 +443,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change your settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="og9-4v-1Af">
                                 <rect key="frame" x="218" y="289" width="164" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwA-UT-Kp7">
@@ -399,7 +450,7 @@
                                 <items>
                                     <navigationItem title="Settings" id="Wjy-gQ-Tg7">
                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="QMg-Z0-rFe">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <action selector="close:" destination="h88-2u-2oQ" id="fUG-rV-exW"/>
                                             </connections>
@@ -807,7 +858,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explanation of app and explain next screen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7L-fd-WHX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explanation of app and explain next screen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7L-fd-WHX">
                                 <rect key="frame" x="16" y="284" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -992,16 +1043,25 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="z1w-af-2hY">
-                                <rect key="frame" x="16" y="110" width="568" height="482"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lC4-JK-PyN">
                                 <rect key="frame" x="16" y="72" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="z1w-af-2hY">
+                                <rect key="frame" x="16" y="110" width="568" height="482"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="78" id="1ai-Nr-0s3">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1ai-Nr-0s3" id="004-8o-mSz">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1042,9 +1102,9 @@
         <image name="listTabIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kbK-eQ-VkF"/>
-        <segue reference="OYJ-ma-GtT"/>
-        <segue reference="uYa-Cq-e9r"/>
+        <segue reference="f3y-jO-UT6"/>
+        <segue reference="wNl-No-xpW"/>
+        <segue reference="fwR-Xc-Cwc"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>

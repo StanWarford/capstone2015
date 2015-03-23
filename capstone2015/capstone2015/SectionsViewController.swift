@@ -11,9 +11,6 @@ import CoreData
 
 class SectionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
-    var alizarinRed = UIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0)
-    var emeraldGreen = UIColor(red: 231/255.0, green: 76/255.0, blue: 60/255.0, alpha: 1.0)
-    
     lazy var managedObjectContext : NSManagedObjectContext? = {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         if let managedObjectContext = appDelegate.managedObjectContext {
@@ -35,15 +32,13 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateSections()
         sectionsList.reloadData()
         // Do any additional setup after loading the view.
     }
-
-    override func viewWillAppear(animated: Bool) {
-        populateSections()
-    }
     
     func populateSections() {
+        sections = []
         var sectionDict = classDict[deptOfInterest!][courseOfInterest!]
         var sectionKeys = sectionDict.dictionary!.keys
         for sectionKey in sectionKeys {
@@ -58,6 +53,10 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections.count
+    }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
