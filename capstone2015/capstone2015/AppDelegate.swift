@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-var classDict: JSON!
+var classDict: JSON?
 var deptOfInterest: String?
 var courseOfInterest: String?
 let url = "http://dbserver-capstone2015.rhcloud.com/get/classes"

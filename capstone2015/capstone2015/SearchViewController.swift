@@ -8,10 +8,29 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    @IBAction func close(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchResults: UITableView!
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        println("#")
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    @IBAction func hideKeyboard(sender: UITapGestureRecognizer) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
     
     override func viewDidLoad() {

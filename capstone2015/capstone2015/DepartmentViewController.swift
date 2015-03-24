@@ -36,7 +36,9 @@ class DepartmentViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func populateDeptList() {
-        self.depts = classDict.dictionary!.keys.array
+        if let dict = classDict {
+            self.depts = dict.dictionary!.keys.array
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

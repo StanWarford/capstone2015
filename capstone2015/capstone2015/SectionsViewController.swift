@@ -39,7 +39,7 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func populateSections() {
         sections = []
-        var sectionDict = classDict[deptOfInterest!][courseOfInterest!]
+        var sectionDict = classDict![deptOfInterest!][courseOfInterest!]
         var sectionKeys = sectionDict.dictionary!.keys
         for sectionKey in sectionKeys {
             var name = courseOfInterest! + "." + sectionKey

@@ -34,7 +34,7 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func populateCourses(){
-        self.courses = classDict[deptOfInterest!].dictionary!.keys.array
+        self.courses = classDict![deptOfInterest!].dictionary!.keys.array
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
