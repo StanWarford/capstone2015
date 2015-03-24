@@ -40,9 +40,9 @@ CollectionDriver.prototype.findAll = function(collectionName, callback) {
                 callback(null, js);
             } else {
                 // add item to json with section name as key
-                var section = "classes";
+                var subject = item["subject"];
                 delete item._id;
-                js[section] = item;
+                js[subject] = item;
             }
           }
         });
@@ -93,6 +93,7 @@ CollectionDriver.prototype.update = function(collectionName, JSONData, callback)
 			});
             // Iterate through new data, insert each object in database
             for (var subject in JSONData){
+                JSONData[subject]["subject"] = subject;
                 collection.insert(JSONData[subject], function(error, results){
                 if (error) callback(error);
                 else callback(null, results);

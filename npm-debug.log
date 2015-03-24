@@ -1,84 +1,340 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'jquary' ]
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'pm2', '-g' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.32
-4 verbose readDependencies using package.json deps
-5 verbose cache add [ 'jquary', null ]
-6 verbose cache add name=undefined spec="jquary" args=["jquary",null]
-7 verbose parsed url { protocol: null,
-7 verbose parsed url   slashes: null,
-7 verbose parsed url   auth: null,
-7 verbose parsed url   host: null,
-7 verbose parsed url   port: null,
-7 verbose parsed url   hostname: null,
-7 verbose parsed url   hash: null,
-7 verbose parsed url   search: null,
-7 verbose parsed url   query: null,
-7 verbose parsed url   pathname: 'jquary',
-7 verbose parsed url   path: 'jquary',
-7 verbose parsed url   href: 'jquary' }
-8 silly lockFile c6735d3f-jquary jquary
-9 verbose lock jquary /Users/adaminglehart/.npm/c6735d3f-jquary.lock
-10 silly lockFile c6735d3f-jquary jquary
-11 silly lockFile c6735d3f-jquary jquary
-12 verbose addNamed [ 'jquary', '' ]
-13 verbose addNamed [ null, '*' ]
-14 silly lockFile fbd7b91e-jquary jquary@
-15 verbose lock jquary@ /Users/adaminglehart/.npm/fbd7b91e-jquary.lock
-16 silly addNameRange { name: 'jquary', range: '*', hasData: false }
-17 verbose request where is /jquary
-18 verbose request registry https://registry.npmjs.org/
-19 verbose request id e7af406d16a2ba30
-20 verbose url raw /jquary
-21 verbose url resolving [ 'https://registry.npmjs.org/', './jquary' ]
-22 verbose url resolved https://registry.npmjs.org/jquary
-23 verbose request where is https://registry.npmjs.org/jquary
-24 info trying registry request attempt 1 at 20:50:57
-25 http GET https://registry.npmjs.org/jquary
-26 http 404 https://registry.npmjs.org/jquary
-27 verbose headers { date: 'Mon, 02 Feb 2015 04:50:58 GMT',
-27 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-27 verbose headers   'content-type': 'application/json',
-27 verbose headers   'cache-control': 'max-age=0',
-27 verbose headers   'content-length': '52',
-27 verbose headers   'accept-ranges': 'bytes',
-27 verbose headers   via: '1.1 varnish',
-27 verbose headers   age: '0',
-27 verbose headers   'x-served-by': 'cache-sjc3122-SJC',
-27 verbose headers   'x-cache': 'MISS',
-27 verbose headers   'x-cache-hits': '0',
-27 verbose headers   'x-timer': 'S1422852658.176189,VS0,VE34',
-27 verbose headers   'keep-alive': 'timeout=10, max=50',
-27 verbose headers   connection: 'Keep-Alive' }
-28 silly registry.get cb [ 404,
-28 silly registry.get   { date: 'Mon, 02 Feb 2015 04:50:58 GMT',
-28 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-28 silly registry.get     'content-type': 'application/json',
-28 silly registry.get     'cache-control': 'max-age=0',
-28 silly registry.get     'content-length': '52',
-28 silly registry.get     'accept-ranges': 'bytes',
-28 silly registry.get     via: '1.1 varnish',
-28 silly registry.get     age: '0',
-28 silly registry.get     'x-served-by': 'cache-sjc3122-SJC',
-28 silly registry.get     'x-cache': 'MISS',
-28 silly registry.get     'x-cache-hits': '0',
-28 silly registry.get     'x-timer': 'S1422852658.176189,VS0,VE34',
-28 silly registry.get     'keep-alive': 'timeout=10, max=50',
-28 silly registry.get     connection: 'Keep-Alive' } ]
-29 silly lockFile fbd7b91e-jquary jquary@
-30 silly lockFile fbd7b91e-jquary jquary@
-31 error 404 404 Not Found: jquary
-31 error 404
-31 error 404 'jquary' is not in the npm registry.
-31 error 404 You should bug the author to publish it
-31 error 404 It was specified as a dependency of 'mongo-server'
-31 error 404
-31 error 404 Note that you can also install from a
-31 error 404 tarball, folder, or http url, or git url.
-32 error System Darwin 14.0.0
-33 error command "node" "/usr/local/bin/npm" "install" "jquary"
-34 error cwd /Users/adaminglehart/Developer/MongoServer
-35 error node -v v0.10.32
-36 error npm -v 1.4.28
-37 error code E404
-38 verbose exit [ 1, true ]
+4 verbose cache add [ 'pm2', null ]
+5 verbose cache add name=undefined spec="pm2" args=["pm2",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'pm2',
+6 verbose parsed url   path: 'pm2',
+6 verbose parsed url   href: 'pm2' }
+7 silly lockFile b1fbedd8-pm2 pm2
+8 verbose lock pm2 /Users/adaminglehart/.npm/b1fbedd8-pm2.lock
+9 silly lockFile b1fbedd8-pm2 pm2
+10 silly lockFile b1fbedd8-pm2 pm2
+11 verbose addNamed [ 'pm2', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile d1072219-pm2 pm2@
+14 verbose lock pm2@ /Users/adaminglehart/.npm/d1072219-pm2.lock
+15 silly addNameRange { name: 'pm2', range: '*', hasData: false }
+16 verbose request where is /pm2
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 0601c157259dfa63
+19 verbose url raw /pm2
+20 verbose url resolving [ 'https://registry.npmjs.org/', './pm2' ]
+21 verbose url resolved https://registry.npmjs.org/pm2
+22 verbose request where is https://registry.npmjs.org/pm2
+23 info trying registry request attempt 1 at 18:21:53
+24 http GET https://registry.npmjs.org/pm2
+25 http 200 https://registry.npmjs.org/pm2
+26 silly registry.get cb [ 200,
+26 silly registry.get   { date: 'Tue, 24 Mar 2015 01:21:48 GMT',
+26 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly registry.get     etag: '"8DDOPQK6OXACCL5GU3C4ZA67S"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=60',
+26 silly registry.get     'content-length': '279624',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '0',
+26 silly registry.get     'x-served-by': 'cache-sjc3128-SJC',
+26 silly registry.get     'x-cache': 'HIT',
+26 silly registry.get     'x-cache-hits': '1',
+26 silly registry.get     'x-timer': 'S1427160108.182093,VS0,VE36',
+26 silly registry.get     vary: 'Accept',
+26 silly registry.get     'keep-alive': 'timeout=10, max=50',
+26 silly registry.get     connection: 'Keep-Alive' } ]
+27 silly addNameRange number 2 { name: 'pm2', range: '*', hasData: true }
+28 silly addNameRange versions [ 'pm2',
+28 silly addNameRange   [ '0.4.0',
+28 silly addNameRange     '0.4.1',
+28 silly addNameRange     '0.4.2',
+28 silly addNameRange     '0.4.3',
+28 silly addNameRange     '0.4.4',
+28 silly addNameRange     '0.4.5',
+28 silly addNameRange     '0.4.6',
+28 silly addNameRange     '0.4.7',
+28 silly addNameRange     '0.4.8',
+28 silly addNameRange     '0.4.10',
+28 silly addNameRange     '0.4.11',
+28 silly addNameRange     '0.4.12',
+28 silly addNameRange     '0.4.13',
+28 silly addNameRange     '0.4.14',
+28 silly addNameRange     '0.5.0',
+28 silly addNameRange     '0.5.1',
+28 silly addNameRange     '0.5.2',
+28 silly addNameRange     '0.5.3',
+28 silly addNameRange     '0.5.4',
+28 silly addNameRange     '0.5.5',
+28 silly addNameRange     '0.5.6',
+28 silly addNameRange     '0.5.7',
+28 silly addNameRange     '0.6.2',
+28 silly addNameRange     '0.6.3',
+28 silly addNameRange     '0.6.4',
+28 silly addNameRange     '0.6.5',
+28 silly addNameRange     '0.6.6',
+28 silly addNameRange     '0.6.7',
+28 silly addNameRange     '0.6.8',
+28 silly addNameRange     '0.6.9',
+28 silly addNameRange     '0.6.10',
+28 silly addNameRange     '0.6.11',
+28 silly addNameRange     '0.6.12',
+28 silly addNameRange     '0.6.13',
+28 silly addNameRange     '0.6.14',
+28 silly addNameRange     '0.6.15',
+28 silly addNameRange     '0.7.0',
+28 silly addNameRange     '0.7.1',
+28 silly addNameRange     '0.7.2',
+28 silly addNameRange     '0.7.3',
+28 silly addNameRange     '0.7.4',
+28 silly addNameRange     '0.7.5',
+28 silly addNameRange     '0.7.6',
+28 silly addNameRange     '0.7.7',
+28 silly addNameRange     '0.7.8',
+28 silly addNameRange     '0.8.0',
+28 silly addNameRange     '0.8.1',
+28 silly addNameRange     '0.8.2',
+28 silly addNameRange     '0.8.3',
+28 silly addNameRange     '0.8.4',
+28 silly addNameRange     '0.8.5',
+28 silly addNameRange     '0.8.6',
+28 silly addNameRange     '0.8.7',
+28 silly addNameRange     '0.8.8',
+28 silly addNameRange     '0.8.9',
+28 silly addNameRange     '0.8.10',
+28 silly addNameRange     '0.8.11',
+28 silly addNameRange     '0.8.12',
+28 silly addNameRange     '0.8.13',
+28 silly addNameRange     '0.8.14',
+28 silly addNameRange     '0.8.15',
+28 silly addNameRange     '0.9.0',
+28 silly addNameRange     '0.9.1',
+28 silly addNameRange     '0.9.2',
+28 silly addNameRange     '0.9.3',
+28 silly addNameRange     '0.9.4',
+28 silly addNameRange     '0.9.5',
+28 silly addNameRange     '0.9.6',
+28 silly addNameRange     '0.10.0-beta1',
+28 silly addNameRange     '0.10.0-beta2',
+28 silly addNameRange     '0.10.0-beta4',
+28 silly addNameRange     '0.10.0-beta5',
+28 silly addNameRange     '0.10.0-beta6',
+28 silly addNameRange     '0.10.0-beta7',
+28 silly addNameRange     '0.10.0-beta8',
+28 silly addNameRange     '0.10.0-beta9',
+28 silly addNameRange     '0.10.0-beta10',
+28 silly addNameRange     '0.10.0-beta11',
+28 silly addNameRange     '0.10.0-beta12',
+28 silly addNameRange     '0.10.0-beta13',
+28 silly addNameRange     '0.10.0-beta14',
+28 silly addNameRange     '0.10.0-beta15',
+28 silly addNameRange     '0.10.0-beta16',
+28 silly addNameRange     '0.10.0-beta17',
+28 silly addNameRange     '0.10.0-beta18',
+28 silly addNameRange     '0.10.0-beta19',
+28 silly addNameRange     '0.10.0-beta20',
+28 silly addNameRange     '0.10.0-beta21',
+28 silly addNameRange     '0.10.0-beta22',
+28 silly addNameRange     '0.10.0-beta23',
+28 silly addNameRange     '0.10.0-beta25',
+28 silly addNameRange     '0.10.0',
+28 silly addNameRange     '0.10.1',
+28 silly addNameRange     '0.10.2',
+28 silly addNameRange     '0.10.3',
+28 silly addNameRange     '0.10.4',
+28 silly addNameRange     '0.10.5',
+28 silly addNameRange     '0.10.6',
+28 silly addNameRange     '0.10.7',
+28 silly addNameRange     '0.10.8',
+28 silly addNameRange     '0.11.0-beta1',
+28 silly addNameRange     '0.11.0',
+28 silly addNameRange     '0.11.1',
+28 silly addNameRange     '0.12.0',
+28 silly addNameRange     '0.12.1',
+28 silly addNameRange     '0.12.2',
+28 silly addNameRange     '0.12.3',
+28 silly addNameRange     '0.12.4',
+28 silly addNameRange     '0.12.5',
+28 silly addNameRange     '0.12.6',
+28 silly addNameRange     '0.12.7',
+28 silly addNameRange     '0.12.8' ] ]
+29 verbose addNamed [ 'pm2', '0.12.8' ]
+30 verbose addNamed [ '0.12.8', '0.12.8' ]
+31 silly lockFile 45d85341-pm2-0-12-8 pm2@0.12.8
+32 verbose lock pm2@0.12.8 /Users/adaminglehart/.npm/45d85341-pm2-0-12-8.lock
+33 silly lockFile 35afed29-try-npmjs-org-pm2-pm2-0-12-8-tgz https://registry.npmjs.org/pm2/-/pm2-0.12.8.tgz
+34 verbose lock https://registry.npmjs.org/pm2/-/pm2-0.12.8.tgz /Users/adaminglehart/.npm/35afed29-try-npmjs-org-pm2-pm2-0-12-8-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/pm2/-/pm2-0.12.8.tgz',
+35 verbose addRemoteTarball   'b465688d47b70744423b38d0d3f9cdbdad495533' ]
+36 info retry fetch attempt 1 at 18:21:54
+37 verbose fetch to= /var/folders/jz/vl0_j_z12fq3jdm_90xyn5bm0000gq/T/npm-64873-_sdu8MOM/registry.npmjs.org/pm2/-/pm2-0.12.8.tgz
+38 http GET https://registry.npmjs.org/pm2/-/pm2-0.12.8.tgz
+39 http 200 https://registry.npmjs.org/pm2/-/pm2-0.12.8.tgz
+40 silly lockFile 35afed29-try-npmjs-org-pm2-pm2-0-12-8-tgz https://registry.npmjs.org/pm2/-/pm2-0.12.8.tgz
+41 silly lockFile 35afed29-try-npmjs-org-pm2-pm2-0-12-8-tgz https://registry.npmjs.org/pm2/-/pm2-0.12.8.tgz
+42 silly lockFile 45d85341-pm2-0-12-8 pm2@0.12.8
+43 silly lockFile 45d85341-pm2-0-12-8 pm2@0.12.8
+44 silly lockFile d1072219-pm2 pm2@
+45 silly lockFile d1072219-pm2 pm2@
+46 silly resolved [ { name: 'pm2',
+46 silly resolved     preferGlobal: 'true',
+46 silly resolved     version: '0.12.8',
+46 silly resolved     engines: { node: '>=0.10' },
+46 silly resolved     directories: { bin: './bin', lib: './lib', example: './examples' },
+46 silly resolved     author:
+46 silly resolved      { name: 'Strzelewicz Alexandre',
+46 silly resolved        email: 'as@unitech.io',
+46 silly resolved        url: 'https://keymetrics.io' },
+46 silly resolved     maintainers: [ [Object], [Object] ],
+46 silly resolved     contributors:
+46 silly resolved      [ [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object] ],
+46 silly resolved     homepage: 'https://github.com/Unitech/pm2',
+46 silly resolved     description: 'Production process manager for Node.JS applications with a built-in load balancer.',
+46 silly resolved     main: 'index.js',
+46 silly resolved     scripts: { test: 'NODE_ENV=test bash test/index.sh && NODE_ENV=test bash test/main.sh' },
+46 silly resolved     keywords:
+46 silly resolved      [ 'cli',
+46 silly resolved        'fault tolerant',
+46 silly resolved        'sysadmin',
+46 silly resolved        'tools',
+46 silly resolved        'pm2',
+46 silly resolved        'logs',
+46 silly resolved        'log',
+46 silly resolved        'json',
+46 silly resolved        'express',
+46 silly resolved        'hapi',
+46 silly resolved        'kraken',
+46 silly resolved        'reload',
+46 silly resolved        'microservice',
+46 silly resolved        'programmatic',
+46 silly resolved        'harmony',
+46 silly resolved        'node-pm2',
+46 silly resolved        'production',
+46 silly resolved        'keymetrics',
+46 silly resolved        'deploy',
+46 silly resolved        'deployment',
+46 silly resolved        'daemon',
+46 silly resolved        'supervisor',
+46 silly resolved        'nodemon',
+46 silly resolved        'pm2.io',
+46 silly resolved        'ghost',
+46 silly resolved        'ghost production',
+46 silly resolved        'monitoring',
+46 silly resolved        'process manager',
+46 silly resolved        'forever',
+46 silly resolved        'forever-monitor',
+46 silly resolved        'keep process alive',
+46 silly resolved        'process configuration',
+46 silly resolved        'clustering',
+46 silly resolved        'cluster cli',
+46 silly resolved        'cluster',
+46 silly resolved        'cron',
+46 silly resolved        'devops',
+46 silly resolved        'dev ops' ],
+46 silly resolved     bin: { pm2: './bin/pm2' },
+46 silly resolved     dependencies:
+46 silly resolved      { async: '~0.9.0',
+46 silly resolved        chalk: '~0.5.1',
+46 silly resolved        chokidar: '~0.12.0',
+46 silly resolved        'cli-table': '0.3.1',
+46 silly resolved        'coffee-script': '1.8.0',
+46 silly resolved        colors: '1.0.3',
+46 silly resolved        commander: '2.6.0',
+46 silly resolved        cron: '1.0.5',
+46 silly resolved        debug: '2.1.0',
+46 silly resolved        eventemitter2: '0.4.14',
+46 silly resolved        'json-stringify-safe': '5.0.0',
+46 silly resolved        moment: '2.9.0',
+46 silly resolved        nssocket: '0.5.3',
+46 silly resolved        pidusage: '0.1.1',
+46 silly resolved        pmx: 'latest',
+46 silly resolved        vizion: 'latest',
+46 silly resolved        'pm2-axon': 'latest',
+46 silly resolved        'pm2-axon-rpc': '0.3.6',
+46 silly resolved        'pm2-deploy': 'latest',
+46 silly resolved        'pm2-multimeter': '0.1.2',
+46 silly resolved        shelljs: '0.3.0',
+46 silly resolved        isbinaryfile: '^2.0.3',
+46 silly resolved        semver: '4.3.1',
+46 silly resolved        'pm2-logs': '~0.1.1',
+46 silly resolved        ikt: 'git+http://ikt.pm2.io/ikt.git#master' },
+46 silly resolved     devDependencies:
+46 silly resolved      { mocha: '^1.20.1',
+46 silly resolved        should: '^4.0.0',
+46 silly resolved        'better-assert': '^1.0.0',
+46 silly resolved        'promise-spawner': '^0.0.3',
+46 silly resolved        punt: '*' },
+46 silly resolved     optionalDependencies:
+46 silly resolved      { 'pm2-logs': '~0.1.1',
+46 silly resolved        ikt: 'git+http://ikt.pm2.io/ikt.git#master' },
+46 silly resolved     bugs: { url: 'https://github.com/Unitech/pm2/issues' },
+46 silly resolved     repository: { type: 'git', url: 'git://github.com/Unitech/pm2.git' },
+46 silly resolved     license: 'AGPLv3',
+46 silly resolved     gitHead: '14261fd4a02d9c09a00e6dbbfa18f0b34199d482',
+46 silly resolved     _id: 'pm2@0.12.8',
+46 silly resolved     _shasum: 'b465688d47b70744423b38d0d3f9cdbdad495533',
+46 silly resolved     _from: 'pm2@',
+46 silly resolved     _npmVersion: '2.5.1',
+46 silly resolved     _nodeVersion: '0.12.0',
+46 silly resolved     _npmUser: { name: 'jshkurti', email: 'jonishkurti90@gmail.com' },
+46 silly resolved     dist:
+46 silly resolved      { shasum: 'b465688d47b70744423b38d0d3f9cdbdad495533',
+46 silly resolved        tarball: 'http://registry.npmjs.org/pm2/-/pm2-0.12.8.tgz' },
+46 silly resolved     _resolved: 'https://registry.npmjs.org/pm2/-/pm2-0.12.8.tgz' } ]
+47 info install pm2@0.12.8 into /usr/local/lib
+48 info installOne pm2@0.12.8
+49 verbose lib/node_modules/pm2 unbuild
+50 verbose tar unpack /Users/adaminglehart/.npm/pm2/0.12.8/package.tgz
+51 silly lockFile a4481f10-r-usr-local-lib-node-modules-pm2 tar:///usr/local/lib/node_modules/pm2
+52 verbose lock tar:///usr/local/lib/node_modules/pm2 /Users/adaminglehart/.npm/a4481f10-r-usr-local-lib-node-modules-pm2.lock
+53 silly lockFile 6987acd5-ehart-npm-pm2-0-12-8-package-tgz tar:///Users/adaminglehart/.npm/pm2/0.12.8/package.tgz
+54 verbose lock tar:///Users/adaminglehart/.npm/pm2/0.12.8/package.tgz /Users/adaminglehart/.npm/6987acd5-ehart-npm-pm2-0-12-8-package-tgz.lock
+55 silly gunzTarPerm modes [ '755', '644' ]
+56 error Error: EACCES, mkdir '/usr/local/lib/node_modules/pm2'
+56 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/pm2']
+56 error   errno: 3,
+56 error   code: 'EACCES',
+56 error   path: '/usr/local/lib/node_modules/pm2',
+56 error   fstream_type: 'Directory',
+56 error   fstream_path: '/usr/local/lib/node_modules/pm2',
+56 error   fstream_class: 'DirWriter',
+56 error   fstream_stack:
+56 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+56 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+56 error      'Object.oncomplete (fs.js:107:15)' ] }
+57 error Please try running this command again as root/Administrator.
+58 error System Darwin 14.1.0
+59 error command "node" "/usr/local/bin/npm" "install" "pm2" "-g"
+60 error cwd /Users/adaminglehart/Developer/MongoServer
+61 error node -v v0.10.32
+62 error npm -v 1.4.28
+63 error path /usr/local/lib/node_modules/pm2
+64 error fstream_path /usr/local/lib/node_modules/pm2
+65 error fstream_type Directory
+66 error fstream_class DirWriter
+67 error code EACCES
+68 error errno 3
+69 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/pm2'
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+70 error fstream_stack Object.oncomplete (fs.js:107:15)
+71 verbose exit [ 3, true ]

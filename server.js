@@ -12,11 +12,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cookieSession = require('cookie-session');
 var multer = require("multer");
+var fileUpload = require("./fileUpload.js")
+var fs = require('fs');
+
 
 var app = express();
 
-app.set("port",  8080);
-app.set("ipAddress", process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
+app.set("port", process.env.OPENSHIFT_NODEJS_PORT || 8181);
+app.set("ipAddress", process.env.OPENSHIFT_NODEJS_IP || "137.159.47.86");
 app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended : true}));
@@ -28,13 +31,16 @@ app.use(multer({
     console.log(file.originalname + " starting");
   },
   onFileUploadComplete: function(file){
-    console.log(file.originalname + " complete");
+    fileUpload.handleFile(collectionDriver);
   },
-  dest: "./files"
+  dest : "xmlFile",
+  rename: function (fieldname, filename) {
+    return "classes"
+  }
 }));
 
-var mongoHost = process.env.OPENSHIFT_MONGODB_DB_HOST; 
-var mongoPort = process.env.OPENSHIFT_MONGODB_DB_PORT; 
+var mongoHost = process.env.OPENSHIFT_MONGODB_DB_HOST || "137.159.47.86"; 
+var mongoPort = process.env.OPENSHIFT_MONGODB_DB_PORT || 27017; 
 var collectionDriver;
  
 var mongoClient = new MongoClient(new Server(mongoHost, mongoPort)); //B
@@ -69,6 +75,10 @@ app.get('/get/:collection', function(req, res) {
    	});
 });
 
+app.post('/upload', function(req, res){
+    res.send(200, "file received");
+});
+
 // Rewrites collection with new data from request body
 app.post('/update/:collection', function(req, res){
 	var params = req.params;
@@ -80,30 +90,7 @@ app.post('/update/:collection', function(req, res){
 	});
 });
 
-//receive file from Warford with class data
-app.post('/file', function(req, res){
-  
-  res.send(200, "File uploaded");
-});
-
- /*
- // Access specific element or list of elements
-app.get('/get/:collection/:entity', function(req, res) { //I
-   var params = req.params;
-   var entity = params.entity;
-   var collection = params.collection;
-   if (entity) {
-       collectionDriver.get(collection, entity, function(error, objs) { //J
-          if (error) { res.send(400, error); }
-          else { res.send(200, "Success"); } //K
-       });
-   } else {
-      res.send(400, {error: 'bad url', url: req.url});
-   }
-});
-*/
- 
 http.createServer(app).listen(app.get("port"), app.get("ipAddress"), function(){
-	console.log("express server listening on port " + app.get("port"));
-  console.log("IP: " + app.get("ipAddress"));
+    console.log("express server listening on port " + app.get("port"));
+    console.log("IP: " + app.get("ipAddress"));
 })
