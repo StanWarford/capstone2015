@@ -9,6 +9,12 @@
 		<script src="js/a.js"></script>
 		<script src="js/b.js"></script>
 		<link rel="stylesheet" href="css/peptheme.css">
+		<script src="js/global.js"></script>
+		<script>
+			$(document).ready(function() {
+				$.mobile.loading("show");
+			});
+		</script>
 		<!--<script src="js/head.js"></script>-->
 	</head>
 	<body>
@@ -66,7 +72,7 @@
 				<h4>footer</h4>
 			</div> <!-- /footer -->
 			<script>
-			$(document).on('pagebeforeshow', '#index', function(event){
+			$(document).on('pagebeforeshow', '#index', function(){
 				$.ajax({
 					url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
 					type: "GET",
@@ -91,8 +97,9 @@
 					// 	}
 					// }
 
-					var json = JSON.parse(result);
+					// var json = JSON.parse(result);
 					// var json = {"COSC":{"COSC105":{"01":{"subject":"COSC","section":"COSC105.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"COSC","section":"COSC105.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}},"COSC330":{"01":{"subject":"COSC","section":"COSC330.01","room":"RAC170","status":"open","professor":"Stan Warford","day":"MoTh","time":"2:00PM-2:50PM"}}},"MATH":{"MATH151":{"01":{"subject":"MATH","section":"MATH151.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"MATH","section":"MATH151.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}}}};
+					console.log(json);
 					var deptArr = [];
 					for(var department in json){
 						deptArr.push(department);
@@ -105,18 +112,19 @@
 						$('[class=deptlink]').append(deptArr[i]);
 						$('#list-departments').listview("refresh");
 					}
-					
+					$.mobile.loading("hide");
 				});	
 			});
 			function showClasses(depts) {
+				$.mobile.loading("show");
 				document.getElementById("departs").style.display = "none";
 				document.getElementById("clases").style.display = "block";
-				$.ajax({
-					url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
-					type: "GET",
-					dataType: "text",
-				}).done(function(result){
-					var json = JSON.parse(result);
+				// $.ajax({
+				// 	url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
+				// 	type: "GET",
+				// 	dataType: "text",
+				// }).done(function(result){
+				// 	var json = JSON.parse(result);
 					// var json = {"COSC":{"COSC105":{"01":{"subject":"COSC","section":"COSC105.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"COSC","section":"COSC105.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}},"COSC330":{"01":{"subject":"COSC","section":"COSC330.01","room":"RAC170","status":"open","professor":"Stan Warford","day":"MoTh","time":"2:00PM-2:50PM"}}},"MATH":{"MATH151":{"01":{"subject":"MATH","section":"MATH151.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"MATH","section":"MATH151.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}}}};
 					for(var clas in json[depts]){
 						clasQuote = '"' + clas + '"';
@@ -125,33 +133,43 @@
 						$('[class=classlink]').append(clas);
 						$('#list-classes').listview("refresh");
 					}
-				});
+					$.mobile.loading("hide");
+				// });
 			}
 			function showSections(cls,dept) {
+				$.mobile.loading("show");
 				document.getElementById("clases").style.display = "none";
 				document.getElementById("sects").style.display = "block";
-				$.ajax({
-					url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
-					type: "GET",
-					dataType: "text"
-				}).done(function(result){
-					var json = JSON.parse(result);
+				// $.ajax({
+				// 	url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
+				// 	type: "GET",
+				// 	dataType: "text"
+				// }).done(function(result){
+				// 	var json = JSON.parse(result);
 					// var json = {"COSC":{"COSC105":{"01":{"subject":"COSC","section":"COSC105.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"COSC","section":"COSC105.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}},"COSC330":{"01":{"subject":"COSC","section":"COSC330.01","room":"RAC170","status":"open","professor":"Stan Warford","day":"MoTh","time":"2:00PM-2:50PM"}}},"MATH":{"MATH151":{"01":{"subject":"MATH","section":"MATH151.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"MATH","section":"MATH151.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}}}};
 
 					var i = 1;
 					for(var section in json[dept][cls]){
+						clsQuote = '"' + cls + '"';
+						deptQuote = '"' + dept + '"';
+						sectQuote = '"' + section + '"';
 						$('#list-sections').append('<li class="ui-field-contain" id="listitem'+i+'"></li>');
 						$('#listitem'+i).css('background-color','#b9cf96');
 						if(json[dept][cls][section]["status"] == "closed") {
 							$('#listitem'+i).css('background-color','#f06d6d');
 						}
-						$('#listitem'+i).append(json[dept][cls][section]["section"]);
-						$('#listitem'+i).append('<span class="flipperBrowse"><select id="flip2" data-role="slider" data-mini="true"><option value="off">Off</option><option value="on">On</option></select></span>');
+						// $('#listitem'+i).append(json[dept][cls][section]["section"]);
+						$('#listitem'+i).append(cls+"."+section);
+						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span>");
 						$('#index').trigger('create');
 						$("#list-sections").listview("refresh"); 
 						i++;
 					}
-				});
+					$.mobile.loading("hide");
+				// });
+			}
+			function flipperChange(deptFlip,clasFlip,sectFlip,val) {
+				console.log(deptFlip + clasFlip + sectFlip + val);
 			}
 			document.getElementById("retDept").onclick = function returnDept() {
 				document.getElementById("clases").style.display = "none";

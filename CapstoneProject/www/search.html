@@ -9,6 +9,7 @@
 		<script src="js/a.js"></script>
 		<script src="js/b.js"></script>
 		<link rel="stylesheet" href="css/peptheme.css">
+		<script src="js/global.js"></script>
 	</head>
 	<body>
 		<div data-role="page" data-theme="a" id="index">
@@ -52,39 +53,39 @@
 					html = "";
 				$ul.html("");
 				if(value && value.length > 2) {
-					$ul.html("<li><div class='ui-loader'><span class='ui-icon ui-icon-loading'></span></div></li>");
-					$ul.listview("refresh");
-					$ul.trigger("updatelayout");
-					$.ajax({
-						url:"http://dbserver-capstone2015.rhcloud.com/get/classes",
-						type:"GET",
-						dataType:"text"
-					}).done(function(result){
-						var json = JSON.parse(result);
-						var i = 1;
-						for(var department in json){
-							for(var clas in json[department]){
-								for(var section in json[department][clas]){
-									var classname = json[department][clas][section]["section"];
-									var classstring = String(classname).toUpperCase();
-									var valueupper = value.toUpperCase();
-									if(classstring.indexOf(valueupper) >= 0) {
-										if(json[department][clas][section]["status"] == "closed") {
-											html += "<li id ='listitem"+i+"' style='background-color:#f06d6d'>" + classname + "</li><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
-											i++;
-										} else {
-											html += "<li id ='listitem"+i+"' style='background-color:#b9cf96'>" + classname + "<span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
-											i++;
-										}
+					$.mobile.loading("show");
+					var i = 1;
+					for(var department in json){
+						for(var clas in json[department]){
+							for(var section in json[department][clas]){
+								clsQuote = '"' + clas + '"';
+								deptQuote = '"' + department + '"';
+								sectQuote = '"' + section + '"';
+								var classname = json[department][clas][section]["section"];
+								var classstring = String(classname).toUpperCase();
+								var deptstring = String(department).toUpperCase();
+								var valueupper = value.toUpperCase();
+								if((classstring.indexOf(valueupper) >= 0) || (deptstring.indexOf(valueupper) >= 0)) {
+									if(json[department][clas][section]["status"] == "closed") {
+										html += "<li id ='listitem"+i+"' data-filtertext='" + department + " " + classname + "' style='background-color:#f06d6d'>" + clas + "." + section + "</li><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+")'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
+										i++;
+									} else {
+										html += "<li id ='listitem"+i+"' data-filtertext='" + department + " " + classname + "' style='background-color:#b9cf96'>" + clas + "." + section + "<span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+")'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
+										i++;
 									}
+									$.mobile.loading("hide");
 								}
 							}
 						}
-						$ul.html(html);
-						$ul.listview("refresh");
-						$ul.trigger("updatelayout");
-						$ul.trigger('create');
-					});
+					}
+					if(html == "") {
+						html = "<li>No results for "+value+".</li>";
+						$.mobile.loading("hide");
+					}
+					$ul.html(html);
+					$ul.listview("refresh");
+					$ul.trigger("updatelayout");
+					$ul.trigger('create');
 				}
 			});
 		});
