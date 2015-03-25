@@ -462,7 +462,7 @@
                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="QMg-Z0-rFe">
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <action selector="close:" destination="h88-2u-2oQ" id="fUG-rV-exW"/>
+                                                <action selector="close:" destination="h88-2u-2oQ" id="zrN-g8-V6d"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1049,6 +1049,9 @@
                                     <navigationItem title="Search" id="nU4-Ws-NgY">
                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="UEk-yw-Y0Q">
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="close:" destination="9tp-uP-wSp" id="Vbt-hF-HPs"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -1058,7 +1061,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="78" id="1ai-Nr-0s3">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="78" id="1ai-Nr-0s3" customClass="SearchTableViewCell" customModule="capstone2015" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1ai-Nr-0s3" id="004-8o-mSz">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1088,6 +1091,9 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="addClass:" destination="1ai-Nr-0s3" eventType="touchUpInside" id="MCk-R6-0b6"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbn-ja-kzb">
                                                     <rect key="frame" x="136" y="16" width="50" height="21"/>
@@ -1122,6 +1128,11 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="className" destination="ldv-lV-E9Q" id="2zr-XJ-6h5"/>
+                                            <outlet property="courseNumber" destination="dwk-4I-AT7" id="eRH-FC-bne"/>
+                                            <outlet property="status" destination="zbn-ja-kzb" id="0o0-I2-bju"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1151,9 +1162,6 @@
                             <constraint firstItem="z1w-af-2hY" firstAttribute="top" secondItem="vUa-ya-tRJ" secondAttribute="bottom" constant="8" id="f00-8G-fA7"/>
                             <constraint firstItem="z1w-af-2hY" firstAttribute="leading" secondItem="QGD-Zc-HLu" secondAttribute="leadingMargin" id="i7t-lW-aac"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="39q-GP-2uK" appends="YES" id="QOH-9A-coo"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="vUa-ya-tRJ" id="Rb8-jI-wPj"/>
@@ -1179,7 +1187,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="OYJ-ma-GtT"/>
         <segue reference="kbK-eQ-VkF"/>
-        <segue reference="uYa-Cq-e9r"/>
+        <segue reference="5sx-RS-8M9"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>

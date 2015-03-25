@@ -13,17 +13,36 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResults: UITableView!
     
+    var model = ["COSC 315","HUM 111","HUM 112","COSC 415","PHYS 210","JWP 100","GSHU 410"]
+    var filteredModel = [String]()
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         println("#")
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell: SearchTableViewCell = tableView.dequeueReusableCellWithIdentifier("SearchCell") as SearchTableViewCell
+        // create cell
+        let classFollowing = filteredModel[indexPath.row]
+        cell.setCell(classFollowing, courseNumber: classFollowing, status: "Open", professor: classFollowing, room: "PLC 210")
+        cell.status.textColor = emeraldGreen
+        return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return filteredModel.count
     }
+    
+//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+//        //        filteredModel = []
+//        //        for exClass in model {
+//        //            if (exClass.rangeOfString(searchText) != nil){
+//        //                true
+//        //            }
+//        //        }
+//        //        searchResults.reloadData()
+//        return
+//    }
     
     @IBAction func hideKeyboard(sender: UITapGestureRecognizer) {
         searchBar.resignFirstResponder()
@@ -44,6 +63,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func close(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
