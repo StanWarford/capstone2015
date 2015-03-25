@@ -17,7 +17,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     var filteredModel = [String]()
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        println("#")
+        filteredModel = []
+            for exClass in model {
+                if (exClass.lowercaseString.rangeOfString(searchText.lowercaseString) != nil){
+                    filteredModel.append(exClass)
+                }
+            }
+            searchResults.reloadData()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -32,18 +38,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredModel.count
     }
-    
-//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        //        filteredModel = []
-//        //        for exClass in model {
-//        //            if (exClass.rangeOfString(searchText) != nil){
-//        //                true
-//        //            }
-//        //        }
-//        //        searchResults.reloadData()
-//        return
-//    }
-    
+
     @IBAction func hideKeyboard(sender: UITapGestureRecognizer) {
         searchBar.resignFirstResponder()
     }
