@@ -13,7 +13,8 @@ var classDict: JSON?
 var deptOfInterest: String?
 var courseOfInterest: String?
 let url = "http://dbserver-capstone2015.rhcloud.com/get/classes"
-var alizarinRed = UIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0)
+var alizarinRed =  /*UIColor(red: 1.0, green: 0.4706, blue: 0.0078, alpha: 1.0) */
+UIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0)
 var emeraldGreen = UIColor(red: 231/255.0, green: 76/255.0, blue: 60/255.0, alpha: 1.0)
 
 @UIApplicationMain

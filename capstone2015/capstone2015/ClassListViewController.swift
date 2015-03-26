@@ -8,8 +8,11 @@
 
 import UIKit
 import CoreData
+import QuartzCore
 
 class ClassListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var addNewClassButton: UIButton!
     
     lazy var managedObjectContext : NSManagedObjectContext? = {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -32,12 +35,16 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         let cell: ClassListTableViewCell = tableView.dequeueReusableCellWithIdentifier("ClassListCell") as ClassListTableViewCell
         // create cell
         let classFollowing = classes[indexPath.row]
-        cell.setCell(classFollowing.name, course: classFollowing.course, status: classFollowing.status)
+        cell.setCell(classFollowing.name, course: classFollowing.course, status: "● " + classFollowing.status.uppercaseString)
         if (classFollowing.status == "Open"){
             cell.status.textColor = alizarinRed
         } else {
             cell.status.textColor = emeraldGreen
         }
+        cell.layer.cornerRadius = 10.0
+        cell.layer.masksToBounds = true
+        cell.layer.borderWidth = 3.0
+        cell.layer.borderColor = UIColor.whiteColor().CGColor
         return cell
     }
     
@@ -67,12 +74,20 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         self.classList.reloadData()
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.tintColor = UIColor.orangeColor()
         self.populateClassList()
     }
     
     override func viewWillAppear(animated: Bool) {
+        addNewClassButton.layer.borderWidth = 2
+        addNewClassButton.layer.borderColor = UIColor(red: 1.0, green: 0.4706, blue: 0.0078, alpha: 1.0).CGColor
+        addNewClassButton.layer.cornerRadius = 10.0
         self.populateClassList()
     }
 
