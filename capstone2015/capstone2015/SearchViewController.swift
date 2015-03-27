@@ -14,23 +14,26 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     @IBOutlet weak var searchResults: UITableView!
     
     var model = ["COSC 315","HUM 111","HUM 112","COSC 415","PHYS 210","JWP 100","GSHU 410"]
-    var filteredModel = [String]()
+    var filteredModel = [JSON]()
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filteredModel = []
-            for exClass in model {
-                if (exClass.lowercaseString.rangeOfString(searchText.lowercaseString) != nil){
-                    filteredModel.append(exClass)
-                }
+        
+        for section in classList {
+            if (section["professor"].string!.rangeOfString(searchText) != nil){
+                filteredModel.append(section)
             }
-            searchResults.reloadData()
+        }
+        
+        searchResults.reloadData()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: SearchTableViewCell = tableView.dequeueReusableCellWithIdentifier("SearchCell") as SearchTableViewCell
         // create cell
+        
         let classFollowing = filteredModel[indexPath.row]
-        cell.setCell(classFollowing, courseNumber: classFollowing, status: "Open", professor: classFollowing, room: "PLC 210")
+        cell.setCell(classFollowing["name"].string!, courseNumber: classFollowing["section"].string!, status: classFollowing["status"].string!, professor: classFollowing["professor"].string!, room: classFollowing["room"].string!)
         cell.status.textColor = emeraldGreen
         return cell
     }
