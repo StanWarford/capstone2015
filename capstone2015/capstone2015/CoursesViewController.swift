@@ -52,6 +52,10 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
         if (indexPath.row == self.courses.count - 1){
             indexShift = 0
         }
+        cell.layer.cornerRadius = 10.0
+        cell.layer.masksToBounds = true
+        cell.layer.borderWidth = 3.0
+        cell.layer.borderColor = UIColor.whiteColor().CGColor
         return cell
     }
 

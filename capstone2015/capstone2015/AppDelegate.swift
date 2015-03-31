@@ -15,8 +15,8 @@ var deptOfInterest: String?
 var courseOfInterest: String?
 let url = "http://137.159.47.86:8181/classes"
 var alizarinRed =  /*UIColor(red: 1.0, green: 0.4706, blue: 0.0078, alpha: 1.0) */
-UIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0)
-var emeraldGreen = UIColor(red: 231/255.0, green: 76/255.0, blue: 60/255.0, alpha: 1.0)
+UIColor.orangeColor()
+var emeraldGreen = UIColor.grayColor()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             }
                         }
                     }
-                    print(classList)
+                    print("successfully built classlist")
                 }
         }
         

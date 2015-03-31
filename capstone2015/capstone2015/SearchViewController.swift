@@ -12,15 +12,22 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResults: UITableView!
+    @IBAction func changeFilter(sender: UISegmentedControl) {
+        switch(sender.selectedSegmentIndex){
+        case 0: filter = "section"
+        case 1: filter = "name"
+        case 2: filter = "professor" // change to department, once it becomes available
+        case 3: filter = "professor"
+        default: print("There is no fourth filter. This should not occur.")
+        }
+        searchForResults(searchBar.text)
+    }
     
-    var model = ["COSC 315","HUM 111","HUM 112","COSC 415","PHYS 210","JWP 100","GSHU 410"]
-    var filteredModel = [JSON]()
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchForResults (searchText: String) {
         filteredModel = []
         
         for section in classList {
-            if (section["professor"].string!.rangeOfString(searchText) != nil){
+            if (section[filter].string!.lowercaseString.rangeOfString(searchText.lowercaseString) != nil){
                 filteredModel.append(section)
             }
         }
@@ -28,13 +35,38 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         searchResults.reloadData()
     }
     
+    var filteredModel = [JSON]()
+    var filter = "section"
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        // was too intensive
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchForResults(searchBar.text)
+        searchBar.resignFirstResponder()
+
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: SearchTableViewCell = tableView.dequeueReusableCellWithIdentifier("SearchCell") as SearchTableViewCell
         // create cell
         
         let classFollowing = filteredModel[indexPath.row]
-        cell.setCell(classFollowing["name"].string!, courseNumber: classFollowing["section"].string!, status: classFollowing["status"].string!, professor: classFollowing["professor"].string!, room: classFollowing["room"].string!)
-        cell.status.textColor = emeraldGreen
+        cell.setCell(classFollowing["name"].string!, courseNumber: classFollowing["section"].string!, status: "●" + classFollowing["status"].string!, professor: classFollowing["professor"].string!, room: classFollowing["room"].string!)
+        if (classFollowing["status"] == "Open"){
+            cell.status.textColor = UIColor.orangeColor()
+        } else {
+            cell.status.textColor = UIColor.grayColor()
+        }
+        cell.layer.cornerRadius = 10.0
+        cell.layer.masksToBounds = true
+        cell.layer.borderWidth = 3.0
+        cell.layer.borderColor = UIColor.whiteColor().CGColor
         return cell
     }
     
@@ -46,13 +78,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         searchBar.resignFirstResponder()
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 

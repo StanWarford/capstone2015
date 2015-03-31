@@ -35,11 +35,11 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         let cell: ClassListTableViewCell = tableView.dequeueReusableCellWithIdentifier("ClassListCell") as ClassListTableViewCell
         // create cell
         let classFollowing = classes[indexPath.row]
-        cell.setCell(classFollowing.name, course: classFollowing.course, status: "● " + classFollowing.status.uppercaseString)
+        cell.setCell(classFollowing.name, course: classFollowing.course, status: classFollowing.status.uppercaseString + " ●")
         if (classFollowing.status == "Open"){
-            cell.status.textColor = alizarinRed
+            cell.status.textColor = UIColor.orangeColor()
         } else {
-            cell.status.textColor = emeraldGreen
+            cell.status.textColor = UIColor.grayColor()
         }
         cell.layer.cornerRadius = 10.0
         cell.layer.masksToBounds = true
@@ -86,7 +86,7 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewWillAppear(animated: Bool) {
         addNewClassButton.layer.borderWidth = 2
-        addNewClassButton.layer.borderColor = UIColor(red: 1.0, green: 0.4706, blue: 0.0078, alpha: 1.0).CGColor
+        addNewClassButton.layer.borderColor = UIColor.orangeColor().CGColor
         addNewClassButton.layer.cornerRadius = 10.0
         self.populateClassList()
     }

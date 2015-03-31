@@ -46,6 +46,10 @@ class DepartmentViewController: UIViewController, UITableViewDataSource, UITable
         // create cell
         let deptName = depts[indexPath.row]
         cell.setCell(deptName)
+        cell.layer.cornerRadius = 10.0
+        cell.layer.masksToBounds = true
+        cell.layer.borderWidth = 3.0
+        cell.layer.borderColor = UIColor.whiteColor().CGColor
         return cell
     }
 }
