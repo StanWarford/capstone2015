@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             }
                         }
                     }
-                    print("successfully built classlist")
+                    print(classList)
                 }
         }
         

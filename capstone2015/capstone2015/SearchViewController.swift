@@ -16,12 +16,14 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         switch(sender.selectedSegmentIndex){
         case 0: filter = "section"
         case 1: filter = "name"
-        case 2: filter = "professor" // change to department, once it becomes available
+        case 2: filter = "department"
         case 3: filter = "professor"
         default: print("There is no fourth filter. This should not occur.")
         }
         searchForResults(searchBar.text)
     }
+    
+    var heightMap = Dictionary<String, String>()
     
     func searchForResults (searchText: String) {
         filteredModel = []
@@ -38,15 +40,22 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     var filteredModel = [JSON]()
     var filter = "section"
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        // was too intensive
-    }
-    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchForResults(searchBar.text)
         searchBar.resignFirstResponder()
 
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath)!.layer
+        cell.frame = CGRect(x: 0.0, y: 0.0, width: cell.frame.width, height: cell.frame.height + 5.7)
+        searchResults.beginUpdates()
+        searchResults.endUpdates()
+    }
+    
+//    if let a = Optional {
+//        use a
+//    }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -54,8 +63,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: SearchTableViewCell = tableView.dequeueReusableCellWithIdentifier("SearchCell") as SearchTableViewCell
-        // create cell
-        
         let classFollowing = filteredModel[indexPath.row]
         cell.setCell(classFollowing["name"].string!, courseNumber: classFollowing["section"].string!, status: "●" + classFollowing["status"].string!, professor: classFollowing["professor"].string!, room: classFollowing["room"].string!)
         if (classFollowing["status"] == "Open"){
@@ -91,15 +98,5 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     @IBAction func close(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

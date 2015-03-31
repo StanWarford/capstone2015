@@ -40,6 +40,10 @@ class SearchTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    @IBAction func extendCell(sender: UIButton) {
+        self.contentView.frame = CGRect(x: 0,y: 0,width: 300.0, height: contentView.frame.height)
+    }
+    
     @IBAction func addClass(sender: UIButton) {
         let newClass = NSEntityDescription.insertNewObjectForEntityForName("Class", inManagedObjectContext: self.managedObjectContext!) as Class
         newClass.name = self.className.text!
