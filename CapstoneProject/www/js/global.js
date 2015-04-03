@@ -16,7 +16,7 @@ var jsonAlertList = {
                 "room": "RAC170",
                 "status": "open",
                 "professor": "Brad Cupp",
-                "meeting": "MoTh 11:00AM-12:50PM"
+                "meeting": "MoTh 2:00PM-5:50PM"
             },
             "02": {
                 "subject": "COSC",
@@ -64,7 +64,7 @@ var jsonAlertList = {
 var picked = JSON.stringify(jsonAlertList);
 
 function cEvents() {
-
+	var eventColor = "";
 	var calEvents=[];
 	console.log(calEvents);
     var json = JSON.parse(picked);
@@ -110,8 +110,15 @@ function cEvents() {
 					        days[day] = "2015-09-04T";
 					        break;
 					}
+					if (json[department][clas][section]["status"]=="open"){
+						eventColor = "#b9cf96";
+					}
+					else{
+						eventColor = "#f06d6d";
+					}
 					obj.title = json[department][clas][section]["section"];
 					obj.start = days[day] + startTime[0];
+					obj.color = eventColor;
 					obj.end = days[day] + endTime[0];
 					calEvents.push(obj);
 				}
