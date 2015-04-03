@@ -111,7 +111,7 @@ function cEvents() {
 					        break;
 					}
 					if (json[department][clas][section]["status"]=="open"){
-						eventColor = "#b9cf96";
+						eventColor = "#a6e69a";
 					}
 					else{
 						eventColor = "#f06d6d";
