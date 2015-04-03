@@ -93,17 +93,17 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if (editingStyle == UITableViewCellEditingStyle.Delete){
-//            classes.removeAtIndex(indexPath.row) // To-do: Delete from core data instead
-//            // remove the deleted item from the model
-//            let fetchRequest = NSFetchRequest(entityName: "Class")
-//            if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Class]{
-//                self.managedObjectContext!.deleteObject(fetchResults[indexPath.row] as NSManagedObject)
-//            }
-//            self.managedObjectContext!.save(nil)
-//            // remove the deleted item from the `UITableView`
-//            self.classList.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//        }
+        if (editingStyle == UITableViewCellEditingStyle.Delete){
+            classes.removeAtIndex(indexPath.row) // To-do: Delete from core data instead
+            // remove the deleted item from the model
+            let fetchRequest = NSFetchRequest(entityName: "ClassEntity")
+            if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ClassEntity]{
+                self.managedObjectContext!.deleteObject(fetchResults[indexPath.row] as NSManagedObject)
+            }
+            self.managedObjectContext!.save(nil)
+            // remove the deleted item from the `UITableView`
+            self.classList.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
     }
     
     func populateClassList(){

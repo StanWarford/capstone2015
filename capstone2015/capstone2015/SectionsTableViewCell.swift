@@ -20,6 +20,10 @@ class SectionsTableViewCell: UITableViewCell {
         }
         }()
     
+    var deptKey: String!
+    var courseKey: String!
+    var sectionKey: String!
+    
     @IBOutlet weak var className: UILabel!
     @IBOutlet weak var courseNumber: UILabel!
     @IBOutlet weak var status: UILabel!
@@ -41,12 +45,10 @@ class SectionsTableViewCell: UITableViewCell {
     }
 
     @IBAction func addClass(sender: UIButton) {
-        let newClass = NSEntityDescription.insertNewObjectForEntityForName("Class", inManagedObjectContext: self.managedObjectContext!) as Class
-        newClass.name = self.className.text!
-        newClass.course = self.courseNumber.text!
-        newClass.status = self.status.text!
-        newClass.professor = self.professor
-        newClass.room = self.room
+        let newClass = NSEntityDescription.insertNewObjectForEntityForName("ClassEntity", inManagedObjectContext: self.managedObjectContext!) as ClassEntity
+        newClass.deptKey = self.deptKey
+        newClass.courseKey = self.courseKey
+        newClass.sectionKey = self.sectionKey
         managedObjectContext!.save(nil)
     }
 

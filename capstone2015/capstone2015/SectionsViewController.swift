@@ -74,6 +74,10 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
         } else {
             cell.status.textColor = emeraldGreen
         }
+        cell.deptKey = deptOfInterest
+        cell.courseKey = courseOfInterest
+        //cell.sectionKey = classFollowing["subject"].string! // 02
+        
         cell.layer.cornerRadius = 10.0
         cell.layer.masksToBounds = true
         cell.layer.borderWidth = 3.0

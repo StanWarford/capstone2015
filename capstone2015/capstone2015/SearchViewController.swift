@@ -85,7 +85,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         
         cell.deptKey = split(classFollowing["section"].string!) {$0 == " "} [0]
         cell.courseKey = split(classFollowing["section"].string!) {$0 == "."} [0]
-        cell.sectionKey = classFollowing["subject"].string! // 02
+        cell.sectionKey = classFollowing["subject"].string!
         
         cell.layer.cornerRadius = 10.0
         cell.layer.masksToBounds = true
