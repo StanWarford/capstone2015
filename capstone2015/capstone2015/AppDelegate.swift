@@ -72,14 +72,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 else {
                     NSLog("Success: \(url)")
                     classDict = JSON(json!)
-                    for dept in classDict!.dictionary!.keys.array { // ["COSC", "HUM", ...]
-                        for course in classDict![dept].dictionary!.keys.array { // ["COSC 101", "COSC 105", ...]
-                            for section in classDict![dept][course].dictionary!.keys.array { // ["COSC 101.01", "COSC 101.02"]
-                                classList.append(classDict![dept][course][section])
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        for dept in classDict!.dictionary!.keys.array { // ["COSC", "HUM", ...]
+                            for course in classDict![dept].dictionary!.keys.array { // ["COSC 101", "COSC 105", ...]
+                                for section in classDict![dept][course].dictionary!.keys.array { // ["COSC 101.01", "COSC 101.02"]
+                                    classList.append(classDict![dept][course][section])
+                                }
                             }
                         }
+                        print(classList)
                     }
-                    print(classList)
+                    
                 }
         }
         

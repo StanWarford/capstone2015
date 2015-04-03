@@ -68,15 +68,22 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell: SectionsTableViewCell = tableView.dequeueReusableCellWithIdentifier("SectionsCell") as SectionsTableViewCell
         // create cell
         let classFollowing = sections[indexPath.row]
-        cell.setCell(classFollowing.name, courseNumber: classFollowing.course, status: classFollowing.status, professor: classFollowing.professor, room: classFollowing.room)
+        
+        cell.setCell(classFollowing.name,
+            courseNumber: classFollowing.course,
+            status: classFollowing.status,
+            professor: classFollowing.professor,
+            room: classFollowing.room)
+        
         if (classFollowing.status == "Open"){
             cell.status.textColor = alizarinRed
         } else {
             cell.status.textColor = emeraldGreen
         }
+        
         cell.deptKey = deptOfInterest
         cell.courseKey = courseOfInterest
-        //cell.sectionKey = classFollowing["subject"].string! // 02
+        cell.sectionKey = split(classFollowing.name) {$0 == "."} [1]
         
         cell.layer.cornerRadius = 10.0
         cell.layer.masksToBounds = true

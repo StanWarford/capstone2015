@@ -18,7 +18,6 @@ class DepartmentViewController: UIViewController, UITableViewDataSource, UITable
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }

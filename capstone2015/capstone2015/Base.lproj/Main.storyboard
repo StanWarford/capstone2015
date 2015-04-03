@@ -749,7 +749,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="HUM 111" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ik4-1B-dvl">
-                                                    <rect key="frame" x="8" y="8" width="120" height="24"/>
+                                                    <rect key="frame" x="8" y="16" width="120" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="mrx-U6-wLi"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="tL0-1u-kG7"/>
@@ -758,7 +758,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Of Class" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eun-FX-pKn">
-                                                    <rect key="frame" x="8" y="40" width="103" height="21"/>
+                                                    <rect key="frame" x="8" y="45" width="103" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -783,7 +783,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmr-PG-qc8">
-                                                    <rect key="frame" x="136" y="8" width="50" height="24"/>
+                                                    <rect key="frame" x="136" y="16" width="50" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -804,9 +804,9 @@
                                                 <constraint firstItem="GYk-ol-Hcu" firstAttribute="leading" secondItem="kmr-PG-qc8" secondAttribute="trailing" constant="8" id="RZo-nq-imO"/>
                                                 <constraint firstItem="GYk-ol-Hcu" firstAttribute="trailing" secondItem="jwI-CI-XCn" secondAttribute="trailingMargin" id="WVq-y4-ByN"/>
                                                 <constraint firstItem="GYk-ol-Hcu" firstAttribute="top" secondItem="jwI-CI-XCn" secondAttribute="topMargin" id="Xgu-iX-MXQ"/>
-                                                <constraint firstItem="Ik4-1B-dvl" firstAttribute="top" secondItem="jwI-CI-XCn" secondAttribute="topMargin" id="awu-8x-9K8"/>
+                                                <constraint firstItem="Ik4-1B-dvl" firstAttribute="top" secondItem="jwI-CI-XCn" secondAttribute="topMargin" constant="8" id="awu-8x-9K8"/>
                                                 <constraint firstItem="GYk-ol-Hcu" firstAttribute="trailing" secondItem="jwI-CI-XCn" secondAttribute="trailingMargin" id="h2c-Xj-2lb"/>
-                                                <constraint firstItem="kmr-PG-qc8" firstAttribute="top" secondItem="jwI-CI-XCn" secondAttribute="topMargin" id="iKs-MT-QN6"/>
+                                                <constraint firstItem="kmr-PG-qc8" firstAttribute="top" secondItem="jwI-CI-XCn" secondAttribute="topMargin" constant="8" id="iKs-MT-QN6"/>
                                                 <constraint firstItem="GYk-ol-Hcu" firstAttribute="bottom" secondItem="jwI-CI-XCn" secondAttribute="bottomMargin" constant="8" id="m1T-7Z-wtb"/>
                                                 <constraint firstItem="GYk-ol-Hcu" firstAttribute="trailing" secondItem="jwI-CI-XCn" secondAttribute="trailingMargin" id="oyJ-Nw-gjP"/>
                                                 <constraint firstItem="kmr-PG-qc8" firstAttribute="leading" secondItem="Ik4-1B-dvl" secondAttribute="trailing" constant="8" id="pud-bu-WCC"/>
