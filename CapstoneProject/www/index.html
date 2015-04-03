@@ -9,8 +9,30 @@
 		<script src="js/a.js"></script>
 		<script src="js/b.js"></script>
 		<link rel="stylesheet" href="css/peptheme.css">
+		<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+		<script src='moment.min.js'></script>
+		<script src="js/global.js"></script>
+		<script src='fullcalendar/fullcalendar.js'></script>
+		<script>
+		var calObjs = cEvents(); //should return array of objects
+		console.log(calObjs); 
+		// $(document).ready(function() {
+		// 	$('#calendar').fullCalendar({
+		// 	    defaultView: 'agendaWeek',
+		// 	    weekends: false,
+		// 	    defaultDate:'2015-08-31',
+		// 		events: calObjs,
+		// 		allDaySlot: false,
+		// 		minTime: "07:00:00",
+		// 		maxTime: "23:00:00",
+		// 		header: false
+		// 	});
+		// });
+		</script>
+		<!--<script src="js/global.js"></script>-->
 	</head>
-	<body onload="start()">
+	<body>
 		<div data-role="page" data-theme="a" id="index">
 
 
@@ -41,310 +63,65 @@
     					</ul>
  					</div>
  					<div id="list">
- 						<ul data-role="listview" data-inset="true">
- 							<li>Class1</li>
- 							<li>Class2</li>
- 						</ul>
+ 						<ul data-role="listview" data-inset="true" id="classespicked"></ul>
  					</div>
- 					<div id="calView" style="width=100%;overflow:auto">
- 						<!-- <table data-role="table" id="cal-table" data-mode="columntoggle" class="table-stroke ui-body-a ui-shadow table-stripe" data-column-btn-text="columns to display"> -->
- 						<table data-role="table" data-mode="columntoggle" id="cal-table" class="ui-responsive" data-column-btn-text="columns visible">
- 							<thead>
- 								<tr>
- 									<th>Time</th>
- 									<th data-priority="2">Sunday</th>
- 									<th data-priority="1">Monday</th>
- 									<th data-priority="1">Tuesday</th>
- 									<th data-priority="1">Wednesday</th>
- 									<th data-priority="1">Thursday</th>
- 									<th data-priority="1">Friday</th>
- 									<th data-priority="2">Saturday</th>
- 								</tr>
- 							</thead>
- 							<tbody>
- 								<tr>
- 									<th>7:00AM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>8:00AM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>9:00AM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>10:00AM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>11:00AM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>12:00PM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>1:00PM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>2:00PM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>3:00PM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>4:00PM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>5:00PM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>6:00PM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>7:00PM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>8:00PM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>9:00PM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 								<tr>
- 									<th>10:00PM</th>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 									<td></td>
- 								</tr>
- 							</tbody>
- 						</table>
+ 					<!-- <div id="calView" style="width=100%;overflow:auto"> -->
+ 					<div id="calView">
+ 						<div id='calendar'></div>
  					</div>
-  					<!-- <div data-role="navbar">
-    					<ul>
-      						<li><a data-ajax="false" onclick="showList()">list</a></li>
-      						<li><a data-ajax="false" onclick="showCal()">calendar</a></li>
-    					</ul>
- 					</div>
- 					<div id="listCalView" class="ui-body-a ui-content">
- 						Default view
- 					</div> -->
 				</div>
-				<table id="classes" style="visibility:hidden">
-					<thead>
-						<tr>
-							<th>Class</th>
-							<th>Time Start</th>
-							<th>Time End</th>
-							<th>Day 1</th>
-							<th>Day 2</th>
-							<th>Day 3</th>
-							<th>Day 4</th>
-							<th>Day 5</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Capstone</td>
-							<td>17</td>
-							<td>19</td>
-							<td>monday</td>
-							<th>thursday</th>
-						</tr>
-						<tr>
-							<td>Multimedia Production and Authoring</td>
-							<td>8</td>
-							<td>10</td>
-							<td>tuesday</td>
-							<th>friday</th>
-						</tr>
-						<tr>
-							<td>History</td>
-							<td>14</td>
-							<td>16</td>
-							<th>tuesday</th>
-							<th>friday</th>
-							<td>monday</td>
-							<th>thursday</th>
-						</tr>
-						<tr>
-							<td>Political Science</td>
-							<td>12</td>
-							<td>15</td>
-							<td>tuesday</td>
-							<th>friday</th>
-						</tr>
-					</tbody>
-				</table>
 			</div> <!-- /content -->
 			<div data-role="footer" data-theme="a" data-position="fixed" id="myfooter"></div>
 		</div> <!-- /page -->
-	</body>
-	<script>
-		function start() {
-			var num = document.getElementById("classes").rows.length; // number of classes
-			for (i = 1; i < num; i++) {
-				var hi = document.getElementById("classes").rows[i].cells; // row of the hidden table (one class info)
-				var r = hi[1].innerHTML - 6; //number of row in cal-table that class will be
-				var y = document.getElementById("cal-table").rows[r].cells; // row in cal-table that class will be (class time)
-				var sp = hi[2].innerHTML - hi[1].innerHTML; // how many hours class is (how many rows it will span)
-				var name = hi[0].innerHTML; // name of class
-				var numcells = document.getElementById("classes").rows[i].cells.length; // how many days the class is each week
-				for (j = 1; j <= (numcells - 3); j++) {
-					var c = hi[j + 2].innerHTML; // day the class is
-					c = (c == "sunday") ? 1 : ((c =="monday") ? 2 : ((c =="tuesday") ? 3 : ((c =="wednesday") ? 4 : ((c =="thursday") ? 5 : ((c =="friday") ? 6 : 7))))); // converting day to column number in cal-table
-					y[c].innerHTML = name; // label cal-table cell name of class
-					y[c].className = (y[c].className == "calclass") ? "conflict" : "calclass";
-					y[c].className += " topcell";
-					for (k = 1; k < sp; k++) {
-						var next = document.getElementById("cal-table").rows[r+k]; // row beneath class in cal-table
-						var conf = next.cells; // cells of row beneath class in cal-table
-						conf[c].className = ((conf[c].className == "calclass") || (conf[c].className == "calclass topcell") || (conf[c].className == "calclass innercell")) ? "conflict" : "calclass";
-						conf[c].className += " innercell";
+		<script type="text/javascript">
+		$( document ).on( "pagebeforeshow", "#index", function() {
+			$('#calendar').fullCalendar({
+			    defaultView: 'agendaWeek',
+			    weekends: false,
+			    defaultDate:'2015-08-31',
+				events: calObjs,
+				allDaySlot: false,
+				minTime: "07:00:00",
+				maxTime: "23:00:00",
+				header: false
+			});
+			console.log("executing full calendar");
+			var plhome = JSON.parse(localStorage.getItem("picked"));
+			var i = 1;
+			for (var dept in plhome) {
+				for (var classes in plhome[dept]) {
+					for (var section in plhome[dept][classes]) {
+						var clsQuote = '"' + classes + '"';
+						var deptQuote = '"' + dept +'"';
+						var sectQuote = '"' + section + '"';
+						$('#classespicked').append('<li class="ui-field-contain" id="pickitem'+i+'"></li>');
+						$('#pickitem'+i).css('background-color','#b9cf96');
+						if(json[dept][classes][section]["status"] == "Closed") {
+							$('#pickitem'+i).css('background-color','#f06d6d');
+						}
+						$('#pickitem'+i).css('margin-top','10px');
+						$('#pickitem'+i).append('<h2 id="pickwords'+i+'"></h2>');
+						$('#pickitem'+i).append('<p id="pickname'+i+'" class="nameleft"></p>');
+						$('#pickname'+i).css('font-size','14px');
+						$('#pickitem'+i).append('<p id="pickprof'+i+'" class="profright"></p>');
+						$('#pickprof'+i).css('font-size','14px');
+						$('#pickitem'+i).append('<p id="pickother'+i+'" class="timesleft"></p>');
+						$('#pickother'+i).css('font-size','14px');
+						$('#pickitem'+i).append('<p id="pickroom'+i+'" class="roomright"></p>');
+						$('#pickroom'+i).css('font-size','14px');
+						$('#pickwords'+i).append(classes+"."+section);
+						$('#pickprof'+i).append(plhome[dept][classes][section]["professor"]);
+						$('#pickname'+i).append(plhome[dept][classes][section]["name"]);
+						$('#pickother'+i).append(plhome[dept][classes][section]["meeting"]);
+						$('#pickroom'+i).append(plhome[dept][classes][section]["room"]);
+						$('#pickitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on' selected=''>On</option></select></span>");
+						$('#index').trigger('create');
+						$("#classespicked").listview("refresh"); 
+						i++;
 					}
-					// y[c].rowSpan = sp;
-					// for (k = 1; k < sp; k++) {
-					// 	var next = document.getElementById("cal-table").rows[r+k]; // row beneath class in cal-table
-					// 	var conf = next.cells; // cells of row beneath class in cal-table
-					// 	if (conf[c].id == "calclass") {
-					// 		y[c].id = "conflict";
-					// 		k = k - conf[c].rowSpan;
-					// 	}
-					// 	next.deleteCell(c);
-					// }
-				}
+				} 
 			}
-
-			/* var r = 8;
-			var c = 5;
-			var sp = 4;
-			var y = document.getElementById("cal-table").rows[r].cells;
-			y[c].innerHTML = "Span Cells";
-			y[c].id = (y[c].id == "calclass") ? "conflict" : "calclass";
-			y[c].rowSpan = sp;
-			for (k = 1; k < sp; k++) {
-				var next = document.getElementById("cal-table").rows[r+k];
-				next.deleteCell(c);
-			} */
-		}
-	</script>
+		});
+		</script>
+	</body>
 </html>
-
-<!-- <script>
-
-	function showList() {
-		var list = "";
-		// everytime user follows a class, append a list item
-
-		$("#listCalView").html("<p><ul data-role='listview'><li>Class 1</li><li>Class 2</li></ul></p>");
-	}
-	function showCal() {
-		$("#listCalView").html("<div>Calendar</div>");
-	}
-
-</script> -->

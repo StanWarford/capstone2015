@@ -41,8 +41,9 @@
 			<div data-role="content">
 				<div id="departs" style="display:block">
 					<div>
-						<ul data-role="listview" style="padding-bottom:17px">
-							<li class="ui-field-contain" id="listitem"><a class="ui-btn" style="text-align:center">Departments</a></li>
+						<ul data-role="listview" style="padding-bottom:17px;font-weight:bold;">
+							<!-- <li class="ui-field-contain" id="listitem"><a class="ui-btn" style="text-align:center">Departments</a></li> -->
+							<li class="ui-field-contain" id="listitem" style="text-align:center">Departments</li>
 						</ul>
 					</div>
 					<!-- <ul data-role="listview" id="list-departments" data-inset="true"> -->
@@ -72,60 +73,33 @@
 				<h4>footer</h4>
 			</div> <!-- /footer -->
 			<script>
-			$(document).on('pagebeforeshow', '#index', function(){
-				$.ajax({
-					url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
-					type: "GET",
-					dataType: "text"
-				}).done(function(result){
-					// var json = JSON.parse(result);
-					// for(var department in json){
-					// 	for(var clas in json[department]){
-					// 		for(var section in json[department][clas]){
-					// 			console.log(json[department][clas][section]["section"]);
-					// 			$('#list-classes').append('<li class="ui-field-contain" id="listitem'+i+'"></li>');
-					// 			$('[class=ui-field-contain]').css('background-color','#b9cf96')
-					// 			if(json[department][clas][section]["status"] == "closed") {
-					// 				$('[class=ui-field-contain]').css('background-color','#f06d6d')
-					// 			}
-					// 			$('[class=ui-field-contain]').append(json[department][clas][section]["section"]);
-					// 			$('[class=ui-field-contain]').append('<span class="flipperBrowse"><select id="flip2" data-role="slider" data-mini="true"><option value="off">Off</option><option value="on">On</option></select></span>');
-					// 			$('#index').trigger('create');
-					// 			$("#list-classes").listview("refresh"); 
-					// 			i++;
-					// 		}
-					// 	}
-					// }
-
-					// var json = JSON.parse(result);
-					// var json = {"COSC":{"COSC105":{"01":{"subject":"COSC","section":"COSC105.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"COSC","section":"COSC105.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}},"COSC330":{"01":{"subject":"COSC","section":"COSC330.01","room":"RAC170","status":"open","professor":"Stan Warford","day":"MoTh","time":"2:00PM-2:50PM"}}},"MATH":{"MATH151":{"01":{"subject":"MATH","section":"MATH151.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"MATH","section":"MATH151.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}}}};
-					console.log(json);
-					var deptArr = [];
-					for(var department in json){
-						deptArr.push(department);
-					}
-					deptArr.sort();
-					var x = deptArr.length;
-					for (var i = 0; i < x; i++) {
-						deptQuote = '"' + deptArr[i] + '"';
-						$('#list-departments').append("<li class='ui-field-contain'><a class='deptlink' onclick='showClasses("+deptQuote+")'></a></li>");
-						$('[class=deptlink]').append(deptArr[i]);
-						$('#list-departments').listview("refresh");
-					}
-					$.mobile.loading("hide");
-				});	
-			});
+			function showDepartments() {
+			// $(document).on('pagebeforeshow', '#index', function(){
+				// $.ajax({
+				// 	url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
+				// 	type: "GET",
+				// 	dataType: "text"
+				// }).done(function(result){
+				var deptArr = [];
+				for(var department in json){
+					deptArr.push(department);
+				}
+				deptArr.sort();
+				var x = deptArr.length;
+				for (var i = 0; i < x; i++) {
+					deptQuote = '"' + deptArr[i] + '"';
+					$('#list-departments').append("<li class='ui-field-contain'><a class='deptlink' onclick='showClasses("+deptQuote+")'></a></li>");
+					$('[class=deptlink]').append(deptArr[i]);
+					$('#list-departments').listview("refresh");
+				}
+				$.mobile.loading("hide");
+				// });	
+			// });
+			}
 			function showClasses(depts) {
 				$.mobile.loading("show");
 				document.getElementById("departs").style.display = "none";
 				document.getElementById("clases").style.display = "block";
-				// $.ajax({
-				// 	url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
-				// 	type: "GET",
-				// 	dataType: "text",
-				// }).done(function(result){
-				// 	var json = JSON.parse(result);
-					// var json = {"COSC":{"COSC105":{"01":{"subject":"COSC","section":"COSC105.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"COSC","section":"COSC105.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}},"COSC330":{"01":{"subject":"COSC","section":"COSC330.01","room":"RAC170","status":"open","professor":"Stan Warford","day":"MoTh","time":"2:00PM-2:50PM"}}},"MATH":{"MATH151":{"01":{"subject":"MATH","section":"MATH151.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"MATH","section":"MATH151.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}}}};
 					for(var clas in json[depts]){
 						clasQuote = '"' + clas + '"';
 						deptsQuote = '"' + depts + '"';
@@ -134,42 +108,53 @@
 						$('#list-classes').listview("refresh");
 					}
 					$.mobile.loading("hide");
-				// });
 			}
 			function showSections(cls,dept) {
 				$.mobile.loading("show");
 				document.getElementById("clases").style.display = "none";
 				document.getElementById("sects").style.display = "block";
-				// $.ajax({
-				// 	url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
-				// 	type: "GET",
-				// 	dataType: "text"
-				// }).done(function(result){
-				// 	var json = JSON.parse(result);
-					// var json = {"COSC":{"COSC105":{"01":{"subject":"COSC","section":"COSC105.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"COSC","section":"COSC105.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}},"COSC330":{"01":{"subject":"COSC","section":"COSC330.01","room":"RAC170","status":"open","professor":"Stan Warford","day":"MoTh","time":"2:00PM-2:50PM"}}},"MATH":{"MATH151":{"01":{"subject":"MATH","section":"MATH151.01","room":"RAC170","status":"open","professor":"Brad Cupp","day":"MoTh","time":"2:00PM-2:50PM"},"02":{"subject":"MATH","section":"MATH151.02","room":"RAC170","status":"closed","professor":"Brad Cupp","day":"MoTh","time":"3:00PM-3:50PM"}}}};
-
-					var i = 1;
-					for(var section in json[dept][cls]){
-						clsQuote = '"' + cls + '"';
-						deptQuote = '"' + dept + '"';
-						sectQuote = '"' + section + '"';
-						$('#list-sections').append('<li class="ui-field-contain" id="listitem'+i+'"></li>');
-						$('#listitem'+i).css('background-color','#b9cf96');
-						if(json[dept][cls][section]["status"] == "closed") {
-							$('#listitem'+i).css('background-color','#f06d6d');
-						}
-						// $('#listitem'+i).append(json[dept][cls][section]["section"]);
-						$('#listitem'+i).append(cls+"."+section);
-						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span>");
-						$('#index').trigger('create');
-						$("#list-sections").listview("refresh"); 
-						i++;
+				var pickedlistbrowse = JSON.parse(localStorage.getItem("picked"));
+				var i = 1;
+				for(var section in json[dept][cls]){
+					var classname = json[dept][cls][section]["section"];
+					var clsQuote = '"' + cls + '"';
+					var deptQuote = '"' + dept + '"';
+					var sectQuote = '"' + section + '"';
+					$('#list-sections').append('<li class="ui-field-contain" id="listitem'+i+'"></li>');
+					$('#listitem'+i).css('background-color','#b9cf96');
+					if(json[dept][cls][section]["status"] == "Closed") {
+						$('#listitem'+i).css('background-color','#f06d6d');
 					}
-					$.mobile.loading("hide");
-				// });
-			}
-			function flipperChange(deptFlip,clasFlip,sectFlip,val) {
-				console.log(deptFlip + clasFlip + sectFlip + val);
+					$('#listitem'+i).css('margin-top','10px');
+					$('#listitem'+i).append('<h2 id="listwords'+i+'"></h2>');
+					$('#listitem'+i).append('<p id="listname'+i+'" class="nameleft"></p>');
+					$('#listname'+i).css('font-size','14px');
+					$('#listitem'+i).append('<p id="listprof'+i+'" class="profright"></p>');
+					$('#listprof'+i).css('font-size','14px');
+					$('#listitem'+i).append('<p id="listother'+i+'" class="timesleft"></p>');
+					$('#listother'+i).css('font-size','14px');
+					$('#listitem'+i).append('<p id="listroom'+i+'" class="roomright"></p>');
+					$('#listroom'+i).css('font-size','14px');
+					$('#listwords'+i).append(cls+"."+section);
+					$('#listprof'+i).append(json[dept][cls][section]["professor"]);
+					$('#listname'+i).append(json[dept][cls][section]["name"]);
+					$('#listother'+i).append(json[dept][cls][section]["meeting"]);
+					$('#listroom'+i).append(json[dept][cls][section]["room"]);
+					// $('#listitem'+i).append(cls+"."+section);
+					if ((typeof pickedlistbrowse[dept]) == 'undefined') {
+						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span>");
+					} else if ((typeof pickedlistbrowse[dept][cls]) == 'undefined'){
+						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span>");
+					} else if ((typeof pickedlistbrowse[dept][cls][section]) == 'undefined') {
+						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span>");
+					} else {
+						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on' selected=''>On</option></select></span>");
+					}
+					$('#index').trigger('create');
+					$("#list-sections").listview("refresh"); 
+					i++;
+				}
+				$.mobile.loading("hide");
 			}
 			document.getElementById("retDept").onclick = function returnDept() {
 				document.getElementById("clases").style.display = "none";
