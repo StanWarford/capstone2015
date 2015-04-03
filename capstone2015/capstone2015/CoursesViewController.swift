@@ -19,8 +19,13 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = deptOfInterest
         // Do any additional setup after loading the view.
     }
     

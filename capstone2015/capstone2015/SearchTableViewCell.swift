@@ -23,6 +23,7 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var className: UILabel!
     @IBOutlet weak var courseNumber: UILabel!
     @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var followButton: UIButton!
     
     var professor: String!
     var room: String!
@@ -35,22 +36,22 @@ class SearchTableViewCell: UITableViewCell {
         self.room = room
     }
     
+    var deptKey: String!
+    var courseKey: String!
+    var sectionKey: String!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    @IBAction func extendCell(sender: UIButton) {
-        self.contentView.frame = CGRect(x: 0,y: 0,width: 300.0, height: contentView.frame.height)
-    }
-    
     @IBAction func addClass(sender: UIButton) {
-        let newClass = NSEntityDescription.insertNewObjectForEntityForName("Class", inManagedObjectContext: self.managedObjectContext!) as Class
-        newClass.name = self.className.text!
-        newClass.course = self.courseNumber.text!
-        newClass.status = self.status.text!
-        newClass.professor = self.professor
-        newClass.room = self.room
+        followButton.setTitle("Unfollow", forState: UIControlState.Normal)
+        followButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
+        let entity = NSEntityDescription.insertNewObjectForEntityForName("ClassEntity", inManagedObjectContext: self.managedObjectContext!) as ClassEntity
+        entity.deptKey = self.deptKey
+        entity.courseKey = self.courseKey
+        entity.sectionKey = self.sectionKey
         managedObjectContext!.save(nil)
     }
 

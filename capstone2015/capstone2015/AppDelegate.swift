@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Parse
 
 var classDict: JSON?
 var classList: [JSON] = []
@@ -26,6 +27,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         // programmatically set initial view controller
+
+        Parse.setApplicationId("68AsOzImcf5xygN68CpXl0VFYQhak7o8X75D0Soa", clientKey: "IJ0IQJPR9mKRR2zODGiLjzeC6eeXyBZpn8KqaVE8")
+        
+        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+            Parse.setApplicationId("68AsOzImcf5xygN68CpXl0VFYQhak7o8X75D0Soa",
+                clientKey: "IJ0IQJPR9mKRR2zODGiLjzeC6eeXyBZpn8KqaVE8")
+            PFUser.enableAutomaticUser()
+            
+            var defaultACL = PFACL()
+            // If you would like all objects to be private by default, remove this line.
+            defaultACL.setPublicReadAccess(true)
+            PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+            
+            return true
+        }
+        
+     
+        UINavigationBar.appearance().barTintColor = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

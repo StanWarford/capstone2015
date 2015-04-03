@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C1514" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Class" representedClassName="capstone2015.Class" syncable="YES">
         <attribute name="course" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,13 +7,19 @@
         <attribute name="room" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Settings" representedClassName="Settings" syncable="YES">
+    <entity name="ClassEntity" representedClassName="capstone2015.ClassEntity" syncable="YES">
+        <attribute name="courseKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deptKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sectionKey" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Settings" representedClassName="capstone2015.Settings" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notificationsOn" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Class" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="Settings" positionX="-54" positionY="27" width="128" height="30"/>
+        <element name="Settings" positionX="-54" positionY="27" width="128" height="88"/>
+        <element name="ClassEntity" positionX="-54" positionY="18" width="128" height="88"/>
     </elements>
 </model>

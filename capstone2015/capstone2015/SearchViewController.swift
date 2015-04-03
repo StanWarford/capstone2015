@@ -10,6 +10,7 @@ import UIKit
 
 class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var statusBar: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResults: UITableView!
     @IBAction func changeFilter(sender: UISegmentedControl) {
@@ -22,8 +23,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         }
         searchForResults(searchBar.text)
     }
-    
-    var heightMap = Dictionary<String, String>()
     
     func searchForResults (searchText: String) {
         filteredModel = []
@@ -46,11 +45,24 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
 
     }
     
+    var extendedHeights = [NSIndexPath]()
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)!.layer
-        cell.frame = CGRect(x: 0.0, y: 0.0, width: cell.frame.width, height: cell.frame.height + 5.7)
+        if (contains(extendedHeights,indexPath)) {
+            var index = find(extendedHeights, indexPath)
+            extendedHeights.removeAtIndex(index!)
+        } else {
+            extendedHeights.append(indexPath)
+        }
         searchResults.beginUpdates()
         searchResults.endUpdates()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if contains(extendedHeights, indexPath) {
+            return 100.0
+        }
+        return 77.0
     }
     
 //    if let a = Optional {
@@ -64,12 +76,17 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: SearchTableViewCell = tableView.dequeueReusableCellWithIdentifier("SearchCell") as SearchTableViewCell
         let classFollowing = filteredModel[indexPath.row]
-        cell.setCell(classFollowing["name"].string!, courseNumber: classFollowing["section"].string!, status: "●" + classFollowing["status"].string!, professor: classFollowing["professor"].string!, room: classFollowing["room"].string!)
+        cell.setCell(classFollowing["name"].string!, courseNumber: classFollowing["section"].string!, status: classFollowing["status"].string! + " ●" , professor: classFollowing["professor"].string!, room: classFollowing["room"].string!)
         if (classFollowing["status"] == "Open"){
             cell.status.textColor = UIColor.orangeColor()
         } else {
             cell.status.textColor = UIColor.grayColor()
         }
+        
+        cell.deptKey = split(classFollowing["section"].string!) {$0 == " "} [0]
+        cell.courseKey = split(classFollowing["section"].string!) {$0 == "."} [0]
+        cell.sectionKey = classFollowing["subject"].string! // 02
+        
         cell.layer.cornerRadius = 10.0
         cell.layer.masksToBounds = true
         cell.layer.borderWidth = 3.0
@@ -87,6 +104,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        statusBar.backgroundColor = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
+
         // Do any additional setup after loading the view.
     }
 

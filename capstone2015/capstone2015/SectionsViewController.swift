@@ -20,6 +20,10 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         }()
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     @IBOutlet weak var sectionsList: UITableView!
     
     @IBAction func swipeBack(sender: UISwipeGestureRecognizer) {
@@ -32,6 +36,7 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = courseOfInterest
         populateSections()
         sectionsList.reloadData()
         // Do any additional setup after loading the view.
