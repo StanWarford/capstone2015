@@ -15,8 +15,10 @@
 		<script src="js/global.js"></script>
 		<script src='fullcalendar/fullcalendar.js'></script>
 		<script>
-			$(document).click(function() {
-				$('#calendar').fullCalendar({
+		var myHeight = $( window ).height();
+		$(document).click(function() {
+			$('#calendar').fullCalendar({
+				height: myHeight,
 				    defaultView: 'agendaWeek',
 				    weekends: false,
 				    defaultDate:'2015-08-31',
@@ -53,7 +55,7 @@
 			
 			<!-- content -->
 			<div data-role="content">
-				<div data-role="tabs" id="tabs">
+				<div data-role="tabs" id="tabs" style:"padding-bottom = 10px">
 					<div data-role="navbar">
     					<ul>
       						<li><a href="#list" data-ajax="false">list</a></li>
@@ -65,7 +67,7 @@
  					</div>
  					<!-- <div id="calView" style="width=100%;overflow:auto"> -->
  					<div id="calView">
- 						<div id='calendar'></div>
+ 						<div id='calendar' style = "background-color: white; "></div>
  					</div>
 				</div>
 			</div> <!-- /content -->

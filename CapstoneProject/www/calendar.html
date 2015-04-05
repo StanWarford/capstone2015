@@ -5,11 +5,12 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src='moment.min.js'></script>
 		<script src="js/global.js"></script>
-		<script src='fullcalendar/fullcalendar.js'></script>
-		
+		<script src='fullcalendar/fullcalendar.js'></script>		
 		<script>
+		var myHeight = $( window ).height();
 		$(document).ready(function() {
 			$('#calendar').fullCalendar({
+				height: myHeight,
 			    defaultView: 'agendaWeek',
 			    weekends: false,
 			    defaultDate:'2015-08-31',
