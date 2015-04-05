@@ -8,14 +8,12 @@
 		<script src='fullcalendar/fullcalendar.js'></script>
 		
 		<script>
-
-		var calObjs = cEvents(); //should return array of objects
 		$(document).ready(function() {
 			$('#calendar').fullCalendar({
 			    defaultView: 'agendaWeek',
 			    weekends: false,
 			    defaultDate:'2015-08-31',
-				events: calObjs,
+				events: cEvents(),
 				allDaySlot: false,
 				minTime: "07:00:00",
 				maxTime: "23:00:00",
