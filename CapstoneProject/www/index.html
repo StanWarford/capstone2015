@@ -33,9 +33,8 @@
 		<!--<script src="js/global.js"></script>-->
 	</head>
 	<body>
+
 		<div data-role="page" data-theme="a" id="index">
-
-
 			<div data-role="panel" id="mypanel">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li><a href="search.html" class="ui-icon-search" data-ajax="false">Search</a></li>
@@ -73,44 +72,46 @@
 			</div> <!-- /content -->
 			<div data-role="footer" data-theme="a" data-position="fixed" id="myfooter"></div>
 		</div> <!-- /page -->
+
+
 		<script type="text/javascript">
-		$( document ).on( "pagebeforeshow", "#index", function() {
-			var plhome = JSON.parse(localStorage.getItem("picked"));
-			var i = 1;
-			for (var dept in plhome) {
-				for (var classes in plhome[dept]) {
-					for (var section in plhome[dept][classes]) {
-						var clsQuote = '"' + classes + '"';
-						var deptQuote = '"' + dept +'"';
-						var sectQuote = '"' + section + '"';
-						$('#classespicked').append('<li class="ui-field-contain" id="pickitem'+i+'"></li>');
-						$('#pickitem'+i).css('background-color','#b9cf96');
-						if(json[dept][classes][section]["status"] == "Closed") {
-							$('#pickitem'+i).css('background-color','#f06d6d');
+			$( document ).on( "pagebeforeshow", "#index", function() {
+				var plhome = JSON.parse(localStorage.getItem("picked"));
+				var i = 1;
+				for (var dept in plhome) {
+					for (var classes in plhome[dept]) {
+						for (var section in plhome[dept][classes]) {
+							var clsQuote = '"' + classes + '"';
+							var deptQuote = '"' + dept +'"';
+							var sectQuote = '"' + section + '"';
+							$('#classespicked').append('<li class="ui-field-contain" id="pickitem'+i+'"></li>');
+							$('#pickitem'+i).css('background-color','#b9cf96');
+							if(json[dept][classes][section]["status"] == "Closed") {
+								$('#pickitem'+i).css('background-color','#f06d6d');
+							}
+							$('#pickitem'+i).css('margin-top','10px');
+							$('#pickitem'+i).append('<h2 id="pickwords'+i+'"></h2>');
+							$('#pickitem'+i).append('<p id="pickname'+i+'" class="nameleft"></p>');
+							$('#pickname'+i).css('font-size','14px');
+							$('#pickitem'+i).append('<p id="pickprof'+i+'" class="profright"></p>');
+							$('#pickprof'+i).css('font-size','14px');
+							$('#pickitem'+i).append('<p id="pickother'+i+'" class="timesleft"></p>');
+							$('#pickother'+i).css('font-size','14px');
+							$('#pickitem'+i).append('<p id="pickroom'+i+'" class="roomright"></p>');
+							$('#pickroom'+i).css('font-size','14px');
+							$('#pickwords'+i).append(classes+"."+section);
+							$('#pickprof'+i).append(plhome[dept][classes][section]["professor"]);
+							$('#pickname'+i).append(plhome[dept][classes][section]["name"]);
+							$('#pickother'+i).append(plhome[dept][classes][section]["meeting"]);
+							$('#pickroom'+i).append(plhome[dept][classes][section]["room"]);
+							$('#pickitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on' selected=''>On</option></select></span>");
+							$('#index').trigger('create');
+							$("#classespicked").listview("refresh"); 
+							i++;
 						}
-						$('#pickitem'+i).css('margin-top','10px');
-						$('#pickitem'+i).append('<h2 id="pickwords'+i+'"></h2>');
-						$('#pickitem'+i).append('<p id="pickname'+i+'" class="nameleft"></p>');
-						$('#pickname'+i).css('font-size','14px');
-						$('#pickitem'+i).append('<p id="pickprof'+i+'" class="profright"></p>');
-						$('#pickprof'+i).css('font-size','14px');
-						$('#pickitem'+i).append('<p id="pickother'+i+'" class="timesleft"></p>');
-						$('#pickother'+i).css('font-size','14px');
-						$('#pickitem'+i).append('<p id="pickroom'+i+'" class="roomright"></p>');
-						$('#pickroom'+i).css('font-size','14px');
-						$('#pickwords'+i).append(classes+"."+section);
-						$('#pickprof'+i).append(plhome[dept][classes][section]["professor"]);
-						$('#pickname'+i).append(plhome[dept][classes][section]["name"]);
-						$('#pickother'+i).append(plhome[dept][classes][section]["meeting"]);
-						$('#pickroom'+i).append(plhome[dept][classes][section]["room"]);
-						$('#pickitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on' selected=''>On</option></select></span>");
-						$('#index').trigger('create');
-						$("#classespicked").listview("refresh"); 
-						i++;
-					}
-				} 
-			}
-		});
+					} 
+				}
+			});
 		</script>
 	</body>
 </html>

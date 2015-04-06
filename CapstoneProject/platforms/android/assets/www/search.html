@@ -5,37 +5,119 @@
 		<meta name = "viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="css/one.css" />
 		<link rel="stylesheet" href="css/index.css" />
+		<script src="jquery-1.11.2.min.js"></script>
 		<script src="js/a.js"></script>
 		<script src="js/b.js"></script>
-		<script src="jquery-1.11.2.min.js"></script>
 		<link rel="stylesheet" href="css/peptheme.css">
+		<script src="js/global.js"></script>
 	</head>
 	<body>
-		<div data-role="page" data-theme="a">
+		<div data-role="page" data-theme="a" id="index">
+
+
 			<div data-role="panel" id="mypanel">
-    			<ul data-role="listview" data-inset="true" style="min-width:210px;">
-            		<li><a href="search.html" class="ui-icon-search">Search</a></li>
-            		<li><a href="browse.html" class="ui-icon-grid">Browse</a></li>
-            		<li><a href="options.html" class="ui-icon-gear">Options</a></li>
-            		<li><a href="splash.html">Temp: Splash</a></li>
-            		<li><a href="first.html">Temp: First</a></li>
-        		</ul>
-        		<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
+				<ul data-role="listview" data-inset="true" style="min-width:210px;">
+					<li><a href="search.html" class="ui-icon-search" data-ajax="false">Search</a></li>
+					<li><a href="browse.html" class="ui-icon-grid" data-ajax="false">Browse</a></li>
+					<li><a href="options.html" class="ui-icon-gear" data-ajax="false">Options</a></li>
+					<li><a href="splash.html" data-ajax="false">Temp: Splash</a></li>
+					<li><a href="first.html" data-ajax="false">Temp: First</a></li>
+				</ul>
+				<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
 			</div><!-- /panel -->
-			<div data-role="header" id="my-header" data-theme="a">
+			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
 				<h1>Page Title</h1>
-				<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu">home</a>
+				<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
 			</div> <!-- /header -->
-			<div data-role="content" data-theme="b" style="border-width:0px">
+
+			
+			<div data-role="content">
 				<form class="ui-filterable">
-					<input id="autocomplete-input" data-type="search" placeholder="format: SUBJECT CLASS.SECTION ex: 'HUM 111.01'">
+					<input id="autocomplete-input" data-type="search" placeholder="Enter class...">
 				</form>
-				<ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input="#autocomplete-input"></ul>
+				<ul id="autocomplete" data-role="listview" data-filter="true" data-input="#autocomplete-input" data-theme="a"></ul>
 			</div> <!-- /content -->
 			<div data-role="footer" data-theme="a" data-position="fixed">
 				<h4>footer</h4>
 			</div> <!-- /footer -->
 		</div> <!-- /page -->
+		<script>
+		$( document ).on( "pagebeforeshow", "#index", function() {
+			$("#autocomplete").on("filterablebeforefilter", function(e, data ) {
+				var pickedlistsearch = JSON.parse(localStorage.getItem("picked"));
+				var $ul = $(this),
+					$input = $(data.input),
+					value = $input.val(),
+					html = "";
+				$ul.html("");
+				if(value && value.length > 2) {
+					$.mobile.loading("show");
+					var i = 1;
+					for(var department in json){
+						for(var clas in json[department]){
+							for(var section in json[department][clas]){
+								var clsQuote = '"' + clas + '"';
+								var deptQuote = '"' + department + '"';
+								var sectQuote = '"' + section + '"';
+								var classname = json[department][clas][section]["name"];
+								var deptname = json[department][clas][section]["department"];
+								var sectname = json[department][clas][section]["section"];
+								var deptnamestring = String(deptname).toUpperCase();
+								var sectnamestring = String(sectname).toUpperCase();
+								var classstring = String(classname).toUpperCase();
+								var deptstring = String(department).toUpperCase();
+								var valueupper = value.toUpperCase();
+								if((classstring.indexOf(valueupper) >= 0) || (deptstring.indexOf(valueupper) >= 0) || (deptnamestring.indexOf(valueupper) >= 0) || (sectnamestring.indexOf(valueupper) >= 0)) {
+									if ((typeof pickedlistsearch[department]) == 'undefined') {
+										if(json[department][clas][section]["status"] == "Closed") {
+											html += "<li id ='listitem"+i+"' data-filtertext='" + department + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#f06d6d;margin-top:10px;'><h2>" + clas + "." + section + "</h2><p class='nameleft'>"+json[department][clas][section]["name"]+"</p><p class='profright'>"+json[department][clas][section]["professor"]+"</p><p class='timesleft'>"+json[department][clas][section]["meeting"]+"</p><p class='roomright'>"+json[department][clas][section]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
+											i++;
+										} else {
+											html += "<li id ='listitem"+i+"' data-filtertext='" + department + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#b9cf96;margin-top:10px;'><h2>" + clas + "." + section + "</h2><p class='nameleft'>"+json[department][clas][section]["name"]+"</p><p class='profright'>"+json[department][clas][section]["professor"]+"</p><p class='timesleft'>"+json[department][clas][section]["meeting"]+"</p><p class='roomright'>"+json[department][clas][section]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
+											i++;
+										}
+									} else if ((typeof pickedlistsearch[department][clas]) == 'undefined') {
+										if(json[department][clas][section]["status"] == "Closed") {
+											html += "<li id ='listitem"+i+"' data-filtertext='" + department + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#f06d6d;margin-top:10px;'><h2>" + clas + "." + section + "</h2><p class='nameleft'>"+json[department][clas][section]["name"]+"</p><p class='profright'>"+json[department][clas][section]["professor"]+"</p><p class='timesleft'>"+json[department][clas][section]["meeting"]+"</p><p class='roomright'>"+json[department][clas][section]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
+											i++;
+										} else {
+											html += "<li id ='listitem"+i+"' data-filtertext='" + department + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#b9cf96;margin-top:10px;'><h2>" + clas + "." + section + "</h2><p class='nameleft'>"+json[department][clas][section]["name"]+"</p><p class='profright'>"+json[department][clas][section]["professor"]+"</p><p class='timesleft'>"+json[department][clas][section]["meeting"]+"</p><p class='roomright'>"+json[department][clas][section]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
+											i++;
+										}
+									} else if ((typeof pickedlistsearch[department][clas][section]) == 'undefined') {
+										if(json[department][clas][section]["status"] == "Closed") {
+											html += "<li id ='listitem"+i+"' data-filtertext='" + department + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#f06d6d;margin-top:10px;'><h2>" + clas + "." + section + "</h2><p class='nameleft'>"+json[department][clas][section]["name"]+"</p><p class='profright'>"+json[department][clas][section]["professor"]+"</p><p class='timesleft'>"+json[department][clas][section]["meeting"]+"</p><p class='roomright'>"+json[department][clas][section]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
+											i++;
+										} else {
+											html += "<li id ='listitem"+i+"' data-filtertext='" + department + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#b9cf96;margin-top:10px;'><h2>" + clas + "." + section + "</h2><p class='nameleft'>"+json[department][clas][section]["name"]+"</p><p class='profright'>"+json[department][clas][section]["professor"]+"</p><p class='timesleft'>"+json[department][clas][section]["meeting"]+"</p><p class='roomright'>"+json[department][clas][section]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span></li>";
+											i++;
+										}
+									} else {
+										if(json[department][clas][section]["status"] == "Closed") {
+											html += "<li id ='listitem"+i+"' data-filtertext='" + department + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#f06d6d;margin-top:10px;'><h2>" + clas + "." + section + "</h2><p class='nameleft'>"+json[department][clas][section]["name"]+"</p><p class='profright'>"+json[department][clas][section]["professor"]+"</p><p class='timesleft'>"+json[department][clas][section]["meeting"]+"</p><p class='roomright'>"+json[department][clas][section]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on' selected=''>On</option></select></span></li>";
+											i++;
+										} else {
+											html += "<li id ='listitem"+i+"' data-filtertext='" + department + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#b9cf96;margin-top:10px;'><h2>" + clas + "." + section + "</h2><p class='nameleft'>"+json[department][clas][section]["name"]+"</p><p class='profright'>"+json[department][clas][section]["professor"]+"</p><p class='timesleft'>"+json[department][clas][section]["meeting"]+"</p><p class='roomright'>"+json[department][clas][section]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on' selected=''>On</option></select></span></li>";
+											i++;
+										}
+									}
+									$.mobile.loading("hide");
+								}
+							}
+						}
+					}
+					if(html == "") {
+						html = "<li>No results for "+value+".</li>";
+						$.mobile.loading("hide");
+					}
+					$ul.html(html);
+					$ul.listview("refresh");
+					$ul.trigger("updatelayout");
+					$ul.trigger('create');
+				}
+			});
+		});
+		</script>
 	</body>
 </html>

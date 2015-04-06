@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
+
+
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!--WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323-->
+<!--         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+<!--         <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+
+
+
 		<title>Page Title</title>
 		<meta name = "viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="css/one.css" />
@@ -11,33 +26,84 @@
 		<link rel="stylesheet" href="css/peptheme.css">
 	</head>
 	<body>
-		<div data-role="page" data-theme="a" id="index">
 
-			
-			<div data-role="panel" id="mypanel">
-				<ul data-role="listview" data-inset="true" style="min-width:210px;">
-					<li><a href="search.html" class="ui-icon-search" data-ajax="false">Search</a></li>
-					<li><a href="browse.html" class="ui-icon-grid" data-ajax="false">Browse</a></li>
-					<li><a href="options.html" class="ui-icon-gear" data-ajax="false">Options</a></li>
-					<li><a href="splash.html" data-ajax="false">Temp: Splash</a></li>
-					<li><a href="first.html" data-ajax="false">Temp: First</a></li>
-				</ul>
-				<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
-			</div><!-- /panel -->
-			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
-				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
-				<h1>Page Title</h1>
-				<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
-			</div> <!-- /header -->
+ 
+        <div class="app">
+<!--             <h1>PhoneGap</h1> -->
+            <div id="deviceready">
+<!--                 <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            
+ -->
 
 
-			<div data-role="content">
-				<h1>Splash Page!</h1>
-				<img src="images/ajax-loader.gif" alt="Loading..." style="position:absolute; right:50%; top:50%;">
-			</div> <!-- /content -->
-			<div data-role="footer" data-theme="a" data-position="fixed">
-				<h4>footer</h4>
-			</div> <!-- /footer -->
-		</div> <!-- /page -->
+				<div data-role="page" data-theme="a" id="index">
+
+					
+					<div data-role="panel" id="mypanel">
+						<ul data-role="listview" data-inset="true" style="min-width:210px;">
+							<li><a href="search.html" class="ui-icon-search" data-ajax="false">Search</a></li>
+							<li><a href="browse.html" class="ui-icon-grid" data-ajax="false">Browse</a></li>
+							<li><a href="options.html" class="ui-icon-gear" data-ajax="false">Options</a></li>
+							<li><a href="splash.html" data-ajax="false">Temp: Splash</a></li>
+							<li><a href="first.html" data-ajax="false">Temp: First</a></li>
+						</ul>
+						<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
+					</div><!-- /panel -->
+					<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
+						<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
+						<h1>Page Title</h1>
+						<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
+					</div> <!-- /header -->
+
+
+					<div data-role="content">
+						<h1>Splash Page!</h1>
+						<img src="images/ajax-loader.gif" alt="Loading..." style="position:absolute; right:50%; top:50%;">
+					</div> <!-- /content -->
+					<div data-role="footer" data-theme="a" data-position="fixed">
+						<h4>footer</h4>
+					</div> <!-- /footer -->
+				</div> <!-- /page -->
+			</div>
+		</div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+
+		<script type="text/javascript">
+			app.initialize();
+		</script>
 	</body>
 </html>
+
+
+<!--<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>PhoneGap</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
+ -->

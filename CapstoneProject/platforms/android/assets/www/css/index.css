@@ -7,7 +7,45 @@
 }
 
 .flipperBrowse {
-	position:absolute; right:6px; top:9px;
+	position:absolute; right:6px; top:13px;
+}
+
+.profright {
+	text-align: right;
+	float: right;
+	width: 40%;
+	padding: 0;
+	margin:0;
+	white-space: normal;
+	/*word-wrap:break-word;*/
+}
+
+.nameleft {
+	clear:both;
+	float: left;
+	width: 60%;
+	padding:0;
+	margin:0;
+}
+
+.roomright {
+	text-align: right;
+	float: right;
+	width: 33%;
+	padding: 0;
+	margin:0;
+}
+
+.timesleft {
+	clear:both;
+	float: left;
+	width: 67%;
+	padding:0;
+	margin:0;
+}
+
+.flipperSearch {
+	position:absolute; right:6px; top:5px;
 }
 
 .flipperOptions {
@@ -36,14 +74,27 @@
 	background-color: #92b1cd;
 }
 
-#calclass {
+.calclass {
+	background-color: green;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.conflict {
 	background-color: red;
 	text-align: center;
 	vertical-align: middle;
 }
 
-#conflict {
-	background-color: green;
-	text-align: center;
-	vertical-align: middle;
+.topcell {
+	border-bottom: 0px;
+}
+
+.innercell {
+	border-top: 0px;
+	border-bottom: 0px;
+}
+
+.bottomcell {
+	border-top: 0px;
 }
