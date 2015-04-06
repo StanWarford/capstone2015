@@ -107,15 +107,6 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func populateClassList(){
-        let fetchRequest = NSFetchRequest(entityName: "Class")
-        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Class]{
-            classes = []
-            for (var i = 0; i < fetchResults.count; i++){
-                var classFollowing = ClassModel(name: fetchResults[i].name, course: fetchResults[i].course, status: fetchResults[i].status, professor: fetchResults[i].professor, room: fetchResults[i].room)
-                classes.append(classFollowing)
-            }
-        }
-        self.classList.reloadData()
         
         let fetchRequest2 = NSFetchRequest(entityName: "ClassEntity")
         if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest2, error: nil) as? [ClassEntity]{
@@ -125,7 +116,11 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
                 var entity = fetchResults[i]
                 var classToAdd: JSON! = classDict![entity.deptKey][entity.courseKey][entity.sectionKey]
                 var x = classToAdd["name"].string!
-                var classFollowing = ClassModel(name: classToAdd["name"].string!, course: classToAdd["section"].string!, status: classToAdd["status"].string!, professor: classToAdd["professor"].string!, room: classToAdd["room"].string!)
+                var classFollowing = ClassModel(name: classToAdd["name"].string!,
+                    course: classToAdd["section"].string!,
+                    status: classToAdd["status"].string!,
+                    professor: classToAdd["professor"].string!,
+                    room: classToAdd["room"].string!)
                 classes.append(classFollowing)
             }
         }
