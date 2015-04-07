@@ -46,6 +46,7 @@
 		87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3C5E51A89AF72001DC31F /* SearchViewController.swift */; };
 		87F3C5E81A8AB252001DC31F /* DepartmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3C5E71A8AB252001DC31F /* DepartmentViewController.swift */; };
 		87F3C5EA1A8AB465001DC31F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3C5E91A8AB465001DC31F /* SettingsViewController.swift */; };
+		87FFCD8D1AD372CA00BE55B4 /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FFCD8C1AD372CA00BE55B4 /* CalendarInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		87F3C5E51A89AF72001DC31F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		87F3C5E71A8AB252001DC31F /* DepartmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentViewController.swift; sourceTree = "<group>"; };
 		87F3C5E91A8AB465001DC31F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		87FFCD8C1AD372CA00BE55B4 /* CalendarInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				87CC53E51ABFA4BD0019B341 /* CalendarCollectionViewCell.swift */,
 				87CC53E31ABF99370019B341 /* CalendarGridLayout.swift */,
 				87CC53E11ABF6D730019B341 /* CalendarViewController.swift */,
+				87FFCD8C1AD372CA00BE55B4 /* CalendarInfo.swift */,
 				877B78C31A92D688005A09EB /* ClassModel.swift */,
 				788806EA1A64B74E0048E2D2 /* AppDelegate.swift */,
 				87F3C5E91A8AB465001DC31F /* SettingsViewController.swift */,
@@ -377,6 +380,7 @@
 				877B78C61A92DCDD005A09EB /* Class.swift in Sources */,
 				87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */,
 				87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */,
+				87FFCD8D1AD372CA00BE55B4 /* CalendarInfo.swift in Sources */,
 				877B78C81A92E15C005A09EB /* SectionsTableViewCell.swift in Sources */,
 				87CC53E61ABFA4BD0019B341 /* CalendarCollectionViewCell.swift in Sources */,
 				877B78D41A9C1811005A09EB /* SwiftyJSON.swift in Sources */,

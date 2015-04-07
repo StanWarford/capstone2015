@@ -47,16 +47,15 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
         var sectionDict = classDict![deptOfInterest!][courseOfInterest!]
         var sectionKeys = sectionDict.dictionary!.keys
         for sectionKey in sectionKeys {
-            
             var classOfInterest = ClassModel()
-            classOfInterest.name = sectionDict["name"].string
-            classOfInterest.dept = sectionDict["department"].string
-            classOfInterest.course = sectionDict["section"].string
-            classOfInterest.professor = sectionDict["professor"].string
-            classOfInterest.room = sectionDict["room"].string
-            classOfInterest.section = sectionDict["subject"].string
-            classOfInterest.status = sectionDict["status"].string
-            classOfInterest.time = sectionDict["meeting"].string
+            classOfInterest.name = sectionDict[sectionKey]["name"].string
+            classOfInterest.dept = sectionDict[sectionKey]["department"].string
+            classOfInterest.course = sectionDict[sectionKey]["section"].string
+            classOfInterest.professor = sectionDict[sectionKey]["professor"].string
+            classOfInterest.room = sectionDict[sectionKey]["room"].string
+            classOfInterest.section = sectionDict[sectionKey]["subject"].string
+            classOfInterest.status = sectionDict[sectionKey]["status"].string
+            classOfInterest.time = sectionDict[sectionKey]["meeting"].string
             self.sections.append(classOfInterest)
         }
     }
@@ -88,7 +87,7 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         cell.deptKey = deptOfInterest
         cell.courseKey = courseOfInterest
-        cell.sectionKey = split(classFollowing.name) {$0 == "."} [1]
+        cell.sectionKey = split(classFollowing.course) {$0 == "."} [1]
         
         cell.layer.cornerRadius = 10.0
         cell.layer.masksToBounds = true

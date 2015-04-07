@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import QuartzCore
 
+var classes = [ClassModel]()
+
 class ClassListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var titleBar: UINavigationItem!
@@ -32,7 +34,6 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var classList: UITableView!
     
-    var classes = [ClassModel]()
     var increasedHeights = [NSIndexPath]()
     
     override func viewDidLoad() {
