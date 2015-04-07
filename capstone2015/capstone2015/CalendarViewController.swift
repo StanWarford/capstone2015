@@ -14,10 +14,11 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBOutlet weak var calendarView: UICollectionView!
     
+    var model = [[],[],[]]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         statusBar.backgroundColor = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
-        //calendarView.collectionViewLayout.
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,17 +32,19 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: CalendarCollectionViewCell = calendarView.dequeueReusableCellWithReuseIdentifier("CalendarCell", forIndexPath: indexPath) as CalendarCollectionViewCell
+        
         // create cell
-        cell.setCell(indexPath.row, column: indexPath.section)
+        // cell.setCell(indexPath.row, column: indexPath.section)
+        // cell.setCell(text, color)
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return model[0].count
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 28
+        return model.count
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {

@@ -115,12 +115,15 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
             for (var i = 0; i < fetchResults.count; i++){
                 var entity = fetchResults[i]
                 var classToAdd: JSON! = classDict![entity.deptKey][entity.courseKey][entity.sectionKey]
-                var x = classToAdd["name"].string!
-                var classFollowing = ClassModel(name: classToAdd["name"].string!,
-                    course: classToAdd["section"].string!,
-                    status: classToAdd["status"].string!,
-                    professor: classToAdd["professor"].string!,
-                    room: classToAdd["room"].string!)
+                var classFollowing = ClassModel()
+                classFollowing.name = classToAdd["name"].string!
+                classFollowing.dept = classToAdd["department"].string!
+                classFollowing.course = classToAdd["section"].string!
+                classFollowing.professor = classToAdd["professor"].string!
+                classFollowing.room = classToAdd["room"].string!
+                classFollowing.section = classToAdd["subject"].string!
+                classFollowing.status = classToAdd["status"].string!
+                classFollowing.time = classToAdd["meeting"].string!
                 classes.append(classFollowing)
             }
         }

@@ -47,12 +47,17 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
         var sectionDict = classDict![deptOfInterest!][courseOfInterest!]
         var sectionKeys = sectionDict.dictionary!.keys
         for sectionKey in sectionKeys {
-            var name = courseOfInterest! + "." + sectionKey
-            var course = sectionDict[sectionKey]["name"].string
-            var status = sectionDict[sectionKey]["status"].string
-            var professor = sectionDict[sectionKey]["professor"].string
-            var room = sectionDict[sectionKey]["room"].string
-            self.sections.append(ClassModel(name: name, course: course!, status: status!, professor: professor!, room: room!))
+            
+            var classOfInterest = ClassModel()
+            classOfInterest.name = sectionDict["name"].string
+            classOfInterest.dept = sectionDict["department"].string
+            classOfInterest.course = sectionDict["section"].string
+            classOfInterest.professor = sectionDict["professor"].string
+            classOfInterest.room = sectionDict["room"].string
+            classOfInterest.section = sectionDict["subject"].string
+            classOfInterest.status = sectionDict["status"].string
+            classOfInterest.time = sectionDict["meeting"].string
+            self.sections.append(classOfInterest)
         }
     }
     

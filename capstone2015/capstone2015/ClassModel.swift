@@ -10,17 +10,16 @@ import Foundation
 
 class ClassModel {
     
-    var name: String!
-    var course: String!
-    var status: String!
-    var professor: String!
-    var room: String!
+    var name: String!       // American People and Politics
+    var course: String!     // POSC 104.04
+    var section: String!    // 01
+    var dept: String!       // Political Science
+    var status: String!     // Open, Closed
+    var professor: String!  // Salas, Susan Plumb
+    var room: String!       // AC263
+    var time: String!       // MoTh 08:00AM - 09:50AM
     
-    init(name: String, course: String, status: String, professor: String, room: String){
-        self.name = name
-        self.status = status
-        self.course = course
-        self.professor = professor
-        self.room = room
+    init(){
+        
     }
 }
