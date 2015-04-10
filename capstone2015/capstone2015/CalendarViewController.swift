@@ -46,7 +46,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return model.count
+        return model.count //#rows
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
@@ -63,12 +63,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     */
     
-    // Brian's functions
+    // Bryan's functions
     
-    var mapping : [String : Int] = ["Mo" : 0, "Tu" : 1, "We" : 2, "Th" : 3, "Fr" : 4]
+    var mapping : [String : Int] = ["Mo" : 1, "Tu" : 2, "We" : 3, "Th" : 4, "Fr" : 5]
     
     func parseClasses(){
-        model = [[CalendarInfo?]](count: 28, repeatedValue: [CalendarInfo?](count: 5, repeatedValue: nil))
+        model = [[CalendarInfo?]](count: 29, repeatedValue: [CalendarInfo?](count: 6, repeatedValue: nil))
         for c in classes {
             var meetingTime = split(c.time) {$0 == " "}
             var days = mapDays(meetingTime[0])
@@ -78,6 +78,20 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func populateCalModel(days: [Int], times: [Int], className: String) {
+        
+        model[0][1] = CalendarInfo(text: "Mon", color: UIColor.blueColor())
+        model[0][2] = CalendarInfo(text: "Tues", color: UIColor.blueColor())
+        model[0][3] = CalendarInfo(text: "Wed", color: UIColor.blueColor())
+        model[0][4] = CalendarInfo(text: "Thurs", color: UIColor.blueColor())
+        model[0][5] = CalendarInfo(text: "Fri", color: UIColor.blueColor())
+        
+        var start = "7:30AM"
+        
+        for (var k = 2; k < model.count; k++){
+            start = addThirtyMinutes(start)
+            model[k][0] = CalendarInfo(text: start, color: UIColor.blueColor()) //first time is 8AM
+        }
+        
         for (var j = 0; j < days.count; j++){
             for(var i = 0; i < times[1]; i++){
                 var startPoint = times[0]
@@ -163,9 +177,26 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func timeToGrid(startTime: Int) -> Int{
-        var gridTime = startTime - 8
+        var gridTime = startTime - 7
         gridTime *= 2 //30 min blocks
         return gridTime
     }
 
+    func addThirtyMinutes(time: String) -> String {
+    
+        let inFormatter = NSDateFormatter()
+        inFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        inFormatter.dateFormat = "hh:mma"
+    
+        let outFormatter = NSDateFormatter()
+        outFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        outFormatter.dateFormat = "hh:mm a"
+    
+        var stringToDate = inFormatter.dateFromString(time)!
+        var addThirtyMinutes = stringToDate.dateByAddingTimeInterval(1800)
+        var returnTime = outFormatter.stringFromDate(addThirtyMinutes)
+
+    
+        return returnTime
+    }
 }
