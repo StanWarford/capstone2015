@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -352,9 +352,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="66" height="25"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVv-d9-KrC">
-                                                    <rect key="frame" x="8" y="0.0" width="50" height="25"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVv-d9-KrC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="66" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -364,11 +365,19 @@
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="oVv-d9-KrC" firstAttribute="trailing" secondItem="5p2-oz-TP6" secondAttribute="trailingMargin" id="3nO-G3-Vth"/>
+                                            <constraint firstItem="oVv-d9-KrC" firstAttribute="leading" secondItem="5p2-oz-TP6" secondAttribute="leadingMargin" constant="-8" id="D7l-AF-31T"/>
                                             <constraint firstItem="oVv-d9-KrC" firstAttribute="top" secondItem="5p2-oz-TP6" secondAttribute="topMargin" constant="-8" id="IeL-gM-5bu"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="oVv-d9-KrC" secondAttribute="bottom" constant="-8" id="KMh-Jp-hs9"/>
                                             <constraint firstItem="oVv-d9-KrC" firstAttribute="leading" secondItem="5p2-oz-TP6" secondAttribute="leadingMargin" id="ieK-Ry-H4L"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="oVv-d9-KrC" secondAttribute="trailing" constant="-8" id="kpj-ni-OdR"/>
                                         </constraints>
                                         <size key="customSize" width="66" height="25"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="3nO-G3-Vth"/>
+                                                <exclude reference="ieK-Ry-H4L"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outlet property="cellText" destination="oVv-d9-KrC" id="nAn-Ge-gc2"/>
                                         </connections>
@@ -1291,8 +1300,8 @@
         <image name="listTabIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="wNl-No-xpW"/>
         <segue reference="fwR-Xc-Cwc"/>
-        <segue reference="kbK-eQ-VkF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

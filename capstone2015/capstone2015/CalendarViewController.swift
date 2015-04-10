@@ -35,6 +35,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell: CalendarCollectionViewCell = calendarView.dequeueReusableCellWithReuseIdentifier("CalendarCell", forIndexPath: indexPath) as CalendarCollectionViewCell
         if let classFollowing = model[indexPath.section][indexPath.row]{
             cell.setCell(classFollowing.text, color: classFollowing.color!)
+        } else {
+            cell.setCell("",color: nil)
         }
         return cell
     }
@@ -66,11 +68,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     var mapping : [String : Int] = ["Mo" : 0, "Tu" : 1, "We" : 2, "Th" : 3, "Fr" : 4]
     
     func parseClasses(){
+        model = [[CalendarInfo?]](count: 28, repeatedValue: [CalendarInfo?](count: 5, repeatedValue: nil))
         for c in classes {
             var meetingTime = split(c.time) {$0 == " "}
             var days = mapDays(meetingTime[0])
             var time = mapTimes(meetingTime[1], end: meetingTime[3])
-            populateCalModel(days, times: time, className: c.name)
+            populateCalModel(days, times: time, className: c.course)
         }
     }
     
@@ -79,9 +82,9 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             for(var i = 0; i < times[1]; i++){
                 var startPoint = times[0]
                 if(i == 0){
-                    model[startPoint][days[j]] = CalendarInfo(text: className, color: UIColor.redColor())
+                    model[startPoint][days[j]] = CalendarInfo(text: className, color: UIColor.orangeColor())
                 } else {
-                    model[startPoint+i][days[j]] = CalendarInfo(color: UIColor.redColor())
+                    model[startPoint+i][days[j]] = CalendarInfo(color: UIColor.orangeColor())
                 }
             }
         }
