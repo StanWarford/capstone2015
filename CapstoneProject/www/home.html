@@ -107,7 +107,7 @@
 							$('#pickname'+i).append(plhome[dept][classes][section]["name"]);
 							$('#pickother'+i).append(plhome[dept][classes][section]["meeting"]);
 							$('#pickroom'+i).append(plhome[dept][classes][section]["room"]);
-							$('#pickitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on' selected=''>On</option></select></span>");
+							$('#pickitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on' selected=''></option></select></span>");
 							$('#index').trigger('create');
 							$("#classespicked").listview("refresh"); 
 							i++;

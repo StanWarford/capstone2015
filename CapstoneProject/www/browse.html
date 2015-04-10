@@ -47,7 +47,7 @@
 						</ul>
 					</div>
 					<!-- <ul data-role="listview" id="list-departments" data-inset="true"> -->
-					<ul data-role="listview" id="list-departments" data-autodividers="true">
+					<ul data-role="listview" id="list-departments" data-inset="true" data-autodividers="true">
 					</ul>
 				</div>
 				<div id="clases" style="display:none">
@@ -56,7 +56,7 @@
 							<li class="ui-field-contain" id="listitem"><a class="ui-btn ui-btn-icon-left ui-icon-carat-l" style="text-align:center" id="retDept">Back to Departments</a></li>
 						</ul>
 					</div>
-					<ul data-role="listview" id="list-classes">
+					<ul data-role="listview" id="list-classes" data-inset="true">
 					</ul>
 				</div>
 				<div id="sects" style="display:none">
@@ -65,7 +65,7 @@
 							<li class="ui-field-contain" id="listitem"><a class="ui-btn ui-btn-icon-left ui-icon-carat-l" style="text-align:center"  id="retClas">Back to Classes</a></li>
 						</ul>
 					</div>
-					<ul data-role="listview" id="list-sections">
+					<ul data-role="listview" id="list-sections" data-inset="true">
 					</ul>
 				</div>
 			</div> <!-- /content -->
@@ -142,13 +142,13 @@
 					$('#listroom'+i).append(json[dept][cls][section]["room"]);
 					// $('#listitem'+i).append(cls+"."+section);
 					if ((typeof pickedlistbrowse[dept]) == 'undefined') {
-						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span>");
+						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span>");
 					} else if ((typeof pickedlistbrowse[dept][cls]) == 'undefined'){
-						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span>");
+						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span>");
 					} else if ((typeof pickedlistbrowse[dept][cls][section]) == 'undefined') {
-						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on'>On</option></select></span>");
+						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span>");
 					} else {
-						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'>Off</option><option value='on' selected=''>On</option></select></span>");
+						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on' selected=''></option></select></span>");
 					}
 					$('#index').trigger('create');
 					$("#list-sections").listview("refresh"); 
