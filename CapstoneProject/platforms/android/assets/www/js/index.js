@@ -22,6 +22,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
+        alert("initializing");
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -36,13 +37,13 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         // TODO: put logic in here for first-login page????
-
+         
+        //setTimeout(functiohn(){window.location.replace("../home.html");}, 3000);
         // var parentElement = document.getElementById(id);
         // var listeningElement = parentElement.querySelector('.listening');
         // var receivedElement = parentElement.querySelector('.received');
@@ -58,7 +59,7 @@ var app = {
     handleDeviceReady: function(id) {
         var pushNotification = window.plugins.pushNotification;
         if (device.platform == 'android' || device.platform == 'Android') {
-            //alert("Register called");
+            alert("Register called");
             pushNotification.register(this.successHandler, this.errorHandler,{"senderID":"1047272876473","ecb":"app.onNotificationGCM"});
         }
         else {
@@ -71,7 +72,7 @@ var app = {
         //alert('Callback Success! Result = '+result)
     },
     errorHandler:function(error) {
-        alert(error);
+        //alert(error);
     },
     onNotificationGCM: function(e) {
         switch( e.event )
@@ -79,12 +80,15 @@ var app = {
             case 'registered':
                 if ( e.regid.length > 0 )
                 {
-                    console.log("Regid " + e.regid);
-                    //alert('Registration id = '+e.regid);
+                    // save regid to local storage for future use
+                    localStorage.setItem("regID", e.regid);
+
+                    //console.log("Regid " + e.regid);
+                    alert('Registration id = '+e.regid);
                     // now send HTTP POST to server with regid and user info
-                    $.post("http://137.159.148.118:8000",
+                    $.post("http://137.159.150.222:8000/subscribe",
                     {
-                        user: "userName",
+                        user: localStorage.getItem("userName"),
                         type: "Android",
                         token: e.regid
                     },
@@ -96,7 +100,7 @@ var app = {
  
             case 'message':
               // this is the actual push notification. its format depends on the data model from the push server
-              alert('message = '+e.message);
+              alert('PN: '+e.message);
             break;
  
             case 'error':

@@ -36,7 +36,32 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 			pickedlist[deptFlip][clasFlip][sectFlip] = json[deptFlip][clasFlip][sectFlip];
 		}
 		localStorage.setItem("picked",JSON.stringify(pickedlist));
+
+		// tell server the user is following a new class
+        $.post("http://137.159.150.222:8000/follow",
+        {
+            section: pickedlist[deptFlip],			// object
+            token: localStorage.getItem("regID")	// user token
+        },
+        function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+
 	} else {
+
+		// tell server the user unfollowed this class
+		//alert(JSON.stringify(pickedlist[deptFlip]));
+
+        $.post("http://137.159.150.222:8000/unfollow",
+        {
+            section: pickedlist[deptFlip],			// object
+            token: localStorage.getItem("regID")	// user token
+        },
+        function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+
+
 		delete pickedlist[deptFlip][clasFlip][sectFlip];
 		console.log(pickedlist[deptFlip][clasFlip]);
 		if ($.isEmptyObject(pickedlist[deptFlip][clasFlip])) {
@@ -122,4 +147,10 @@ function cEvents() {
 	return calEvents;
 }
 
+// alert(localStorage.getItem("firstLogin"));
 
+// if (localStorage.getItem("firstLogin") == "false") {
+// 	alert("In if");
+// 	localStorage.setItem("firstLogin", "true");
+// 	alert(localStorage.getItem("firstLogin"));
+// }

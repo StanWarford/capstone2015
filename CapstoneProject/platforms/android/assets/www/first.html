@@ -6,20 +6,19 @@
 		<link rel="stylesheet" href="css/one.css" />
 		<link rel="stylesheet" href="css/index.css" />
 		<script src="jquery-1.11.2.min.js"></script>
+		<script src="js/global.js"></script>
 		<script src="js/a.js"></script>
 		<script src="js/b.js"></script>
 		<link rel="stylesheet" href="css/peptheme.css">
 	</head>
 	<body>
 		<div data-role="page" data-theme="a" id="index">
-
-
 			<div data-role="panel" id="mypanel">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li><a href="search.html" class="ui-icon-search" data-ajax="false">Search</a></li>
 					<li><a href="browse.html" class="ui-icon-grid" data-ajax="false">Browse</a></li>
 					<li><a href="options.html" class="ui-icon-gear" data-ajax="false">Options</a></li>
-					<li><a href="splash.html" data-ajax="false">Temp: Splash</a></li>
+					<li><a href="index.html" data-ajax="false">Temp: Splash</a></li>
 					<li><a href="first.html" data-ajax="false">Temp: First</a></li>
 				</ul>
 				<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
@@ -27,31 +26,49 @@
 			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
 				<h1>Page Title</h1>
-				<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
+				<a href="home.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
 			</div> <!-- /header -->
-
-			
 			<div data-role="content">
 				<h3>Provide Information</h3>
 				<form>
+    				<label for="name-1">Name:</label>
+    				<input type="text" data-clear-btn="true" name="name-1" id="name-1" value="" placeholder="Your name...">
+				</form>
+				<!-- <form>
     				<label for="email-1">Email</label>
     				<input type="email" data-clear-btn="true" name="email-1" id="email-1" value="">
 				</form>
 				<form>
      				<label for="tel-1">Phone Number</label>
      				<input type="tel" data-clear-btn="true" name="tel-1" id="tel-1" value="">
-				</form>
+				</form> -->
 				<form class="ui-field-contain" style="border-bottom-width:0px">
 					<p>Push Notifications:</p>
 					<span class="flipperFirst">
 						<input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="a">
 					</span>
 				</form>
-				<button class="ui-btn ui-corner-all ui-shadow ui-btn-a">Submit</button>
+				<button class="ui-btn ui-corner-all ui-shadow ui-btn-a" onclick="submitButton()">Submit</button>
 			</div> <!-- /content -->
-			<div data-role="footer" data-theme="a" data-position="fixed">
+			<!-- <div data-role="footer" data-theme="a" data-position="fixed">
 				<h4>footer</h4>
-			</div> <!-- /footer -->
+			</div> --> <!-- /footer -->
 		</div> <!-- /page -->
 	</body>
 </html>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+<script type="text/javascript">
+	// save input to local storage
+
+	function submitButton() {
+		localStorage.setItem("userName",document.getElementById("name-1").value);			// String
+		localStorage.setItem("isPush",document.getElementById("flip-checkbox-1").checked);	// Boolean
+		//subscribe the user!
+		app.initialize();
+		// redirect to home
+		setTimeout(function(){window.location = "home.html";}, 1000);
+	}
+
+</script>
