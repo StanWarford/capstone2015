@@ -32,6 +32,25 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    var extendedHeight: NSIndexPath?
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if (extendedHeight == indexPath) {
+            extendedHeight = nil
+        } else {
+            extendedHeight = indexPath
+        }
+        sectionsList.beginUpdates()
+        sectionsList.endUpdates()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (extendedHeight == indexPath) {
+            return 132
+        }
+        return 68
+    }
+    
     var sections = [ClassModel]()
     
     override func viewDidLoad() {
@@ -77,7 +96,8 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
             courseNumber: classFollowing.course,
             status: classFollowing.status,
             professor: classFollowing.professor,
-            room: classFollowing.room)
+            room: classFollowing.room,
+            time: classFollowing.time)
         
         if (classFollowing.status == "Open"){
             cell.status.textColor = alizarinRed
