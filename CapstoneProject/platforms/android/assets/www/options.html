@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="css/one.css" />
 		<link rel="stylesheet" href="css/index.css" />
 		<script src="jquery-1.11.2.min.js"></script>
+		<script src="js/global.js"></script>
 		<script src="js/a.js"></script>
 		<script src="js/b.js"></script>
 		<link rel="stylesheet" href="css/peptheme.css">
@@ -26,7 +27,8 @@
 			</div><!-- /panel -->
 			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
-				<h1>Buoy</h1>
+				<!-- <h1>Buoy</h1> -->
+				<img src="images/buoy-white.gif" alt="Buoy" style="height:50px;display:block;margin-left:auto;margin-right:auto;margin-bottom:4px;" />
 				<a href="home.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
 			</div> <!-- /header -->
 
@@ -38,6 +40,12 @@
 						<input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="c">
 					</span>
 				</div>
+				<div class="ui-field-contain" style="border-bottom-width:0px">
+					<h3>Your NTID:</h3>
+					<div id="ntidDisplay"></div>
+				</div>
+				<br>
+				<br>
 				<!-- <h3>Refresh frequency:</h3>
 				<form>
 					<fieldset data-role="controlgroup" data-iconpos="right">
@@ -50,6 +58,13 @@
 					</fieldset>
 				</form> -->
 				<a href="help.html" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-right ui-btn-a">Help</a>
+
+
+				<br>
+				<br>
+				<a href="javascript:void()" onclick="testPush()" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-right ui-btn-a">TEST PUSH NOTIFICATION</a>
+				<br>
+				<br>
 			</div> <!-- /content -->
 			<!-- <div data-role="footer" data-theme="a" data-position="fixed">
 				<h4>footer</h4>
@@ -57,3 +72,30 @@
 		</div> <!-- /page -->
 	</body>
 </html>
+
+
+
+<!-- UNCOMMENT THE FOLLOWING LINE WHEN INSTALLING ON A DEVICE!!!!! -->
+<script type="text/javascript" src="cordova.js"></script>
+
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+
+
+<script type="text/javascript">
+	app.initialize(app.registerUser);
+
+	$("#ntidDisplay").html(localStorage.getItem("userName"));
+
+	function testPush() {
+        $.post("http://137.159.150.222:8000/testPN",
+        {
+            user: localStorage.getItem("userName"),
+            type: "Android",
+            token: localStorage.getItem("regID")
+        },
+        function(data,status){
+            //alert("Data: " + data + "\nStatus: " + status);
+        });
+	}
+</script>

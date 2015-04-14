@@ -13,7 +13,8 @@
 	</head>
 	<body>
 		<div data-role="page" data-theme="a" id="index">
-			<div data-role="panel" id="mypanel">
+
+<!-- 			<div data-role="panel" id="mypanel">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li><a href="search.html" class="ui-icon-search" data-ajax="false">Search</a></li>
 					<li><a href="browse.html" class="ui-icon-grid" data-ajax="false">Browse</a></li>
@@ -22,18 +23,29 @@
 					<li><a href="first.html" data-ajax="false">Temp: First</a></li>
 				</ul>
 				<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
-			</div><!-- /panel -->
+			</div>
+
 			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
 				<h1>Buoy</h1>
 				<a href="home.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
-			</div> <!-- /header -->
+			</div>  -->
+
 			<div data-role="content">
-				<h3>Provide Information</h3>
+				<h3>Welcome to Buoy!</h3>
+					<p>For help using this app, go to Options</p>
+				<br>
+				<br>
+				<br>
+				<br>
+ 				<h3>Provide Information</h3>
 				<form>
-    				<label for="name-1">Name:</label>
+    				<label for="name-1">NTID (Pepperdine Login):</label>
     				<input type="text" data-clear-btn="true" name="name-1" id="name-1" value="" placeholder="Your name...">
 				</form>
+				<div id = "required" style="display:none;color:red;">
+					PLEASE ENTER YOUR NTID
+				</div>
 				<!-- <form>
     				<label for="email-1">Email</label>
     				<input type="email" data-clear-btn="true" name="email-1" id="email-1" value="">
@@ -42,12 +54,14 @@
      				<label for="tel-1">Phone Number</label>
      				<input type="tel" data-clear-btn="true" name="tel-1" id="tel-1" value="">
 				</form> -->
-				<form class="ui-field-contain" style="border-bottom-width:0px">
+
+<!-- 				<form class="ui-field-contain" style="border-bottom-width:0px">
 					<p>Push Notifications:</p>
 					<span class="flipperFirst">
 						<input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="c">
 					</span>
-				</form>
+				</form> -->
+				<br>
 				<button class="ui-btn ui-corner-all ui-shadow ui-btn-a" onclick="submitButton()">Submit</button>
 			</div> <!-- /content -->
 			<!-- <div data-role="footer" data-theme="a" data-position="fixed">
@@ -56,19 +70,30 @@
 		</div> <!-- /page -->
 	</body>
 </html>
+
+<!-- UNCOMMENT THE FOLLOWING LINE WHEN INSTALLING ON A DEVICE!!!!! -->
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
-<script type="text/javascript">
-	// save input to local storage
 
+<script type="text/javascript">
+	//subscribe the user!
+ 	app.initialize(app.registerUser);
+ 	
 	function submitButton() {
-		localStorage.setItem("userName",document.getElementById("name-1").value);			// String
-		localStorage.setItem("isPush",document.getElementById("flip-checkbox-1").checked);	// Boolean
-		//subscribe the user!
-		app.initialize();
-		// redirect to home
-		setTimeout(function(){window.location = "home.html";}, 1000);
+		if (document.getElementById("name-1").value == "") {
+			$("#required").css("display","inline");
+		} else {
+			$("#required").css("display","none");
+			//if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+			  	localStorage.setItem("userName",document.getElementById("name-1").value);			// String
+			 	//localStorage.setItem("isPush",document.getElementById("flip-checkbox-1").checked);	// Boolean
+	            // redirect to home
+			 	//setTimeout(function(){window.location = "home.html";}, 1000);
+			//} else {
+	  		    window.location = "home.html"//this is the browser
+			//}
+		}		
 	}
 
 </script>

@@ -45,7 +45,8 @@
 			</div><!-- /panel -->
 			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
-				<h1>Buoy</h1>
+				<!-- <h1>Buoy</h1> -->
+				<img src="images/buoy-white.gif" alt="Buoy" style="height:50px;display:block;margin-left:auto;margin-right:auto;margin-bottom:4px;" />
 				<a href="home.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
 			</div> <!-- /header -->
 			<!-- content -->
@@ -63,7 +64,7 @@
  					<!-- <div id="calView" style="width=100%;overflow:auto"> -->
  					<div id="calView" style="width:100%; overflow-x:scroll; margin-top:15px;">
  						(Scrolls with two fingers on iOS)
- 						<div id="calendar" style = "background-color: white; min-width:550px;"></div>
+ 						<div id="calendar" style = "background-color: #f6f6f6; min-width:550px;"></div>
  						<!-- <div id="calendar" style = "background-color: white; margin-top:15px; min-width:550px;"></div> -->
  					</div>
  					<!-- <div id='calendar' style='background-color:white; margin-top:15px; min-width:550px; width:100%; overflow:auto'></div> -->
@@ -112,3 +113,10 @@
 		</script>
 	</body>
 </html>
+<!-- UNCOMMENT THE FOLLOWING LINE WHEN INSTALLING ON A DEVICE!!!!! -->
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+<script type="text/javascript">
+	app.initialize(app.registerUser);
+</script>

@@ -17,20 +17,27 @@
  * under the License.
  */
 
-
-
 var app = {
+    pushNotification: {},
     // Application Constructor
-    initialize: function() {
-        alert("initializing");
-        this.bindEvents();
+    initialize: function(callback) {
+        //alert("initializing");
+
+        app.pushNotification = window.plugins.pushNotification;
+
+        this.bindEvents(callback);
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+    bindEvents: function(callback) {
+        document.addEventListener('deviceready', function() {
+           app.onDeviceReady(); 
+           if(callback) {
+            callback();
+           }
+        }, false);
     },
     // deviceready Event Handler
     //
@@ -41,9 +48,6 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        // TODO: put logic in here for first-login page????
-         
-        //setTimeout(functiohn(){window.location.replace("../home.html");}, 3000);
         // var parentElement = document.getElementById(id);
         // var listeningElement = parentElement.querySelector('.listening');
         // var receivedElement = parentElement.querySelector('.received');
@@ -57,14 +61,25 @@ var app = {
     },
     // Event handler for deviceready event
     handleDeviceReady: function(id) {
-        var pushNotification = window.plugins.pushNotification;
+        //alert("handling deviceready");
+        // if (device.platform == 'android' || device.platform == 'Android') {
+        //     //alert("Register called");
+        //     pushNotification.register(this.successHandler, this.errorHandler,{"senderID":"1047272876473","ecb":"app.onNotificationGCM"});
+        // }
+        // else {
+        //     //alert("Register called");
+        //     pushNotification.register(this.successHandler,this.errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"app.onNotificationAPN"});
+        // }
+    },
+    registerUser: function() {
+        //alert("Registering User from index.js");
         if (device.platform == 'android' || device.platform == 'Android') {
-            alert("Register called");
-            pushNotification.register(this.successHandler, this.errorHandler,{"senderID":"1047272876473","ecb":"app.onNotificationGCM"});
+            //alert("Register called");
+            app.pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"1047272876473","ecb":"app.onNotificationGCM"});
         }
         else {
             //alert("Register called");
-            pushNotification.register(this.successHandler,this.errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"app.onNotificationAPN"});
+            app.pushNotification.register(app.successHandler, app.errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"app.onNotificationAPN"});
         }
     },
     // result contains any message sent from the plugin call
@@ -75,26 +90,34 @@ var app = {
         //alert(error);
     },
     onNotificationGCM: function(e) {
+        //alert("handling GCM");
         switch( e.event )
         {
             case 'registered':
-                if ( e.regid.length > 0 )
-                {
-                    // save regid to local storage for future use
-                    localStorage.setItem("regID", e.regid);
+                if ( e.regid.length > 0 ) {
+                    if (localStorage.getItem("hasRegistered")) {
+                        // if hasRegistered has been set:
+                        // do nothing! we're ready to do other PN stuff, though
+                    } else {
+                        // save regid to local storage for future use
+                        localStorage.setItem("regID", e.regid);
 
-                    //console.log("Regid " + e.regid);
-                    alert('Registration id = '+e.regid);
-                    // now send HTTP POST to server with regid and user info
-                    $.post("http://137.159.150.222:8000/subscribe",
-                    {
-                        user: localStorage.getItem("userName"),
-                        type: "Android",
-                        token: e.regid
-                    },
-                    function(data,status){
-                        alert("Data: " + data + "\nStatus: " + status);
-                    });
+                        //console.log("Regid " + e.regid);
+                        //alert('Registration id = '+e.regid);
+                        // now send HTTP POST to server with regid and user info
+                        $.post("http://137.159.150.222:8000/subscribe",
+                        {
+                            user: localStorage.getItem("userName"),
+                            type: "Android",
+                            token: e.regid
+                        },
+                        function(data,status){
+                            if (status == "success") {
+                                localStorage.setItem("hasRegistered", true);
+                            }
+                            //alert("Data: " + data + "\nStatus: " + status);
+                        });
+                    }
                 }
             break;
  
@@ -113,14 +136,13 @@ var app = {
         }
     },
     onNotificationAPN: function(event) {
-        var pushNotification = window.plugins.pushNotification;
         alert("Running in JS - onNotificationAPN - Received a notification! " + event.alert);
         
         if (event.alert) {
             navigator.notification.alert(event.alert);
         }
         if (event.badge) {
-            pushNotification.setApplicationIconBadgeNumber(this.successHandler, this.errorHandler, event.badge);
+            app.pushNotification.setApplicationIconBadgeNumber(this.successHandler, this.errorHandler, event.badge);
         }
         if (event.sound) {
             var snd = new Media(event.sound);

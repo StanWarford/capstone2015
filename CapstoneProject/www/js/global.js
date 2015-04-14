@@ -17,6 +17,9 @@ if (localStorage.getItem("picked") === null) {
 	localStorage.setItem("picked","{}");
 }
 
+
+
+
 function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 	console.log(deptFlip + " " + clasFlip + " " + sectFlip + " " + val);
 	// for (var all in picked) {
@@ -41,7 +44,8 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
         $.post("http://137.159.150.222:8000/follow",
         {
             section: pickedlist[deptFlip][clasFlip][sectFlip]["section"],			// object
-            token: localStorage.getItem("regID")	// user token
+            token: localStorage.getItem("regID"),	// user token
+            user: localStorage.getItem("userName")
         },
         function(data,status){
             alert("Data: " + data + "\nStatus: " + status);
@@ -55,7 +59,8 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
         $.post("http://137.159.150.222:8000/unfollow",
         {
             section: pickedlist[deptFlip][clasFlip][sectFlip]["section"],			// object
-            token: localStorage.getItem("regID")	// user token
+            token: localStorage.getItem("regID"),	// user token
+            user: localStorage.getItem("userName")
         },
         function(data,status){
             alert("Data: " + data + "\nStatus: " + status);
