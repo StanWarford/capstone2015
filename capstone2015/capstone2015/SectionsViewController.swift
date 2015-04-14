@@ -31,24 +31,26 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
             self.navigationController?.popViewControllerAnimated(true)
         }
     }
+
+// Extended Height functionality (Disabled)
     
-    var extendedHeight: NSIndexPath?
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (extendedHeight == indexPath) {
-            extendedHeight = nil
-        } else {
-            extendedHeight = indexPath
-        }
-        sectionsList.beginUpdates()
-        sectionsList.endUpdates()
-    }
+//    var extendedHeight: NSIndexPath?
+//    
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        if (extendedHeight == indexPath) {
+//            extendedHeight = nil
+//        } else {
+//            extendedHeight = indexPath
+//        }
+//        sectionsList.beginUpdates()
+//        sectionsList.endUpdates()
+//    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (extendedHeight == indexPath) {
+//        if (extendedHeight == indexPath) {
             return 132
-        }
-        return 68
+//        }
+//        return 68
     }
     
     var sections = [ClassModel]()

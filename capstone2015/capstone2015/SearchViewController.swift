@@ -19,7 +19,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         case 1: filter = "name"
         case 2: filter = "department"
         case 3: filter = "professor"
-        default: print("There is no fourth filter. This should not occur.")
+        default: print("This should not occur.")
         }
         searchForResults(searchBar.text)
     }
@@ -45,23 +45,25 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
 
     }
     
-    var extendedHeight: NSIndexPath?
+// Extended Height functionality (Disabled)
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (extendedHeight == indexPath) {
-            extendedHeight = nil
-        } else {
-            extendedHeight = indexPath
-        }
-        searchResults.beginUpdates()
-        searchResults.endUpdates()
-    }
+//    var extendedHeight: NSIndexPath?
+//    
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        if (extendedHeight == indexPath) {
+//            extendedHeight = nil
+//        } else {
+//            extendedHeight = indexPath
+//        }
+//        searchResults.beginUpdates()
+//        searchResults.endUpdates()
+//    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (extendedHeight == indexPath) {
+//        if (extendedHeight == indexPath) {
             return 132
-        }
-        return 68
+//        }
+//        return 68
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

@@ -177,8 +177,8 @@
 		788806E71A64B74E0048E2D2 /* capstone2015 */ = {
 			isa = PBXGroup;
 			children = (
-				876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */,
 				788806F11A64B74E0048E2D2 /* Main.storyboard */,
+				876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */,
 				87FFCD8C1AD372CA00BE55B4 /* CalendarInfo.swift */,
 				877B78C31A92D688005A09EB /* ClassModel.swift */,
 				788806EA1A64B74E0048E2D2 /* AppDelegate.swift */,

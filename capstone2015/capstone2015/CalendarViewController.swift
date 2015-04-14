@@ -8,6 +8,8 @@
 
 import UIKit
 
+let pepperdineBlue = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
+
 class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var statusBar: UIView!
@@ -23,7 +25,32 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         titleBar.titleView = UIImageView(image: UIImage(named: "scriptLogo"))
-        statusBar.backgroundColor = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
+        statusBar.backgroundColor = pepperdineBlue
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        screenSize = UIScreen.mainScreen().bounds
+        screenWidth = screenSize.width
+        screenHeight = screenSize.height
+        statusBar.backgroundColor = pepperdineBlue
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: screenWidth/6, height: 28)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        calendarView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        calendarView!.dataSource = self
+        calendarView!.delegate = self
+        //calendarView!.registerClass(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: "CalendarCell")
+        calendarView!.registerNib(UINib(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCell")
+        calendarView!.backgroundColor = UIColor.whiteColor()
+        //calendarView!.preservesSuperviewLayoutMargins = false
+        self.view.addSubview(calendarView!)
+        parseClasses()
+        calendarView!.reloadData()
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         screenSize = UIScreen.mainScreen().bounds
         screenWidth = screenSize.width
         screenHeight = screenSize.height
@@ -33,18 +60,14 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         layout.itemSize = CGSize(width: screenWidth/6, height: 28)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        
         calendarView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         calendarView!.dataSource = self
         calendarView!.delegate = self
-        calendarView!.registerClass(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: "CalendarCell")
-        calendarView!.backgroundColor = UIColor.greenColor()
+        //calendarView!.registerClass(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: "CalendarCell")
+        calendarView!.registerNib(UINib(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCell")
+        calendarView!.backgroundColor = UIColor.grayColor()
         //calendarView!.preservesSuperviewLayoutMargins = false
         self.view.addSubview(calendarView!)
-        parseClasses()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
         parseClasses()
         calendarView!.reloadData()
     }
@@ -66,7 +89,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             cell.setCell("",color: nil)
         }
         cell.layer.borderWidth = 0.5
-        cell.layer.borderColor = UIColor.blackColor().CGColor
+        cell.layer.borderColor = UIColor.grayColor().CGColor
         return cell
     }
     
@@ -108,17 +131,17 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func populateCalModel(days: [Int], times: [Int], className: String) {
         
-        model[0][1] = CalendarInfo(text: "Mon", color: UIColor.blueColor())
-        model[0][2] = CalendarInfo(text: "Tues", color: UIColor.blueColor())
-        model[0][3] = CalendarInfo(text: "Wed", color: UIColor.blueColor())
-        model[0][4] = CalendarInfo(text: "Thurs", color: UIColor.blueColor())
-        model[0][5] = CalendarInfo(text: "Fri", color: UIColor.blueColor())
+        model[0][1] = CalendarInfo(text: "Mon", color: pepperdineBlue)
+        model[0][2] = CalendarInfo(text: "Tues", color: pepperdineBlue)
+        model[0][3] = CalendarInfo(text: "Wed", color: pepperdineBlue)
+        model[0][4] = CalendarInfo(text: "Thurs", color: pepperdineBlue)
+        model[0][5] = CalendarInfo(text: "Fri", color: pepperdineBlue)
         
         var start = "7:30AM"
         
         for (var k = 2; k < model.count; k++){
             start = addThirtyMinutes(start)
-            model[k][0] = CalendarInfo(text: start, color: UIColor.blueColor()) //first time is 8AM
+            model[k][0] = CalendarInfo(text: start, color: pepperdineBlue) //first time is 8AM
         }
         
         for (var j = 0; j < days.count; j++){
