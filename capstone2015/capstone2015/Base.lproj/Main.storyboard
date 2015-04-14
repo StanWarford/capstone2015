@@ -244,23 +244,23 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bK-hI-Pzq">
-                                                    <rect key="frame" x="511" y="83" width="65" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="65" id="6IO-iN-XtC"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="Follow">
-                                                        <color key="titleColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLC 315" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9h-ES-XR6">
                                                     <rect key="frame" x="96" y="97" width="56" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bK-hI-Pzq">
+                                                    <rect key="frame" x="511" y="85" width="65" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="65" id="6IO-iN-XtC"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" title="Unfollow">
+                                                        <color key="titleColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.90122155979999996" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -642,8 +642,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="deptName" destination="iSa-pb-db9" id="yFr-wi-5pf"/>
+                                            <outletCollection property="gestureRecognizers" destination="xPg-Lj-9Ri" appends="YES" id="I9V-fd-6ba"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -690,6 +692,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYk-24-gtU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="xPg-Lj-9Ri">
+                    <connections>
+                        <segue destination="W1i-gO-gXm" kind="show" id="5Z6-va-jGT"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3592" y="771"/>
         </scene>
@@ -756,8 +763,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="courseName" destination="Smb-lh-CGv" id="u5b-eG-EfO"/>
+                                            <outletCollection property="gestureRecognizers" destination="0Qk-ft-4Br" appends="YES" id="Fzi-jr-CfW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -806,6 +815,11 @@
                         <action selector="swipeBack:" destination="W1i-gO-gXm" id="01n-Se-wtC"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="0Qk-ft-4Br">
+                    <connections>
+                        <segue destination="R5W-Uz-f3c" kind="show" id="dy3-70-P3L"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4299" y="772"/>
         </scene>
@@ -818,11 +832,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Xzv-J3-5Wo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GpS-eC-DFB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jdO-aT-Bnf">
-                                <rect key="frame" x="10" y="20" width="580" height="459"/>
+                                <rect key="frame" x="10" y="20" width="580" height="572"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1377,7 +1391,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kbK-eQ-VkF"/>
-        <segue reference="5sx-RS-8M9"/>
+        <segue reference="HdV-gp-ZiF"/>
+        <segue reference="uYa-Cq-e9r"/>
+        <segue reference="dy3-70-P3L"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
