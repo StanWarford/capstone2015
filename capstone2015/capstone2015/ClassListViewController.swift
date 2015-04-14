@@ -35,7 +35,7 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var classList: UITableView!
     
-    var increasedHeights = [NSIndexPath]()
+    var increasedHeight = NSIndexPath(forRow: 1000, inSection: 1000)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,19 +63,17 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (contains(increasedHeights, indexPath)){
-            if let index = find(increasedHeights, indexPath){
-                increasedHeights.removeAtIndex(index)
-            }
+        if (self.increasedHeight == indexPath){
+            self.increasedHeight = NSIndexPath(forRow: 1000, inSection: 1000)
         } else {
-            increasedHeights.append(indexPath)
+            self.increasedHeight = indexPath
         }
         classList.beginUpdates()
         classList.endUpdates()
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (contains(increasedHeights, indexPath)){
+        if (self.increasedHeight == indexPath){
             return 132.0
         }
         return 68.0
@@ -85,7 +83,12 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         let cell: ClassListTableViewCell = tableView.dequeueReusableCellWithIdentifier("ClassListCell") as ClassListTableViewCell
         // create cell
         let classFollowing = classes[indexPath.row]
-        cell.setCell(classFollowing.course, course: classFollowing.name, status: classFollowing.status.uppercaseString)
+        cell.setCell(classFollowing.course,
+            course: classFollowing.name,
+            status: classFollowing.status.uppercaseString,
+            time: classFollowing.time,
+            professor: classFollowing.professor,
+            room: classFollowing.room)
         if (classFollowing.status == "Open"){
             cell.status.textColor = UIColor.orangeColor()
         } else {
