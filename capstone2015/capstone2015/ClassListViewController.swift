@@ -14,6 +14,12 @@ var classes = [ClassModel]()
 
 class ClassListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBAction func changeColor(sender: UIButton) {
+        //sender.backgroundColor = UIColor.orangeColor()
+        //sender.titleColorForState(UIControlState.Normal) = UIColor.whiteColor().CGColor
+        //sender.layer.borderColor = UIColor.whiteColor().CGColor
+    }
+    
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var addNewClassButton: UIButton!
     
@@ -27,17 +33,16 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }()
     
-    @IBAction func toggleEditMode(sender: UIBarButtonItem) {
-        classList.setEditing(!classList.editing, animated: true)
-        sender.title = classList.editing ? "Done" : "Edit"
-    }
-    
     @IBOutlet weak var classList: UITableView!
     
     var increasedHeights = [NSIndexPath]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addNewClassButton.layer.borderWidth = 1.35
+        addNewClassButton.layer.borderColor = UIColor.orangeColor().CGColor
+        addNewClassButton.layer.cornerRadius = 5.0
         
         var testObject = PFObject(className:"TestObject")
         testObject["foo"] = "bar"
@@ -71,16 +76,16 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (contains(increasedHeights, indexPath)){
-            return 150.0
+            return 132.0
         }
-        return 77.0
+        return 68.0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: ClassListTableViewCell = tableView.dequeueReusableCellWithIdentifier("ClassListCell") as ClassListTableViewCell
         // create cell
         let classFollowing = classes[indexPath.row]
-        cell.setCell(classFollowing.course, course: classFollowing.name, status: classFollowing.status.uppercaseString + " ●")
+        cell.setCell(classFollowing.course, course: classFollowing.name, status: classFollowing.status.uppercaseString)
         if (classFollowing.status == "Open"){
             cell.status.textColor = UIColor.orangeColor()
         } else {
@@ -136,9 +141,6 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewWillAppear(animated: Bool) {
-        addNewClassButton.layer.borderWidth = 2
-        addNewClassButton.layer.borderColor = UIColor.orangeColor().CGColor
-        addNewClassButton.layer.cornerRadius = 10.0
         self.populateClassList()
     }
 

@@ -15,6 +15,8 @@
 		788807041A64B74E0048E2D2 /* capstone2015Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788807031A64B74E0048E2D2 /* capstone2015Tests.swift */; };
 		873AE1631ABA4D080038838F /* DeptListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873AE1621ABA4D080038838F /* DeptListTableViewCell.swift */; };
 		873E55E31A9492F20011F9E3 /* SectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873E55E21A9492F20011F9E3 /* SectionsViewController.swift */; };
+		87433CAC1AD7B62A00CF2D6B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87433CAB1AD7B62A00CF2D6B /* StoreKit.framework */; };
+		87433CAE1AD7B62D00CF2D6B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87433CAD1AD7B62D00CF2D6B /* GameKit.framework */; };
 		877575121AC233EE00F73F1E /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877575111AC233EE00F73F1E /* SearchTableViewCell.swift */; };
 		8777CDA01ABE30090049030F /* CoursesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8777CD9F1ABE30090049030F /* CoursesTableViewCell.swift */; };
 		877B78C21A92D4A0005A09EB /* ClassListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */; };
@@ -35,12 +37,10 @@
 		87AA3B981ACCE5B40000BF05 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AA3B971ACCE5B40000BF05 /* MobileCoreServices.framework */; };
 		87AA3B9A1ACCE5BC0000BF05 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AA3B991ACCE5BC0000BF05 /* QuartzCore.framework */; };
 		87AA3B9C1ACCE5C40000BF05 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AA3B9B1ACCE5C40000BF05 /* Security.framework */; };
-		87AA3B9E1ACCE5CA0000BF05 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AA3B9D1ACCE5CA0000BF05 /* StoreKit.framework */; };
 		87AA3BA01ACCE5D20000BF05 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AA3B9F1ACCE5D20000BF05 /* SystemConfiguration.framework */; };
 		87AA3BA21ACCE5DE0000BF05 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AA3BA11ACCE5DE0000BF05 /* libz.dylib */; };
 		87AA3BA41ACCE5E80000BF05 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AA3BA31ACCE5E70000BF05 /* libsqlite3.dylib */; };
 		87CC53E21ABF6D730019B341 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC53E11ABF6D730019B341 /* CalendarViewController.swift */; };
-		87CC53E41ABF99370019B341 /* CalendarGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC53E31ABF99370019B341 /* CalendarGridLayout.swift */; };
 		87CC53E61ABFA4BD0019B341 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC53E51ABFA4BD0019B341 /* CalendarCollectionViewCell.swift */; };
 		87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D93B791A7B172300054FCD /* ClassListViewController.swift */; };
 		87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F3C5E51A89AF72001DC31F /* SearchViewController.swift */; };
@@ -72,6 +72,8 @@
 		788807031A64B74E0048E2D2 /* capstone2015Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capstone2015Tests.swift; sourceTree = "<group>"; };
 		873AE1621ABA4D080038838F /* DeptListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeptListTableViewCell.swift; sourceTree = "<group>"; };
 		873E55E21A9492F20011F9E3 /* SectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsViewController.swift; sourceTree = "<group>"; };
+		87433CAB1AD7B62A00CF2D6B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		87433CAD1AD7B62D00CF2D6B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		877575111AC233EE00F73F1E /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8777CD9F1ABE30090049030F /* CoursesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesTableViewCell.swift; sourceTree = "<group>"; };
 		877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassListTableViewCell.swift; path = ../ClassListTableViewCell.swift; sourceTree = "<group>"; };
@@ -92,13 +94,11 @@
 		87AA3B971ACCE5B40000BF05 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		87AA3B991ACCE5BC0000BF05 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		87AA3B9B1ACCE5C40000BF05 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		87AA3B9D1ACCE5CA0000BF05 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		87AA3B9F1ACCE5D20000BF05 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		87AA3BA11ACCE5DE0000BF05 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		87AA3BA31ACCE5E70000BF05 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		87AA3BA61ACCE7D50000BF05 /* capstone2015-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "capstone2015-Bridging-Header.h"; sourceTree = "<group>"; };
 		87CC53E11ABF6D730019B341 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		87CC53E31ABF99370019B341 /* CalendarGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarGridLayout.swift; sourceTree = "<group>"; };
 		87CC53E51ABFA4BD0019B341 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		87D93B791A7B172300054FCD /* ClassListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassListViewController.swift; sourceTree = "<group>"; };
 		87F3C5E51A89AF72001DC31F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -115,15 +115,16 @@
 				87AA3BA41ACCE5E80000BF05 /* libsqlite3.dylib in Frameworks */,
 				87AA3BA21ACCE5DE0000BF05 /* libz.dylib in Frameworks */,
 				87AA3BA01ACCE5D20000BF05 /* SystemConfiguration.framework in Frameworks */,
-				87AA3B9E1ACCE5CA0000BF05 /* StoreKit.framework in Frameworks */,
 				87AA3B9C1ACCE5C40000BF05 /* Security.framework in Frameworks */,
 				87AA3B9A1ACCE5BC0000BF05 /* QuartzCore.framework in Frameworks */,
 				87AA3B981ACCE5B40000BF05 /* MobileCoreServices.framework in Frameworks */,
 				87AA3B961ACCE5AB0000BF05 /* CoreLocation.framework in Frameworks */,
 				87AA3B941ACCE5A30000BF05 /* CoreGraphics.framework in Frameworks */,
 				87AA3B921ACCE59B0000BF05 /* CFNetwork.framework in Frameworks */,
+				87433CAE1AD7B62D00CF2D6B /* GameKit.framework in Frameworks */,
 				87AA3B901ACCE5940000BF05 /* AudioToolbox.framework in Frameworks */,
 				87AA3B8C1ACCE51A0000BF05 /* Parse.framework in Frameworks */,
+				87433CAC1AD7B62A00CF2D6B /* StoreKit.framework in Frameworks */,
 				87AA3B8E1ACCE5440000BF05 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,10 +142,11 @@
 		788806DC1A64B74E0048E2D2 = {
 			isa = PBXGroup;
 			children = (
+				87433CAD1AD7B62D00CF2D6B /* GameKit.framework */,
+				87433CAB1AD7B62A00CF2D6B /* StoreKit.framework */,
 				87AA3BA31ACCE5E70000BF05 /* libsqlite3.dylib */,
 				87AA3BA11ACCE5DE0000BF05 /* libz.dylib */,
 				87AA3B9F1ACCE5D20000BF05 /* SystemConfiguration.framework */,
-				87AA3B9D1ACCE5CA0000BF05 /* StoreKit.framework */,
 				87AA3B9B1ACCE5C40000BF05 /* Security.framework */,
 				87AA3B991ACCE5BC0000BF05 /* QuartzCore.framework */,
 				87AA3B971ACCE5B40000BF05 /* MobileCoreServices.framework */,
@@ -174,15 +176,12 @@
 			isa = PBXGroup;
 			children = (
 				788806F11A64B74E0048E2D2 /* Main.storyboard */,
-				877575111AC233EE00F73F1E /* SearchTableViewCell.swift */,
-				87CC53E51ABFA4BD0019B341 /* CalendarCollectionViewCell.swift */,
-				87CC53E31ABF99370019B341 /* CalendarGridLayout.swift */,
-				87CC53E11ABF6D730019B341 /* CalendarViewController.swift */,
+				8726AC4C1ADB56F200464ED9 /* Search */,
+				8726AC4B1ADB56C700464ED9 /* Calendar */,
 				87FFCD8C1AD372CA00BE55B4 /* CalendarInfo.swift */,
 				877B78C31A92D688005A09EB /* ClassModel.swift */,
 				788806EA1A64B74E0048E2D2 /* AppDelegate.swift */,
 				87F3C5E91A8AB465001DC31F /* SettingsViewController.swift */,
-				87F3C5E51A89AF72001DC31F /* SearchViewController.swift */,
 				87CC53DB1ABF60010019B341 /* Dependencies */,
 				87CC53DC1ABF601B0019B341 /* Core Data Objects */,
 				87CC53DD1ABF60520019B341 /* Class List */,
@@ -220,6 +219,24 @@
 				788807021A64B74E0048E2D2 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8726AC4B1ADB56C700464ED9 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				87CC53E11ABF6D730019B341 /* CalendarViewController.swift */,
+				87CC53E51ABFA4BD0019B341 /* CalendarCollectionViewCell.swift */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		8726AC4C1ADB56F200464ED9 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				877575111AC233EE00F73F1E /* SearchTableViewCell.swift */,
+				87F3C5E51A89AF72001DC31F /* SearchViewController.swift */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		87CC53DB1ABF60010019B341 /* Dependencies */ = {
@@ -326,6 +343,15 @@
 				TargetAttributes = {
 					788806E41A64B74E0048E2D2 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = NM8Z37N3DS;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					788806FC1A64B74E0048E2D2 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -389,7 +415,6 @@
 				87CC53E21ABF6D730019B341 /* CalendarViewController.swift in Sources */,
 				87F3C5E81A8AB252001DC31F /* DepartmentViewController.swift in Sources */,
 				873E55E31A9492F20011F9E3 /* SectionsViewController.swift in Sources */,
-				87CC53E41ABF99370019B341 /* CalendarGridLayout.swift in Sources */,
 				877B78C21A92D4A0005A09EB /* ClassListTableViewCell.swift in Sources */,
 				877B78D81AA010E4005A09EB /* Settings.swift in Sources */,
 				873AE1631ABA4D080038838F /* DeptListTableViewCell.swift in Sources */,
@@ -525,6 +550,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: AeroLynx Montoya (M7JZ2K399H)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -543,6 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: AeroLynx Montoya (M7JZ2K399H)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

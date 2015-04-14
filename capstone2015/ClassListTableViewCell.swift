@@ -13,6 +13,7 @@ class ClassListTableViewCell: UITableViewCell {
     @IBOutlet weak var className: UILabel!
     @IBOutlet weak var course: UILabel!
     @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var followButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +30,9 @@ class ClassListTableViewCell: UITableViewCell {
         self.className.text = className
         self.course.text = course
         self.status.text = status
+        followButton.layer.borderWidth = 1.35
+        followButton.layer.borderColor = UIColor.orangeColor().CGColor
+        followButton.layer.cornerRadius = 5.0
     }
 
 }

@@ -21,6 +21,11 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         statusBar.backgroundColor = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
         parseClasses()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        parseClasses()
+        calendarView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,7 +51,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return model.count //#rows
+        return model.count // #rows
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
@@ -70,10 +75,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     func parseClasses(){
         model = [[CalendarInfo?]](count: 29, repeatedValue: [CalendarInfo?](count: 6, repeatedValue: nil))
         for c in classes {
-            var meetingTime = split(c.time) {$0 == " "}
-            var days = mapDays(meetingTime[0])
-            var time = mapTimes(meetingTime[1], end: meetingTime[3])
-            populateCalModel(days, times: time, className: c.course)
+            if (c.time != "TBA") {
+                var meetingTime = split(c.time) {$0 == " "}
+                var days = mapDays(meetingTime[0])
+                var time = mapTimes(meetingTime[1], end: meetingTime[3])
+                populateCalModel(days, times: time, className: c.course)
+            }
         }
     }
     
@@ -157,21 +164,19 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         var hours = abs(startHour! - endHour!)
         var mins = abs(startMin! - endMin!)
         
-        segments += hours*2
+        segments += hours * 2
         
         if(mins > 30){ //round 50 minutes up
             segments += 2
             hours += 1
             mins = 0
-        }
-        else if(mins == 30){
+        } else if(mins == 30){
             segments += 1
         }
         
         var gridTime = timeToGrid(startHour!)
         mappedTimes.append(gridTime)
         mappedTimes.append(segments)
-        
         
         return mappedTimes //12:00PM, 01:50PM ==> [8,4] [Noon, 4-30 mins]
     }

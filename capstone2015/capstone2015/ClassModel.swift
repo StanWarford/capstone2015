@@ -9,7 +9,7 @@
 import Foundation
 
 class ClassModel {
-    
+                            // Example:
     var name: String!       // American People and Politics
     var course: String!     // POSC 104.04
     var section: String!    // 01
