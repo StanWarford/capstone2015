@@ -29,11 +29,14 @@
 				<a href="home.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
 			</div> <!-- /header -->
 			<div data-role="content">
-				<h3>Provide Information</h3>
+				<h3>Welcome to Buoy!</h3>
+					<p>For help using this app, go to Options from the side menu.</p>
+<!-- 				<h3>Provide Information</h3>
 				<form>
     				<label for="name-1">Name:</label>
     				<input type="text" data-clear-btn="true" name="name-1" id="name-1" value="" placeholder="Your name...">
-				</form>
+				</form> -->
+
 				<!-- <form>
     				<label for="email-1">Email</label>
     				<input type="email" data-clear-btn="true" name="email-1" id="email-1" value="">
@@ -42,13 +45,15 @@
      				<label for="tel-1">Phone Number</label>
      				<input type="tel" data-clear-btn="true" name="tel-1" id="tel-1" value="">
 				</form> -->
-				<form class="ui-field-contain" style="border-bottom-width:0px">
+
+<!-- 				<form class="ui-field-contain" style="border-bottom-width:0px">
 					<p>Push Notifications:</p>
 					<span class="flipperFirst">
 						<input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="c">
 					</span>
-				</form>
-				<button class="ui-btn ui-corner-all ui-shadow ui-btn-a" onclick="submitButton()">Submit</button>
+				</form> -->
+
+				<button class="ui-btn ui-corner-all ui-shadow ui-btn-a" onclick="submitButton()">Okay!</button>
 			</div> <!-- /content -->
 			<!-- <div data-role="footer" data-theme="a" data-position="fixed">
 				<h4>footer</h4>
@@ -56,19 +61,26 @@
 		</div> <!-- /page -->
 	</body>
 </html>
+
+<!-- UNCOMMENT THE FOLLOWING LINE WHEN INSTALLING ON A DEVICE!!!!! -->
 <script type="text/javascript" src="cordova.js"></script>
+
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
 <script type="text/javascript">
-	// save input to local storage
-
+	//subscribe the user!
+ 	app.initialize();
 	function submitButton() {
-		localStorage.setItem("userName",document.getElementById("name-1").value);			// String
-		localStorage.setItem("isPush",document.getElementById("flip-checkbox-1").checked);	// Boolean
-		//subscribe the user!
-		app.initialize();
-		// redirect to home
-		setTimeout(function(){window.location = "home.html";}, 1000);
+		//if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+		  	//localStorage.setItem("userName",document.getElementById("name-1").value);			// String
+		 	//localStorage.setItem("isPush",document.getElementById("flip-checkbox-1").checked);	// Boolean
+		 
+	       
+	         // redirect to home
+		 	//setTimeout(function(){window.location = "home.html";}, 1000);
+		//} else {
+  		    window.location = "home.html"//this is the browser
+		//}
 	}
 
 </script>
