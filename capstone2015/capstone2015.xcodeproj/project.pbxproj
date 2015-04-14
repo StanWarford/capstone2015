@@ -176,12 +176,12 @@
 			isa = PBXGroup;
 			children = (
 				788806F11A64B74E0048E2D2 /* Main.storyboard */,
-				8726AC4C1ADB56F200464ED9 /* Search */,
-				8726AC4B1ADB56C700464ED9 /* Calendar */,
 				87FFCD8C1AD372CA00BE55B4 /* CalendarInfo.swift */,
 				877B78C31A92D688005A09EB /* ClassModel.swift */,
 				788806EA1A64B74E0048E2D2 /* AppDelegate.swift */,
 				87F3C5E91A8AB465001DC31F /* SettingsViewController.swift */,
+				8726AC4C1ADB56F200464ED9 /* Search */,
+				8726AC4B1ADB56C700464ED9 /* Calendar */,
 				87CC53DB1ABF60010019B341 /* Dependencies */,
 				87CC53DC1ABF601B0019B341 /* Core Data Objects */,
 				87CC53DD1ABF60520019B341 /* Class List */,

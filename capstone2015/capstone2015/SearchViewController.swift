@@ -45,29 +45,24 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
 
     }
     
-    var extendedHeights = [NSIndexPath]()
+    var extendedHeight: NSIndexPath?
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (contains(extendedHeights,indexPath)) {
-            var index = find(extendedHeights, indexPath)
-            extendedHeights.removeAtIndex(index!)
+        if (extendedHeight == indexPath) {
+            extendedHeight = nil
         } else {
-            extendedHeights.append(indexPath)
+            extendedHeight = indexPath
         }
         searchResults.beginUpdates()
         searchResults.endUpdates()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if contains(extendedHeights, indexPath) {
-            return 100.0
+        if (extendedHeight == indexPath) {
+            return 132
         }
-        return 77.0
+        return 68
     }
-    
-//    if let a = Optional {
-//        use a
-//    }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -76,7 +71,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: SearchTableViewCell = tableView.dequeueReusableCellWithIdentifier("SearchCell") as SearchTableViewCell
         let classFollowing = filteredModel[indexPath.row]
-        cell.setCell(classFollowing["name"].string!, courseNumber: classFollowing["section"].string!, status: classFollowing["status"].string! + " ●" , professor: classFollowing["professor"].string!, room: classFollowing["room"].string!)
+        cell.setCell(classFollowing["name"].string!,
+            courseNumber: classFollowing["section"].string!,
+            status: classFollowing["status"].string!,
+            professor: classFollowing["professor"].string!,
+            room: classFollowing["room"].string!,
+            time: classFollowing["meeting"].string!)
         if (classFollowing["status"] == "Open"){
             cell.status.textColor = UIColor.orangeColor()
         } else {

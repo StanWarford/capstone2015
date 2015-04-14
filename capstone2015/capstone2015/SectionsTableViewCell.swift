@@ -27,16 +27,26 @@ class SectionsTableViewCell: UITableViewCell {
     @IBOutlet weak var className: UILabel!
     @IBOutlet weak var courseNumber: UILabel!
     @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var unfollowButton: UIButton!
+    @IBOutlet weak var roomLabel: UILabel!
+    @IBOutlet weak var professorLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     var professor: String!
     var room: String!
     
-    func setCell(className: String, courseNumber: String, status: String, professor: String, room: String) {
+    func setCell(className: String, courseNumber: String, status: String, professor: String, room: String, time: String) {
         self.className.text = className
         self.courseNumber.text = courseNumber
         self.status.text = status
         self.professor = professor
         self.room = room
+        self.professorLabel.text = professor
+        self.timeLabel.text = time
+        self.roomLabel.text = room
+        unfollowButton.layer.borderWidth = 1.35
+        unfollowButton.layer.borderColor = UIColor.orangeColor().CGColor
+        unfollowButton.layer.cornerRadius = 5.0
     }
     
     override func awakeFromNib() {
