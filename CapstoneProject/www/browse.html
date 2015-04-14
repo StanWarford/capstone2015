@@ -33,7 +33,8 @@
 			</div><!-- /panel -->
 			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
-				<h1>Buoy</h1>
+				<!-- <h1>Buoy</h1> -->
+				<img src="images/buoy-white.gif" alt="Buoy" style="height:50px;display:block;margin-left:auto;margin-right:auto;margin-bottom:4px;" />
 				<a href="home.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
 			</div> <!-- /header -->
 
@@ -100,14 +101,20 @@
 				$.mobile.loading("show");
 				document.getElementById("departs").style.display = "none";
 				document.getElementById("clases").style.display = "block";
-					for(var clas in json[depts]){
-						clasQuote = '"' + clas + '"';
-						deptsQuote = '"' + depts + '"';
-						$('#list-classes').append("<li class='ui-field-contain'><a class='classlink' id='classitem' onclick='showSections("+clasQuote+","+deptsQuote+")' rel='external'></a></li>");
-						$('[class=classlink]').append(clas);
-						$('#list-classes').listview("refresh");
-					}
-					$.mobile.loading("hide");
+				var clArray = [];
+				for(var clas in json[depts]){
+					clArray.push(clas);
+				}
+				clArray.sort();
+				var y = clArray.length;
+				for (var j = 0; j < y; j++) {
+					clasQuote = '"' + clArray[j] + '"';
+					deptsQuote = '"' + depts + '"';
+					$('#list-classes').append("<li class='ui-field-contain'><a class='classlink' id='classitem' onclick='showSections("+clasQuote+","+deptsQuote+")' rel='external'></a></li>");
+					$('[class=classlink]').append(clArray[j]);
+					$('#list-classes').listview("refresh");
+				}
+				$.mobile.loading("hide");
 			}
 			function showSections(cls,dept) {
 				$.mobile.loading("show");
@@ -115,14 +122,21 @@
 				document.getElementById("sects").style.display = "block";
 				var pickedlistbrowse = JSON.parse(localStorage.getItem("picked"));
 				var i = 1;
+				var sectArr = [];
 				for(var section in json[dept][cls]){
-					var classname = json[dept][cls][section]["section"];
+					sectArr.push(section);
+				}
+				sectArr.sort();
+				var z = sectArr.length;
+				for (var k = 0; k < z; k++) {
+					var secPic = sectArr[k];
+					var classname = json[dept][cls][secPic]["section"];
 					var clsQuote = '"' + cls + '"';
 					var deptQuote = '"' + dept + '"';
-					var sectQuote = '"' + section + '"';
+					var sectQuote = '"' + secPic + '"';
 					$('#list-sections').append('<li class="ui-field-contain" id="listitem'+i+'"></li>');
 					$('#listitem'+i).css('background-color','#b9cf96');
-					if(json[dept][cls][section]["status"] == "Closed") {
+					if(json[dept][cls][secPic]["status"] == "Closed") {
 						$('#listitem'+i).css('background-color','#f06d6d');
 					}
 					$('#listitem'+i).css('margin-top','10px');
@@ -135,11 +149,11 @@
 					$('#listother'+i).css('font-size','14px');
 					$('#listitem'+i).append('<p id="listroom'+i+'" class="roomright"></p>');
 					$('#listroom'+i).css('font-size','14px');
-					$('#listwords'+i).append(cls+"."+section);
-					$('#listprof'+i).append(json[dept][cls][section]["professor"]);
-					$('#listname'+i).append(json[dept][cls][section]["name"]);
-					$('#listother'+i).append(json[dept][cls][section]["meeting"]);
-					$('#listroom'+i).append(json[dept][cls][section]["room"]);
+					$('#listwords'+i).append(cls+"."+secPic);
+					$('#listprof'+i).append(json[dept][cls][secPic]["professor"]);
+					$('#listname'+i).append(json[dept][cls][secPic]["name"]);
+					$('#listother'+i).append(json[dept][cls][secPic]["meeting"]);
+					$('#listroom'+i).append(json[dept][cls][secPic]["room"]);
 					// $('#listitem'+i).append(cls+"."+section);
 					if ((typeof pickedlistbrowse[dept]) == 'undefined') {
 						$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span>");
