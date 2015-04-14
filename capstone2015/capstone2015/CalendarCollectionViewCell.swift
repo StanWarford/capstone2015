@@ -10,10 +10,10 @@ import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var cellText: UILabel!
+    @IBOutlet weak var cellText: UILabel?
     
     func setCell(text: String?, color: UIColor?) {
-        self.cellText.text = text
+        self.cellText?.text = text
         self.backgroundColor = color
     }
     

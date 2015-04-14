@@ -35,7 +35,8 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var classList: UITableView!
     
-    var increasedHeight = NSIndexPath(forRow: 1000, inSection: 1000)
+    var increasedHeight: NSIndexPath?
+    var cellToDelete: NSIndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,14 +58,43 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return classes.count
     }
-    
-    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String! {
-        return "Unfollow"
+    @IBAction func unfollow(sender: UIButton) {
+        var alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        alert.addAction(UIAlertAction(title: "Unfollow", style: .Default, handler: { action in
+            var row = sender.tag
+            classes.removeAtIndex(row)
+            // remove the deleted item from the model
+            let fetchRequest = NSFetchRequest(entityName: "ClassEntity")
+            if let fetchResults = self.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ClassEntity]{
+                self.managedObjectContext!.deleteObject(fetchResults[row] as NSManagedObject)
+            }
+            self.managedObjectContext!.save(nil)
+            // remove the deleted item from the `UITableView`
+            var indexPath = NSIndexPath(forRow: row, inSection: 0)
+            self.classList.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.classList.beginUpdates()
+            self.classList.endUpdates()
+        }))
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (self.increasedHeight == indexPath){
-            self.increasedHeight = NSIndexPath(forRow: 1000, inSection: 1000)
+        if (self.cellToDelete == indexPath){
+            self.cellToDelete = nil
+            classes.removeAtIndex(indexPath.row)
+            // remove the deleted item from the model
+            let fetchRequest = NSFetchRequest(entityName: "ClassEntity")
+            if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ClassEntity]{
+                self.managedObjectContext!.deleteObject(fetchResults[indexPath.row] as NSManagedObject)
+            }
+            self.managedObjectContext!.save(nil)
+            // remove the deleted item from the `UITableView`
+            self.classList.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+        else if (self.increasedHeight == indexPath){
+            self.increasedHeight = nil
         } else {
             self.increasedHeight = indexPath
         }
@@ -94,25 +124,12 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             cell.status.textColor = UIColor.grayColor()
         }
+        cell.followButton.tag = indexPath.row
         cell.layer.cornerRadius = 10.0
         cell.layer.masksToBounds = true
         cell.layer.borderWidth = 3.0
         cell.layer.borderColor = UIColor.whiteColor().CGColor
         return cell
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.Delete){
-            classes.removeAtIndex(indexPath.row) // To-do: Delete from core data instead
-            // remove the deleted item from the model
-            let fetchRequest = NSFetchRequest(entityName: "ClassEntity")
-            if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ClassEntity]{
-                self.managedObjectContext!.deleteObject(fetchResults[indexPath.row] as NSManagedObject)
-            }
-            self.managedObjectContext!.save(nil)
-            // remove the deleted item from the `UITableView`
-            self.classList.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        }
     }
     
     func populateClassList(){

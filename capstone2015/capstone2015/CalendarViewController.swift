@@ -12,21 +12,43 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBOutlet weak var statusBar: UIView!
     
-    @IBOutlet weak var calendarView: UICollectionView!
+    @IBOutlet weak var titleBar: UINavigationItem!
+    var calendarView : UICollectionView?
+    var screenSize: CGRect!
+    var screenWidth: CGFloat!
+    var screenHeight: CGFloat!
     
-    var model = [[CalendarInfo?]](count: 28, repeatedValue: [CalendarInfo?](count: 5, repeatedValue: nil))
+    var model = [[CalendarInfo?]](count: 29, repeatedValue: [CalendarInfo?](count: 6, repeatedValue: nil))
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleBar.titleView = UIImageView(image: UIImage(named: "scriptLogo"))
         statusBar.backgroundColor = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
+        screenSize = UIScreen.mainScreen().bounds
+        screenWidth = screenSize.width
+        screenHeight = screenSize.height
+        statusBar.backgroundColor = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: screenWidth/6, height: 28)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        
+        calendarView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        calendarView!.dataSource = self
+        calendarView!.delegate = self
+        calendarView!.registerClass(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: "CalendarCell")
+        calendarView!.backgroundColor = UIColor.greenColor()
+        //calendarView!.preservesSuperviewLayoutMargins = false
+        self.view.addSubview(calendarView!)
         parseClasses()
     }
     
     override func viewWillAppear(animated: Bool) {
         parseClasses()
-        calendarView.reloadData()
+        calendarView!.reloadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -37,12 +59,14 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: CalendarCollectionViewCell = calendarView.dequeueReusableCellWithReuseIdentifier("CalendarCell", forIndexPath: indexPath) as CalendarCollectionViewCell
+        let cell: CalendarCollectionViewCell = calendarView!.dequeueReusableCellWithReuseIdentifier("CalendarCell", forIndexPath: indexPath) as CalendarCollectionViewCell
         if let classFollowing = model[indexPath.section][indexPath.row]{
             cell.setCell(classFollowing.text, color: classFollowing.color!)
         } else {
             cell.setCell("",color: nil)
         }
+        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = UIColor.blackColor().CGColor
         return cell
     }
     
@@ -54,17 +78,15 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         return model.count // #rows
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-    }
+    
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
     
@@ -73,7 +95,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     var mapping : [String : Int] = ["Mo" : 1, "Tu" : 2, "We" : 3, "Th" : 4, "Fr" : 5]
     
     func parseClasses(){
-        model = [[CalendarInfo?]](count: 29, repeatedValue: [CalendarInfo?](count: 6, repeatedValue: nil))
+        //model = [[CalendarInfo?]](count: 29, repeatedValue: [CalendarInfo?](count: 6, repeatedValue: nil))
         for c in classes {
             if (c.time != "TBA") {
                 var meetingTime = split(c.time) {$0 == " "}
@@ -110,7 +132,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             }
         }
     }
-
+    
     func matchesForRegexInText(regex: String!, text: String!) -> [String] {
         
         let regex = NSRegularExpression(pattern: regex,
@@ -186,22 +208,22 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         gridTime *= 2 //30 min blocks
         return gridTime
     }
-
-    func addThirtyMinutes(time: String) -> String {
     
+    func addThirtyMinutes(time: String) -> String {
+        
         let inFormatter = NSDateFormatter()
         inFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         inFormatter.dateFormat = "hh:mma"
-    
+        
         let outFormatter = NSDateFormatter()
         outFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         outFormatter.dateFormat = "hh:mm a"
-    
+        
         var stringToDate = inFormatter.dateFromString(time)!
         var addThirtyMinutes = stringToDate.dateByAddingTimeInterval(1800)
         var returnTime = outFormatter.stringFromDate(addThirtyMinutes)
-
-    
+        
+        
         return returnTime
     }
 }

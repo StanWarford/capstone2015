@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "buoi_icon-2.png"
+      "filename" : "buoy_tiny.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "buoi_icon-1.png"
+      "filename" : "buoy_tiny-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "buoi_icon.png"
+      "filename" : "buoy_tiny-2.png"
     }
   ],
   "info" : {

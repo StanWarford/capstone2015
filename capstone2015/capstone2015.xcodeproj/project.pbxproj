@@ -17,6 +17,7 @@
 		873E55E31A9492F20011F9E3 /* SectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873E55E21A9492F20011F9E3 /* SectionsViewController.swift */; };
 		87433CAC1AD7B62A00CF2D6B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87433CAB1AD7B62A00CF2D6B /* StoreKit.framework */; };
 		87433CAE1AD7B62D00CF2D6B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87433CAD1AD7B62D00CF2D6B /* GameKit.framework */; };
+		876FB5611ADDA481002F44DF /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */; };
 		877575121AC233EE00F73F1E /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877575111AC233EE00F73F1E /* SearchTableViewCell.swift */; };
 		8777CDA01ABE30090049030F /* CoursesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8777CD9F1ABE30090049030F /* CoursesTableViewCell.swift */; };
 		877B78C21A92D4A0005A09EB /* ClassListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */; };
@@ -74,6 +75,7 @@
 		873E55E21A9492F20011F9E3 /* SectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsViewController.swift; sourceTree = "<group>"; };
 		87433CAB1AD7B62A00CF2D6B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		87433CAD1AD7B62D00CF2D6B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarCollectionViewCell.xib; path = ../CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
 		877575111AC233EE00F73F1E /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8777CD9F1ABE30090049030F /* CoursesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesTableViewCell.swift; sourceTree = "<group>"; };
 		877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassListTableViewCell.swift; path = ../ClassListTableViewCell.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		788806E71A64B74E0048E2D2 /* capstone2015 */ = {
 			isa = PBXGroup;
 			children = (
+				876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */,
 				788806F11A64B74E0048E2D2 /* Main.storyboard */,
 				87FFCD8C1AD372CA00BE55B4 /* CalendarInfo.swift */,
 				877B78C31A92D688005A09EB /* ClassModel.swift */,
@@ -385,6 +388,7 @@
 			files = (
 				788806F31A64B74E0048E2D2 /* Main.storyboard in Resources */,
 				788806F81A64B74E0048E2D2 /* LaunchScreen.xib in Resources */,
+				876FB5611ADDA481002F44DF /* CalendarCollectionViewCell.xib in Resources */,
 				788806F51A64B74E0048E2D2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

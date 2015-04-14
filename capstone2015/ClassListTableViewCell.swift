@@ -40,5 +40,10 @@ class ClassListTableViewCell: UITableViewCell {
         followButton.layer.borderColor = UIColor.orangeColor().CGColor
         followButton.layer.cornerRadius = 5.0
     }
+    
+    
+    @IBAction func unfollowClass(sender: UIButton) {
+        
+    }
 
 }
