@@ -22,7 +22,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        alert("initializing");
+        //alert("initializing");
         this.bindEvents();
     },
     // Bind Event Listeners

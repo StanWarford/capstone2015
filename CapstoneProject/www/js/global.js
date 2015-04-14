@@ -40,7 +40,7 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 		// tell server the user is following a new class
         $.post("http://137.159.150.222:8000/follow",
         {
-            section: pickedlist[deptFlip][clasFlip][sectFlip],			// object
+            section: pickedlist[deptFlip][clasFlip][sectFlip]["section"],			// object
             token: localStorage.getItem("regID")	// user token
         },
         function(data,status){
@@ -54,7 +54,7 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 
         $.post("http://137.159.150.222:8000/unfollow",
         {
-            section: pickedlist[deptFlip][clasFlip][sectFlip],			// object
+            section: pickedlist[deptFlip][clasFlip][sectFlip]["section"],			// object
             token: localStorage.getItem("regID")	// user token
         },
         function(data,status){
