@@ -103,9 +103,9 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
             time: classFollowing.time)
         
         if (classFollowing.status == "Open"){
-            cell.status.textColor = alizarinRed
+            cell.status.textColor = pepperdineOrange
         } else {
-            cell.status.textColor = emeraldGreen
+            cell.status.textColor = pepperdineGray
         }
         
         cell.deptKey = deptOfInterest

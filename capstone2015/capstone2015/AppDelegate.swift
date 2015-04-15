@@ -15,9 +15,9 @@ var classList: [JSON] = []
 var deptOfInterest: String?
 var courseOfInterest: String?
 let url = "http://137.159.47.86:8181/classes"
-var alizarinRed =  /*UIColor(red: 1.0, green: 0.4706, blue: 0.0078, alpha: 1.0) */
-UIColor.orangeColor()
-var emeraldGreen = UIColor.grayColor()
+let pepperdineOrange = UIColor.orangeColor()
+let pepperdineGray = UIColor.grayColor()
+let pepperdineLightGray = UIColor(white: 0.9, alpha: 1.0)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

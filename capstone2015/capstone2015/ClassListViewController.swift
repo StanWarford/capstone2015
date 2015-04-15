@@ -92,6 +92,7 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
             self.managedObjectContext!.save(nil)
             // remove the deleted item from the `UITableView`
             self.classList.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.increasedHeight = nil
         }
         else if (self.increasedHeight == indexPath){
             self.increasedHeight = nil

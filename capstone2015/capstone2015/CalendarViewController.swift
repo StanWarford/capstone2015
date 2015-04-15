@@ -20,7 +20,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
     
-    var model = [[CalendarInfo?]](count: 29, repeatedValue: [CalendarInfo?](count: 6, repeatedValue: nil))
+    var model = [[CalendarInfo?]](count: 30, repeatedValue: [CalendarInfo?](count: 6, repeatedValue: nil))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,25 +29,29 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     override func viewWillAppear(animated: Bool) {
+        configureCalendarView()
+    }
+    
+    func configureCalendarView(){
         screenSize = UIScreen.mainScreen().bounds
         screenWidth = screenSize.width
         screenHeight = screenSize.height
-        statusBar.backgroundColor = pepperdineBlue
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: screenWidth/6, height: 28)
+        layout.itemSize = CGSize(width: screenWidth/6, height: 29)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         calendarView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         calendarView!.dataSource = self
         calendarView!.delegate = self
-        //calendarView!.registerClass(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: "CalendarCell")
         calendarView!.registerNib(UINib(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCell")
-        calendarView!.backgroundColor = UIColor.whiteColor()
+        calendarView!.backgroundColor = UIColor.whiteColor() // pepperdineLightGray
         calendarView!.preservesSuperviewLayoutMargins = false
         self.view.addSubview(calendarView!)
+        calendarView?.bounces = false
+    
+        // Set auto-layout constraints for calendarView
         
-        //Don't forget this line
         calendarView!.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         let leftConstraint = NSLayoutConstraint(item: calendarView!,
@@ -68,13 +72,14 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             constant: 0.0)
         self.view.addConstraint(rightConstraint)
         
+        let top = UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) ? CGFloat(40.0) : CGFloat(64.0)
         let topConstraint = NSLayoutConstraint(item: calendarView!,
             attribute: .Top,
             relatedBy: .Equal,
             toItem: self.view,
             attribute: .Top,
             multiplier: 1.0,
-            constant: 64.0)
+            constant: top)
         self.view.addConstraint(topConstraint)
         
         let bottomConstraint = NSLayoutConstraint(item: calendarView!,
@@ -86,48 +91,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             constant: 0.0)
         self.view.addConstraint(bottomConstraint)
         
-        
         parseClasses()
         calendarView!.reloadData()
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        screenSize = UIScreen.mainScreen().bounds
-        screenWidth = screenSize.width
-        screenHeight = screenSize.height
-        statusBar.backgroundColor = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: screenWidth/6, height: 28)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        calendarView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        calendarView!.dataSource = self
-        calendarView!.delegate = self
-        calendarView!.registerNib(UINib(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCell")
-        calendarView!.backgroundColor = UIColor.grayColor()
-        calendarView!.preservesSuperviewLayoutMargins = false
-        self.view.addSubview(calendarView!)
-        
-        //Don't forget this line
-        calendarView!.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
-        var constX = NSLayoutConstraint(item: calendarView!, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-        view.addConstraint(constX)
-        
-        var constY = NSLayoutConstraint(item: calendarView!, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
-        view.addConstraint(constY)
-        
-        var constW = NSLayoutConstraint(item: calendarView!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 100)
-        calendarView!.addConstraint(constW)
-        //view.addConstraint(constW) also works
-        
-        var constH = NSLayoutConstraint(item: calendarView!, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 100)
-        calendarView!.addConstraint(constH)
-        //view.addConstraint(constH) also works
-        
-        parseClasses()
-        calendarView!.reloadData()
+        configureCalendarView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -143,11 +112,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell: CalendarCollectionViewCell = calendarView!.dequeueReusableCellWithReuseIdentifier("CalendarCell", forIndexPath: indexPath) as CalendarCollectionViewCell
         if let classFollowing = model[indexPath.section][indexPath.row]{
             cell.setCell(classFollowing.text, color: classFollowing.color!)
+            cell.layer.borderWidth = 0.0
         } else {
             cell.setCell("",color: nil)
+            cell.layer.borderColor = pepperdineBlue.CGColor
+            cell.layer.borderWidth = 0.6
         }
-        cell.layer.borderWidth = 0.9
-        cell.layer.borderColor = pepperdineBlue.CGColor
         return cell
     }
     
@@ -158,18 +128,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return model.count // #rows
     }
-    
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
     // Bryan's functions
     
