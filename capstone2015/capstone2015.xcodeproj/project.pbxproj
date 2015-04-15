@@ -18,6 +18,7 @@
 		87433CAC1AD7B62A00CF2D6B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87433CAB1AD7B62A00CF2D6B /* StoreKit.framework */; };
 		87433CAE1AD7B62D00CF2D6B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87433CAD1AD7B62D00CF2D6B /* GameKit.framework */; };
 		876FB5611ADDA481002F44DF /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */; };
+		876FB5641ADE3939002F44DF /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876FB5631ADE3939002F44DF /* CustomCollectionViewLayout.swift */; };
 		877575121AC233EE00F73F1E /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877575111AC233EE00F73F1E /* SearchTableViewCell.swift */; };
 		8777CDA01ABE30090049030F /* CoursesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8777CD9F1ABE30090049030F /* CoursesTableViewCell.swift */; };
 		877B78C21A92D4A0005A09EB /* ClassListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */; };
@@ -76,6 +77,7 @@
 		87433CAB1AD7B62A00CF2D6B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		87433CAD1AD7B62D00CF2D6B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarCollectionViewCell.xib; path = ../CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
+		876FB5631ADE3939002F44DF /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		877575111AC233EE00F73F1E /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8777CD9F1ABE30090049030F /* CoursesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesTableViewCell.swift; sourceTree = "<group>"; };
 		877B78C11A92D4A0005A09EB /* ClassListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassListTableViewCell.swift; path = ../ClassListTableViewCell.swift; sourceTree = "<group>"; };
@@ -178,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				788806F11A64B74E0048E2D2 /* Main.storyboard */,
-				876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */,
 				87FFCD8C1AD372CA00BE55B4 /* CalendarInfo.swift */,
 				877B78C31A92D688005A09EB /* ClassModel.swift */,
 				788806EA1A64B74E0048E2D2 /* AppDelegate.swift */,
@@ -227,6 +228,7 @@
 		8726AC4B1ADB56C700464ED9 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */,
 				87CC53E11ABF6D730019B341 /* CalendarViewController.swift */,
 				87CC53E51ABFA4BD0019B341 /* CalendarCollectionViewCell.swift */,
 			);
@@ -245,6 +247,7 @@
 		87CC53DB1ABF60010019B341 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				876FB5631ADE3939002F44DF /* CustomCollectionViewLayout.swift */,
 				877B78D51A9C1817005A09EB /* Alamofire.swift */,
 				877B78D31A9C1811005A09EB /* SwiftyJSON.swift */,
 			);
@@ -421,6 +424,7 @@
 				873E55E31A9492F20011F9E3 /* SectionsViewController.swift in Sources */,
 				877B78C21A92D4A0005A09EB /* ClassListTableViewCell.swift in Sources */,
 				877B78D81AA010E4005A09EB /* Settings.swift in Sources */,
+				876FB5641ADE3939002F44DF /* CustomCollectionViewLayout.swift in Sources */,
 				873AE1631ABA4D080038838F /* DeptListTableViewCell.swift in Sources */,
 				8777CDA01ABE30090049030F /* CoursesTableViewCell.swift in Sources */,
 				788806EE1A64B74E0048E2D2 /* capstone2015.xcdatamodeld in Sources */,

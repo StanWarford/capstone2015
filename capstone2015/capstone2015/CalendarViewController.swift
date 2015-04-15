@@ -33,27 +33,29 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func configureCalendarView(){
+        
+        // Programmatically create and configure Calendar View
         screenSize = UIScreen.mainScreen().bounds
         screenWidth = screenSize.width
         screenHeight = screenSize.height
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: screenWidth/6, height: 29)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        layout.itemSize = CGSize(width: screenWidth/6, height: 29)
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 0
+        let layout = CustomCollectionViewLayout()
         calendarView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         calendarView!.dataSource = self
         calendarView!.delegate = self
         calendarView!.registerNib(UINib(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCell")
-        calendarView!.backgroundColor = UIColor.whiteColor() // pepperdineLightGray
+        calendarView!.backgroundColor = UIColor.whiteColor()
         calendarView!.preservesSuperviewLayoutMargins = false
         self.view.addSubview(calendarView!)
         calendarView?.bounces = false
     
         // Set auto-layout constraints for calendarView
-        
         calendarView!.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
+
         let leftConstraint = NSLayoutConstraint(item: calendarView!,
             attribute: .Left,
             relatedBy: .Equal,
@@ -91,7 +93,10 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             constant: 0.0)
         self.view.addConstraint(bottomConstraint)
         
+        // Convert classes to calendar units
         parseClasses()
+        
+        // Reset Calendar View
         calendarView!.reloadData()
     }
     
@@ -115,26 +120,40 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             cell.layer.borderWidth = 0.0
         } else {
             cell.setCell("",color: nil)
-            cell.layer.borderColor = pepperdineBlue.CGColor
+            cell.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).CGColor//pepperdineBlue.CGColor
             cell.layer.borderWidth = 0.6
+            if (indexPath.row % 2 == 0) {
+                cell.backgroundColor = pepperdineLightGray
+            } else {
+                cell.backgroundColor = UIColor.whiteColor()
+            }
         }
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model[0].count
+        return model[0].count // Number of columns
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return model.count // #rows
+        return model.count // Number of rows
     }
     
-    // Bryan's functions
+    // Bryan's time-parsing functions
     
     var mapping : [String : Int] = ["Mo" : 1, "Tu" : 2, "We" : 3, "Th" : 4, "Fr" : 5]
     
     func parseClasses(){
-        //model = [[CalendarInfo?]](count: 29, repeatedValue: [CalendarInfo?](count: 6, repeatedValue: nil))
+        model = [[CalendarInfo?]](count: 30, repeatedValue: [CalendarInfo?](count: 6, repeatedValue: nil))
+        
+        model[0][1] = CalendarInfo(text: "Monday", color: pepperdineBlue)
+        model[0][2] = CalendarInfo(text: "Tuesday", color: pepperdineBlue)
+        model[0][3] = CalendarInfo(text: "Wednesday", color: pepperdineBlue)
+        model[0][4] = CalendarInfo(text: "Thursday", color: pepperdineBlue)
+        model[0][5] = CalendarInfo(text: "Friday", color: pepperdineBlue)
+        model[0][0] = CalendarInfo(text: "Time", color: pepperdineBlue)
+        model[1][0] = CalendarInfo(text: "07:30AM", color: pepperdineBlue)
+        
         for c in classes {
             if (c.time != "TBA") {
                 var meetingTime = split(c.time) {$0 == " "}
@@ -146,14 +165,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func populateCalModel(days: [Int], times: [Int], className: String) {
-        
-        model[0][1] = CalendarInfo(text: "Mon", color: pepperdineBlue)
-        model[0][2] = CalendarInfo(text: "Tues", color: pepperdineBlue)
-        model[0][3] = CalendarInfo(text: "Wed", color: pepperdineBlue)
-        model[0][4] = CalendarInfo(text: "Thurs", color: pepperdineBlue)
-        model[0][5] = CalendarInfo(text: "Fri", color: pepperdineBlue)
-        model[0][0] = CalendarInfo(text: "", color: pepperdineBlue)
-        model[1][0] = CalendarInfo(text: "07:30AM", color: pepperdineBlue)
         
         var start = "7:30AM"
         
@@ -197,7 +208,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         
         return mappedDays //TuFr ==> [1,4]
-        
     }
     
     func mapTimes(start: String!, end: String!) -> [Int] { //[startOnGrid, #segs]
@@ -263,7 +273,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         var stringToDate = inFormatter.dateFromString(time)!
         var addThirtyMinutes = stringToDate.dateByAddingTimeInterval(1800)
         var returnTime = outFormatter.stringFromDate(addThirtyMinutes)
-        
         
         return returnTime
     }
