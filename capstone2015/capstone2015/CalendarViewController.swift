@@ -44,8 +44,49 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         //calendarView!.registerClass(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: "CalendarCell")
         calendarView!.registerNib(UINib(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCell")
         calendarView!.backgroundColor = UIColor.whiteColor()
-        //calendarView!.preservesSuperviewLayoutMargins = false
+        calendarView!.preservesSuperviewLayoutMargins = false
         self.view.addSubview(calendarView!)
+        
+        //Don't forget this line
+        calendarView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        let leftConstraint = NSLayoutConstraint(item: calendarView!,
+            attribute: .Left,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Left,
+            multiplier: 1.0,
+            constant: 0.0)
+        self.view.addConstraint(leftConstraint)
+        
+        let rightConstraint = NSLayoutConstraint(item: calendarView!,
+            attribute: .Right,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Right,
+            multiplier: 1.0,
+            constant: 0.0)
+        self.view.addConstraint(rightConstraint)
+        
+        let topConstraint = NSLayoutConstraint(item: calendarView!,
+            attribute: .Top,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Top,
+            multiplier: 1.0,
+            constant: 64.0)
+        self.view.addConstraint(topConstraint)
+        
+        let bottomConstraint = NSLayoutConstraint(item: calendarView!,
+            attribute: .Bottom,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Bottom,
+            multiplier: 1.0,
+            constant: 0.0)
+        self.view.addConstraint(bottomConstraint)
+        
+        
         parseClasses()
         calendarView!.reloadData()
     }
@@ -63,11 +104,28 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         calendarView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         calendarView!.dataSource = self
         calendarView!.delegate = self
-        //calendarView!.registerClass(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: "CalendarCell")
         calendarView!.registerNib(UINib(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCell")
         calendarView!.backgroundColor = UIColor.grayColor()
-        //calendarView!.preservesSuperviewLayoutMargins = false
+        calendarView!.preservesSuperviewLayoutMargins = false
         self.view.addSubview(calendarView!)
+        
+        //Don't forget this line
+        calendarView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        var constX = NSLayoutConstraint(item: calendarView!, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        view.addConstraint(constX)
+        
+        var constY = NSLayoutConstraint(item: calendarView!, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+        view.addConstraint(constY)
+        
+        var constW = NSLayoutConstraint(item: calendarView!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 100)
+        calendarView!.addConstraint(constW)
+        //view.addConstraint(constW) also works
+        
+        var constH = NSLayoutConstraint(item: calendarView!, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 100)
+        calendarView!.addConstraint(constH)
+        //view.addConstraint(constH) also works
+        
         parseClasses()
         calendarView!.reloadData()
     }
@@ -88,8 +146,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         } else {
             cell.setCell("",color: nil)
         }
-        cell.layer.borderWidth = 0.5
-        cell.layer.borderColor = UIColor.grayColor().CGColor
+        cell.layer.borderWidth = 0.9
+        cell.layer.borderColor = pepperdineBlue.CGColor
         return cell
     }
     
@@ -136,6 +194,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         model[0][3] = CalendarInfo(text: "Wed", color: pepperdineBlue)
         model[0][4] = CalendarInfo(text: "Thurs", color: pepperdineBlue)
         model[0][5] = CalendarInfo(text: "Fri", color: pepperdineBlue)
+        model[0][0] = CalendarInfo(text: "", color: pepperdineBlue)
+        model[1][0] = CalendarInfo(text: "07:30AM", color: pepperdineBlue)
         
         var start = "7:30AM"
         
