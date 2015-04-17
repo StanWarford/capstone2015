@@ -58,9 +58,24 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return classes.count
     }
+    
+    @IBAction func touchDown(sender: UIButton) {
+        sender.backgroundColor = pepperdineGray
+        sender.setTitleColor(pepperdineLightGray, forState: .Normal)
+    }
+
+    @IBAction func touchDrag(sender: UIButton) {
+        sender.backgroundColor = UIColor.clearColor()
+        sender.setTitleColor(pepperdineGray, forState: .Normal)
+    }
+    
+    
     @IBAction func unfollow(sender: UIButton) {
         var alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
+            sender.backgroundColor = UIColor.clearColor()
+            sender.setTitleColor(pepperdineGray, forState: .Normal)
+        }))
         self.presentViewController(alert, animated: true, completion: nil)
         
         alert.addAction(UIAlertAction(title: "Unfollow", style: .Default, handler: { action in
@@ -75,6 +90,7 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
             // remove the deleted item from the `UITableView`
             var indexPath = NSIndexPath(forRow: row, inSection: 0)
             self.classList.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.populateClassList()
             self.classList.beginUpdates()
             self.classList.endUpdates()
         }))

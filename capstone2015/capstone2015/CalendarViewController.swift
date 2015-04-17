@@ -30,6 +30,12 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewWillAppear(animated: Bool) {
         configureCalendarView()
+        
+        // Convert classes to calendar units
+        parseClasses()
+        
+        // Reset Calendar View
+        calendarView!.reloadData()
     }
     
     func configureCalendarView(){
@@ -38,11 +44,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         screenSize = UIScreen.mainScreen().bounds
         screenWidth = screenSize.width
         screenHeight = screenSize.height
-//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        layout.itemSize = CGSize(width: screenWidth/6, height: 29)
-//        layout.minimumInteritemSpacing = 0
-//        layout.minimumLineSpacing = 0
         let layout = CustomCollectionViewLayout()
         calendarView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         calendarView!.dataSource = self
@@ -74,14 +75,14 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             constant: 0.0)
         self.view.addConstraint(rightConstraint)
         
-        let top = UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) ? CGFloat(40.0) : CGFloat(64.0)
+        //let top = UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) ? CGFloat(40.0) : CGFloat(64.0)
         let topConstraint = NSLayoutConstraint(item: calendarView!,
             attribute: .Top,
             relatedBy: .Equal,
-            toItem: self.view,
-            attribute: .Top,
+            toItem: self.titleBar.titleView,
+            attribute: .Bottom,
             multiplier: 1.0,
-            constant: top)
+            constant: 0.0)
         self.view.addConstraint(topConstraint)
         
         let bottomConstraint = NSLayoutConstraint(item: calendarView!,
@@ -92,12 +93,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             multiplier: 1.0,
             constant: 0.0)
         self.view.addConstraint(bottomConstraint)
-        
-        // Convert classes to calendar units
-        parseClasses()
-        
-        // Reset Calendar View
-        calendarView!.reloadData()
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -154,18 +149,6 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         model[0][0] = CalendarInfo(text: "Time", color: pepperdineBlue)
         model[1][0] = CalendarInfo(text: "07:30AM", color: pepperdineBlue)
         
-        for c in classes {
-            if (c.time != "TBA") {
-                var meetingTime = split(c.time) {$0 == " "}
-                var days = mapDays(meetingTime[0])
-                var time = mapTimes(meetingTime[1], end: meetingTime[3])
-                populateCalModel(days, times: time, className: c.course)
-            }
-        }
-    }
-    
-    func populateCalModel(days: [Int], times: [Int], className: String) {
-        
         var start = "7:30AM"
         
         for (var k = 2; k < model.count; k++){
@@ -173,11 +156,25 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
             model[k][0] = CalendarInfo(text: start, color: pepperdineBlue) //first time is 8AM
         }
         
+        for c in classes {
+            if (c.time != "TBA") {
+                var meetingTime = split(c.time) {$0 == " "}
+                var days = mapDays(meetingTime[0])
+                var time = mapTimes(meetingTime[1], end: meetingTime[3])
+                populateCalModel(days, times: time, classModel: c)
+            }
+        }
+    }
+    
+    func populateCalModel(days: [Int], times: [Int], classModel: ClassModel) {
+        
         for (var j = 0; j < days.count; j++){
             for(var i = 0; i < times[1]; i++){
                 var startPoint = times[0]
                 if(i == 0){
-                    model[startPoint][days[j]] = CalendarInfo(text: className, color: UIColor.orangeColor())
+                    model[startPoint][days[j]] = CalendarInfo(text: classModel.name, color: UIColor.orangeColor())
+                } else if (i == 1){
+                    model[startPoint + i][days[j]] = CalendarInfo(text: classModel.time, color: UIColor.orangeColor())
                 } else {
                     model[startPoint+i][days[j]] = CalendarInfo(color: UIColor.orangeColor())
                 }

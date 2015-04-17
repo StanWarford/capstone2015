@@ -7,8 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
 class ClassListTableViewCell: UITableViewCell {
+    
+    lazy var managedObjectContext : NSManagedObjectContext? = {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        if let managedObjectContext = appDelegate.managedObjectContext {
+            return managedObjectContext
+        } else {
+            return nil
+        }
+        }()
     
     @IBOutlet weak var className: UILabel!
     @IBOutlet weak var course: UILabel!
@@ -32,18 +42,17 @@ class ClassListTableViewCell: UITableViewCell {
     func setCell(className: String, course: String, status: String, time: String, professor: String, room: String) {
         self.className.text = className
         self.course.text = course
-        self.status.text = status
+        self.status.text = status.uppercaseString
         self.time.text = time
         self.professor.text = professor
         self.room.text = room
         followButton.layer.borderWidth = 1.35
-        followButton.layer.borderColor = UIColor.orangeColor().CGColor
+        followButton.layer.borderColor = pepperdineGray.CGColor
         followButton.layer.cornerRadius = 5.0
     }
     
-    
     @IBAction func unfollowClass(sender: UIButton) {
-        
+
     }
 
 }

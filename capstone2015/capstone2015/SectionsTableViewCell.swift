@@ -38,7 +38,7 @@ class SectionsTableViewCell: UITableViewCell {
     func setCell(className: String, courseNumber: String, status: String, professor: String, room: String, time: String) {
         self.className.text = className
         self.courseNumber.text = courseNumber
-        self.status.text = status
+        self.status.text = status.uppercaseString
         self.professor = professor
         self.room = room
         self.professorLabel.text = professor

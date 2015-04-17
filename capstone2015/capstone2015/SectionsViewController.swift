@@ -65,19 +65,21 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func populateSections() {
         sections = []
-        if let sectionDict = classDict?[deptOfInterest!][courseOfInterest!] {
-            var sectionKeys = sectionDict.dictionary!.keys
-            for sectionKey in sectionKeys {
-                var classOfInterest = ClassModel()
-                classOfInterest.name = sectionDict[sectionKey]["name"].string
-                classOfInterest.dept = sectionDict[sectionKey]["department"].string
-                classOfInterest.course = sectionDict[sectionKey]["section"].string
-                classOfInterest.professor = sectionDict[sectionKey]["professor"].string
-                classOfInterest.room = sectionDict[sectionKey]["room"].string
-                classOfInterest.section = sectionDict[sectionKey]["subject"].string
-                classOfInterest.status = sectionDict[sectionKey]["status"].string
-                classOfInterest.time = sectionDict[sectionKey]["meeting"].string
-                self.sections.append(classOfInterest)
+        if let deptDict = classDict?[deptOfInterest!].dictionary! {
+            if let sectionDict = deptDict[courseOfInterest!] {
+                var sectionKeys = sectionDict.dictionary!.keys
+                for sectionKey in sectionKeys {
+                    var classOfInterest = ClassModel()
+                    classOfInterest.name = sectionDict[sectionKey]["name"].string
+                    classOfInterest.dept = sectionDict[sectionKey]["department"].string
+                    classOfInterest.course = sectionDict[sectionKey]["section"].string
+                    classOfInterest.professor = sectionDict[sectionKey]["professor"].string
+                    classOfInterest.room = sectionDict[sectionKey]["room"].string
+                    classOfInterest.section = sectionDict[sectionKey]["subject"].string
+                    classOfInterest.status = sectionDict[sectionKey]["status"].string
+                    classOfInterest.time = sectionDict[sectionKey]["meeting"].string
+                    self.sections.append(classOfInterest)
+                }
             }
         }
     }

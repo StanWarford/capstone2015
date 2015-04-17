@@ -134,17 +134,12 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
     }
     
     func sizeForItemWithColumnIndex(columnIndex: Int) -> CGSize {
-//        var text : String = ""
         switch (columnIndex) {
         case 0:
             return CGSizeMake(75.0, 35.0)
         default:
-            return CGSizeMake(180.0, 35.0)
+            return CGSizeMake(200.0, 35.0)
         }
-//
-//        var size : CGSize = (text as NSString).sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(17.0)])
-//        let width : CGFloat = size.width + 25
-//        return CGSizeMake(width, 30)
     }
     
     func calculateItemsSize() {
