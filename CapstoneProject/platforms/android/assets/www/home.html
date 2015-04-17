@@ -11,23 +11,23 @@
 		<link rel="stylesheet" href="css/peptheme.css">
 		<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
-		<script src='moment.min.js'></script>
+		<script src='fullcalendar/moment.min.js'></script>
 		<script src="js/global.js"></script>
 		<script src='fullcalendar/fullcalendar.js'></script>
 		<script>
-		var myHeight = $( window ).height();
-		$(document).click(function() {
-			$('#calendar').fullCalendar({
-				height: myHeight,
+			var myHeight = $( window ).height();
+			$(document).click(function() {
+				$('#calendar').fullCalendar({
+					height: myHeight,
 				    defaultView: 'agendaWeek',
 				    weekends: false,
-				    defaultDate:'2015-08-31',
-					events: cEvents(),
+				    defaultDate:'2015-08-31', //manually sets calendar to start on first day of semester
+					events: cEvents(), //calls function cEvents() from global.js
 					allDaySlot: false,
 					minTime: "07:00:00",
 					maxTime: "23:00:00",
-    				header: false
-				});
+					header: false
+					});
 			});
 		</script>
 	</head>
@@ -79,33 +79,39 @@
 				for (var dept in plhome) {
 					for (var classes in plhome[dept]) {
 						for (var section in plhome[dept][classes]) {
-							var clsQuote = '"' + classes + '"';
-							var deptQuote = '"' + dept +'"';
-							var sectQuote = '"' + section + '"';
-							$('#classespicked').append('<li class="ui-field-contain" id="pickitem'+i+'"></li>');
-							$('#pickitem'+i).css('background-color','#b9cf96');
-							if(json[dept][classes][section]["status"] == "Closed") {
-								$('#pickitem'+i).css('background-color','#f06d6d');
+							if ((typeof json[dept]) != 'undefined') {
+								if ((typeof json[dept][classes]) != 'undefined') {
+									if ((typeof json[dept][classes][section]) != 'undefined') {
+										var clsQuote = '"' + classes + '"';
+										var deptQuote = '"' + dept +'"';
+										var sectQuote = '"' + section + '"';
+										$('#classespicked').append('<li class="ui-field-contain" id="pickitem'+i+'"></li>');
+										$('#pickitem'+i).css('background-color','#b9cf96');
+										if(json[dept][classes][section]["status"] == "Closed") {
+											$('#pickitem'+i).css('background-color','#f06d6d');
+										}
+										$('#pickitem'+i).css('margin-top','10px');
+										$('#pickitem'+i).append('<h2 id="pickwords'+i+'"></h2>');
+										$('#pickitem'+i).append('<p id="pickname'+i+'" class="nameleft"></p>');
+										$('#pickname'+i).css('font-size','14px');
+										$('#pickitem'+i).append('<p id="pickprof'+i+'" class="profright"></p>');
+										$('#pickprof'+i).css('font-size','14px');
+										$('#pickitem'+i).append('<p id="pickother'+i+'" class="timesleft"></p>');
+										$('#pickother'+i).css('font-size','14px');
+										$('#pickitem'+i).append('<p id="pickroom'+i+'" class="roomright"></p>');
+										$('#pickroom'+i).css('font-size','14px');
+										$('#pickwords'+i).append(classes+"."+section);
+										$('#pickprof'+i).append(plhome[dept][classes][section]["professor"]);
+										$('#pickname'+i).append(plhome[dept][classes][section]["name"]);
+										$('#pickother'+i).append(plhome[dept][classes][section]["meeting"]);
+										$('#pickroom'+i).append(plhome[dept][classes][section]["room"]);
+										$('#pickitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on' selected=''></option></select></span>");
+										$('#index').trigger('create');
+										$("#classespicked").listview("refresh"); 
+										i++;
+									}
+								}
 							}
-							$('#pickitem'+i).css('margin-top','10px');
-							$('#pickitem'+i).append('<h2 id="pickwords'+i+'"></h2>');
-							$('#pickitem'+i).append('<p id="pickname'+i+'" class="nameleft"></p>');
-							$('#pickname'+i).css('font-size','14px');
-							$('#pickitem'+i).append('<p id="pickprof'+i+'" class="profright"></p>');
-							$('#pickprof'+i).css('font-size','14px');
-							$('#pickitem'+i).append('<p id="pickother'+i+'" class="timesleft"></p>');
-							$('#pickother'+i).css('font-size','14px');
-							$('#pickitem'+i).append('<p id="pickroom'+i+'" class="roomright"></p>');
-							$('#pickroom'+i).css('font-size','14px');
-							$('#pickwords'+i).append(classes+"."+section);
-							$('#pickprof'+i).append(plhome[dept][classes][section]["professor"]);
-							$('#pickname'+i).append(plhome[dept][classes][section]["name"]);
-							$('#pickother'+i).append(plhome[dept][classes][section]["meeting"]);
-							$('#pickroom'+i).append(plhome[dept][classes][section]["room"]);
-							$('#pickitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on' selected=''></option></select></span>");
-							$('#index').trigger('create');
-							$("#classespicked").listview("refresh"); 
-							i++;
 						}
 					} 
 				}

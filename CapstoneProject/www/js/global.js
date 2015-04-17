@@ -1,6 +1,6 @@
-//localStorage.setItem("serverIPAddr", "http://137.159.47.86:8181/");
+localStorage.setItem("serverIPAddr", "http://137.159.47.86:8181/");
 
-localStorage.setItem("serverIPAddr", "http://137.159.148.198:8000/");
+//localStorage.setItem("serverIPAddr", "http://137.159.148.198:8000/");
 
 $.ajax({
 	url: "http://137.159.47.86:8181/classes",

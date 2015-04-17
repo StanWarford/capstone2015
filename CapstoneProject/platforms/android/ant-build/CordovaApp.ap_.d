@@ -29,6 +29,7 @@ C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\andr
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\cordova.js \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\cordova_plugins.js \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\css \
+C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\docs.txt \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\first.html \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\fullcalendar \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\help.html \
@@ -39,7 +40,6 @@ C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\andr
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\index.html \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\jquery-1.11.2.min.js \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\js \
-C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\moment.min.js \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\options.html \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\plugins \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\PushNotification.js \
@@ -47,7 +47,6 @@ C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\andr
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\search.html \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\spec \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\spec.html \
-C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\table.html \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\css\images \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\css\index.css \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\css\one.css \
@@ -55,6 +54,7 @@ C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\andr
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\css\images\ajax-loader.gif \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\fullcalendar\fullcalendar.css \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\fullcalendar\fullcalendar.js \
+C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\fullcalendar\moment.min.js \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\images\ajax-loader.gif \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\images\buoy-white.gif \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\images\buoy.gif \
@@ -469,7 +469,6 @@ C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\andr
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\js\a.js \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\js\b.js \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\js\global.js \
-C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\js\head.js \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\js\index.js \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\js\jquery.mobile-1.4.5.min.map \
 C:\Users\Chloe\Documents\GitHub\temp\capstone2015\CapstoneProject\platforms\android\assets\www\js\PushNotification.js \
