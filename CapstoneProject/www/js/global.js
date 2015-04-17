@@ -1,3 +1,7 @@
+//localStorage.setItem("serverIPAddr", "http://137.159.47.86:8181/");
+
+localStorage.setItem("serverIPAddr", "http://137.159.148.198:8000/");
+
 $.ajax({
 	url: "http://137.159.47.86:8181/classes",
 	type: "GET",
@@ -17,8 +21,10 @@ if (localStorage.getItem("picked") === null) {
 	localStorage.setItem("picked","{}");
 }
 
-
-
+if (localStorage.getItem("pushSet") === null) {
+	// default is that people want push notifications!
+	localStorage.setItem("pushSet", "true");
+}
 
 function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 	console.log(deptFlip + " " + clasFlip + " " + sectFlip + " " + val);
@@ -41,7 +47,7 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 		localStorage.setItem("picked",JSON.stringify(pickedlist));
 
 		// tell server the user is following a new class
-        $.post("http://137.159.150.222:8000/follow",
+        $.post(localStorage.getItem("serverIPAddr") + "follow",
         {
             section: pickedlist[deptFlip][clasFlip][sectFlip]["section"],			// object
             token: localStorage.getItem("regID"),	// user token
@@ -56,7 +62,7 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 		// tell server the user unfollowed this class
 		//alert(JSON.stringify(pickedlist[deptFlip]));
 
-        $.post("http://137.159.150.222:8000/unfollow",
+        $.post(localStorage.getItem("serverIPAddr") + "unfollow",
         {
             section: pickedlist[deptFlip][clasFlip][sectFlip]["section"],			// object
             token: localStorage.getItem("regID"),	// user token
@@ -65,7 +71,6 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
         function(data,status){
             alert("Data: " + data + "\nStatus: " + status);
         });
-
 
 		delete pickedlist[deptFlip][clasFlip][sectFlip];
 		console.log(pickedlist[deptFlip][clasFlip]);
@@ -151,11 +156,3 @@ function cEvents() {
 	}
 	return calEvents;
 }
-
-// alert(localStorage.getItem("firstLogin"));
-
-// if (localStorage.getItem("firstLogin") == "false") {
-// 	alert("In if");
-// 	localStorage.setItem("firstLogin", "true");
-// 	alert(localStorage.getItem("firstLogin"));
-// }

@@ -41,7 +41,7 @@
  				<h3>Provide Information</h3>
 				<form>
     				<label for="name-1">NTID (Pepperdine Login):</label>
-    				<input type="text" data-clear-btn="true" name="name-1" id="name-1" value="" placeholder="Your name...">
+    				<input type="text" data-clear-btn="true" name="name-1" id="name-1" value="" placeholder="ex/ jdoe">
 				</form>
 				<div id = "required" style="display:none;color:red;">
 					PLEASE ENTER YOUR NTID
@@ -79,20 +79,14 @@
 <script type="text/javascript">
 	//subscribe the user!
  	app.initialize(app.registerUser);
- 	
+
 	function submitButton() {
 		if (document.getElementById("name-1").value == "") {
 			$("#required").css("display","inline");
 		} else {
 			$("#required").css("display","none");
-			//if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
 			  	localStorage.setItem("userName",document.getElementById("name-1").value);			// String
-			 	//localStorage.setItem("isPush",document.getElementById("flip-checkbox-1").checked);	// Boolean
-	            // redirect to home
-			 	//setTimeout(function(){window.location = "home.html";}, 1000);
-			//} else {
 	  		    window.location = "home.html"//this is the browser
-			//}
 		}		
 	}
 

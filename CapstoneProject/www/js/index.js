@@ -101,11 +101,10 @@ var app = {
                     } else {
                         // save regid to local storage for future use
                         localStorage.setItem("regID", e.regid);
-
                         //console.log("Regid " + e.regid);
                         //alert('Registration id = '+e.regid);
                         // now send HTTP POST to server with regid and user info
-                        $.post("http://137.159.150.222:8000/subscribe",
+                        $.post(localStorage.getItem("serverIPAddr") + "subscribe",
                         {
                             user: localStorage.getItem("userName"),
                             type: "Android",
@@ -115,15 +114,17 @@ var app = {
                             if (status == "success") {
                                 localStorage.setItem("hasRegistered", true);
                             }
-                            //alert("Data: " + data + "\nStatus: " + status);
+                            alert("Data: " + data + "\nStatus: " + status);
                         });
-                    }
+                   }
                 }
             break;
  
             case 'message':
               // this is the actual push notification. its format depends on the data model from the push server
-              alert('PN: '+e.message);
+              if (localStorage.getItem("pushSet") == "true") {
+                alert('PN: '+e.message);
+            }
             break;
  
             case 'error':
