@@ -1,0 +1,26 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch Android
+# Your branch is up-to-date with 'origin/Android'.
+#
+# Changes to be committed:
+#	modified:   platforms/android/CordovaLib/ant-build/build.prop
+#	modified:   platforms/android/ant-build/CordovaApp-debug-unaligned.apk
+#	modified:   platforms/android/ant-build/CordovaApp-debug.apk
+#	modified:   platforms/android/ant-build/CordovaApp.ap_
+#	modified:   platforms/android/ant-build/build.prop
+#	modified:   platforms/android/assets/www/first.html
+#	modified:   platforms/android/assets/www/help.html
+#	modified:   platforms/android/assets/www/js/global.js
+#	modified:   platforms/android/assets/www/js/index.js
+#	modified:   platforms/android/assets/www/options.html
+#	modified:   www/cordova.js
+#	modified:   www/first.html
+#	modified:   www/help.html
+#	modified:   www/js/global.js
+#	modified:   www/js/index.js
+#	modified:   www/options.html
+#
+
+Made changes to comply with Adam's server code. Also made updates to the options page and added functionality for the push notifications option... it actually works now
