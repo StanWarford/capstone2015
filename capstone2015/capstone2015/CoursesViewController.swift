@@ -38,11 +38,11 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func populateCourses(){
-        self.courses = classDict![deptOfInterest!].dictionary!.keys.array
+        self.courses = sorted(classDict![deptOfInterest!].dictionary!.keys.array) {$0 < $1}
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.courses.count - 1
+        return self.courses.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

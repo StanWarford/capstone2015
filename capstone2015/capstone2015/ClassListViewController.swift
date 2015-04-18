@@ -150,6 +150,7 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func populateClassList(){
+        if (classDict != nil) {
         
         let fetchRequest2 = NSFetchRequest(entityName: "ClassEntity")
         if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest2, error: nil) as? [ClassEntity]{
@@ -171,6 +172,7 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         self.classList.reloadData()
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

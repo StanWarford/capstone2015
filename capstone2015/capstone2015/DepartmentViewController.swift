@@ -45,7 +45,7 @@ class DepartmentViewController: UIViewController, UITableViewDataSource, UITable
     
     func populateDeptList() {
         if let dict = classDict {
-            self.depts = dict.dictionary!.keys.array
+            self.depts = sorted(dict.dictionary!.keys.array) {$0 < $1}
         }
     }
     

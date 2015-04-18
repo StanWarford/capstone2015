@@ -160,8 +160,8 @@
 				87AA3B8F1ACCE5940000BF05 /* AudioToolbox.framework */,
 				87AA3B8D1ACCE5440000BF05 /* Bolts.framework */,
 				87AA3B8B1ACCE51A0000BF05 /* Parse.framework */,
-				788806E71A64B74E0048E2D2 /* capstone2015 */,
-				788807001A64B74E0048E2D2 /* capstone2015Tests */,
+				788806E71A64B74E0048E2D2 /* Buoy */,
+				788807001A64B74E0048E2D2 /* BuoyTests */,
 				788806E61A64B74E0048E2D2 /* Products */,
 				87AA3BA61ACCE7D50000BF05 /* capstone2015-Bridging-Header.h */,
 			);
@@ -176,7 +176,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		788806E71A64B74E0048E2D2 /* capstone2015 */ = {
+		788806E71A64B74E0048E2D2 /* Buoy */ = {
 			isa = PBXGroup;
 			children = (
 				788806F11A64B74E0048E2D2 /* Main.storyboard */,
@@ -194,6 +194,7 @@
 				87CC53DF1ABF60670019B341 /* Sections */,
 				788806E81A64B74E0048E2D2 /* Supporting Files */,
 			);
+			name = Buoy;
 			path = capstone2015;
 			sourceTree = "<group>";
 		};
@@ -208,12 +209,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		788807001A64B74E0048E2D2 /* capstone2015Tests */ = {
+		788807001A64B74E0048E2D2 /* BuoyTests */ = {
 			isa = PBXGroup;
 			children = (
 				788807031A64B74E0048E2D2 /* capstone2015Tests.swift */,
 				788807011A64B74E0048E2D2 /* Supporting Files */,
 			);
+			name = BuoyTests;
 			path = capstone2015Tests;
 			sourceTree = "<group>";
 		};
@@ -566,7 +568,7 @@
 				INFOPLIST_FILE = capstone2015/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = capstone2015;
 				SWIFT_OBJC_BRIDGING_HEADER = "capstone2015-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -585,7 +587,7 @@
 				INFOPLIST_FILE = capstone2015/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = capstone2015;
 				SWIFT_OBJC_BRIDGING_HEADER = "capstone2015-Bridging-Header.h";
 			};
 			name = Release;
@@ -604,7 +606,7 @@
 				);
 				INFOPLIST_FILE = capstone2015Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = capstone2015Tests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/capstone2015.app/capstone2015";
 			};
 			name = Debug;
@@ -619,7 +621,7 @@
 				);
 				INFOPLIST_FILE = capstone2015Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = capstone2015Tests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/capstone2015.app/capstone2015";
 			};
 			name = Release;

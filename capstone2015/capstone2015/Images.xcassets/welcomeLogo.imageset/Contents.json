@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "buoy_1x.png"
+      "filename" : "buoy_nowords-06-2.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "buoy_2x.png"
+      "filename" : "buoy_nowords-06-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "buoy_3x.png"
+      "filename" : "buoy_nowords-06.png"
     }
   ],
   "info" : {

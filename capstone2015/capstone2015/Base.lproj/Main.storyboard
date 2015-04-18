@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -166,7 +166,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassListCell" rowHeight="139" id="Kaq-jz-6JH" customClass="ClassListTableViewCell" customModule="capstone2015" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassListCell" rowHeight="139" id="Kaq-jz-6JH" customClass="ClassListTableViewCell" customModule="Buoy" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kaq-jz-6JH" id="bzr-Ao-ThT">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -389,7 +389,7 @@
         <!--Calendar-->
         <scene sceneID="LAL-Tz-0ua">
             <objects>
-                <viewController id="N5T-jW-uq8" customClass="CalendarViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="N5T-jW-uq8" customClass="CalendarViewController" customModule="Buoy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tDh-DZ-DKR"/>
                         <viewControllerLayoutGuide type="bottom" id="rhA-qC-mee"/>
@@ -456,7 +456,7 @@
         <!--Settings View Controller-->
         <scene sceneID="xwc-zF-xT2">
             <objects>
-                <viewController id="h88-2u-2oQ" customClass="SettingsViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="h88-2u-2oQ" customClass="SettingsViewController" customModule="Buoy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qyz-yG-5B1"/>
                         <viewControllerLayoutGuide type="bottom" id="odV-0I-6QA"/>
@@ -537,7 +537,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DepartmentCell" rowHeight="78" id="oGY-Hn-05T" customClass="DeptListTableViewCell" customModule="capstone2015" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DepartmentCell" rowHeight="78" id="oGY-Hn-05T" customClass="DeptListTableViewCell" customModule="Buoy" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oGY-Hn-05T" id="MIa-88-3Zq">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -665,7 +665,7 @@
         <!--Courses-->
         <scene sceneID="Rx8-wv-anx">
             <objects>
-                <viewController id="W1i-gO-gXm" customClass="CoursesViewController" customModule="capstone2015" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="W1i-gO-gXm" customClass="CoursesViewController" customModule="Buoy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KMR-Tw-xkU"/>
                         <viewControllerLayoutGuide type="bottom" id="bPE-dx-nqG"/>
@@ -679,7 +679,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CourseCell" rowHeight="76" id="dN7-gw-9ff" customClass="CoursesTableViewCell" customModule="capstone2015" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CourseCell" rowHeight="76" id="dN7-gw-9ff" customClass="CoursesTableViewCell" customModule="Buoy" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dN7-gw-9ff" id="q1I-tB-sQv">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -818,7 +818,7 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SectionsCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionsCell" rowHeight="128" id="MpH-pP-z1F" customClass="SectionsTableViewCell" customModule="capstone2015" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SectionsCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionsCell" rowHeight="128" id="MpH-pP-z1F" customClass="SectionsTableViewCell" customModule="Buoy" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MpH-pP-z1F" id="jwI-CI-XCn">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1025,6 +1025,7 @@
         <!--View Controller-->
         <scene sceneID="iGT-em-2pY">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6X6-JN-ZWx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="fef-1y-JVj" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MSJ-6L-odf"/>
@@ -1041,10 +1042,23 @@
                                     <constraint firstAttribute="height" constant="64" id="rfm-PE-CGh"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Buoy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7L-fd-WHX">
-                                <rect key="frame" x="16" y="284" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="MAd-rm-wpV">
+                                <rect key="frame" x="52" y="30" width="496" height="496"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="clip" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7L-fd-WHX">
+                                <rect key="frame" x="50" y="536" width="500" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="9QO-fF-8tA"/>
+                                    <constraint firstAttribute="width" constant="500" id="fTI-UA-PZI"/>
+                                </constraints>
+                                <string key="text">Buoy is a simple way to view classes offered at Pepperdine, keeping you up to date on the status of the courses you're interested in. It is the ideal solution for schedule planning, letting you see how your week will look on the calendar, before you've even registered.</string>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9QO-fF-8tA"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1053,19 +1067,31 @@
                             <constraint firstItem="t7L-fd-WHX" firstAttribute="trailing" secondItem="m8R-sf-cYs" secondAttribute="trailingMargin" id="3RD-R1-EIj"/>
                             <constraint firstAttribute="centerX" secondItem="t7L-fd-WHX" secondAttribute="centerX" id="5JV-vN-aiu"/>
                             <constraint firstAttribute="centerY" secondItem="t7L-fd-WHX" secondAttribute="centerY" constant="-26" id="8HW-KS-7So"/>
+                            <constraint firstItem="MAd-rm-wpV" firstAttribute="top" secondItem="MSJ-6L-odf" secondAttribute="bottom" constant="30" id="9TU-on-1on"/>
                             <constraint firstItem="62A-t6-37z" firstAttribute="top" secondItem="m8R-sf-cYs" secondAttribute="topMargin" constant="-64" id="CFG-F0-xNI"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="t7L-fd-WHX" secondAttribute="trailing" constant="30" id="JFL-vF-fYm"/>
                             <constraint firstItem="t7L-fd-WHX" firstAttribute="leading" secondItem="m8R-sf-cYs" secondAttribute="leadingMargin" id="M0a-zz-bjK"/>
                             <constraint firstItem="t7L-fd-WHX" firstAttribute="leading" secondItem="m8R-sf-cYs" secondAttribute="leadingMargin" id="PfF-OI-VVF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="62A-t6-37z" secondAttribute="trailing" constant="-16" id="UdM-PD-wZJ"/>
                             <constraint firstItem="t7L-fd-WHX" firstAttribute="trailing" secondItem="m8R-sf-cYs" secondAttribute="trailingMargin" id="idZ-c5-CEM"/>
+                            <constraint firstAttribute="centerX" secondItem="t7L-fd-WHX" secondAttribute="centerX" id="iiA-kt-0iJ"/>
                             <constraint firstAttribute="centerX" secondItem="t7L-fd-WHX" secondAttribute="centerX" id="iqy-sd-SrQ"/>
                             <constraint firstItem="62A-t6-37z" firstAttribute="leading" secondItem="m8R-sf-cYs" secondAttribute="leadingMargin" constant="-16" id="nLe-Cd-g3l"/>
+                            <constraint firstItem="Nd9-WX-Y9H" firstAttribute="top" secondItem="t7L-fd-WHX" secondAttribute="bottom" constant="231" id="pQQ-aZ-OfZ"/>
+                            <constraint firstItem="t7L-fd-WHX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m8R-sf-cYs" secondAttribute="leadingMargin" constant="30" id="u6y-ZA-Dyh"/>
+                            <constraint firstItem="t7L-fd-WHX" firstAttribute="top" secondItem="MAd-rm-wpV" secondAttribute="bottom" constant="10" id="wxz-Q8-omY"/>
+                            <constraint firstAttribute="centerX" secondItem="MAd-rm-wpV" secondAttribute="centerX" id="xVy-8F-ogY"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="3RD-R1-EIj"/>
                                 <exclude reference="5JV-vN-aiu"/>
+                                <exclude reference="8HW-KS-7So"/>
+                                <exclude reference="M0a-zz-bjK"/>
                                 <exclude reference="PfF-OI-VVF"/>
                                 <exclude reference="idZ-c5-CEM"/>
+                                <exclude reference="iqy-sd-SrQ"/>
+                                <exclude reference="pQQ-aZ-OfZ"/>
                             </mask>
                         </variation>
                     </view>
@@ -1080,7 +1106,6 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6X6-JN-ZWx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="557" y="219"/>
         </scene>
@@ -1246,7 +1271,7 @@
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="135" id="1ai-Nr-0s3" customClass="SearchTableViewCell" customModule="capstone2015" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="135" id="1ai-Nr-0s3" customClass="SearchTableViewCell" customModule="Buoy" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1ai-Nr-0s3" id="004-8o-mSz">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1462,6 +1487,7 @@
         <image name="buoi_logo" width="114" height="100"/>
         <image name="calendarTabIcon" width="25" height="25"/>
         <image name="listTabIcon" width="25" height="25"/>
+        <image name="welcomeLogo" width="496" height="496"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kbK-eQ-VkF"/>

@@ -13,11 +13,11 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 Pepperdine Computer Science. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
                     <rect key="frame" x="20" y="439" width="441" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warford" translatesAutoresizingMaskIntoConstraints="NO" id="N3P-Sx-57i">
-                    <rect key="frame" x="165" y="211" width="150" height="58"/>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="N3P-Sx-57i">
+                    <rect key="frame" x="-10" y="108" width="500" height="265"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="220" id="QCv-gC-b46"/>
                         <constraint firstAttribute="width" constant="207" id="SdW-7k-4F8"/>
@@ -30,7 +30,7 @@
                     </variation>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.031372549020000001" green="0.1764705882" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="N3P-Sx-57i" secondAttribute="centerX" id="IvK-rK-pOw"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
@@ -52,6 +52,6 @@
         </view>
     </objects>
     <resources>
-        <image name="warford" width="150" height="58"/>
+        <image name="launchLogo" width="500" height="265"/>
     </resources>
 </document>
