@@ -21,10 +21,7 @@ var app = {
     pushNotification: {},
     // Application Constructor
     initialize: function(callback) {
-        //alert("initializing");
-
         app.pushNotification = window.plugins.pushNotification;
-
         this.bindEvents(callback);
     },
     // Bind Event Listeners
@@ -48,37 +45,20 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        // var parentElement = document.getElementById(id);
-        // var listeningElement = parentElement.querySelector('.listening');
-        // var receivedElement = parentElement.querySelector('.received');
-
-        // listeningElement.setAttribute('style', 'display:none;');
-        // receivedElement.setAttribute('style', 'display:block;');
-
         if(id == "deviceready") {
             app.handleDeviceReady(id);
         }
     },
     // Event handler for deviceready event
     handleDeviceReady: function(id) {
-        //alert("handling deviceready");
-        // if (device.platform == 'android' || device.platform == 'Android') {
-        //     //alert("Register called");
-        //     pushNotification.register(this.successHandler, this.errorHandler,{"senderID":"1047272876473","ecb":"app.onNotificationGCM"});
-        // }
-        // else {
-        //     //alert("Register called");
-        //     pushNotification.register(this.successHandler,this.errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"app.onNotificationAPN"});
-        // }
+
     },
     registerUser: function() {
-        //alert("Registering User from index.js");
         if (device.platform == 'android' || device.platform == 'Android') {
-            //alert("Register called");
+            // register the app to handle notifications
             app.pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"1047272876473","ecb":"app.onNotificationGCM"});
         }
         else {
-            //alert("Register called");
             app.pushNotification.register(app.successHandler, app.errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"app.onNotificationAPN"});
         }
     },
@@ -90,7 +70,6 @@ var app = {
         //alert(error);
     },
     onNotificationGCM: function(e) {
-        //alert("handling GCM");
         switch( e.event )
         {
             case 'registered':
@@ -101,8 +80,6 @@ var app = {
                     } else {
                         // save regid to local storage for future use
                         localStorage.setItem("regID", e.regid);
-                        //console.log("Regid " + e.regid);
-                        //alert('Registration id = '+e.regid);
                         // now send HTTP POST to server with regid and user info
                         $.post(localStorage.getItem("serverIPAddr") + "subscribe",
                         {

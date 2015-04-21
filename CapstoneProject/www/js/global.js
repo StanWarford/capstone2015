@@ -59,7 +59,6 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 	        });
 		}
 	} else {
-
 		// tell server the user unfollowed this class
 		//alert(JSON.stringify(pickedlist[deptFlip]));
         if (localStorage.getItem("pushSet") == "true") {
@@ -85,9 +84,6 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 	}
 	console.log("Picked: "+JSON.stringify(pickedlist));
 }
-
-
-// var picked = JSON.stringify(jsonAlertList);
 
 function cEvents() {
 	var eventColor = "";

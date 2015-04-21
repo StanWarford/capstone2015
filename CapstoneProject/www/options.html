@@ -13,8 +13,6 @@
 	</head>
 	<body>
 		<div data-role="page" data-theme="a" id="index">
-
-
 			<div data-role="panel" id="mypanel">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li><a href="search.html" class="ui-icon-search" data-ajax="false">Search</a></li>
@@ -27,12 +25,9 @@
 			</div><!-- /panel -->
 			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
-				<!-- <h1>Buoy</h1> -->
 				<img src="images/buoy-white.gif" alt="Buoy" style="height:50px;display:block;margin-left:auto;margin-right:auto;margin-bottom:4px;" />
 				<a href="home.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
 			</div> <!-- /header -->
-
-			
 			<div data-role="content">
 				<div class="ui-field-contain" style="border-bottom-width:0px">
 					<h3>Push Notification Alerts:</h3>
@@ -44,7 +39,7 @@
 					<h3>Your NTID:</h3>
 					<div id="ntidDisplay"></div>
 				</div>
-				<!--<a href="javascript:void()" onclick="notYou()" style="width:30%" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-right ui-btn-a">Not you?</a> -->
+				<a href="javascript:void()" onclick="notYou()" style="width:30%" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-right ui-btn-a">Not you?</a>
 				<br>
 				<div id="notYou" style="display:none">
 					<form>
@@ -68,16 +63,14 @@
 					</fieldset>
 				</form> -->
 				<a href="help.html" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-right ui-btn-a">Help!</a>
-			</div> <!-- /content -->
-			<!-- <div data-role="footer" data-theme="a" data-position="fixed">
-				<h4>footer</h4>
-			</div> --> <!-- /footer -->
+			</div>
 		</div> <!-- /page -->
 	</body>
 </html>
 
-<!-- UNCOMMENT THE FOLLOWING LINE WHEN INSTALLING ON A DEVICE!!!!! -->
+<!-- UNCOMMENT THE FOLLOWING LINE WHEN INSTALLING ON A DEVICE! (as opposed to browser) -->
 <script type="text/javascript" src="cordova.js"></script>
+
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
 

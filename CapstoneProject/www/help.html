@@ -12,8 +12,6 @@
 	</head>
 	<body>
 		<div data-role="page" data-theme="a" id="index">
-
-
 			<div data-role="panel" id="mypanel">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li><a href="search.html" class="ui-icon-search" data-ajax="false">Search</a></li>
@@ -23,33 +21,30 @@
 					<li><a href="first.html" data-ajax="false">Temp: First</a></li>
 				</ul>
 				<a href="#my-header" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-right ui-btn-a">Close panel</a>
-			</div><!-- /panel -->
+			</div>
 			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
-				<!-- <h1>Buoy</h1> -->
 				<img src="images/buoy-white.gif" alt="Buoy" style="height:50px;display:block;margin-left:auto;margin-right:auto;margin-bottom:4px;" />
 				<a href="home.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
-			</div> <!-- /header -->
-
-			
+			</div>
 			<div data-role="content">
 				<h2>Help</h2>
 				<p>
 					Think you're not getting push notifications when you should be?
 					<br>
 					Make sure that your NTID is set by going to Options from the menu. 
-
-					<!--If there is a blank after it says "Your NTID", click on "Not you?" and enter your NTID.--> 
+					<br>
+					<br>
+					If there is a blank after it says "Your NTID", click on "Not you?" and enter your NTID.
 				</p>
-			</div> <!-- /content -->
-			<!-- <div data-role="footer" data-theme="a" data-position="fixed">
-				<h4>footer</h4>
-			</div> --> <!-- /footer -->
-		</div> <!-- /page -->
+			</div>
+		</div>
 	</body>
 </html>
-<!-- UNCOMMENT THE FOLLOWING LINE WHEN INSTALLING ON A DEVICE!!!!! -->
+
+<!-- UNCOMMENT THE FOLLOWING LINE WHEN INSTALLING ON A DEVICE! (as opposed to browser) -->
 <script type="text/javascript" src="cordova.js"></script>
+
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
 <script type="text/javascript">
