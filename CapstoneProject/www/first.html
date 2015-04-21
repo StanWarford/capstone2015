@@ -32,15 +32,19 @@
 			</div>  -->
 
 			<div data-role="content">
-				<h3>Welcome to Buoy!</h3>
-					<p>For help using this app, go to Options</p>
+				<h1>Welcome to Buoy!</h1>
+					<p>Buoy will help you track classes that you're interested in and will notify you when these classes change status or other information. You can also view your followed classes in a calendar so you can see what your schedule could look like before you even register.</p>
 				<br>
 				<br>
-				<br>
-				<br>
- 				<h3>Provide Information</h3>
+ 				<h2>Provide Information</h2>
+ 				<div class="ui-field-contain" style="border-bottom-width:0px">
+					<h3>Push Notification Alerts:</h3>
+					<span class="flipperOptions">
+						<input type="checkbox" data-role="flipswitch" name="pushCheck" id="pushCheck" data-theme="c">
+					</span>
+				</div>
 				<form>
-    				<label for="name-1">NTID (Pepperdine Login):</label>
+    				<h3>NTID (Pepperdine Login):</h3>
     				<input type="text" data-clear-btn="true" name="name-1" id="name-1" value="" placeholder="ex/ jdoe">
 				</form>
 				<div id = "required" style="display:none;color:red;">
@@ -81,13 +85,14 @@
  	app.initialize(app.registerUser);
 
 	function submitButton() {
-		if (document.getElementById("name-1").value == "") {
-			$("#required").css("display","inline");
-		} else {
+		//if (document.getElementById("name-1").value == "") {
+		//	$("#required").css("display","inline");
+		//} else {
 			$("#required").css("display","none");
-			  	localStorage.setItem("userName",document.getElementById("name-1").value);			// String
-	  		    window.location = "home.html"//this is the browser
-		}		
+			  	localStorage.setItem("userName",document.getElementById("name-1").value);		// String
+	  		    window.location = "home.html"    //this is the browser
+		//}
+		localStorage.setItem("pushSet", document.getElementById("flip-checkbox-1").checked);
 	}
 
 </script>

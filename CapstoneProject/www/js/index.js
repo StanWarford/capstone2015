@@ -123,8 +123,8 @@ var app = {
             case 'message':
               // this is the actual push notification. its format depends on the data model from the push server
               if (localStorage.getItem("pushSet") == "true") {
-                alert('PN: '+e.message);
-            }
+                    alert('PN: '+e.message);
+                }    
             break;
  
             case 'error':

@@ -47,31 +47,32 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 		localStorage.setItem("picked",JSON.stringify(pickedlist));
 
 		// tell server the user is following a new class
-        $.post(localStorage.getItem("serverIPAddr") + "follow",
-        {
-            section: pickedlist[deptFlip][clasFlip][sectFlip]["section"],			// object
-            token: localStorage.getItem("regID"),	// user token
-            user: localStorage.getItem("userName")
-        },
-        function(data,status){
-            alert("Data: " + data + "\nStatus: " + status);
-        });
-
+		if (localStorage.getItem("pushSet") == "true") {
+	        $.post(localStorage.getItem("serverIPAddr") + "follow",
+	        {
+	            section: pickedlist[deptFlip][clasFlip][sectFlip]["section"],			// object
+	            token: localStorage.getItem("regID"),	// user token
+	            user: localStorage.getItem("userName")
+	        },
+	        function(data,status){
+	            alert("Data: " + data + "\nStatus: " + status);
+	        });
+		}
 	} else {
 
 		// tell server the user unfollowed this class
 		//alert(JSON.stringify(pickedlist[deptFlip]));
-
-        $.post(localStorage.getItem("serverIPAddr") + "unfollow",
-        {
-            section: pickedlist[deptFlip][clasFlip][sectFlip]["section"],			// object
-            token: localStorage.getItem("regID"),	// user token
-            user: localStorage.getItem("userName")
-        },
-        function(data,status){
-            alert("Data: " + data + "\nStatus: " + status);
-        });
-
+        if (localStorage.getItem("pushSet") == "true") {
+	        $.post(localStorage.getItem("serverIPAddr") + "unfollow",
+	        {
+	            section: pickedlist[deptFlip][clasFlip][sectFlip]["section"],			// object
+	            token: localStorage.getItem("regID"),	// user token
+	            user: localStorage.getItem("userName")
+	        },
+	        function(data,status){
+	            alert("Data: " + data + "\nStatus: " + status);
+	        });
+		}
 		delete pickedlist[deptFlip][clasFlip][sectFlip];
 		console.log(pickedlist[deptFlip][clasFlip]);
 		if ($.isEmptyObject(pickedlist[deptFlip][clasFlip])) {
