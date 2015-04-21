@@ -31,6 +31,19 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
             self.navigationController?.popViewControllerAnimated(true)
         }
     }
+    
+    // Not really doing anything at the moment
+    @IBAction func followClassGeneric(sender: UIButton) {
+            var alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            alert.addAction(UIAlertAction(title: "Follow", style: .Default, handler: { action in
+                
+            }))
+    }
 
 // Extended Height functionality (Disabled)
     

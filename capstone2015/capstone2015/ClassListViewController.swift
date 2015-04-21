@@ -71,10 +71,11 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     @IBAction func unfollow(sender: UIButton) {
+        sender.backgroundColor = UIColor.clearColor()
+        sender.setTitleColor(pepperdineGray, forState: .Normal)
         var alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
-            sender.backgroundColor = UIColor.clearColor()
-            sender.setTitleColor(pepperdineGray, forState: .Normal)
+           
         }))
         self.presentViewController(alert, animated: true, completion: nil)
         

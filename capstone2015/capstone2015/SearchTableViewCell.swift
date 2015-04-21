@@ -62,11 +62,13 @@ class SearchTableViewCell: UITableViewCell {
         
     }
     
+    // not working at the moment
     func setAsUnfollow(){
-        followButton.setTitle("Unfollow", forState: .Normal)
-        followButton.setTitle("Unfollow", forState: .Highlighted)
-        followButton.setTitle("Unfollow", forState: .Selected)
-        followButton.layer.borderColor = pepperdineGray.CGColor
+        setAsFollow()
+       // followButton.setTitle("Unfollow", forState: .Normal)
+        //followButton.setTitle("Unfollow", forState: .Highlighted)
+       // followButton.setTitle("Unfollow", forState: .Selected)
+        //followButton.layer.borderColor = pepperdineGray.CGColor
     }
     
     func setAsFollow(){

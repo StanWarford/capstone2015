@@ -17,6 +17,8 @@
 		873E55E31A9492F20011F9E3 /* SectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873E55E21A9492F20011F9E3 /* SectionsViewController.swift */; };
 		87433CAC1AD7B62A00CF2D6B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87433CAB1AD7B62A00CF2D6B /* StoreKit.framework */; };
 		87433CAE1AD7B62D00CF2D6B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87433CAD1AD7B62D00CF2D6B /* GameKit.framework */; };
+		876847FF1AE6C18600CADBC8 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876847FE1AE6C18600CADBC8 /* WelcomeViewController.swift */; };
+		876848011AE6C19A00CADBC8 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876848001AE6C19A00CADBC8 /* InfoViewController.swift */; };
 		876FB5611ADDA481002F44DF /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */; };
 		876FB5641ADE3939002F44DF /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876FB5631ADE3939002F44DF /* CustomCollectionViewLayout.swift */; };
 		877575121AC233EE00F73F1E /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877575111AC233EE00F73F1E /* SearchTableViewCell.swift */; };
@@ -76,6 +78,8 @@
 		873E55E21A9492F20011F9E3 /* SectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsViewController.swift; sourceTree = "<group>"; };
 		87433CAB1AD7B62A00CF2D6B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		87433CAD1AD7B62D00CF2D6B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		876847FE1AE6C18600CADBC8 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		876848001AE6C19A00CADBC8 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarCollectionViewCell.xib; path = ../CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
 		876FB5631ADE3939002F44DF /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		877575111AC233EE00F73F1E /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 			children = (
 				877575111AC233EE00F73F1E /* SearchTableViewCell.swift */,
 				87F3C5E51A89AF72001DC31F /* SearchViewController.swift */,
+				876847FE1AE6C18600CADBC8 /* WelcomeViewController.swift */,
+				876848001AE6C19A00CADBC8 /* InfoViewController.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -416,11 +422,13 @@
 				87F3C5E61A89AF72001DC31F /* SearchViewController.swift in Sources */,
 				87D93B7A1A7B172300054FCD /* ClassListViewController.swift in Sources */,
 				87FFCD8D1AD372CA00BE55B4 /* CalendarInfo.swift in Sources */,
+				876848011AE6C19A00CADBC8 /* InfoViewController.swift in Sources */,
 				877B78C81A92E15C005A09EB /* SectionsTableViewCell.swift in Sources */,
 				87CC53E61ABFA4BD0019B341 /* CalendarCollectionViewCell.swift in Sources */,
 				877B78D41A9C1811005A09EB /* SwiftyJSON.swift in Sources */,
 				877575121AC233EE00F73F1E /* SearchTableViewCell.swift in Sources */,
 				877B78D61A9C1817005A09EB /* Alamofire.swift in Sources */,
+				876847FF1AE6C18600CADBC8 /* WelcomeViewController.swift in Sources */,
 				87CC53E21ABF6D730019B341 /* CalendarViewController.swift in Sources */,
 				87F3C5E81A8AB252001DC31F /* DepartmentViewController.swift in Sources */,
 				873E55E31A9492F20011F9E3 /* SectionsViewController.swift in Sources */,

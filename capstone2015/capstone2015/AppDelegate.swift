@@ -17,7 +17,7 @@ var courseOfInterest: String?
 let url = "http://137.159.47.86:8181/classes"
 let serverUrl = "http://137.159.47.86:8181/subscribe"
 let parameters = [
-    "user":"IJ0IQJPR9mKRR2zODGiLjzeC6eeXyBZpn8KqaVE8",
+    "user":"jtmontoy",
     "type":"iOS",
     "token":"IJ0IQJPR9mKRR2zODGiLjzeC6eeXyBZpn8KqaVE8"
 ]
@@ -33,12 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         // programmatically set initial view controller
-        
-        // Subscribe push notifications with Node-pushServer
-        request(.POST, serverUrl, parameters: parameters)
-            .responseString { (_, _, string, _) in
-                println(string)
-        }
+//        
+//        // Subscribe push notifications with Node-pushServer
+//        request(.POST, serverUrl, parameters: parameters)
+//            .responseString { (_, _, string, _) in
+//                println(string)
+//        }
         
         Parse.setApplicationId("68AsOzImcf5xygN68CpXl0VFYQhak7o8X75D0Soa", clientKey: "IJ0IQJPR9mKRR2zODGiLjzeC6eeXyBZpn8KqaVE8")
         
