@@ -55,12 +55,11 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 	            user: localStorage.getItem("userName")
 	        },
 	        function(data,status){
-	            alert("Data: " + data + "\nStatus: " + status);
+	            //alert("Data: " + data + "\nStatus: " + status);
 	        });
 		}
 	} else {
-		// tell server the user unfollowed this class
-		//alert(JSON.stringify(pickedlist[deptFlip]));
+		// tell server the user unfollowed this class\
         if (localStorage.getItem("pushSet") == "true") {
 	        $.post(localStorage.getItem("serverIPAddr") + "unfollow",
 	        {
@@ -69,7 +68,7 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 	            user: localStorage.getItem("userName")
 	        },
 	        function(data,status){
-	            alert("Data: " + data + "\nStatus: " + status);
+	            //alert("Data: " + data + "\nStatus: " + status);
 	        });
 		}
 		delete pickedlist[deptFlip][clasFlip][sectFlip];

@@ -51,13 +51,15 @@
 
 	function submitButton() {
 		if (document.getElementById("name-1").value == "") {
+			// if they didn't enter a name, tell them they have to
 			$("#required").css("display","inline");
 		} else {
 			$("#required").css("display","none");
+				localStorage.setItem("pushSet", document.getElementById("flip-checkbox-1").checked);
 			  	localStorage.setItem("userName",document.getElementById("name-1").value);		// String
-	  		    window.location = "home.html"    //this is the browser
+			  	// redirect to home page
+	  		    window.location = "home.html";
 		}
-		localStorage.setItem("pushSet", document.getElementById("flip-checkbox-1").checked);
 	}
 
 </script>

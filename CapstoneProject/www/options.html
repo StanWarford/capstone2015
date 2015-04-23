@@ -77,14 +77,17 @@
 <script type="text/javascript">
 	app.initialize(app.registerUser);
 
+	// display the currently set username
 	$("#ntidDisplay").html(localStorage.getItem("userName"));
 
+	// display the currently set PN option
 	if (localStorage.getItem("pushSet")=="true") {
  		document.getElementById("flip-checkbox-1").setAttribute("checked","checked");
 	} else {
 		document.getElementById("flip-checkbox-1").removeAttribute("checked");
 	}
 
+	// display form for changing username
 	function notYou() {
 		$("#notYou").css("display","inline");
 	}
@@ -98,6 +101,7 @@
 			app.initialize(app.registerUser);
 		}
 		  	localStorage.setItem("pushSet", document.getElementById("flip-checkbox-1").checked);
+		  	// refresh the page
 			window.location = "options.html";	
 	}
 </script>

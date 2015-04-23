@@ -39,9 +39,11 @@
 			//app.initialize();
 			if (localStorage.getItem("hasTouched")) {
 				// if this item has been set
+				// the user has launched the app in the past
 				setTimeout(function(){window.location = "home.html";}, 3000);
 			} else {
 				// if this item has not been set
+				// this is the first time the user has launched the app
 				localStorage.setItem("hasTouched", "true");
 				setTimeout(function(){window.location = "first.html";}, 3000);
 			}

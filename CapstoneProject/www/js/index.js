@@ -76,7 +76,7 @@ var app = {
                 if ( e.regid.length > 0 ) {
                     if (localStorage.getItem("hasRegistered")) {
                         // if hasRegistered has been set:
-                        // do nothing! we're ready to do other PN stuff, though
+                        // do nothing! we're ready to handle other PN events
                     } else {
                         // save regid to local storage for future use
                         localStorage.setItem("regID", e.regid);
@@ -91,7 +91,7 @@ var app = {
                             if (status == "success") {
                                 localStorage.setItem("hasRegistered", true);
                             }
-                            alert("Data: " + data + "\nStatus: " + status);
+                            //alert("Data: " + data + "\nStatus: " + status);
                         });
                    }
                 }
