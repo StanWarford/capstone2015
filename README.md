@@ -1,9 +1,12 @@
-## capstone2015: Project Documentation, PhoneGap Version
+## Capstone2015: Project Documentation, PhoneGap Version
 ### Pepperdine Computer Science Senior Capstone Project, 2015
-*Dr. Stan Warford*
-*Chloe Cheung*
-*Samantha Olson*
-*Eva Varotsis*
+**Dr. Stan Warford** 
+
+**Chloe Cheung**
+
+**Samantha Olson**
+
+**Eva Varotsis**
 
 
 ### Introduction:
