@@ -1,14 +1,18 @@
+var pmx = require("pmx");
 var xml2js = require('xml2js');
 var CollectionDriver = require('./collectionDriver').CollectionDriver;
 var fs = require("fs");
+var findChanges = require("./findChanges.js");
 
 exports.handleFile = function(collectionDriver){
+  
   var jsonString;
   var jsonBlob = {};
   var parser = new xml2js.Parser();
   var numberOfClasses;
   var classes;
-
+  var classesOld;
+  var classesNew;
   fs.readFile("xmlFile/classes.xml", "utf-8", function(err,raw_xml){ //read XML file
     if(err) throw err;
 
@@ -53,24 +57,37 @@ exports.handleFile = function(collectionDriver){
 
         jsonBlob[[department]][[course]][[section]] = {
           "subject" : child[7],
-          "section" : child[5] + child[6] + "." + child[7],
+          "section" : child[4] + child[6] + "." + child[7],
           "professor" : child[15],
           "status" : child[8],
           "room" : child[14],
           "meeting" : child[13],
-          "name" : child[25]
+          "name" : child[25],
+          "department" : child[5]
         };
 
       }
 
     });
-
+    
+    classesNew = jsonBlob;
+    collectionDriver.findAll("classes", function(error, objs){
+      classesOld = objs;
+   });
+   
+    
    jsonString = JSON.stringify(jsonBlob, null, 3); //Indented 3 spaces
    collectionDriver.update("classes", jsonBlob, function(error, objs){
-    if (error) { } 
-        else { 
-           
-         }
+    
    })
+   pmx.emit("database:updated",{
+      size : jsonBlob.Length
+    });
   });
+  
+  
+}
+
+function getUsersToNotify(classesOld, classesNew){
+  var changed = findChanges.getChanged(classesOld, classesNew);
 }

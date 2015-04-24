@@ -1,0 +1,24 @@
+{
+    "webPort": 8000,
+
+    "mongodbUrl": "127.0.0.1:27017/dbserver",
+
+    "gcm": {
+        "apiKey": "AIzaSyCxsa6qGhehj4E2U2pnS4ax8zrZDFIPTg4"
+    },
+
+    "apn": {
+        "connection": {
+            "gateway": "gateway.sandbox.push.apple.com",
+            "cert": "Users/adaminglehart/Developer/class_server/pushserver/cert.pem",
+            "key": "Users/adaminglehart/Developer/class_server/pushserver/key.pem"
+        },
+        "feedback": {
+            "address": "feedback.sandbox.push.apple.com",
+            "cert": "Users/adaminglehart/Developer/class_server/pushserver/cert.pem",
+            "key": "Users/adaminglehart/Developer/class_server/pushserver/key.pem",
+            "interval": 43200,
+            "batchFeedback": true
+        }
+    }
+}

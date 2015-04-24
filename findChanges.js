@@ -1,22 +1,4 @@
-/*
-var changed = {};
-
-for (var entry in db_old){
-	var match = db_new.find(checkSection, db_old[entry]);
-  	if (!match){
-    	changed[db_old[entry]["section"]] = "cancelled";
-  	}
-   	else if (match["info"]["status"] != db_old[entry]["info"]["status"]){
-        changed[match["section"]] = match["info"]["status"];
-    }
-}
-
-function checkSection(element, index, array){
-	return element["section"] == this["section"];
-} 
-*/
-
-var deepDiffMapper = function() {
+deepDiffMapper = function() {
     return {
         VALUE_CREATED: 'created',
         VALUE_UPDATED: 'updated',
@@ -28,6 +10,7 @@ var deepDiffMapper = function() {
                 throw 'Invalid argument. Function given, object expected.';
             }
             if (this.isValue(obj1) || this.isValue(obj2)) {
+                //return {type: this.compareValues(obj1, obj2), data: obj2 || obj1};
                 return {type: this.compareValues(obj1, obj2), data: obj2 || obj1};
             }
             
@@ -84,86 +67,56 @@ var deepDiffMapper = function() {
 }();
 
 
-var result = deepDiffMapper.map({
-    "1" : {
-		"section" : "COSC105.01",
-		"info" : {
-			"room" : "RAC170",
-			"status" : "open",
-			"professor" : "Brad Cupp"	
-		}
-	},
-    "2" : {
-		"section" : "COSC105.02",
-		"info" : {
-			"room" : "RAC170",
-			"status" : "open",
-			"professor" : "Brad Cupp"	
-		}
-     }
-    },
-    {
-    "1" : {
-		"section" : "COSC105.01",
-		"info" : {
-			"room" : "RAC170",
-			"status" : "closed",
-			"professor" : "Brad Cupp"	
-		}
-                                },
-   "3" : {
-		"section" : "COSC105.03",
-		"info" : {
-			"room" : "RAC170",
-			"status" : "open",
-			"professor" : "Brad Cupp"	
-		}
-     }} );
-
-var changed = {
-	"created" : [],
-	"deleted" : [],
-	"updated" : []
+exports.getChanged = function(classesOld, classesNew){
+    var result = deepDiffMapper.map(classesOld, classesNew);
+    var changed = {
+    "cancelled" : [],
+    "added" : [],
+    "opened" : [],
+    "closed" : []
 };
-
-for (var key in result){
-	if (result[key]["type"] != null){
-		if (result[key]["type"] == "created"){
-			changed["created"].push(result[key]["data"]["section"]);
-		} else {
-			changed["deleted"].push(result[key]["data"]["section"]);
-		}
+for (var subject in result) {
+    if (result[subject]["type"] != null) {
+        if (result[subject]["type"] == "deleted"){
+            // Add all sections in all classes in subject to cancelled
+            for (var className in result[subject]["data"]){
+                for (var section in result[subject]["data"][className]){
+                    changed["cancelled"].push(className + "." + section);
+                }
+            }
+        }
     } else {
-        if (result[key]["info"]["status"]["type"] == "updated"){
-            changed["updated"].push(result[key]["section"]["data"]);
+        for (var className in result[subject]) {
+            if (result[subject][className]["type"] != null) {
+                if (result[subject][className]["type"] == "deleted") {
+                    // Add all sections in class to cancelled
+                    for (var section in result[subject][className]["data"]){
+                        changed["cancelled"].push(className + "." + section);
+                    }
+                }
+            } else {
+                for (var section in result[subject][className]) {
+                    if (result[subject][className][section]["type"] != null) {
+                        if (result[subject][className][section]["type"] == "deleted") {
+                            // Add section to cancelled
+                            changed["cancelled"].push(className + "." + section);
+                      }
+                    } else {
+                        if (result[subject][className][section]["status"]["type"] != "unchanged") {
+                            if (result[subject][className][section]["status"]["data"] == "Open") {
+                                changed["opened"].push(className + "." + section);
+                            } else {
+                                changed["closed"].push(className + "." + section);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
-
-console.log(JSON.stringify(result));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+return changed;
+}
 
 
 
