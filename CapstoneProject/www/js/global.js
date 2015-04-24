@@ -2,15 +2,14 @@ localStorage.setItem("serverIPAddr", "http://137.159.47.86:8181/");
 
 //localStorage.setItem("serverIPAddr", "http://137.159.148.198:8000/");
 
-$.ajax({
+$.ajax({ // get list of classes and their information from the server
 	url: "http://137.159.47.86:8181/classes",
 	type: "GET",
 	dataType: "text",
 }).done(function(result){
-	// var ajson = JSON.parse(result);
-	localStorage.setItem("allclasses",result);
+	localStorage.setItem("allclasses",result); // put list in localStorage
 	var pagename = String(window.location.pathname);
-	if (pagename.indexOf("browse") >= 0) {
+	if (pagename.indexOf("browse") >= 0) { // once classes are loaded, show the department list if the app is on the browse page
 		showDepartments();
 	}
 });
@@ -28,11 +27,9 @@ if (localStorage.getItem("pushSet") === null) {
 
 function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 	console.log(deptFlip + " " + clasFlip + " " + sectFlip + " " + val);
-	// for (var all in picked) {
-	// 	delete picked[all];
-	// }
 	var pickedlist = JSON.parse(localStorage.getItem("picked"));
 	if (val == "on") {
+		// add this class to the followed list
 		if ((typeof pickedlist[deptFlip]) === 'undefined') {
 			pickedlist[deptFlip] = {};
 			pickedlist[deptFlip][clasFlip] = {};
@@ -71,6 +68,7 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 	            //alert("Data: " + data + "\nStatus: " + status);
 	        });
 		}
+		// delete this class from the followed list
 		delete pickedlist[deptFlip][clasFlip][sectFlip];
 		console.log(pickedlist[deptFlip][clasFlip]);
 		if ($.isEmptyObject(pickedlist[deptFlip][clasFlip])) {
@@ -81,7 +79,6 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 		}
 		localStorage.setItem("picked",JSON.stringify(pickedlist));
 	}
-	console.log("Picked: "+JSON.stringify(pickedlist));
 }
 
 //this function takes the events that are picked by the user and formats it to the correct format for fullCalendar in home.html
