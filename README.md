@@ -2,7 +2,7 @@
 
 ## Endpoints
 
-A colon in a URL specifies a parameter that can be specified by the client
+A colon in a URL represents a parameter that can be specified by the client
 
 * GET /:collection
 	- Returns a JSON object containing all class information using the specified MongoDB collection.
