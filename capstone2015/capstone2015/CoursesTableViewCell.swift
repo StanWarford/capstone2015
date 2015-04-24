@@ -8,6 +8,7 @@
 
 import UIKit
 
+//A View representation of course information used by CoursesViewController
 class CoursesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var courseName: UILabel!

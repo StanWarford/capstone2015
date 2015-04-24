@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import Parse
 
+//Declaring Global Variables that are accessible throughout the App
+
 var classDict: JSON?
 var classList: [JSON] = []
 var deptOfInterest: String?
@@ -90,10 +92,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fetchRequest = NSFetchRequest(entityName: "Settings")
         let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Settings]
         if fetchResults?.count > 0 {
-            var intialViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Classes") as UITabBarController
+            var intialViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Classes") as! UITabBarController
             self.window?.rootViewController = intialViewController
         } else {
-            var intialViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Introduction") as UINavigationController
+            var intialViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Introduction") as! UINavigationController
             self.window?.rootViewController = intialViewController
         }
         self.window?.makeKeyAndVisible()
@@ -177,7 +179,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.PeppCompSci.capstone2015" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        return urls[urls.count-1] as! NSURL
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -200,7 +202,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dic as! [NSObject : AnyObject])
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")

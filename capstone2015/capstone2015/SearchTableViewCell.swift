@@ -9,10 +9,11 @@
 import UIKit
 import CoreData
 
+//A View representation of class information for the SearchViewController
 class SearchTableViewCell: UITableViewCell {
 
     lazy var managedObjectContext : NSManagedObjectContext? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if let managedObjectContext = appDelegate.managedObjectContext {
             return managedObjectContext
         } else {
@@ -87,13 +88,14 @@ class SearchTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    //Adds a class to the list of classes being followed + updates Core (persistent) Data
     @IBAction func addClass(sender: UIButton) {
         if(followButton.titleLabel?.text == "Follow"){
             setAsFollow()
         } else {
             setAsUnfollow()
         }
-        let entity = NSEntityDescription.insertNewObjectForEntityForName("ClassEntity", inManagedObjectContext: self.managedObjectContext!) as ClassEntity
+        let entity = NSEntityDescription.insertNewObjectForEntityForName("ClassEntity", inManagedObjectContext: self.managedObjectContext!) as! ClassEntity
         entity.deptKey = self.deptKey
         entity.courseKey = self.courseKey
         entity.sectionKey = self.sectionKey

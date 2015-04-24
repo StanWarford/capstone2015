@@ -8,14 +8,17 @@
 
 import UIKit
 
+//A Controller that alters the view based on a User's action(s)
 class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var statusBar: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResults: UITableView!
+    
+    //Alters the search function based on a User's "filter by" option
     @IBAction func changeFilter(sender: UISegmentedControl) {
         switch(sender.selectedSegmentIndex){
-        case 0: filter = "section"
+        case 0: filter = "section" //A "filter by" option
         case 1: filter = "name"
         case 2: filter = "department"
         case 3: filter = "professor"
@@ -24,6 +27,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         searchForResults(searchBar.text)
     }
     
+    //Populates a list of classes that align with a User's search
     func searchForResults (searchText: String) {
         filteredModel = []
         
@@ -39,6 +43,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     var filteredModel = [JSON]()
     var filter = "section"
     
+    //Resigns the keyboard &
+    //Executes search based on User's input
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchForResults(searchBar.text)
         searchBar.resignFirstResponder()
@@ -59,6 +65,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
 //        searchResults.endUpdates()
 //    }
     
+    //SearchTableViewCells are set to a fixed height of 132 --> displaying all 
+        //information relevant to the course
+    //Uncommenting code below "Extended Height.." and "return 68" results in
+        //a SearchTableViewCell height of 68 and a SearchTableViewCell height of 
+        //132 if said cell is tapped. (Cell Expansion to view more information)
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 //        if (extendedHeight == indexPath) {
             return 132
@@ -70,8 +81,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         return UIStatusBarStyle.LightContent
     }
     
+    
+    //Populates and Formats SearchTableViewCells using filtered JSON
+        // (filteredModel) as the Model
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: SearchTableViewCell = tableView.dequeueReusableCellWithIdentifier("SearchCell") as SearchTableViewCell
+        let cell: SearchTableViewCell = tableView.dequeueReusableCellWithIdentifier("SearchCell") as! SearchTableViewCell
         let classFollowing = filteredModel[indexPath.row]
         cell.setCell(classFollowing["name"].string!,
             courseNumber: classFollowing["section"].string!,
@@ -97,6 +111,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     }
     
     // Not really doing anything at the moment
+    // A Reminder to notify a user that they are now following a class
     @IBAction func followClassGeneric(sender: UIButton) {
         var alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
@@ -109,10 +124,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         }))
     }
     
+    //Only show the user classes relevant to their search
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredModel.count
     }
-
+    
+    //Hides the keyboard when the user presses outside of the keyboard area
     @IBAction func hideKeyboard(sender: UITapGestureRecognizer) {
         searchBar.resignFirstResponder()
     }

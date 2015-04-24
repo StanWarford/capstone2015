@@ -8,6 +8,7 @@
 
 import UIKit
 
+//A View representation of class information for the CalendarViewController
 class CalendarCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cellText: UILabel?

@@ -8,6 +8,7 @@
 
 import Foundation
 
+//A Model representation of the  ClassListTableViewCell
 class ClassModel {
                             // Example:
     var name: String!       // American People and Politics

@@ -9,10 +9,12 @@
 import UIKit
 import CoreData
 
+//A View representation of class information for the ClassListViewController
 class ClassListTableViewCell: UITableViewCell {
     
+    //Needed to access Core Data Entities
     lazy var managedObjectContext : NSManagedObjectContext? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if let managedObjectContext = appDelegate.managedObjectContext {
             return managedObjectContext
         } else {
@@ -39,6 +41,7 @@ class ClassListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //Constructor
     func setCell(className: String, course: String, status: String, time: String, professor: String, room: String) {
         self.className.text = className
         self.course.text = course

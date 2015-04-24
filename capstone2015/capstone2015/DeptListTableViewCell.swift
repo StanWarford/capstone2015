@@ -8,6 +8,7 @@
 
 import UIKit
 
+//A View representation of department information for the DepartmentViewController
 class DeptListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var deptName: UILabel!

@@ -10,16 +10,19 @@ import UIKit
 
 let pepperdineBlue = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
 
+//A Controller that populates and formats the CalendarView
 class CalendarViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var statusBar: UIView!
     
     @IBOutlet weak var titleBar: UINavigationItem!
+    //Additional attributes needed to get the squares of the CalendarView to touch (i.e. no space in between blocks horizontally and vertically)
     var calendarView : UICollectionView?
     var screenSize: CGRect!
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
     
+    //A Model representation of the CalendarView
     var model = [[CalendarInfo?]](count: 30, repeatedValue: [CalendarInfo?](count: 6, repeatedValue: nil))
     
     override func viewDidLoad() {
@@ -38,9 +41,10 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         calendarView!.reloadData()
     }
     
+    // Programmatically create and configure Calendar View
     func configureCalendarView(){
         
-        // Programmatically create and configure Calendar View
+        
         screenSize = UIScreen.mainScreen().bounds
         screenWidth = screenSize.width
         screenHeight = screenSize.height
@@ -108,8 +112,9 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         return UIStatusBarStyle.LightContent
     }
     
+    //Populates and Formats CalendarViewCells using the above attribute "model" as the Model
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: CalendarCollectionViewCell = calendarView!.dequeueReusableCellWithReuseIdentifier("CalendarCell", forIndexPath: indexPath) as CalendarCollectionViewCell
+        let cell: CalendarCollectionViewCell = calendarView!.dequeueReusableCellWithReuseIdentifier("CalendarCell", forIndexPath: indexPath) as! CalendarCollectionViewCell
         if let classFollowing = model[indexPath.section][indexPath.row]{
             cell.setCell(classFollowing.text, color: classFollowing.color!)
             cell.layer.borderWidth = 0.0
@@ -138,6 +143,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
     
     var mapping : [String : Int] = ["Mo" : 1, "Tu" : 2, "We" : 3, "Th" : 4, "Fr" : 5]
     
+    //Maps day and time information for each class the User is following
+    //These mappings are needed to accurately populate the Model, model, which in turn, accurately populates the CalendarView
     func parseClasses(){
         model = [[CalendarInfo?]](count: 30, repeatedValue: [CalendarInfo?](count: 6, repeatedValue: nil))
         
@@ -166,6 +173,7 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
+    //Updates the calendar Model, model, with class information for each class the User is following
     func populateCalModel(days: [Int], times: [Int], classModel: ClassModel) {
         
         for (var j = 0; j < days.count; j++){
@@ -182,18 +190,20 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
+    //Returns an array of strings that match the regex pattern (Similar to JavaScripts regex.match function)
     func matchesForRegexInText(regex: String!, text: String!) -> [String] {
         
         let regex = NSRegularExpression(pattern: regex,
             options: nil, error: nil)!
         let nsString = text as NSString
-        let results = regex.matchesInString(nsString,
+        let results = regex.matchesInString(nsString as String,
             options: nil, range: NSMakeRange(0, nsString.length))
-            as [NSTextCheckingResult]
+            as! [NSTextCheckingResult]
         return map(results) { nsString.substringWithRange($0.range)}
     }
     
-    func mapDays(days: String!) -> [Int]{ //Ie take in array[0] == "TuFr"
+    //Converts meeting day information to mappings that are used by the Model. TuFr ==> [1,4]
+    func mapDays(days: String!) -> [Int]{
         
         var arrayOfDays = matchesForRegexInText(".{1,2}", text: days)
         var mappedDays : [Int] = []
@@ -207,6 +217,8 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         return mappedDays //TuFr ==> [1,4]
     }
     
+    //Converts start time information to mappings that are used by the Model and also counts the number of 30 minute segments the class occupies 
+        //12:00PM, 1:50PM ==> [8,4] (noon == 8 on the Model w/ 4-30 min segs)
     func mapTimes(start: String!, end: String!) -> [Int] { //[startOnGrid, #segs]
         
         var startTime = matchesForRegexInText("[0-9]{2}", text: start) //[12,00]
@@ -251,12 +263,14 @@ class CalendarViewController: UIViewController, UICollectionViewDataSource, UICo
         return mappedTimes //12:00PM, 01:50PM ==> [8,4] [Noon, 4-30 mins]
     }
     
+    //Converts times to 30 min blocks
     func timeToGrid(startTime: Int) -> Int{
         var gridTime = startTime - 7
         gridTime *= 2 //30 min blocks
         return gridTime
     }
     
+    //Automatically populates the first column of the CalendarView with times, each separated by 30 minutes (i.e. 7:30, 8:00, ...)
     func addThirtyMinutes(time: String) -> String {
         
         let inFormatter = NSDateFormatter()

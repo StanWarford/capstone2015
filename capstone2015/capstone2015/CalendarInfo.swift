@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+// A Model representation of the CalendarViewCell
 class CalendarInfo{
     
     var text = " "

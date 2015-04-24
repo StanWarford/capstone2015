@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Allows for horizontal and vertical scrolling within the CalendarView
 class CustomCollectionViewLayout: UICollectionViewLayout {
 
     let numberOfColumns = 6
@@ -102,7 +103,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
             self.itemAttributes .addObject(sectionAttributes)
         }
         
-        var attributes : UICollectionViewLayoutAttributes = self.itemAttributes.lastObject?.lastObject as UICollectionViewLayoutAttributes
+        var attributes : UICollectionViewLayoutAttributes = self.itemAttributes.lastObject?.lastObject as! UICollectionViewLayoutAttributes
         contentHeight = attributes.frame.origin.y + attributes.frame.size.height
         self.contentSize = CGSizeMake(contentWidth, contentHeight)
     }
@@ -112,7 +113,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
     }
     
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
-        return self.itemAttributes[indexPath.section][indexPath.row] as UICollectionViewLayoutAttributes
+        return self.itemAttributes[indexPath.section][indexPath.row] as! UICollectionViewLayoutAttributes
     }
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
@@ -126,7 +127,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
                 )
             )
         }
-        return attributes
+        return attributes as [AnyObject]
     }
     
     override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {

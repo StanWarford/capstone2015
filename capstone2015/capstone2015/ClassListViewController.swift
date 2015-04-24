@@ -10,8 +10,10 @@ import UIKit
 import CoreData
 import QuartzCore
 
+//A Model used by ClassListViewController to create ClassListView
 var classes = [ClassModel]()
 
+//A Controller that populates and formats ClassListView (the courses a User is following)
 class ClassListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBAction func changeColor(sender: UIButton) {
@@ -23,9 +25,10 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var addNewClassButton: UIButton!
     
+    //Extracts class-following data from Core Data
     @IBOutlet weak var statusBar: UIView!
     lazy var managedObjectContext : NSManagedObjectContext? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if let managedObjectContext = appDelegate.managedObjectContext {
             return managedObjectContext
         } else {
@@ -82,7 +85,7 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         alert.addAction(UIAlertAction(title: "Unfollow", style: .Default, handler: { action in
             var row = sender.tag
             classes.removeAtIndex(row)
-            // remove the deleted item from the model
+            // remove the deleted item from the model & Core Data
             let fetchRequest = NSFetchRequest(entityName: "ClassEntity")
             if let fetchResults = self.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ClassEntity]{
                 self.managedObjectContext!.deleteObject(fetchResults[row] as NSManagedObject)
@@ -127,9 +130,9 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         return 68.0
     }
     
+    //Creates ClassListTableViewCells
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: ClassListTableViewCell = tableView.dequeueReusableCellWithIdentifier("ClassListCell") as ClassListTableViewCell
-        // create cell
+        let cell: ClassListTableViewCell = tableView.dequeueReusableCellWithIdentifier("ClassListCell") as! ClassListTableViewCell
         let classFollowing = classes[indexPath.row]
         cell.setCell(classFollowing.course,
             course: classFollowing.name,
@@ -150,6 +153,7 @@ class ClassListViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
+    //Populates the Model, classes, based on classes being followed in Core Data
     func populateClassList(){
         if (classDict != nil) {
         

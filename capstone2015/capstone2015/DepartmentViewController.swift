@@ -8,6 +8,7 @@
 
 import UIKit
 
+//A Controller that populates and formats the DeptListView
 class DepartmentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var deptList: UITableView!
@@ -25,7 +26,7 @@ class DepartmentViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.titleTextAttributes = titleDict
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict as [NSObject : AnyObject]
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
@@ -43,14 +44,16 @@ class DepartmentViewController: UIViewController, UITableViewDataSource, UITable
         return self.depts.count
     }
     
+    //Lists the keys of the classDict (JSON Dictionary of classes)
     func populateDeptList() {
         if let dict = classDict {
             self.depts = sorted(dict.dictionary!.keys.array) {$0 < $1}
         }
     }
     
+    //Creates DeptListTableViewCells
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: DeptListTableViewCell = tableView.dequeueReusableCellWithIdentifier("DepartmentCell") as DeptListTableViewCell
+        let cell: DeptListTableViewCell = tableView.dequeueReusableCellWithIdentifier("DepartmentCell") as! DeptListTableViewCell
         // create cell
         let deptName = depts[indexPath.row]
         cell.setCell(deptName)

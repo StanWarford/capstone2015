@@ -9,10 +9,11 @@
 import UIKit
 import CoreData
 
+//A View representation of section information used by SectionsViewController
 class SectionsTableViewCell: UITableViewCell {
 
     lazy var managedObjectContext : NSManagedObjectContext? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if let managedObjectContext = appDelegate.managedObjectContext {
             return managedObjectContext
         } else {
@@ -54,8 +55,9 @@ class SectionsTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    //Adds the class to the list of classes being followed by updating Core Data
     @IBAction func addClass(sender: UIButton) {
-        let newClass = NSEntityDescription.insertNewObjectForEntityForName("ClassEntity", inManagedObjectContext: self.managedObjectContext!) as ClassEntity
+        let newClass = NSEntityDescription.insertNewObjectForEntityForName("ClassEntity", inManagedObjectContext: self.managedObjectContext!) as! ClassEntity
         newClass.deptKey = self.deptKey
         newClass.courseKey = self.courseKey
         newClass.sectionKey = self.sectionKey

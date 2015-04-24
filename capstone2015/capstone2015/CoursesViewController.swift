@@ -8,6 +8,7 @@
 
 import UIKit
 
+//A Controller that populates and formats the CoursesView
 class CoursesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var courses = [String]()
@@ -37,6 +38,7 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    //Lists the keys of classDict (JSON Dictionary of classes) using the user-selected department as the initial key
     func populateCourses(){
         self.courses = sorted(classDict![deptOfInterest!].dictionary!.keys.array) {$0 < $1}
     }
@@ -45,8 +47,9 @@ class CoursesViewController: UIViewController, UITableViewDataSource, UITableVie
         return self.courses.count
     }
     
+    //Creates CoursesTableViewCell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: CoursesTableViewCell = tableView.dequeueReusableCellWithIdentifier("CourseCell") as CoursesTableViewCell
+        let cell: CoursesTableViewCell = tableView.dequeueReusableCellWithIdentifier("CourseCell") as! CoursesTableViewCell
 
         let courseName = courses[indexPath.row]
         cell.setCell(courseName)

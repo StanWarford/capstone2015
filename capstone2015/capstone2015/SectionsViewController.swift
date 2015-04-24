@@ -9,10 +9,12 @@
 import UIKit
 import CoreData
 
+//A Controller that populates and formats the SectionsView
 class SectionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
+    //Needed to access Core Data so that the user can follow a class from the SectionView
     lazy var managedObjectContext : NSManagedObjectContext? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if let managedObjectContext = appDelegate.managedObjectContext {
             return managedObjectContext
         } else {
@@ -59,6 +61,13 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
 //        sectionsList.endUpdates()
 //    }
     
+    
+    //SearchTableViewCells are set to a fixed height of 132 --> displaying all
+    //information relevant to the course
+    //Uncommenting code below "Extended Height.." and "return 68" results in
+    //a SearchTableViewCell height of 68 and a SearchTableViewCell height of
+    //132 if said cell is tapped. (Cell Expansion to view more information)
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 //        if (extendedHeight == indexPath) {
             return 132
@@ -76,6 +85,8 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
         // Do any additional setup after loading the view.
     }
     
+    //Navigates through classDict (JSON Dictionary of classes) using the user-selected department and user-selected course as keys
+    //Populates Model, sections
     func populateSections() {
         sections = []
         if let deptDict = classDict?[deptOfInterest!].dictionary! {
@@ -105,8 +116,9 @@ class SectionsViewController: UIViewController, UITableViewDataSource, UITableVi
         return UITableViewAutomaticDimension
     }
     
+    //Creates and Formats SectionsTableViewCells
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: SectionsTableViewCell = tableView.dequeueReusableCellWithIdentifier("SectionsCell") as SectionsTableViewCell
+        let cell: SectionsTableViewCell = tableView.dequeueReusableCellWithIdentifier("SectionsCell") as! SectionsTableViewCell
         // create cell
         let classFollowing = sections[indexPath.row]
         
