@@ -84,6 +84,7 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 	console.log("Picked: "+JSON.stringify(pickedlist));
 }
 
+//this function takes the events that are picked by the user and formats it to the correct format for fullCalendar in home.html
 function cEvents() {
 	var eventColor = "";
 	var calEvents=[];
@@ -96,10 +97,6 @@ function cEvents() {
 					var days = meeting[0].split(/(?=[A-Z])/);
 					for(var day in days){
 						var obj = {};
-						// var times = meeting[1].split("-");
-						// var times = meeting[1];
-						// console.log("times: " + times);
-						// var startTime = times[0].split(/(?=[A-Z])/);
 						var startTime = meeting[1].split(/(?=[A-Z])/);
 						var newTime = startTime[0].split(":");
 						if(startTime[1]=="P" && newTime[0]!="12"){
