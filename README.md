@@ -16,6 +16,7 @@ This implementation of Buoy uses PhoneGap, which takes a web application made wi
 
 ### Design:
 FullCalendar was used to create the calendar portion of the app. Moment.min and jQuery are needed to use FullCalendar. Documentation for how to use this plug-in can be found at http://fullcalendar.io/docs/.
+
 jQuery Mobile was used for animations and syling. JQuery Mobile files needed are a.js, b.js, jquery.mobile-1.4.5.min.map, and one.css. Main styles are saved in peptheme.css. Copy peptheme.css into jQuery Mobile theme roller at http://themeroller.jquerymobile.com/ to change the theme.
 
 ### Push Notifications:
