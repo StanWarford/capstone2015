@@ -25,5 +25,8 @@ A colon in a URL represents a parameter that can be specified by the client
 
 * POST /unfollow
 	- Body: A JSON object containing the user's unique ID and the name of the class section they wish to unfollow
-	-  Removes a user from an array of users following a specified section. This information is stored in the subscriptions collection of the database. 
+	-  Removes a user from an array of users following a specified section. This information is stored in the subscriptions collection of the database. 	
 
+## Cross-Platform Push Notification Library
+	All of the methods used to subscribe users and send push notifications to users come from the Smile-SA node-pushserver project, which can be found here: https://github.com/Smile-SA/node-pushserver
+	The only changes one would generally make to this code would be to config.json, which contains the the mongoDB URL, and project information for iOS and Android projects so the server can send push notifications. Other than that, the methods from this project were used as-is.
