@@ -27,21 +27,17 @@
 			</div><!-- /panel -->
 			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
-				<!-- <h1>Buoy</h1> -->
 				<img src="images/buoy-white.gif" alt="Buoy" style="height:50px;display:block;margin-left:auto;margin-right:auto;margin-bottom:4px;" />
 				<a href="home.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
-			</div> <!-- /header -->
+			</div> <!-- /header --><!--header and panel identical on home, search, browse, options, and help pages-->
 
 			
 			<div data-role="content">
 				<form class="ui-filterable">
 					<input id="autocomplete-input" data-type="search" placeholder="Enter class...">
-				</form>
+				</form><!--filters results to match input-->
 				<ul id="autocomplete" data-role="listview" data-filter="true" data-input="#autocomplete-input" data-theme="a" data-inset="true" ></ul>
 			</div> <!-- /content -->
-			<!-- <div data-role="footer" data-theme="a" data-position="fixed">
-				<h4>footer</h4>
-			</div> --> <!-- /footer -->
 		</div> <!-- /page -->
 
 		<!-- UNCOMMENT THE FOLLOWING LINE WHEN INSTALLING ON A DEVICE!!!!! -->
@@ -52,87 +48,87 @@
 			app.initialize(app.registerUser);
 			$( document ).on( "pagebeforeshow", "#index", function() {
 				$("#autocomplete").on("filterablebeforefilter", function(e, data ) {
-					var pickedlistsearch = JSON.parse(localStorage.getItem("picked"));
+					var pickedlistsearch = JSON.parse(localStorage.getItem("picked")); // load followed class list from localStorage
 					var classArray = [];
-					var $ul = $(this),
+					var $ul = $(this), 
 						$input = $(data.input),
 						value = $input.val(),
-						html = "";
-					$ul.html("");
-					if(value && value.length > 2) {
-						$.mobile.loading("show");
+						html = ""; // $ul is #autocomplete, value is user input, html for list initialized to empty
+					$ul.html(""); // make list empty to start
+					if(value && value.length > 2) { // start searching once user enters three symbols
+						$.mobile.loading("show"); // show loader gif
 						var i = 1;
 						for(var department in json){
 							for(var clas in json[department]){
 								for(var section in json[department][clas]){
-									classArray.push(clas + "." + section + "," + department + "," + clas + "," + section);
+									classArray.push(clas + "." + section + "," + department + "," + clas + "," + section); //add each section info to array
 								}
 							}
 						}
-						classArray.sort();
+						classArray.sort(); // sort sections alphabetically and numerically
 						var x = classArray.length;
 						for (var i = 0; i < x; i++) {
 							var info = classArray[i].split(",");
-							var name = info[0];
-							var depArr = info[1];
-							var clArr = info[2];
-							var secArr = info[3];
+							var name = info[0]; //get section title from array
+							var depArr = info[1]; //get department name from array
+							var clArr = info[2]; //get class name from array
+							var secArr = info[3]; //get section number from array
 							var clsQuote = '"' + clArr + '"';
 							var deptQuote = '"' + depArr + '"';
-							var sectQuote = '"' + secArr + '"';
-							var classname = json[depArr][clArr][secArr]["name"];
-							var deptname = json[depArr][clArr][secArr]["department"];
-							var sectname = json[depArr][clArr][secArr]["section"];
+							var sectQuote = '"' + secArr + '"'; // add quotes for text added as function parameter
+							var classname = json[depArr][clArr][secArr]["name"]; // get section name from server object
+							var deptname = json[depArr][clArr][secArr]["department"]; //get section's full department name from server object
+							var sectname = json[depArr][clArr][secArr]["section"]; // get section number from server object
 							var deptnamestring = String(deptname).toUpperCase();
 							var sectnamestring = String(sectname).toUpperCase();
 							var classstring = String(classname).toUpperCase();
-							var deptstring = String(department).toUpperCase();
-							var valueupper = value.toUpperCase();
-							if((classstring.indexOf(valueupper) >= 0) || (deptstring.indexOf(valueupper) >= 0) || (deptnamestring.indexOf(valueupper) >= 0) || (sectnamestring.indexOf(valueupper) >= 0)) {
-								if ((typeof pickedlistsearch[depArr]) == 'undefined') {
-									if(json[depArr][clArr][secArr]["status"] == "Closed") {
-										html += "<li id ='listitem"+i+"' data-filtertext='" + depArr + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#f06d6d;margin-top:10px;'><h2>" + name + "</h2><p class='nameleft'>"+json[depArr][clArr][secArr]["name"]+"</p><p class='profright'>"+json[depArr][clArr][secArr]["professor"]+"</p><p class='timesleft'>"+json[depArr][clArr][secArr]["meeting"]+"</p><p class='roomright'>"+json[depArr][clArr][secArr]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span></li>";
+							var deptstring = String(department).toUpperCase(); // make values uppercase for sorting
+							var valueupper = value.toUpperCase(); // make value uppercase for sorting
+							if((classstring.indexOf(valueupper) >= 0) || (deptstring.indexOf(valueupper) >= 0) || (deptnamestring.indexOf(valueupper) >= 0) || (sectnamestring.indexOf(valueupper) >= 0)) { // if value is a piece of the section name, department abbreviation, full department name, or section name, continue
+								if ((typeof pickedlistsearch[depArr]) == 'undefined') { // if department does not exist in list of classes being followed, flipper default is off
+									if(json[depArr][clArr][secArr]["status"] == "Closed") { // if section closed, background color set to red
+										html += "<li id ='listitem"+i+"' data-filtertext='" + depArr + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#f06d6d;margin-top:10px;'><h2>" + name + "</h2><p class='nameleft'>"+json[depArr][clArr][secArr]["name"]+"</p><p class='profright'>"+json[depArr][clArr][secArr]["professor"]+"</p><p class='timesleft'>"+json[depArr][clArr][secArr]["meeting"]+"</p><p class='roomright'>"+json[depArr][clArr][secArr]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span></li>"; 
 										i++;
-									} else {
+									} else { // if section is open, background color set to green
 										html += "<li id ='listitem"+i+"' data-filtertext='" + depArr + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#b9cf96;margin-top:10px;'><h2>" + name + "</h2><p class='nameleft'>"+json[depArr][clArr][secArr]["name"]+"</p><p class='profright'>"+json[depArr][clArr][secArr]["professor"]+"</p><p class='timesleft'>"+json[depArr][clArr][secArr]["meeting"]+"</p><p class='roomright'>"+json[depArr][clArr][secArr]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span></li>";
 										i++;
-									}
-								} else if ((typeof pickedlistsearch[depArr][clArr]) == 'undefined') {
-									if(json[depArr][clArr][secArr]["status"] == "Closed") {
+									}// add list item with margin above. list item contains section title header and smaller section name, professor name, section times, and room name. list item includes flipper with theme 'c' to change color. Flipper includes flipperChange() function to onchange event for unfollowing classes.
+								} else if ((typeof pickedlistsearch[depArr][clArr]) == 'undefined') { // if class does not exist in list of classes being followed, flipper default is off
+									if(json[depArr][clArr][secArr]["status"] == "Closed") { // if section closed, background color set to red
 										html += "<li id ='listitem"+i+"' data-filtertext='" + depArr + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#f06d6d;margin-top:10px;'><h2>" + name + "</h2><p class='nameleft'>"+json[depArr][clArr][secArr]["name"]+"</p><p class='profright'>"+json[depArr][clArr][secArr]["professor"]+"</p><p class='timesleft'>"+json[depArr][clArr][secArr]["meeting"]+"</p><p class='roomright'>"+json[depArr][clArr][secArr]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span></li>";
 										i++;
-									} else {
+									} else { // if section is open, background color set to green
 										html += "<li id ='listitem"+i+"' data-filtertext='" + depArr + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#b9cf96;margin-top:10px;'><h2>" + name + "</h2><p class='nameleft'>"+json[depArr][clArr][secArr]["name"]+"</p><p class='profright'>"+json[depArr][clArr][secArr]["professor"]+"</p><p class='timesleft'>"+json[depArr][clArr][secArr]["meeting"]+"</p><p class='roomright'>"+json[depArr][clArr][secArr]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span></li>";
 										i++;
-									}
-								} else if ((typeof pickedlistsearch[depArr][clArr][secArr]) == 'undefined') {
-									if(json[depArr][clArr][secArr]["status"] == "Closed") {
+									} // add list item with margin above. list item contains section title header and smaller section name, professor name, section times, and room name. list item includes flipper with theme 'c' to change color. Flipper includes flipperChange() function to onchange event for unfollowing classes.
+								} else if ((typeof pickedlistsearch[depArr][clArr][secArr]) == 'undefined') { // if section does not exist in list of classes being followed, flipper default is off
+									if(json[depArr][clArr][secArr]["status"] == "Closed") { // if section closed, background color set to red
 										html += "<li id ='listitem"+i+"' data-filtertext='" + depArr + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#f06d6d;margin-top:10px;'><h2>" + name + "</h2><p class='nameleft'>"+json[depArr][clArr][secArr]["name"]+"</p><p class='profright'>"+json[depArr][clArr][secArr]["professor"]+"</p><p class='timesleft'>"+json[depArr][clArr][secArr]["meeting"]+"</p><p class='roomright'>"+json[depArr][clArr][secArr]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span></li>";
 										i++;
-									} else {
+									} else { // if section is open, background color set to green
 										html += "<li id ='listitem"+i+"' data-filtertext='" + depArr + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#b9cf96;margin-top:10px;'><h2>" + name + "</h2><p class='nameleft'>"+json[depArr][clArr][secArr]["name"]+"</p><p class='profright'>"+json[depArr][clArr][secArr]["professor"]+"</p><p class='timesleft'>"+json[depArr][clArr][secArr]["meeting"]+"</p><p class='roomright'>"+json[depArr][clArr][secArr]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span></li>";
 										i++;
-									}
-								} else {
-									if(json[depArr][clArr][secArr]["status"] == "Closed") {
+									} // add list item with margin above. list item contains section title header and smaller section name, professor name, section times, and room name. list item includes flipper with theme 'c' to change color. Flipper includes flipperChange() function to onchange event for unfollowing classes.
+								} else { // section does exist in list of classes being followed. So, flipper default is set to on
+									if(json[depArr][clArr][secArr]["status"] == "Closed") { // if section closed, background color set to red
 										html += "<li id ='listitem"+i+"' data-filtertext='" + depArr + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#f06d6d;margin-top:10px;'><h2>" + name + "</h2><p class='nameleft'>"+json[depArr][clArr][secArr]["name"]+"</p><p class='profright'>"+json[depArr][clArr][secArr]["professor"]+"</p><p class='timesleft'>"+json[depArr][clArr][secArr]["meeting"]+"</p><p class='roomright'>"+json[depArr][clArr][secArr]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on' selected=''></option></select></span></li>";
 										i++;
-									} else {
+									} else { // if section is open, background color set to green
 										html += "<li id ='listitem"+i+"' data-filtertext='" + depArr + " " + classname + " " + deptname + " " + sectname + "' style='background-color:#b9cf96;margin-top:10px;'><h2>" + name + "</h2><p class='nameleft'>"+json[depArr][clArr][secArr]["name"]+"</p><p class='profright'>"+json[depArr][clArr][secArr]["professor"]+"</p><p class='timesleft'>"+json[depArr][clArr][secArr]["meeting"]+"</p><p class='roomright'>"+json[depArr][clArr][secArr]["room"]+"</p><span class='flipperSearch'><select id='flip2' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on' selected=''></option></select></span></li>";
 										i++;
-									}
-								}
-								$.mobile.loading("hide");
+									} // add list item with margin above. list item contains section title header and smaller section name, professor name, section times, and room name. list item includes flipper with theme 'c' to change color. Flipper includes flipperChange() function to onchange event for unfollowing classes.
+								} // Must have three versions with flipper off to check if department, class, and section exist. Otherwise, fatal errors
+								$.mobile.loading("hide"); // hide loader gif when section list loads
 							}
 						}
-						if(html == "") {
+						if(html == "") { // if no sections match search, html is empty
 							html = "<li>No results for "+value+".</li>";
 							$.mobile.loading("hide");
 						}
-						$ul.html(html);
+						$ul.html(html); //put html list
 						$ul.listview("refresh");
 						$ul.trigger("updatelayout");
-						$ul.trigger('create');
+						$ul.trigger('create'); //update css of list and refresh to view list properly
 					}
 				});
 			});

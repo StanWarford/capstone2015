@@ -12,7 +12,7 @@
 		<script src="js/global.js"></script>
 		<script>
 			$(document).ready(function() {
-				$.mobile.loading("show");
+				$.mobile.loading("show"); // show loading gif
 			});
 		</script>
 		<!--<script src="js/head.js"></script>-->
@@ -33,157 +33,142 @@
 			</div><!-- /panel -->
 			<div data-role="header" id="my-header" data-theme="a" data-position="fixed">
 				<a href="#mypanel" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-bars ui-btn-icon-left ui-btn-a menu">menu</a>
-				<!-- <h1>Buoy</h1> -->
 				<img src="images/buoy-white.gif" alt="Buoy" style="height:50px;display:block;margin-left:auto;margin-right:auto;margin-bottom:4px;" />
 				<a href="home.html" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-home ui-btn-icon-right ui-btn-a menu" data-ajax="false">home</a>
-			</div> <!-- /header -->
+			</div> <!-- /header --><!--header and panel identical on home, search, browse, options, and help pages-->
 
 			
 			<div data-role="content">
 				<div id="departs" style="display:block">
 					<div>
 						<ul data-role="listview" style="padding-bottom:17px;font-weight:bold;">
-							<!-- <li class="ui-field-contain" id="listitem"><a class="ui-btn" style="text-align:center">Departments</a></li> -->
 							<li class="ui-field-contain" id="listitem" style="text-align:center">Departments</li>
 						</ul>
-					</div>
-					<!-- <ul data-role="listview" id="list-departments" data-inset="true"> -->
+					</div><!--dept page title-->
 					<ul data-role="listview" id="list-departments" data-inset="true" data-autodividers="true">
-					</ul>
-				</div>
+					</ul><!--list of department names-->
+				</div> <!--/department list-->
 				<div id="clases" style="display:none">
 					<div>
 						<ul data-role="listview" style="padding-bottom:17px">
 							<li class="ui-field-contain" id="listitem"><a class="ui-btn ui-btn-icon-left ui-icon-carat-l" style="text-align:center" id="retDept">Back to Departments</a></li>
 						</ul>
-					</div>
+					</div><!--class page title-->
 					<ul data-role="listview" id="list-classes" data-inset="true">
-					</ul>
-				</div>
+					</ul><!--list of class names-->
+				</div> <!--/class list-->
 				<div id="sects" style="display:none">
 					<div>
 						<ul data-role="listview" style="padding-bottom:17px">
 							<li class="ui-field-contain" id="listitem"><a class="ui-btn ui-btn-icon-left ui-icon-carat-l" style="text-align:center"  id="retClas">Back to Classes</a></li>
 						</ul>
-					</div>
+					</div><!--section page title-->
 					<ul data-role="listview" id="list-sections" data-inset="true">
-					</ul>
-				</div>
+					</ul><!--list of sections-->
+				</div><!--/section list-->
 			</div> <!-- /content -->
-			<!-- <div data-role="footer" data-theme="a" data-position="fixed">
-				<h4>footer</h4>
-			</div> --> <!-- /footer -->
 			<!-- UNCOMMENT THE FOLLOWING LINE WHEN INSTALLING ON A DEVICE!!!!! -->
 			<script type="text/javascript" src="cordova.js"></script>
 			<script type="text/javascript" src="js/index.js"></script>
 			<script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
 			<script>
 				app.initialize(app.registerUser);
-				function showDepartments() {
-				// $(document).on('pagebeforeshow', '#index', function(){
-					// $.ajax({
-					// 	url: "http://dbserver-capstone2015.rhcloud.com/get/classes",
-					// 	type: "GET",
-					// 	dataType: "text"
-					// }).done(function(result){
+				function showDepartments() { // called in global.js when class list object is loaded from server
 					var deptArr = [];
 					for(var department in json){
-						deptArr.push(department);
+						deptArr.push(department); // push every department name to array
 					}
-					deptArr.sort();
+					deptArr.sort(); // sort array alphabetically
 					var x = deptArr.length;
 					for (var i = 0; i < x; i++) {
-						deptQuote = '"' + deptArr[i] + '"';
-						$('#list-departments').append("<li class='ui-field-contain'><a class='deptlink' onclick='showClasses("+deptQuote+")'></a></li>");
-						$('[class=deptlink]').append(deptArr[i]);
-						$('#list-departments').listview("refresh");
+						deptQuote = '"' + deptArr[i] + '"'; // add quotes for text added as function parameter
+						$('#list-departments').append("<li class='ui-field-contain'><a class='deptlink' onclick='showClasses("+deptQuote+")'></a></li>"); 
+						$('[class=deptlink]').append(deptArr[i]);// add each department name in clickable list item that opens list of classes in that department
+						$('#list-departments').listview("refresh"); // refresh list to add css
 					}
-					$.mobile.loading("hide");
-					// });	
-				// });
+					$.mobile.loading("hide"); // hide loading gif when department list loads
 				}
 				function showClasses(depts) {
-					$.mobile.loading("show");
-					document.getElementById("departs").style.display = "none";
-					document.getElementById("clases").style.display = "block";
+					$.mobile.loading("show"); //show loading gif while class list loads
+					document.getElementById("departs").style.display = "none"; // hide department list
+					document.getElementById("clases").style.display = "block"; // show class list
 					var clArray = [];
 					for(var clas in json[depts]){
 						clArray.push(clas);
 					}
-					clArray.sort();
+					clArray.sort(); // sort classes alphabetically and numerically
 					var y = clArray.length;
 					for (var j = 0; j < y; j++) {
 						clasQuote = '"' + clArray[j] + '"';
-						deptsQuote = '"' + depts + '"';
-						$('#list-classes').append("<li class='ui-field-contain'><a class='classlink' id='classitem' onclick='showSections("+clasQuote+","+deptsQuote+")' rel='external'></a></li>");
-						$('[class=classlink]').append(clArray[j]);
-						$('#list-classes').listview("refresh");
+						deptsQuote = '"' + depts + '"'; // add quotes for text added as function parameter
+						$('#list-classes').append("<li class='ui-field-contain'><a class='classlink' id='classitem' onclick='showSections("+clasQuote+","+deptsQuote+")' rel='external'></a></li>"); 
+						$('[class=classlink]').append(clArray[j]);// add each class name in clickable list item that opens list of sections in that class
+						$('#list-classes').listview("refresh");// refresh list to add css
 					}
-					$.mobile.loading("hide");
+					$.mobile.loading("hide"); // hide loading gif when class list loads
 				}
 				function showSections(cls,dept) {
-					$.mobile.loading("show");
-					document.getElementById("clases").style.display = "none";
-					document.getElementById("sects").style.display = "block";
-					var pickedlistbrowse = JSON.parse(localStorage.getItem("picked"));
+					$.mobile.loading("show"); // show loading gif while section list loads
+					document.getElementById("clases").style.display = "none"; // hide class list
+					document.getElementById("sects").style.display = "block"; // show section list
+					var pickedlistbrowse = JSON.parse(localStorage.getItem("picked")); // load followed class list from localStorage
 					var i = 1;
 					var sectArr = [];
 					for(var section in json[dept][cls]){
 						sectArr.push(section);
 					}
-					sectArr.sort();
+					sectArr.sort(); // sort sections alphabetically and numerically
 					var z = sectArr.length;
 					for (var k = 0; k < z; k++) {
 						var secPic = sectArr[k];
 						var classname = json[dept][cls][secPic]["section"];
 						var clsQuote = '"' + cls + '"';
 						var deptQuote = '"' + dept + '"';
-						var sectQuote = '"' + secPic + '"';
-						$('#list-sections').append('<li class="ui-field-contain" id="listitem'+i+'"></li>');
-						$('#listitem'+i).css('background-color','#b9cf96');
+						var sectQuote = '"' + secPic + '"'; // add quotes for text added as function parameter
+						$('#list-sections').append('<li class="ui-field-contain" id="listitem'+i+'"></li>'); //outer list item for first section
+						$('#listitem'+i).css('background-color','#b9cf96'); //set color to green
 						if(json[dept][cls][secPic]["status"] == "Closed") {
-							$('#listitem'+i).css('background-color','#f06d6d');
+							$('#listitem'+i).css('background-color','#f06d6d'); //set closed section color to red
 						}
-						$('#listitem'+i).css('margin-top','10px');
+						$('#listitem'+i).css('margin-top','10px'); //margin between classes
 						$('#listitem'+i).append('<h2 id="listwords'+i+'"></h2>');
-						$('#listitem'+i).append('<p id="listname'+i+'" class="nameleft"></p>');
+						$('#listitem'+i).append('<p id="listname'+i+'" class="nameleft"></p>'); //add section name tag to list item
 						$('#listname'+i).css('font-size','14px');
-						$('#listitem'+i).append('<p id="listprof'+i+'" class="profright"></p>');
+						$('#listitem'+i).append('<p id="listprof'+i+'" class="profright"></p>'); //add section professor tag to list item
 						$('#listprof'+i).css('font-size','14px');
-						$('#listitem'+i).append('<p id="listother'+i+'" class="timesleft"></p>');
+						$('#listitem'+i).append('<p id="listother'+i+'" class="timesleft"></p>'); //add section times tag to list item
 						$('#listother'+i).css('font-size','14px');
-						$('#listitem'+i).append('<p id="listroom'+i+'" class="roomright"></p>');
-						$('#listroom'+i).css('font-size','14px');
-						$('#listwords'+i).append(cls+"."+secPic);
-						$('#listprof'+i).append(json[dept][cls][secPic]["professor"]);
-						$('#listname'+i).append(json[dept][cls][secPic]["name"]);
-						$('#listother'+i).append(json[dept][cls][secPic]["meeting"]);
-						$('#listroom'+i).append(json[dept][cls][secPic]["room"]);
-						// $('#listitem'+i).append(cls+"."+section);
-						if ((typeof pickedlistbrowse[dept]) == 'undefined') {
-							$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span>");
-						} else if ((typeof pickedlistbrowse[dept][cls]) == 'undefined'){
-							$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span>");
-						} else if ((typeof pickedlistbrowse[dept][cls][section]) == 'undefined') {
-							$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span>");
-						} else {
-							$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on' selected=''></option></select></span>");
-						}
-						$('#index').trigger('create');
-						$("#list-sections").listview("refresh"); 
+						$('#listitem'+i).append('<p id="listroom'+i+'" class="roomright"></p>'); //add section room tag to list item
+						$('#listroom'+i).css('font-size','14px'); //change size of sub-header information
+						$('#listwords'+i).append(cls+"."+secPic); //add section title
+						$('#listprof'+i).append(json[dept][cls][secPic]["professor"]); //add professor's name
+						$('#listname'+i).append(json[dept][cls][secPic]["name"]); //add section name
+						$('#listother'+i).append(json[dept][cls][secPic]["meeting"]); //add times
+						$('#listroom'+i).append(json[dept][cls][secPic]["room"]); // add room
+						if ((typeof pickedlistbrowse[dept]) == 'undefined') { // if department does not exist in list of classes being followed, flipper default is off
+							$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span>"); //add flipper to list item. Theme 'c' to change color. Adds flipperChange() function to onchange for unfollowing classes.
+						} else if ((typeof pickedlistbrowse[dept][cls]) == 'undefined'){ // if class does not exist in list of classes being followed, flipper default is off
+							$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span>"); //add flipper to list item. Theme 'c' to change color. Adds flipperChange() function to onchange for unfollowing classes.
+						} else if ((typeof pickedlistbrowse[dept][cls][section]) == 'undefined') { // if section does not exist in list of classes being followed, flipper default is off
+							$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on'></option></select></span>"); //add flipper to list item. Theme 'c' to change color. Adds flipperChange() function to onchange for unfollowing classes.
+						} else { // section does exist in list of classes being followed. So, flipper default is set to on
+							$('#listitem'+i).append("<span class='flipperBrowse'><select id='flip"+i+"' data-role='slider' data-mini='true' data-theme='c' onchange='flipperChange("+deptQuote+","+clsQuote+","+sectQuote+",this.value)'><option value='off'></option><option value='on' selected=''></option></select></span>"); //add flipper to list item. Theme 'c' to change color. Flipper default is on as class is followed. Adds flipperChange() function to onchange for unfollowing classes.
+						} // Must have three versions with flipper off to check if department, class, and section exist. Otherwise, fatal errors
+						$('#index').trigger('create'); //update page to take data
+						$("#list-sections").listview("refresh"); //update css of list
 						i++;
 					}
-					$.mobile.loading("hide");
+					$.mobile.loading("hide"); // hide loading gif when section list loads
 				}
 				document.getElementById("retDept").onclick = function returnDept() {
-					document.getElementById("clases").style.display = "none";
-					document.getElementById("departs").style.display = "block";
-					$("#list-classes").empty();
+					document.getElementById("clases").style.display = "none"; // hide class list
+					document.getElementById("departs").style.display = "block"; // show department list
+					$("#list-classes").empty(); // empty list of classes so next list of classes chosen is not concatenated to list
 				}
 				document.getElementById("retClas").onclick = function returnDept() {
-					document.getElementById("sects").style.display = "none";
-					document.getElementById("clases").style.display = "block";
-					$("#list-sections").empty();
+					document.getElementById("sects").style.display = "none"; // hide section list
+					document.getElementById("clases").style.display = "block"; // show class list
+					$("#list-sections").empty(); // empty list of sections so next list of sections chosen is not concatenated to list
 				}
 			</script>
 		</div> <!-- /page -->
