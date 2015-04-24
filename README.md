@@ -15,11 +15,7 @@ Buoy is a cross-platform class-scheduling mobile application. It is a simple way
 This implementation of Buoy uses PhoneGap, which takes a web application made with HTML, CSS, and Javascript and can build the app into other platforms. This project only contains the build for Android, but other platforms can be built if the corresponding SDK is provided. Please see http://phonegap.com/ for more information on how to install and use PhoneGap applications.
 
 ### Design:
-
 FullCalendar was used to create the calendar portion of the app. Moment.min and jQuery are needed to use FullCalendar. Documentation for how to use this plug-in can be found at http://fullcalendar.io/docs/.
-
-### Tracking Classes:
-
 
 ### Push Notifications:
 js/index.js contains the handlers for registering a device with Google Cloud Messaging/Apple Push Notification Service (GCM/APN) (only GCM will be discussed since only the Android platform was being built) as well as what to do when the device receives a notification.
@@ -49,7 +45,7 @@ More information on how this works with the server can be found in the documenta
 To make it easier to switch which server you are communicating with, there is a localStorage item called “serverIPAddr” which stores the server address. Using that item, you can just append desired URL params such as “/subscribe”, “/follow”, “/unfollow”, etc.
 This made it easier during testing between different servers. This localStorage item may or may not be used depending on your preference.
 
-Running in Browser vs. Running Natively on Device:
+### Running in Browser vs. Running Natively on Device:
 Very few changes need to be made to the application if you are going to run it in a browser (running the app through the PhoneGap Developer App is analogous to running it in a browser) or natively on a device.
 
 If you do run into problems where the platform differences causes errors, you can often check which platform you are on in the code itself with checking “device.platform” and then do different things according to which platform gets detected.
