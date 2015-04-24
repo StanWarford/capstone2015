@@ -37,5 +37,5 @@ This implementation of Buoy is written in Swift, using Xcode. To test this proje
 - Follow proper code reuse by having only one TableViewCell for ClassListViewController, SearchListViewController, and SectionListViewController.
 - Sync Class Table View Cells with Core Data, keeping the Follow/Unfollow buttons accurate. Do not allow a user to follow a class more than once.
 - On the Class List main page, make the “+ Add New Class” button a part of the table view, so that upon scrolling, it moves along with the class list content.
-- Handle empty searches that end up empty by telling the user that there are no classes that match.
+- Handle empty searches by telling the user that there are no classes that match.
 - Allow the user to scale the Calendar, possibly by zooming in and out.
