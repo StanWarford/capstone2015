@@ -59,7 +59,7 @@ function flipperChange(deptFlip,clasFlip,sectFlip,val) {
 	        });
 		}
 	} else {
-		// tell server the user unfollowed this class\
+		// tell server the user unfollowed this class
         if (localStorage.getItem("pushSet") == "true") {
 	        $.post(localStorage.getItem("serverIPAddr") + "unfollow",
 	        {
