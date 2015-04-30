@@ -17,6 +17,7 @@
 		873E55E31A9492F20011F9E3 /* SectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873E55E21A9492F20011F9E3 /* SectionsViewController.swift */; };
 		87433CAC1AD7B62A00CF2D6B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87433CAB1AD7B62A00CF2D6B /* StoreKit.framework */; };
 		87433CAE1AD7B62D00CF2D6B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87433CAD1AD7B62D00CF2D6B /* GameKit.framework */; };
+		875B25A71AF2B8A4009E3C25 /* live-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 875B25A61AF2B8A4009E3C25 /* live-data.json */; };
 		876847FF1AE6C18600CADBC8 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876847FE1AE6C18600CADBC8 /* WelcomeViewController.swift */; };
 		876848011AE6C19A00CADBC8 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876848001AE6C19A00CADBC8 /* InfoViewController.swift */; };
 		876FB5611ADDA481002F44DF /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */; };
@@ -77,6 +78,7 @@
 		873E55E21A9492F20011F9E3 /* SectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsViewController.swift; sourceTree = "<group>"; };
 		87433CAB1AD7B62A00CF2D6B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		87433CAD1AD7B62D00CF2D6B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		875B25A61AF2B8A4009E3C25 /* live-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "live-data.json"; sourceTree = "<group>"; };
 		876847FE1AE6C18600CADBC8 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		876848001AE6C19A00CADBC8 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		876FB55F1ADDA481002F44DF /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarCollectionViewCell.xib; path = ../CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				788806F11A64B74E0048E2D2 /* Main.storyboard */,
 				87FFCD8C1AD372CA00BE55B4 /* CalendarInfo.swift */,
+				875B25A61AF2B8A4009E3C25 /* live-data.json */,
 				877B78C31A92D688005A09EB /* ClassModel.swift */,
 				788806EA1A64B74E0048E2D2 /* AppDelegate.swift */,
 				87F3C5E91A8AB465001DC31F /* SettingsViewController.swift */,
@@ -398,6 +401,7 @@
 				788806F81A64B74E0048E2D2 /* LaunchScreen.xib in Resources */,
 				876FB5611ADDA481002F44DF /* CalendarCollectionViewCell.xib in Resources */,
 				788806F51A64B74E0048E2D2 /* Images.xcassets in Resources */,
+				875B25A71AF2B8A4009E3C25 /* live-data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
