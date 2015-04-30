@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1040,10 +1041,20 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="MAd-rm-wpV">
-                                <rect key="frame" x="52" y="30" width="496" height="496"/>
+                                <rect key="frame" x="200" y="88" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="3eR-Mh-1mW"/>
+                                    <constraint firstAttribute="width" secondItem="MAd-rm-wpV" secondAttribute="height" multiplier="1:1" id="Lvg-kp-3zV"/>
+                                    <constraint firstAttribute="width" constant="200" id="zJh-aH-256"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Lvg-kp-3zV"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="clip" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7L-fd-WHX">
-                                <rect key="frame" x="50" y="536" width="500" height="120"/>
+                                <rect key="frame" x="48" y="311" width="505" height="225"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="9QO-fF-8tA"/>
                                     <constraint firstAttribute="width" constant="500" id="fTI-UA-PZI"/>
@@ -1054,6 +1065,7 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="9QO-fF-8tA"/>
+                                        <exclude reference="fTI-UA-PZI"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -1063,32 +1075,41 @@
                         <constraints>
                             <constraint firstItem="t7L-fd-WHX" firstAttribute="trailing" secondItem="m8R-sf-cYs" secondAttribute="trailingMargin" id="3RD-R1-EIj"/>
                             <constraint firstAttribute="centerX" secondItem="t7L-fd-WHX" secondAttribute="centerX" id="5JV-vN-aiu"/>
+                            <constraint firstItem="t7L-fd-WHX" firstAttribute="top" secondItem="Nd9-WX-Y9H" secondAttribute="bottom" constant="136" id="6x7-ZK-0o9"/>
                             <constraint firstAttribute="centerY" secondItem="t7L-fd-WHX" secondAttribute="centerY" constant="-26" id="8HW-KS-7So"/>
-                            <constraint firstItem="MAd-rm-wpV" firstAttribute="top" secondItem="MSJ-6L-odf" secondAttribute="bottom" constant="30" id="9TU-on-1on"/>
+                            <constraint firstItem="MAd-rm-wpV" firstAttribute="top" secondItem="MSJ-6L-odf" secondAttribute="bottom" constant="88" id="9TU-on-1on"/>
                             <constraint firstItem="62A-t6-37z" firstAttribute="top" secondItem="m8R-sf-cYs" secondAttribute="topMargin" constant="-64" id="CFG-F0-xNI"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="t7L-fd-WHX" secondAttribute="trailing" constant="30" id="JFL-vF-fYm"/>
                             <constraint firstItem="t7L-fd-WHX" firstAttribute="leading" secondItem="m8R-sf-cYs" secondAttribute="leadingMargin" id="M0a-zz-bjK"/>
                             <constraint firstItem="t7L-fd-WHX" firstAttribute="leading" secondItem="m8R-sf-cYs" secondAttribute="leadingMargin" id="PfF-OI-VVF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="62A-t6-37z" secondAttribute="trailing" constant="-16" id="UdM-PD-wZJ"/>
+                            <constraint firstItem="t7L-fd-WHX" firstAttribute="top" secondItem="MAd-rm-wpV" secondAttribute="bottom" constant="23" id="WeT-C8-MiN"/>
+                            <constraint firstAttribute="centerX" secondItem="MAd-rm-wpV" secondAttribute="centerX" id="bRC-AQ-IjW"/>
                             <constraint firstItem="t7L-fd-WHX" firstAttribute="trailing" secondItem="m8R-sf-cYs" secondAttribute="trailingMargin" id="idZ-c5-CEM"/>
                             <constraint firstAttribute="centerX" secondItem="t7L-fd-WHX" secondAttribute="centerX" id="iiA-kt-0iJ"/>
                             <constraint firstAttribute="centerX" secondItem="t7L-fd-WHX" secondAttribute="centerX" id="iqy-sd-SrQ"/>
                             <constraint firstItem="62A-t6-37z" firstAttribute="leading" secondItem="m8R-sf-cYs" secondAttribute="leadingMargin" constant="-16" id="nLe-Cd-g3l"/>
                             <constraint firstItem="Nd9-WX-Y9H" firstAttribute="top" secondItem="t7L-fd-WHX" secondAttribute="bottom" constant="231" id="pQQ-aZ-OfZ"/>
                             <constraint firstItem="t7L-fd-WHX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m8R-sf-cYs" secondAttribute="leadingMargin" constant="30" id="u6y-ZA-Dyh"/>
-                            <constraint firstItem="t7L-fd-WHX" firstAttribute="top" secondItem="MAd-rm-wpV" secondAttribute="bottom" constant="10" id="wxz-Q8-omY"/>
+                            <constraint firstItem="MAd-rm-wpV" firstAttribute="top" secondItem="MSJ-6L-odf" secondAttribute="bottom" constant="88" id="vdF-Kh-MdV"/>
+                            <constraint firstItem="t7L-fd-WHX" firstAttribute="top" secondItem="MAd-rm-wpV" secondAttribute="bottom" constant="224" id="wxz-Q8-omY"/>
                             <constraint firstAttribute="centerX" secondItem="MAd-rm-wpV" secondAttribute="centerX" id="xVy-8F-ogY"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="t7L-fd-WHX" secondAttribute="bottom" id="z6f-ht-sYu"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="pQQ-aZ-OfZ"/>
+                                <exclude reference="9TU-on-1on"/>
+                                <exclude reference="xVy-8F-ogY"/>
                                 <exclude reference="3RD-R1-EIj"/>
                                 <exclude reference="5JV-vN-aiu"/>
+                                <exclude reference="6x7-ZK-0o9"/>
                                 <exclude reference="8HW-KS-7So"/>
                                 <exclude reference="M0a-zz-bjK"/>
                                 <exclude reference="PfF-OI-VVF"/>
                                 <exclude reference="idZ-c5-CEM"/>
                                 <exclude reference="iqy-sd-SrQ"/>
+                                <exclude reference="wxz-Q8-omY"/>
+                                <exclude reference="pQQ-aZ-OfZ"/>
                             </mask>
                         </variation>
                     </view>
@@ -1108,7 +1129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6X6-JN-ZWx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="557" y="219"/>
+            <point key="canvasLocation" x="547" y="305"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EML-ge-Ps9">
@@ -1433,8 +1454,8 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="XCd-AU-uAP"/>
                                         <exclude reference="80T-7x-Tis"/>
+                                        <exclude reference="XCd-AU-uAP"/>
                                     </mask>
                                 </variation>
                             </textField>
@@ -1493,9 +1514,9 @@
                                 <exclude reference="fiv-Sw-Slc"/>
                                 <exclude reference="rIz-D7-hyw"/>
                                 <exclude reference="5hl-YX-f3B"/>
-                                <exclude reference="wZk-0W-Ezh"/>
                                 <exclude reference="h9N-Gn-u1K"/>
                                 <exclude reference="pbK-o7-SWU"/>
+                                <exclude reference="wZk-0W-Ezh"/>
                             </mask>
                         </variation>
                     </view>
@@ -1556,8 +1577,8 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="EMF-T4-NK7"/>
                                         <exclude reference="54Z-E2-uYy"/>
+                                        <exclude reference="EMF-T4-NK7"/>
                                     </mask>
                                 </variation>
                             </textField>
@@ -1611,14 +1632,14 @@
                             <mask key="constraints">
                                 <exclude reference="ZuQ-MB-EpU"/>
                                 <exclude reference="Cur-QJ-wAQ"/>
-                                <exclude reference="rsF-uv-VrO"/>
-                                <exclude reference="g7d-Bn-fHj"/>
-                                <exclude reference="VPf-AS-l8s"/>
                                 <exclude reference="KIy-Qp-d0R"/>
-                                <exclude reference="WFj-bs-NP0"/>
-                                <exclude reference="fHR-r4-wGT"/>
-                                <exclude reference="cn0-dX-Kda"/>
+                                <exclude reference="VPf-AS-l8s"/>
+                                <exclude reference="g7d-Bn-fHj"/>
+                                <exclude reference="rsF-uv-VrO"/>
                                 <exclude reference="2ja-tw-amf"/>
+                                <exclude reference="WFj-bs-NP0"/>
+                                <exclude reference="cn0-dX-Kda"/>
+                                <exclude reference="fHR-r4-wGT"/>
                             </mask>
                         </variation>
                     </view>
