@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Parse
 
-//Declaring Global Variables that are accessible throughout the App
+// Global Variables
 
 var classDict: JSON?
 var classList: [JSON] = []
@@ -35,52 +35,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         // programmatically set initial view controller
-//        
+        
+        //Smile-SA push notifications
 //        // Subscribe push notifications with Node-pushServer
 //        request(.POST, serverUrl, parameters: parameters)
 //            .responseString { (_, _, string, _) in
 //                println(string)
 //        }
         
+        // Parse push notifications
+        
         Parse.setApplicationId("68AsOzImcf5xygN68CpXl0VFYQhak7o8X75D0Soa", clientKey: "IJ0IQJPR9mKRR2zODGiLjzeC6eeXyBZpn8KqaVE8")
         
         // Register for Push Notitications
-        if application.applicationState != UIApplicationState.Background {
-            // Track an app open here if we launch with a push, unless
-            // "content_available" was used to trigger a background push (introduced in iOS 7).
-            // In that case, we skip tracking here to avoid double counting the app-open.
-            let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")
-            let oldPushHandlerOnly = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
-            var noPushPayload = false;
-            if let options = launchOptions {
-                noPushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil;
-            }
-            if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
-                PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
-            }
-        }
-        if application.respondsToSelector("registerUserNotificationSettings:") {
-            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
-            application.registerUserNotificationSettings(settings)
-            application.registerForRemoteNotifications()
-        } else {
-            let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
-            application.registerForRemoteNotificationTypes(types)
-        }
-        
-        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-            Parse.setApplicationId("68AsOzImcf5xygN68CpXl0VFYQhak7o8X75D0Soa",
-                clientKey: "IJ0IQJPR9mKRR2zODGiLjzeC6eeXyBZpn8KqaVE8")
-            PFUser.enableAutomaticUser()
-            
-            var defaultACL = PFACL()
-            // If you would like all objects to be private by default, remove this line.
-            defaultACL.setPublicReadAccess(true)
-            PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
-            
-            return true
-        }
+//        if application.applicationState != UIApplicationState.Background {
+//            // Track an app open here if we launch with a push, unless
+//            // "content_available" was used to trigger a background push (introduced in iOS 7).
+//            // In that case, we skip tracking here to avoid double counting the app-open.
+//            let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")
+//            let oldPushHandlerOnly = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
+//            var noPushPayload = false;
+//            if let options = launchOptions {
+//                noPushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil;
+//            }
+//            if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
+//                PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
+//            }
+//        }
+//        if application.respondsToSelector("registerUserNotificationSettings:") {
+//            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+//            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+//            application.registerUserNotificationSettings(settings)
+//            application.registerForRemoteNotifications()
+//        } else {
+//            let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
+//            application.registerForRemoteNotificationTypes(types)
+//        }
+//        
+//        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+//            Parse.setApplicationId("68AsOzImcf5xygN68CpXl0VFYQhak7o8X75D0Soa",
+//                clientKey: "IJ0IQJPR9mKRR2zODGiLjzeC6eeXyBZpn8KqaVE8")
+//            PFUser.enableAutomaticUser()
+//            
+//            var defaultACL = PFACL()
+//            // If you would like all objects to be private by default, remove this line.
+//            defaultACL.setPublicReadAccess(true)
+//            PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+//            
+//            return true
+//        }
         
      
         UINavigationBar.appearance().barTintColor = UIColor(red: 13.0/255, green: 36.0/255,blue: 109.0/255, alpha: 1.0)
@@ -100,34 +103,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         self.window?.makeKeyAndVisible()
        
-        // asynchronous alamofire get request
-        request(.GET, url, parameters: nil)
-            .responseJSON { (req, res, json, error) in
-                if (error != nil) {
-                    NSLog("Error: \(error)")
-                    println(req)
-                    println(res)
-                }
-                else {
-                    NSLog("Success: \(url)")
-                    classDict = JSON(json!)
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        for dept in classDict!.dictionary!.keys.array { // ["COSC", "HUM", ...]
-                            for course in classDict![dept].dictionary!.keys.array { // ["COSC 101", "COSC 105", ...]
-                                for section in classDict![dept][course].dictionary!.keys.array { // ["COSC 101.01", "COSC 101.02"]
-                                    classList.append(classDict![dept][course][section])
-                                }
-                            }
-                        }
-                        print(classList)
+        // asynchronous alamofire get request for JSON
+//        request(.GET, url, parameters: nil)
+//            .responseJSON { (req, res, json, error) in
+//                if (error != nil) {
+//                    NSLog("Error: \(error)")
+//                    println(req)
+//                    println(res)
+//                }
+//                else {
+//                    NSLog("Success: \(url)")
+//                    classDict = JSON(json!)
+//                    
+//                    dispatch_async(dispatch_get_main_queue()) {
+//                        for dept in classDict!.dictionary!.keys.array { // ["COSC", "HUM", ...]
+//                            for course in classDict![dept].dictionary!.keys.array { // ["COSC 101", "COSC 105", ...]
+//                                for section in classDict![dept][course].dictionary!.keys.array { // ["COSC 101.01", "COSC 101.02"]
+//                                    classList.append(classDict![dept][course][section])
+//                                }
+//                            }
+//                        }
+//                        print(classList)
+//                    }
+//                    
+//                }
+//        }
+        
+        let jsonFilePath:NSString = NSBundle.mainBundle().pathForResource("live-data", ofType: "json")!
+        let jsonData:NSData = NSData.dataWithContentsOfMappedFile(jsonFilePath as String) as! NSData
+        let error:NSError?
+        
+        classDict = JSON(data: jsonData)
+        
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+            for dept in classDict!.dictionary!.keys.array { // ["COSC", "HUM", ...]
+                for course in classDict![dept].dictionary!.keys.array { // ["COSC 101", "COSC 105", ...]
+                    for section in classDict![dept][course].dictionary!.keys.array { // ["COSC 101.01", "COSC 101.02"]
+                        classList.append(classDict![dept][course][section])
                     }
-                    
                 }
+            }
+            print(classList)
         }
         
         return true
     }
+    
+    // More push notification code
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let installation = PFInstallation.currentInstallation()
